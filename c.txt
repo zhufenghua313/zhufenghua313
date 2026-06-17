@@ -1,4 +1,4 @@
-﻿//以下全部出自网络和大佬资源，如有冒犯请联系删除。[所有内容仅供学习使用，请勿用于违法用途。//{ "name": "a181成人", "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wwb521/live/refs/heads/main/video.json" }
+﻿//以下全部出自网络和大佬资源，如有冒犯请联系删除。[所有内容仅供学习使用，请勿用于违法用途。
 {
 "urls": [
 { "name":"影视线路1",   "url": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/yingshi01/7.json"   },
