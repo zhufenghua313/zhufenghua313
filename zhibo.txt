@@ -1,0 +1,1561 @@
+﻿📡通用线路1,#genre#
+//高码频道不大行
+CCTV1,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv1$高码频道
+CCTV2,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv2$高码频道
+CCTV3,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv3$高码频道
+CCTV4,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv4$高码频道
+CCTV5,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv5$高码频道
+CCTV5,http://m.061899.xyz/mg/cctv5$泛播2
+CCTV5+,http://j.s.bkpcp.top/jj/cctv5p$美国 CloudFlare节点
+CCTV5+,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv5p$高码频道
+CCTV6,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv6$高码频道
+CCTV7,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv7$高码频道
+CCTV8,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv8 $高码频道
+CCTV9,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv9 $高码频道
+CCTV10,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv10$高码频道
+CCTV11,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv11$高码频道
+CCTV12,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv12$高码频道
+CCTV13,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv13 $高码频道
+CCTV14,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv14$高码频道
+CCTV15,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv15$高码频道
+CCTV16,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv16$高码频道
+CCTV17,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cctv17$高码频道
+浙江卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=zjws$高码频道
+江苏卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=jsws$高码频道
+东方卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=dfws$高码频道
+江西卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=jxws$高码频道
+湖北卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=hubws$高码频道
+吉林卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=jlws$高码频道
+海南卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=hinws$高码频道
+大湾区卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=dwqws$高码频道
+河北卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=hbws$高码频道
+山西卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=sxiws$高码频道
+西藏卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=xzws$高码频道
+北京卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=bjws$高码频道
+甘肃卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=gsws$高码频道
+湖南卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=hunws$高码频道
+广东卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=gdws$高码频道
+深圳卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=szws$高码频道
+山东卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=sdws$高码频道
+河南卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=hnws$高码频道
+四川卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=scws$高码频道
+重庆卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=cqws$高码频道
+贵州卫视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=gzws$高码频道
+黑龙江视,http://cdn6.bkpcp.top/tl/tuiliu.php?id=hljws$高码频道
+
+//泛播01不大行
+CCTV1,http://t.061899.xyz/tl/dq.php?id=cctv1$泛播01
+CCTV2,http://t.061899.xyz/tl/dq.php?id=cctv2$泛播01
+CCTV3,http://t.061899.xyz/tl/dq.php?id=cctv3$泛播01
+CCTV4,http://t.061899.xyz/tl/dq.php?id=cctv4$泛播01
+CCTV5,http://t.061899.xyz/tl/dq.php?id=cctv5$泛播01
+CCTV6,http://t.061899.xyz/tl/dq.php?id=cctv6$泛播01
+CCTV7,http://t.061899.xyz/tl/dq.php?id=cctv7$泛播01
+CCTV8,http://t.061899.xyz/tl/dq.php?id=cctv8$泛播01
+CCTV9,http://t.061899.xyz/tl/dq.php?id=cctv9$泛播01
+CCTV10,http://t.061899.xyz/tl/dq.php?id=cctv10$泛播01
+CCTV11,http://t.061899.xyz/tl/dq.php?id=cctv11$泛播01
+CCTV12,http://t.061899.xyz/tl/dq.php?id=cctv12$泛播01
+CCTV13,http://t.061899.xyz/tl/dq.php?id=cctv13$泛播01
+CCTV14,http://t.061899.xyz/tl/dq.php?id=cctv14$泛播01
+CCTV15,http://t.061899.xyz/tl/dq.php?id=cctv15$泛播01
+CCTV16,http://t.061899.xyz/tl/dq.php?id=cctv16$泛播01
+CCTV17,http://t.061899.xyz/tl/dq.php?id=cctv17$泛播01
+浙江卫视,http://t.061899.xyz/tl/dq.php?id=zjws$泛播01
+江苏卫视,http://t.061899.xyz/tl/dq.php?id=jsws$泛播01
+东方卫视,http://t.061899.xyz/tl/dq.php?id=dfws$泛播01
+江西卫视,http://t.061899.xyz/tl/dq.php?id=jxws$泛播01
+湖北卫视,http://t.061899.xyz/tl/dq.php?id=hubws$泛播01
+吉林卫视,http://t.061899.xyz/tl/dq.php?id=jlws$泛播01
+海南卫视,http://t.061899.xyz/tl/dq.php?id=hinws$泛播01
+大湾区卫视,http://t.061899.xyz/tl/dq.php?id=dwqws$泛播01
+河北卫视,http://t.061899.xyz/tl/dq.php?id=hbws$泛播01
+山西卫视,http://t.061899.xyz/tl/dq.php?id=sxiws$泛播01
+西藏卫视,http://t.061899.xyz/tl/dq.php?id=xzws$泛播01
+北京卫视,http://t.061899.xyz/tl/dq.php?id=bjws$泛播01
+甘肃卫视,http://t.061899.xyz/tl/dq.php?id=gsws$泛播01
+湖南卫视,http://t.061899.xyz/tl/dq.php?id=hunws$泛播01
+内蒙古卫视,http://t.061899.xyz/tl/dq.php?id=nmgws$泛播01
+深圳卫视,http://t.061899.xyz/tl/tl.php?id=szws$泛播01
+山东卫视,http://t.061899.xyz/tl/tl.php?id=sdws$泛播01
+河南卫视,http://t.061899.xyz/tl/tl.php?id=hnws$泛播01
+四川卫视,http://t.061899.xyz/tl/tl.php?id=scws$泛播01
+重庆卫视,http://t.061899.xyz/tl/tl.php?id=cqws$泛播01
+贵州卫视,http://t.061899.xyz/tl/tl.php?id=gzws$泛播01
+陕西卫视,http://t.061899.xyz/tl/tl.php?id=sxws$泛播01
+新疆卫视,http://t.061899.xyz/tl/tl.php?id=xjws$泛播01
+内蒙古视,http://t.061899.xyz/tl/tl.php?id=nmgws$泛播01
+
+//咪咕1频道不大行
+CCTV1,http://go.bkpcp.top/mg/cctv1$咪咕1
+CCTV2,http://go.bkpcp.top/mg/cctv2$咪咕1
+CCTV3,http://go.bkpcp.top/mg/cctv3$咪咕频道
+CCTV4,http://go.bkpcp.top/mg/cctv4$咪咕1
+CCTV5,http://go.bkpcp.top/mg/cctv5$咪咕1
+CCTV5+,http://go.bkpcp.top/mg/cctv5p$咪咕1
+CCTV6,http://go.bkpcp.top/mg/cctv6$咪咕1
+CCTV7,http://goo.bkpcp.top/mg/cctv7$咪咕1
+CCTV8,http://go.bkpcp.top/mg/cctv8$咪咕1
+CCTV9,http://go.bkpcp.top/mg/cctv9$咪咕1
+CCTV10,http://go.bkpcp.top/mg/cctv10$咪咕1
+CCTV11,http://go.bkpcp.top/mg/cctv11$咪咕1
+CCTV12,http://go.bkpcp.top/mg/cctv12$咪咕1
+CCTV13,http://go.bkpcp.top/mg/cctv13$咪咕1
+CCTV14,http://go.bkpcp.top/mg/cctv14$咪咕1
+CCTV15,http://go.bkpcp.top/mg/cctv15$咪咕1
+CCTV16,http://go.bkpcp.top/mg/cctv16$咪咕1
+CCTV17,http://go.bkpcp.top/mg/cctv17$咪咕1
+CCTV4欧洲,http://go.bkpcp.top/mg/cctv4o$咪咕1
+CCTV4美洲,http://go.bkpcp.top/mg/cctv4m$咪咕1
+CGTN西语,http://go.bkpcp.top/mg/cgtne$咪咕1
+CGTN阿语,http://go.bkpcp.top/mg/cgtna$咪咕1
+CGTN法语,http://go.bkpcp.top/mg/cgtnf$咪咕1
+浙江卫视,http://go.bkpcp.top/mg/zjws$咪咕1
+江苏卫视,http://go.bkpcp.top/mg/jsws$咪咕1
+东方卫视,http://go.bkpcp.top/mg/dfws$咪咕1
+江西卫视,http://go.bkpcp.top/mg/jxws$咪咕1
+湖北卫视,http://go.bkpcp.top/mg/hubws$咪咕1
+吉林卫视,http://go.bkpcp.top/mg/jlws$咪咕1
+海南卫视,http://go.bkpcp.top/mg/hinws$咪咕1
+大湾区卫视,http://go.bkpcp.top/mg/dwqws$咪咕1
+河北卫视,http://go.bkpcp.top/mg/hbws$咪咕1
+山西卫视,http://go.bkpcp.top/mg/sxiws$咪咕1
+西藏卫视,http://go.bkpcp.top/mg/xzws$咪咕1
+北京卫视,http://go.bkpcp.top/mg/bjws$咪咕1
+甘肃卫视,http://go.bkpcp.top/mg/gsws$咪咕1
+湖南卫视,http://go.bkpcp.top/mg/hunws$咪咕1
+深圳卫视4k,http://go.bkpcp.top/mg/szws$咪咕1
+山东卫视,http://go.bkpcp.top/mg/sdws$咪咕1
+河南卫视,http://go.bkpcp.top/mg/hnws$咪咕1
+陕西卫视,http://go.bkpcp.top/mg/sxws$咪咕1
+兵团卫视,http://go.bkpcp.top/mg/btws$咪咕1
+黑龙江视,http://go.bkpcp.top/mg/hljws$咪咕1
+广东卫视,http://go.bkpcp.top/mg/gdws$咪咕1
+重庆卫视,http://go.bkpcp.top/mg/cqws$咪咕1
+内蒙古卫视,http://go.bkpcp.top/mg/nmgws$咪咕1
+贵州卫视,http://go.bkpcp.top/mg/gzws$咪咕1
+四川卫视,http://go.bkpcp.top/mg/scws$咪咕1
+新疆卫视,http://go.bkpcp.top/mg/xjws$咪咕1
+CHC动作电影,http://go.bkpcp.top/mg/dzdy$咪咕1
+CHC家庭影院,http://go.bkpcp.top/mg/jtyy$咪咕1
+
+CGTN西语,https://0472.org/hls/cgtnx.m3u8
+CGTN阿语,https://0472.org/hls/cgtna.m3u8
+CGTN法语,https://0472.org/hls/cgtnf.m3u8
+CGTN记录,https://0472.org/hls/cgtnd.m3u8
+CGTN俄语,https://0472.org/hls/cgtne.m3u8
+CGTN英语,https://0472.org/hls/cgtn.m3u8
+CGTN_Arabic,https://arabic-livews.cgtn.com/hls/LSveq57bErWLinBnxosqjisZ220802LSTefTAS9zc9mpU08y3np9TH220802cd/playlist.m3u8
+CGTN_Español,https://espanol-livews.cgtn.com/hls/LSveOGBaBw41Ea7ukkVAUdKQ220802LSTexu6xAuFH8VZNBLE1ZNEa220802cd/playlist.m3u8
+CGTN_Français,https://francais-livews.cgtn.com/hls/LSvev95OuFZtKLc6CeKEFYXj220802LSTeV6PO0Ut9r71Uq3k5goCA220802cd/playlist.m3u8
+CGTN_Русский,https://russian-livews.cgtn.com/hls/LSvexABhNipibK5KRuUkvHZ7220802LSTeze9o8tdFXMHsb1VosgoT220802cd/playlist.m3u8
+CGTN_Documentary,https://english-livebkali.cgtn.com/live/doccgtn.m3u8
+
+//地方频道
+浙江国际,http://ali-vl.cztv.com/channels/lantian/channel010/360p.m3u8$济南电信
+浙江.上虞新闻综合,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8$湖南电信
+浙江.上虞新商都,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8?zzhed$湖南电信
+浙江.平湖新闻综合,http://l.cztvcloud.com/channels/lantian/SXpinghu1/720p.m3u8?zzhed$湖南电信
+浙江.萧山新闻综合,http://l.cztvcloud.com/channels/lantian/SXxiaoshan1/720p.m3u8?zzhed$湖南电信
+浙江.萧山新闻综合,http://l.cztvcloud.com/channels/lantian/SXxiaoshan2/720p.m3u8?zzhed$湖南电信
+浙江.诸暨新闻综合,http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8?zzhed$湖南电信
+浙江.缙云综合频道,http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8?zzhed$湖南电信
+浙江.龙游生活娱乐,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8?zzhed$湖南电信
+浙江.龙游新闻综合,http://l.cztvcloud.com/channels/lantian/SXlongyou1/720p.m3u8?zzhed$湖南电信
+浙江.宁波.象山综合,http://l.cztvcloud.com/channels/lantian/SXxiangshan1/720p.m3u8?zzhed$湖南电信
+浙江.衢江新闻综合,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8?zzhed$湖南电信
+浙江.SYTV,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8?zzhed$湖南电信
+浙江.文成综合频道,http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8?zzhed$湖南电信
+浙江.云和新闻综合,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8?zzhed$湖南电信
+浙江.绍兴新闻综合,http://live.shaoxing.com.cn/video/s10001-sxtv1/index.m3u8$绍兴电信
+浙江.绍兴新闻综合,http://live.shaoxing.com.cn/video/s10001-sxhb/index.m3u8$绍兴电信
+浙江.绍兴电视台公共,http://live.shaoxing.com.cn/video/s10001-sxtv2/index.m3u8$绍兴电信
+浙江.绍兴文化影院,http://live.shaoxing.com.cn/video/s10001-sxtv3/index.m3u8?zzhed$绍兴电信
+余姚姚江文化,http://l.cztvcloud.com/channels/lantian/SXyuyao3/720p.m3u8$湖南电信
+余姚新闻综合,http://l.cztvcloud.com/channels/lantian/SXyuyao1/720p.m3u8$湖南电信
+兰溪新闻综合,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8$湖南电信
+庆元新闻综合,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8$湖南电信
+开化国家公园,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8$湖南电信
+开化新闻综合,http://l.cztvcloud.com/channels/lantian/SXkaihua1/720p.m3u8$湖南电信
+新昌新闻综合,http://l.cztvcloud.com/channels/lantian/SXxinchang1/720p.m3u8$湖南电信
+新昌生活,http://l.cztvcloud.com/channels/lantian/SXxinchang2/720p.m3u8$湖南电信
+普陀新闻综合,http://l.cztvcloud.com/channels/lantian/SXputuo1/720p.m3u8?zzhed$湖南电信
+武义新闻综合,http://l.cztvcloud.com/channels/lantian/SXwuyi1/720p.m3u8$湖南电信
+永嘉新闻综合,http://l.cztvcloud.com/channels/lantian/SXyongjia1/720p.m3u8$湖南电信
+内黄综合,http://tvpull.dxhmt.cn:9081/tv/10527-1.m3u8?zhend
+句容新闻综合,http://jrlive.jrntv.com/live/_definst_/jrxwzhs/playlist.m3u8?zjiangsd
+如东一套新闻综合,http://rudong-tv-hls.cm.jstv.com/rudong-tv/rdxwzh.m3u8
+宜阳综合,http://tvpull.dxhmt.cn:9081/tv/10327-1.m3u8
+宝丰综合,http://tvpull.dxhmt.cn:9081/tv/10421-1.m3u8?zhend
+安徽.宿州新闻综合,http://live.ahsz.tv/video/s10001-szzh/index.m3u8$ IPV4网络
+安徽.宿州科教,http://live.ahsz.tv/video/s10001-kxjy/index.m3u8
+小金综合,http://xjlive.xjxrmt.cn:8091/live/xwpd.m3u8
+嵩县综合新闻,http://tvpull.dxhmt.cn:9081/tv/10325-1.m3u8?zhend
+平遥新闻综合,https://tntgjhjb.live.sxmty.com/live/hls/3a4585ac11ec4e1bb07b419101b370c3/baf63e2b313440c2a25d7859f9b73b05-1.m3u8?zshanxd
+德惠综合,http://stream11.jlntv.cn/dehuitv/playlist.m3u8
+新乡县电视台,http://tvpull.dxhmt.cn:9081/tv/10721-1.m3u8
+新安新闻综合,http://tvpull.dxhmt.cn:9081/tv/10323-1.m3u8?zhend
+新疆奎屯汉语综合,http://218.84.12.186:8001/hls/main/playlist.m3u8
+新疆石河子新闻综合,http://124.88.144.73:1935/live/xwzh/playlist.m3u8
+来宾综合,http://zb.gxlbamc.com:1935/live/lbzh.stream/playlist.m3u8
+柳河综合,http://stream5.jlntv.cn/lh/playlist.m3u8
+江宁电视台综合,https://jiangning-tv-hls.cm.jstv.com/jiangning-tv/jnxwzh.m3u8
+沛县新闻综合,http://peixian-tv-hls.cm.jstv.com/peixian-tv/pxzh.m3u8
+沭阳综合,http://shuyang-tv-hls.cm.jstv.com/shuyang-tv/shuyangzh.m3u8
+泗洪新闻综合,http://sihong-tv-hls.cm.jstv.com/sihong-tv/sihongxinwenzonghe.m3u8
+泗阳综合,http://siyang-tv-hls.cm.jstv.com/siyang-tv/siyangzh.m3u8
+泗阳资讯,http://siyang-tv-hls.cm.jstv.com/siyang-tv/siyangzx.m3u8
+涟水电视台综合,http://lianshui-tv-hls.cm.jstv.com/lianshui-tv/lsxw.m3u8
+温县综合,http://tvpull.dxhmt.cn:9081/tv/10825-1.m3u8
+烟台公共,http://live.yantaitv.cn/live/e50f104a4ffe4a41b2217cbda534146f/d86092e69df94668b33390278b061700-1.m3u8
+烟台新闻综合,http://live.yantaitv.cn/live/3e81a8879da44c5dadf3bd9c10468e1c/9b776d420ee4438199b7657c8eb88f07-1.m3u8
+烟台经济科技,http://live.yantaitv.cn/live/27f84144e95a4652ae9e5c211b2a6b55/405f3e33ba384aa0a16014d0becd1261-1.m3u8
+焦作公共,http://zhpull.dxhmt.cn/jiaozuo/29b65b69130c4ef1a3283cc7b913da05/playlist.m3u8
+磐石综合,http://stream5.jlntv.cn/ps/playlist.m3u8
+禹州综合,http://tvpull.dxhmt.cn:9081/tv/11081-1.m3u8
+湖北荆门新闻综合,http://stream.jmtv.com.cn/xwzh/sd/live.m3u8
+湖北科教文旅,http://stream.jmtv.com.cn/ggsh/sd/live.m3u8$ IPV4网络
+重庆.荣昌综合,http://183.64.181.25:40023/rongchang01.m3u8$ IPV4网络
+菏泽新闻综合,http://live.hznet.tv:1935/live/live1/500K/tzwj_video.m3u8?shandd
+菏泽经济生活,http://live.hznet.tv:1935/live/live2/500K/tzwj_video.m3u8
+西昌综合,http://xcfb.screx.com.cn:18085/hlsnew1/channel1.m3u8
+赣榆新闻综合,http://ganyu-tv-hls.cm.jstv.com/ganyu-tv/ganyutv.m3u8
+赣州公共,https://pili-live-hls-sjxgz2024.sobeylive.com/jxgz2024/396_q_live172526334096251.m3u8
+赣州新闻,https://pili-live-hls-sjxgz2024.sobeylive.com/jxgz2024/396_q_live172526329228525.m3u8
+辉南新闻综合,http://stream5.jlntv.cn/hn/sd/live.m3u8
+项城新闻,http://tvpull.dxhmt.cn:9081/tv/11681-1.m3u8
+高邮一套新闻综合,http://gaoyou-tv-hls.cm.jstv.com/gaoyou-tv/gaoyouxw.m3u8
+黎城综合,http://111.53.96.67:8081/live/1/index.m3u8
+黑龙江七台河新闻综合,http://live.qthnews.org.cn:1935/live/live1/800k/tzwj_video.m3u8
+黑龙江七台河民生社教,http://live.qthnews.org.cn:1935/live/live2/800k/tzwj_video.m3u8
+易门综合,https://zb-live.ynurl.com/yimen/3b75a2f9-7941-46b7-992d-a9796fbca5fe.m3u8
+普洱电视台,https://zhibo.puerw.cn/puer/c752b300-602c-4083-8c5e-f6bb97b58f2d.m3u8
+广西南宁影视娱乐,http://hls.nntv.cn/nnlive/YSYL_244.m3u8
+广西南宁新闻综合,http://hls.nntv.cn/nnlive/XWZH_24.m3u8$ IPV4网络
+广西南宁公共,http://hls.nntv.cn/nnlive/GGPD_24.m3u8$ IPV4网络
+四川松潘频道,http://live.spccmc.com:90/live/spxwzh.m3u8$ IPV4网络
+四川广安公共,http://live1.gatv.com.cn:85/live/GGPD.m3u8
+四川广安新闻综合,http://live1.gatv.com.cn:85/live/XWZH.m3u8$ IPV4网络
+四川广安文旅乡村,http://live1.gatv.com.cn:85/live/GGPD_ggpdzm.m3u8$ IPV4网络
+四川甘孜综合,http://tv.drs.ganzitv.com:8100/channellive/gztv.flv?zsicd
+四川.泸州科教生活,http://m3u8.channel.luzhoubs.com/nmip-media/channellive/channel103074/playlist.m3u8$ IPV4网络
+四川.泸州新闻综合,http://m3u8.channel.luzhoubs.com/nmip-media/channellive/channel106011/playlist.m3u8$ IPV4网络
+四川.营山频道,http://file.ysxtv.cn/cms/videos/nmip-media/channellive/channel4/playlist.m3u8$ IPV4网络
+沐川综合,https://m3u8channel-sm.yunxya.com/nmip-media/channellive/channel100420/playlist.m3u8
+四川金川新闻综合,http://live.jinchuanrmt.com:90/live/zhxw.m3u8$ IPV4网络
+四川金川新闻综合,http://139.203.180.9:90/live/zhxw.m3u8
+四川金川乡村,http://live.jinchuanrmt.com:90/live/jcxc.m3u8$ IPV4网络
+四川凉山语,http://file.yizu.tv/nmip-media/channellive/channel107323/playlist.m3u8
+四川重庆科教,http://182.150.115.21:8030/pcgacg/pcgacg_0.m3u8$ IPV4网络
+重庆.泸县综合频道,http://lxfile.lxxcb.cn/nmip-media/channellive/channel103799/playlist.m3u8?zsicd$ IPV4网络
+重庆.璧山综合,http://222.179.42.129:8181/hls1.m3u8$ IPV4网络
+镇江二套社会民生,http://zjtv-wshls.homecdn.com/live/2aa16.m3u8
+重庆.黑水新闻综合,http://live.schstv.com:90/live/xwzh.m3u8$ IPV4网络
+重庆.潼南综合频道,http://183.230.184.51:65500/tntv1.m3u8$ IPV4网络
+重庆.巴南综合频道,http://live.cqbntv.com/bnmc/tv0709.m3u8$ IPV4网络
+重庆.合川综合频道,http://125.62.24.72:8030/ch0.m3u8$ IPV4网络
+安徽.灵璧县新闻综合,http://live.cms.anhuinews.com/video/s10003-lbtv/index.m3u8$ IPV4网络
+苏州4k,https://live-auth.51kandianshi.com/szgd/csztv4k_hd.m3u8
+苏州1新闻综合,https://live-auth.51kandianshi.com/szgd/csztv1.m3u8
+苏州2社会经济,https://live-auth.51kandianshi.com/szgd/csztv2.m3u8
+苏州3文化生活,https://live-auth.51kandianshi.com/szgd/csztv3.m3u8
+苏州4电影娱乐信息,https://live-auth.51kandianshi.com/szgd/csztv4.m3u8
+苏州5生活资讯,https://live-auth.51kandianshi.com/szgd/csztv5.m3u8
+广州综合,https://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=f0147ae6453a80f5989f382368b72aad&txTime=18d00acf487
+广州综合,http://tencentplay.gztv.com/live/zonghes.m3u8?txSecret=c8dbe86d6f86eb1a21999ab479fd5667&txTime=18d3c4690e8
+广州综合,https://tencentplaygsm.gztv.com/live/zonghes.m3u8?txTime=65797c44&amp;txSecret=7e4590b2320037d7ce49ce9eac2dd6c0
+广州新闻,https://tencentplay.gztv.com/live/xinwen.m3u8?txSecret=6f73647cae387d01a3c2132074132a83&txTime=18d00acf487
+广州新闻,https://tencentplay.gztv.com/live/xinwen.m3u8?txSecret=d217bd6cf85c93e3b47b96504cd2dc1c&txTime=18e6ff29019
+广东河源公共,http://tmpstream.hyrtv.cn/hygg/sd/live.m3u8
+广东河源综合,https://tmpstream.hyrtv.cn/xwzh/sd/live.m3u8
+广东河源综合,http://tmpstream.hyrtv.cn/xwzh/playlist.m3u8
+广东南国都市,https://tencentplay.gztv.com/live/nanguodushi.m3u8?txSecret=c82f82d7a6beda92b2b1ce93753dcacb&txTime=18e4a381d46
+广东番禺电视台,http://video.epaper.pybtv.cn:8080/live/rtmp_live_demo.flv$ IPV4网络
+广东东莞综合,https://stream.sun0769.com/dgrtv1/mp4tv1_1500/index.m3u8
+广东东莞生活资讯,https://stream.sun0769.com/dgrtv1/mp4tv2_1500/index.m3u8
+广东东莞生活资讯,https://stream.sun0769.com/dgrtv1/mp4tv2_800/index.m3u8$ IPV4网络
+汕头小公园,https://gctxyc.liveplay.myqcloud.com/gc/bsszjs_1_md.m3u8#https://gctxyc.liveplay.myqcloud.com:443/gc/bsszjs_1/index.m3u8?contentid=2820180516001#https://gctxyc.liveplay.myqcloud.com:443/gc/bsszjs_1_md.m3u8
+五华综合,http://p2hs.vzan.com/slowlive/621139761151691240/live.m3u8
+江苏|金湖新闻综合,http://jinhu-tv-hls.cm.jstv.com/jinhu-tv/jinhuzh.m3u8?zjiangsd
+河南|内黄综合,http://tvpull.dxhmt.cn:9081/tv/10527-1.m3u8?zhend
+河南|宝丰综合,http://tvpull.dxhmt.cn:9081/tv/10421-1.m3u8?zhend
+河南|新乡县电视台,http://tvpull.dxhmt.cn:9081/tv/10721-1.m3u8?zhend
+河南|鹿邑新闻,http://tvpull.dxhmt.cn:9081/tv/11628-1.m3u8?zhend
+河南|焦作公共,http://zhpull.dxhmt.cn/jiaozuo/29b65b69130c4ef1a3283cc7b913da05/playlist.m3u8?zhend
+河南|焦作综合,http://zhpull.dxhmt.cn/jiaozuo/b75a92c9503e47cf9e89f7ff247b65f2/playlist.m3u8?zhend
+河南|宜阳综合,http://tvpull.dxhmt.cn:9081/tv/10327-1.m3u8?zhend
+万荣综合,http://60.222.246.220:19433/hls1.m3u8
+太谷新闻综合,http://p2.vzan.com/slowlive/596867413819827251/live.m3u8
+河南义马新闻综合,http://tvpull.dxhmt.cn:9081/tv/11281-1.m3u8
+河南叶县,http://tvpull.dxhmt.cn:9081/tv/10422-1.m3u8
+河南叶县,http://live.dxhmt.cn:9081/tv/10422-1.m3u8
+河南唐河一套,http://tvpull.dxhmt.cn:9081/tv/11328-1.m3u8
+河南唐河一套,http://live.dxhmt.cn:9081/tv/11328-1.m3u8
+河南固始综合,http://tvpull.dxhmt.cn:9081/tv/11525-1.m3u8
+固镇新闻,http://www.guzhenm.com:7001/hls/hd-live.m3u8
+河南扶沟综合,http://tvpull.dxhmt.cn:9081/tv/11621-1.m3u8
+河南新县综合,http://tvpull.dxhmt.cn:9081/tv/11523-1.m3u8
+河南新蔡综合,http://tvpull.dxhmt.cn:9081/tv/11729-1.m3u8
+河南渑池新闻综合,http://tvpull.dxhmt.cn:9081/tv/11221-1.m3u8
+河南潢川综合,http://tvpull.dxhmt.cn:9081/tv/11526-1.m3u8
+河南登封综合,http://tvpull.dxhmt.cn:9081/tv/10185-1.m3u8
+河南西华综合,http://tvpull.dxhmt.cn:9081/tv/11622-1.m3u8
+河南郏县综合,http://tvpull.dxhmt.cn:9081/tv/10425-1.m3u8
+河南鄢陵综合,http://tvpull.dxhmt.cn:9081/tv/11024-1.m3u8
+云霄综合,https://live.zzyxxw.com:2443/live/xwzh.m3u8
+云霄综合,http://live.zzyxxw.com:85/live/xwzh.m3u8
+井研综合,http://tvfile.jyrmt.cn/nmip-media/channellive/channel104452/playlist.m3u8
+亳州农村,http://zbbf2.ahbztv.com/live/418.m3u8
+偃师新闻,http://tvpull.dxhmt.cn:9081/tv/10381-1.m3u8
+北京钟鼓楼,https://gctxyc.liveplay.myqcloud.com/gc/ztd_1_md.m3u8
+南国都市,http://tencentplay.gztv.com/live/nanguodushi.m3u8?txSecret=140110ae3d6c936a77f94c4f4d85b0d3&txTime=18d57929bd4
+南宁公共,http://hls.nntv.cn/nnlive/GGPD_24.m3u8
+南宁新闻综合,http://hls.nntv.cn/nnlive/XWZH_24.m3u8
+南宁都市生活,http://hls.nntv.cn/nnlive/WLSH_24.m3u8
+名山综合,https://m3u8channel-bx.yunxya.com/nmip-media/channellive/channel104666/playlist.m3u8
+哈尔滨新闻综合,https://stream.hrbtv.net/xwzh/playlist.m3u8
+哈尔滨新闻综合,http://stream.hrbtv.net/xwzh/sd/live.m3u8
+哈尔滨新闻综合,https://rmplive.hljtv.com/live/haerbin.m3u8
+哈尔滨生活,https://stream.hrbtv.net/shpd/playlist.m3u8
+哈尔滨生活,http://stream.hrbtv.net/shpd/sd/live.m3u8
+哈尔滨生活,https://stream.hrbtv.net/shpd/sd/live.m3u8
+哈尔滨生活,http://stream.hrbtv.net/shpd/sd/live.m3u8?zheild
+四川科教,http://182.150.115.21:8030/pcgacg/pcgacg_0.m3u8
+天津,https://newcntv.qcloudcdn.com/asp/hls/main/0303000a/3/default/5f03d9f1684241f696b25a19ffc44145/main.m3u8
+夹江新闻综合,http://tvfile.jjrm.org.cn/nmip-media/channellive/channel106282/playlist.m3u8
+夹江新闻综合,http://tvfile.jjrm.org.cn/nmip-media/channellive/channel106282/playlist.m3u8?zsicd
+如东新闻综合,http://rudong-tv-hls.cm.jstv.com/rudong-tv/rdxwzh.m3u8
+如东新闻综合,http://rudong-tv-hls.cm.jstv.com/rudong-tv/rdxwzh.m3u8?zjiangsd
+安徽固镇新闻,http://www.guzhenm.com:7001/hls/hd-live.m3u8?zanhd
+宜兴新闻,https://yixing-tv-ori-hls.jstv.com/yixing-tv-ori/yixing_xw.m3u8
+宜兴紫砂,http://3gvod.zjgonline.com.cn:1935/live/_definst_/xinwenzonghe_app/chunklist.m3u8
+宜阳综合,http://tvpull.dxhmt.cn:9081/tv/10327-1.m3u8
+宜阳综合,http://tvpull.dxhmt.cn:9081/tv/10327-1.m3u8?wsSecret=df15530a0abec41b14bca00fc96270d1&wsTime=1654956569
+宝丰综合,http://tvpull.dxhmt.cn:9081/tv/10421-1.m3u8?%E5%85%B3%E6%B3%A8%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7[%E6%99%B4%E5%9B%AD]
+宾阳综合,http://zb.gxlbamc.com:1935/live/lbzh.stream/playlist.m3u8
+巩义新闻综合,http://tvpull.dxhmt.cn:9081/tv/10181-1.m3u8?zhend
+广安公共,http://live1.gatv.com.cn:85/live/GGPD.m3u8
+广安公共,http://live1.gatv.com.cn:85/live/GGPD_ggpdzm.m3u8
+张家港民生,http://3gvod.zjgonline.com.cn:1935/live/_definst_/shehuishenghuo_app/chunklist.m3u8
+万荣综合,http://60.222.246.220:19433/hls1.m3u8
+扶沟综合,http://tvpull.dxhmt.cn:9081/tv/11621-1.m3u8?%E5%85%B3%E6%B3%A8%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7[%E6%99%B4%E5%9B%AD]
+新乡县电视台,http://tvpull.dxhmt.cn:9081/tv/10721-1.m3u8?%E5%85%B3%E6%B3%A8%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7[%E6%99%B4%E5%9B%AD]
+新县综合,http://tvpull.dxhmt.cn:9081/tv/11523-1.m3u8?%E5%85%B3%E6%B3%A8%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7[%E6%99%B4%E5%9B%AD]
+新安新闻综合,http://tvpull.dxhmt.cn:9081/tv/10323-1.m3u8
+新安新闻综合,http://live.dxhmt.cn:9081/tv/10323-1.m3u8
+新安新闻综合,http://tvpull.dxhmt.cn:9081/tv/10323-1.m3u8?zhend
+新安新闻综合,http://tvpull.dxhmt.cn:9081/tv/10323-1.m3u8?%E5%85%B3%E6%B3%A8%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7[%E6%99%B4%E5%9B%AD]
+新疆巴音郭楞州,http://file.loulannews.cn/nmip-media/channellive/channel101476/playlist.m3u8
+新疆巴音郭楞州,http://file.loulannews.cn/nmip-media/channellive/channel102433/playlist.m3u8
+新疆巴音郭楞州,http://file.loulannews.cn/nmip-media/channellive/channel104199/playlist.m3u8
+新疆玛纳斯综合,http://218.84.127.245:1026/hls/main1/playlist.m3u8?zxinjd
+方城一套,http://tvpull.dxhmt.cn:9081/tv/11322-1.m3u8
+方城一套,http://tvpull.dxhmt.cn:9081/tv/11322-1.m3u8?zhend
+旺苍新闻综合,http://channel.wcrmt.cn:80/nmip-media/channellive/channel105268/playlist.m3u8
+旺苍新闻综合,http://live.spccmc.com:90/live/spxwzh.m3u8?%E5%85%B3%E6%B3%A8%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7[%E6%99%B4%E5%9B%AD]
+易门综合,https://zb-live.ynurl.com/yimen/3b75a2f9-7941-46b7-992d-a9796fbca5fe.m3u8
+梨园,http://gcalic.v.myalicdn.com/gc/ahhs01_1/index.m3u8
+武进新闻,https://live.wjyanghu.com/live/CH1.m3u8
+武进生活,http://live.wjyanghu.com/live/CH2.m3u8
+永城综合,http://tvpull.dxhmt.cn:9081/tv/11481-1.m3u8
+沁阳新闻综合,http://tvpull.dxhmt.cn:9081/tv/10882-1.m3u8
+沁阳新闻综合,http://live.dxhmt.cn:9081/tv/10882-1.m3u8
+海宁新闻综合,http://p2hs.vzan.com/slowlive/317913155078575177/live.m3u8
+淮阴综合,https://huaiyin-tv-replay.cm.jstv.com/huaiyin-tv/huaiyinf.m3u8
+湖州公共,http://hzcm-live.media.hugd.com/1e6b554b9ab74513958c0e1ffe664d22/9acaa7634309494cb29a85eb12136607.m3u8?auth_key=2272900830-9a2389b8bf4e49d580d4ad807423d326-0-ea78a5c7a678c436263582d368f5009e&amp;amp;amp;fbl=
+湖州文化娱乐,https://hzcm-live.media.hugd.com/613c47f0ab0d4eaa98b21378d0db6ded/0051d31c9dd543a7825eea4e49675b2a.m3u8?auth_key=2277598059-0a5ebfa1c0dc4671b42a60810fc37039-0-fa625b7d1feab612062453c12e3c8887
+湖州新闻综合,http://hzcm-live.media.hugd.com/3f5fa7d64c7c46a38c6bd8ad35e836cc/65128273761b4731ae53729ea6dcf932.m3u8?auth_key=2277598215-9d21c15111244bea8d298c361d31a72e-0-d031198f58d44b0e91ba2e3f3b188865
+溧水新闻综合,https://lishui-tv-hls.cm.jstv.com/lishui-tv/lsxwzh.m3u8
+祁县新闻综合,http://ggpagerl.live.sxmty.com/live/hls/b350dc1ac5da45c2b2233f6eb122ddf4/49d3766c7f204685a2a8f027b234c33d.m3u8?zshanxd
+荥阳综合,http://tvpull.dxhmt.cn:9081/tv/10182-1.m3u8
+萝北综合,https://rmplive.hljtv.com/live/luobei.m3u8
+会东电视台,http://exfile.schdxww.com:80/nmip-media/channellive/channel100055/playlist.m3u8
+
+
+
+
+📡通用线路2,#genre#
+//泛播2还行
+CCTV1,http://m.061899.xyz/mg/cctv1$泛播2
+CCTV2,http://m.061899.xyz/mg/cctv2$泛播2
+CCTV3,http://m.061899.xyz/mg/cctv3$泛播2
+CCTV4,http://m.061899.xyz/mg/cctv4$泛播2
+CCTV5,http://m.061899.xyz/mg/cctv5$泛播2
+CCTV5+,http://m.061899.xyz/mg/cctv5p$泛播2
+CCTV6,http://m.061899.xyz/mg/cctv6$泛播2
+CCTV7,http://m.061899.xyz/mg/cctv7$泛播2
+CCTV8,http://m.061899.xyz/mg/cctv8$泛播2
+CCTV9,http://m.061899.xyz/mg/cctv9$泛播2
+CCTV10,http://m.061899.xyz/mg/cctv10$泛播2
+CCTV11,http://m.061899.xyz/mg/cctv11$泛播2
+CCTV12,http://m.061899.xyz/mg/cctv12$泛播2
+CCTV13,http://m.061899.xyz/mg/cctv13$泛播2
+CCTV14,http://m.061899.xyz/mg/cctv14$泛播2
+CCTV15,http://m.061899.xyz/mg/cctv15$泛播2
+CCTV16,http://m.061899.xyz/mg/cctv16$泛播2
+CCTV17,http://m.061899.xyz/mg/cctv17$泛播2
+北京卫视,http://m.061899.xyz/mg/bjws$泛播2
+东方卫视,http://m.061899.xyz/mg/dfws$泛播2
+浙江卫视,http://m.061899.xyz/mg/zjws$泛播2
+江苏卫视,http://m.061899.xyz/mg/jsws$泛播2
+湖南卫视,http://m.061899.xyz/mg/hunws$泛播2
+深圳卫视,http://m.061899.xyz/mg/szws$泛播2
+山东卫视,http://m.061899.xyz/mg/sdws$泛播2
+江西卫视,http://m.061899.xyz/mg/jxws$泛播2
+四川卫视,http://m.061899.xyz/mg/scws$泛播2
+重庆卫视,http://m.061899.xyz/mg/cqws$泛播2
+贵州卫视,http://m.061899.xyz/mg/gzws$泛播2
+湖北卫视,http://m.061899.xyz/mg/hubws$泛播2
+海南卫视,http://m.061899.xyz/mg/hinws$泛播2
+甘肃卫视,http://m.061899.xyz/mg/gsws$泛播2
+宁夏卫视,http://m.061899.xyz/mg/nxws$泛播2
+兵团卫视,http://m.061899.xyz/mg/btws$泛播2
+吉林卫视,http://m.061899.xyz/mg/jlws$泛播2
+内蒙古视,http://m.061899.xyz/mg/nmgws$泛播2
+黑龙江视,http://m.061899.xyz/mg/hljws$泛播2
+重温经典,http://m.061899.xyz/mg/cwjd$泛播2
+北京体育,http://m.061899.xyz/mg/bjty$泛播2
+北京新闻,http://m.061899.xyz/mg/bjxw$泛播2
+北京财经,http://m.061899.xyz/mg/bjcj$泛播2
+北京文艺,http://m.061899.xyz/mg/bjwy$泛播2
+北京生活,http://m.061899.xyz/mg/bjsh$泛播2
+北京少儿,http://m.061899.xyz/mg/bjkk$泛播2
+北京影视,http://m.061899.xyz/mg/bjys$泛播2
+北京纪实,http://m.061899.xyz/mg/bjjs$泛播2
+东方影视,http://m.061899.xyz/mg/shys$泛播2
+东方纪实,http://m.061899.xyz/mg/xjs$泛播2
+
+//美国 CloudFlare节点进入慢
+CCTV1,http://j.s.bkpcp.top/jj/cctv1$美国 CloudFlare节点
+CCTV2,http://j.s.bkpcp.top/jj/cctv2$美国 CloudFlare节点
+CCTV3,http://j.s.bkpcp.top/jj/cctv3$美国 CloudFlare节点
+CCTV4,http://j.s.bkpcp.top/jj/cctv4$美国 CloudFlare节点
+CCTV5,http://j.s.bkpcp.top/jj/cctv5$美国 CloudFlare节点
+CCTV5+,http://j.s.bkpcp.top/jj/cctv5p$美国 CloudFlare节点
+CCTV6,http://j.s.bkpcp.top/jj/cctv6$美国 CloudFlare节点
+CCTV7,http://j.s.bkpcp.top/jj/cctv7$美国 CloudFlare节点
+CCTV8,http://j.s.bkpcp.top/jj/cctv8$美国 CloudFlare节点
+CCTV9,http://j.s.bkpcp.top/jj/cctv9$美国 CloudFlare节点
+CCTV10,http://j.s.bkpcp.top/jj/cctv10$美国 CloudFlare节点
+CCTV11,http://j.s.bkpcp.top/jj/cctv11$美国 CloudFlare节点
+CCTV12,http://j.s.bkpcp.top/jj/cctv12$美国 CloudFlare节点
+CCTV13,http://j.s.bkpcp.top/jj/cctv13$美国 CloudFlare节点
+CCTV14,http://j.s.bkpcp.top/jj/cctv14$美国 CloudFlare节点
+CCTV15,http://j.s.bkpcp.top/jj/cctv15$美国 CloudFlare节点
+CCTV16,http://j.s.bkpcp.top/jj/cctv16$美国 CloudFlare节点
+CCTV17,http://j.s.bkpcp.top/jj/cctv17$美国 CloudFlare节点
+CCTV4欧洲,http://j.s.bkpcp.top/jj/cctv4o$美国 CloudFlare节点
+北京卫视,http://j.s.bkpcp.top/jj/bjws$美国 CloudFlare节点
+东方卫视,http://j.s.bkpcp.top/jj/dfws$美国 CloudFlare节点
+浙江卫视,http://j.s.bkpcp.top/jj/zjws$美国 CloudFlare节点
+江苏卫视,http://j.s.bkpcp.top/jj/jsws$美国 CloudFlare节点
+湖南卫视,http://j.s.bkpcp.top/jj/hunws$美国 CloudFlare节点
+深圳卫视4k,http://j.s.bkpcp.top/jj/szws$美国 CloudFlare节点
+山东卫视,http://j.s.bkpcp.top/jj/sdws$美国 CloudFlare节点
+河南卫视,http://j.s.bkpcp.top/jj/hnws$美国 CloudFlare节点
+江西卫视,http://j.s.bkpcp.top/jj/jxws$美国 CloudFlare节点
+湖北卫视,http://j.s.bkpcp.top/jj/hubws$美国 CloudFlare节点
+海南卫视,http://j.s.bkpcp.top/jj/hinws$美国 CloudFlare节点
+陕西卫视,http://j.s.bkpcp.top/jj/sxws$美国 CloudFlare节点
+黑龙江视,http://j.s.bkpcp.top/jj/hljws$美国 CloudFlare节点
+
+
+//上海 华为云 纯真数据
+长清新闻|,http://1.94.31.214/php/qilu.php?id=jncqxw$华为云
+济阳综合|,http://1.94.31.214/php/qilu.php?id=jnjyzh$华为云
+济阳影视|,http://1.94.31.214/php/qilu.php?id=jnjyys$华为云
+平阴综合|,http://1.94.31.214/php/qilu.php?id=jnpyzh$华为云
+平阴乡村|,http://1.94.31.214/php/qilu.php?id=jnpyxc$华为云
+商河综合|,http://1.94.31.214/php/qilu.php?id=jnshzh$华为云
+商河影视|,http://1.94.31.214/php/qilu.php?id=jnshys$华为云
+章丘综合|,http://1.94.31.214/php/qilu.php?id=jnzqzh$华为云
+章丘公共|,http://1.94.31.214/php/qilu.php?id=jnzqgg$华为云
+李沧|,http://1.94.31.214/php/qilu.php?id=qdlc$华为云
+黄岛综合|,http://1.94.31.214/php/qilu.php?id=qdhdzh$华为云
+黄岛生活|,http://1.94.31.214/php/qilu.php?id=qdhdsh$华为云
+即墨综合|,http://1.94.31.214/php/qilu.php?id=qdjmzh$华为云
+即墨生活|,http://1.94.31.214/php/qilu.php?id=qdjmsh$华为云
+胶州综合|,http://1.94.31.214/php/qilu.php?id=qdjzzh$华为云
+胶州生活|,http://1.94.31.214/php/qilu.php?id=qdjzsh$华为云
+崂山|,http://1.94.31.214/php/qilu.php?id=qdls$华为云
+莱西综合|,http://1.94.31.214/php/qilu.php?id=qdlxzh$华为云
+莱西生活|,http://1.94.31.214/php/qilu.php?id=qdlxsh$华为云
+平度新闻|,http://1.94.31.214/php/qilu.php?id=qdpdxw$华为云
+平度生活|,http://1.94.31.214/php/qilu.php?id=qdpdsh$华为云
+莒县综合|,http://1.94.31.214/php/qilu.php?id=rzjx1$华为云
+岚山|,http://1.94.31.214/php/qilu.php?id=rzls$华为云
+五莲综合|,http://1.94.31.214/php/qilu.php?id=rzwlzh$华为云
+五莲文化|,http://1.94.31.214/php/qilu.php?id=rzwlwh$华为云
+长岛|,http://1.94.31.214/php/qilu.php?id=ytcd$华为云
+福山综合|,http://1.94.31.214/php/qilu.php?id=ytfszh$华为云
+海阳综合|,http://1.94.31.214/php/qilu.php?id=ythyzh$华为云
+龙口综合|,http://1.94.31.214/php/qilu.php?id=ytlkzh$华为云
+龙口生活|,http://1.94.31.214/php/qilu.php?id=ytlksh$华为云
+莱山综合|,http://1.94.31.214/php/qilu.php?id=ytlszh$华为云
+莱山影视|,http://1.94.31.214/php/qilu.php?id=ytlsys$华为云
+莱阳综合|,http://1.94.31.214/php/qilu.php?id=ytlyzh$华为云
+莱阳民生|,http://1.94.31.214/php/qilu.php?id=ytlyms$华为云
+莱州综合|,http://1.94.31.214/php/qilu.php?id=ytlzzh$华为云
+牟平综合|,http://1.94.31.214/php/qilu.php?id=ytmpzh$华为云
+蓬莱综合|,http://1.94.31.214/php/qilu.php?id=ytplzh$华为云
+栖霞综合|,http://1.94.31.214/php/qilu.php?id=ytqxzh$华为云
+栖霞苹果|,http://1.94.31.214/php/qilu.php?id=ytqxpg$华为云
+招远综合|,http://1.94.31.214/php/qilu.php?id=ytzyzh$华为云
+招远综艺|,http://1.94.31.214/php/qilu.php?id=ytzyzy$华为云
+河东综合|,http://1.94.31.214/php/qilu.php?id=lyhdys$华为云
+河东影视|,http://1.94.31.214/php/qilu.php?id=lyhdzh$华为云
+莒南综合|,http://1.94.31.214/php/qilu.php?id=lyjnzh$华为云
+莒南影视|,http://1.94.31.214/php/qilu.php?id=lyjnys$华为云
+兰山综合|,http://1.94.31.214/php/qilu.php?id=lylszh$华为云
+临沭综合|,http://1.94.31.214/php/qilu.php?id=lyls1$华为云
+临沭生活|,http://1.94.31.214/php/qilu.php?id=lyls2$华为云
+罗庄综合|,http://1.94.31.214/php/qilu.php?id=lylzzh$华为云
+蒙阴1|,http://1.94.31.214/php/qilu.php?id=lymy1$华为云
+平邑综合|,http://1.94.31.214/php/qilu.php?id=lypyzh$华为云
+郯城1|,http://1.94.31.214/php/qilu.php?id=lytc1$华为云
+郯城2|,http://1.94.31.214/php/qilu.php?id=lytc2$华为云
+沂南综合|,http://1.94.31.214/php/qilu.php?id=lyynzh$华为云
+沂南红色影视|,http://1.94.31.214/php/qilu.php?id=lyynys$华为云
+沂水综合|,http://1.94.31.214/php/qilu.php?id=lyys1$华为云
+沂水生活|,http://1.94.31.214/php/qilu.php?id=lyys2$华为云
+金乡综合|,http://1.94.31.214/php/qilu.php?id=jijxzh$华为云
+梁山综合|,http://1.94.31.214/php/qilu.php?id=jilszh$华为云
+曲阜新闻|,http://1.94.31.214/php/qilu.php?id=jiqfxw$华为云
+任城新闻|,http://1.94.31.214/php/qilu.php?id=jircxw$华为云
+任城影视|,http://1.94.31.214/php/qilu.php?id=jircys$华为云
+泗水新闻|,http://1.94.31.214/php/qilu.php?id=jissxw$华为云
+泗水文化|,http://1.94.31.214/php/qilu.php?id=jisswh$华为云
+鱼台新闻|,http://1.94.31.214/php/qilu.php?id=jiytxw$华为云
+鱼台生活|,http://1.94.31.214/php/qilu.php?id=jiytsh$华为云
+兖州新闻|,http://1.94.31.214/php/qilu.php?id=jiyzxw$华为云
+兖州生活|,http://1.94.31.214/php/qilu.php?id=jiyzsh$华为云
+成武综合|,http://1.94.31.214/php/qilu.php?id=hzcwzh$华为云
+成武综艺|,http://1.94.31.214/php/qilu.php?id=hzcwzy$华为云
+曹县综合|,http://1.94.31.214/php/qilu.php?id=hzcxzh$华为云
+东明|,http://1.94.31.214/php/qilu.php?id=hzdmxw$华为云
+定陶1|,http://1.94.31.214/php/qilu.php?id=hzdt1$华为云
+定陶2|,http://1.94.31.214/php/qilu.php?id=hzdt2$华为云
+鄄城综合|,http://1.94.31.214/php/qilu.php?id=hzjczh$华为云
+牡丹新闻|,http://1.94.31.214/php/qilu.php?id=hzmdxw$华为云
+牡丹综艺|,http://1.94.31.214/php/qilu.php?id=hzmdzy$华为云
+单县综合|,http://1.94.31.214/php/qilu.php?id=hzsxzh$华为云
+郓城新闻|,http://1.94.31.214/php/qilu.php?id=hzycxw$华为云
+郓城综艺|,http://1.94.31.214/php/qilu.php?id=hzyczy$华为云
+山亭综合|,http://1.94.31.214/php/qilu.php?id=zzstzh$华为云
+薛城新闻|,http://1.94.31.214/php/qilu.php?id=zzxcxw$华为云
+峄城综合|,http://1.94.31.214/php/qilu.php?id=zzyczh$华为云
+台儿庄新闻|,http://1.94.31.214/php/qilu.php?id=zztezxw$华为云
+东营区新闻|,http://1.94.31.214/php/qilu.php?id=dydyqxw$华为云
+东营区科教|,http://1.94.31.214/php/qilu.php?id=dydyqkj$华为云
+广饶新闻|,http://1.94.31.214/php/qilu.php?id=dygrzh$华为云
+广饶科教|,http://1.94.31.214/php/qilu.php?id=dygrzh$华为云
+利津新闻|,http://1.94.31.214/php/qilu.php?id=dyljzh$华为云
+利津文化|,http://1.94.31.214/php/qilu.php?id=dyljwh$华为云
+潍坊滨海新闻|,http://1.94.31.214/php/qilu.php?id=wfbhxw$华为云
+昌乐综合|,http://1.94.31.214/php/qilu.php?id=wfclzh$华为云
+昌邑综合|,http://1.94.31.214/php/qilu.php?id=wfcyzh$华为云
+昌邑经济|,http://1.94.31.214/php/qilu.php?id=wfcyjj$华为云
+坊子综合|,http://1.94.31.214/php/qilu.php?id=wffzxw$华为云
+高密综合|,http://1.94.31.214/php/qilu.php?id=wfgmzh$华为云
+高密党建|,http://1.94.31.214/php/qilu.php?id=wfgmdj$华为云
+潍坊高新区|,http://1.94.31.214/php/qilu.php?id=wfgxq$华为云
+寒亭综合|,http://1.94.31.214/php/qilu.php?id=wfhtxw$华为云
+临朐综合|,http://1.94.31.214/php/qilu.php?id=wflqxw$华为云
+潍城|,http://1.94.31.214/php/qilu.php?id=wfwc$华为云
+奎文|,http://1.94.31.214/php/qilu.php?id=wfkwtv$华为云
+安丘综合|,http://1.94.31.214/php/qilu.php?id=wfaqzh$华为云
+安丘民生|,http://1.94.31.214/php/qilu.php?id=wfaqzh$华为云
+陵城综合|,http://1.94.31.214/php/qilu.php?id=dzlczh$华为云
+乐陵综合|,http://1.94.31.214/php/qilu.php?id=dzllxw$华为云
+乐陵综艺|,http://1.94.31.214/php/qilu.php?id=dzllcs$华为云
+临邑|,http://1.94.31.214/php/qilu.php?id=dzly1$华为云
+宁津综合|,http://1.94.31.214/php/qilu.php?id=dznjzh$华为云
+平原综合|,http://1.94.31.214/php/qilu.php?id=dzpyzh$华为云
+庆云综合|,http://1.94.31.214/php/qilu.php?id=dzqyzh$华为云
+庆云生活|,http://1.94.31.214/php/qilu.php?id=dzqysh$华为云
+武城综合|,http://1.94.31.214/php/qilu.php?id=dzwczh$华为云
+武城综艺|,http://1.94.31.214/php/qilu.php?id=dzwczy$华为云
+夏津综合|,http://1.94.31.214/php/qilu.php?id=dzxjzh$华为云
+夏津公共|,http://1.94.31.214/php/qilu.php?id=dzxjgg$华为云
+禹城综合|,http://1.94.31.214/php/qilu.php?id=dzyczh$华为云
+禹城综艺|,http://1.94.31.214/php/qilu.php?id=dzyczy$华为云
+环翠TV|,http://1.94.31.214/php/qilu.php?id=whhczh$华为云
+荣成综合|,http://1.94.31.214/php/qilu.php?id=whrczh$华为云
+荣成生活|,http://1.94.31.214/php/qilu.php?id=whrcsh$华为云$华为云
+乳山综合|,http://1.94.31.214/php/qilu.php?id=whrszh$华为云
+乳山生活|,http://1.94.31.214/php/qilu.php?id=whrssh$华为云
+文登2|,http://1.94.31.214/php/qilu.php?id=whwd2$华为云
+滨城TV|,http://1.94.31.214/php/qilu.php?id=bzbctv$华为云
+惠民综合|,http://1.94.31.214/php/qilu.php?id=bzhmzh$华为云
+无棣综合|,http://1.94.31.214/php/qilu.php?id=bzwdzh$华为云
+无棣综艺|,http://1.94.31.214/php/qilu.php?id=bzwdzy$华为云
+邹平综合|,http://1.94.31.214/php/qilu.php?id=bzzpzh$华为云
+邹平民生|,http://1.94.31.214/php/qilu.php?id=bzzpms$华为云
+沾化综艺|,http://1.94.31.214/php/qilu.php?id=bzzhzy$华为云
+博山新闻|,http://1.94.31.214/php/qilu.php?id=zbbsxw$华为云
+博山图文|,http://1.94.31.214/php/qilu.php?id=zbbstw$华为云
+高青综合|,http://1.94.31.214/php/qilu.php?id=zbgqzh$华为云
+高青影视|,http://1.94.31.214/php/qilu.php?id=zbgqys$华为云
+桓台综合|,http://1.94.31.214/php/qilu.php?id=zbht1$华为云
+桓台影视|,http://1.94.31.214/php/qilu.php?id=zbht2$华为云
+临淄新闻|,http://1.94.31.214/php/qilu.php?id=zblzxw$华为云
+临淄生活|,http://1.94.31.214/php/qilu.php?id=zblzsh$华为云
+沂源生活|,http://1.94.31.214/php/qilu.php?id=zbyysh$华为云
+淄川新闻|,http://1.94.31.214/php/qilu.php?id=zbzcxw$华为云
+张店综合|,http://1.94.31.214/php/qilu.php?id=zbzd1$华为云
+张店图文|,http://1.94.31.214/php/qilu.php?id=zbzd2$华为云
+茌平综合|,http://1.94.31.214/php/qilu.php?id=lccpzh$华为云
+茌平生活|,http://1.94.31.214/php/qilu.php?id=lccpsh$华为云
+东昌|,http://1.94.31.214/php/qilu.php?id=lcdczh$华为云
+东阿综合|,http://1.94.31.214/php/qilu.php?id=lcdezh$华为云
+东阿综艺|,http://1.94.31.214/php/qilu.php?id=lcdezy$华为云
+高唐综合|,http://1.94.31.214/php/qilu.php?id=lcgtzh$华为云
+高唐综艺|,http://1.94.31.214/php/qilu.php?id=lcgtzy$华为云
+冠县综合|,http://1.94.31.214/php/qilu.php?id=lcgxzh$华为云
+临清综合|,http://1.94.31.214/php/qilu.php?id=lclqzh$华为云
+莘县综合|,http://1.94.31.214/php/qilu.php?id=lcsxzh$华为云
+阳谷综合|,http://1.94.31.214/php/qilu.php?id=lcygzh$华为云
+阳谷影视|,http://1.94.31.214/php/qilu.php?id=lcygys$华为云
+东平综合|,http://1.94.31.214/php/qilu.php?id=tadpzh$华为云
+东平民生|,http://1.94.31.214/php/qilu.php?id=tadpms$华为云
+岱岳|,http://1.94.31.214/php/qilu.php?id=tady$华为云
+肥城生活|,http://1.94.31.214/php/qilu.php?id=tafcsh$华为云
+宁阳1|,http://1.94.31.214/php/qilu.php?id=tany1$华为云
+宁阳2|,http://1.94.31.214/php/qilu.php?id=tany2$华为云
+泰山|,http://1.94.31.214/php/qilu.php?id=tats$华为云
+
+//广州 腾讯云 纯真数据
+济阳综合|,http://43.138.196.212/q0l.php?id=jnjyzh$腾讯云
+济阳影视|,http://43.138.196.212/q0l.php?id=jnjyys$腾讯云
+商河综合|,http://43.138.196.212/q0l.php?id=jnshzh$腾讯云
+商河影视|,http://43.138.196.212/q0l.php?id=jnshys$腾讯云
+章丘综合|,http://43.138.196.212/q0l.php?id=jnzq1$腾讯云
+平阴综合|,http://43.138.196.212/q0l.php?id=jnpyzh$腾讯云
+平阴生活|,http://43.138.196.212/q0l.php?id=jnpysh$腾讯云
+李沧|,http://43.138.196.212/q0l.php?id=qdlc$腾讯云
+莱西生活|,http://43.138.196.212/q0l.php?id=qdlxsh$腾讯云
+崂山|,http://43.138.196.212/q0l.php?id=qdls$腾讯云
+胶州综合|,http://43.138.196.212/q0l.php?id=qdjzxw$腾讯云
+胶州生活|,http://43.138.196.212/q0l.php?id=qdjzsh$腾讯云
+博山新闻|,http://43.138.196.212/q0l.php?id=zbbsxw$腾讯云
+博山图文|,http://43.138.196.212/q0l.php?id=zbbstw$腾讯云
+桓台综合|,http://43.138.196.212/q0l.php?id=zbht1$腾讯云
+桓台影视|,http://43.138.196.212/q0l.php?id=zbht2$腾讯云
+高青综合|,http://43.138.196.212/q0l.php?id=zbgqzh$腾讯云
+高青影视|,http://43.138.196.212/q0l.php?id=zbgqys$腾讯云
+淄川新闻|,http://43.138.196.212/q0l.php?id=zbzcxw$腾讯云
+张店综合|,http://43.138.196.212/q0l.php?id=zbzd1$腾讯云
+沂源生活|,http://43.138.196.212/q0l.php?id=zbyysh$腾讯云
+山亭综合|,http://43.138.196.212/q0l.php?id=zzstzh$腾讯云
+招远综合|,http://43.138.196.212/q0l.php?id=ytzyzh$腾讯云
+招远综艺|,http://43.138.196.212/q0l.php?id=ytzyzy$腾讯云
+龙口综合|,http://43.138.196.212/q0l.php?id=ytlkzh$腾讯云
+龙口生活|,http://43.138.196.212/q0l.php?id=ytlksh$腾讯云
+栖霞综合|,http://43.138.196.212/q0l.php?id=ytqxzh$腾讯云
+栖霞苹果|,http://43.138.196.212/q0l.php?id=ytqxpg$腾讯云
+长岛|,http://43.138.196.212/q0l.php?id=ytcd$腾讯云
+福山综合|,http://43.138.196.212/q0l.php?id=ytfszh$腾讯云
+莱州综合|,http://43.138.196.212/q0l.php?id=ytlzzh$腾讯云
+莱阳综合|,http://43.138.196.212/q0l.php?id=ytlyxw$腾讯云
+莱山综合|,http://43.138.196.212/q0l.php?id=ytlszh$腾讯云
+莱山影视|,http://43.138.196.212/q0l.php?id=ytlsys$腾讯云
+海阳综合|,http://43.138.196.212/q0l.php?id=ythyzh$腾讯云
+潍坊高新区|,http://43.138.196.212/q0l.php?id=wfgxq$腾讯云
+昌乐综合|,http://43.138.196.212/q0l.php?id=wfclxw$腾讯云
+高密综合|,http://43.138.196.212/q0l.php?id=wfgmxw$腾讯云
+奎文|,http://43.138.196.212/q0l.php?id=wfkw$腾讯云
+安丘综合|,http://43.138.196.212/q0l.php?id=wfaqxw$腾讯云
+安丘民生|,http://43.138.196.212/q0l.php?id=wfaqms$腾讯云
+临朐综合|,http://43.138.196.212/q0l.php?id=wflqxw$腾讯云
+鱼台新闻|,http://43.138.196.212/q0l.php?id=jiytxw$腾讯云
+梁山综合|,http://43.138.196.212/q0l.php?id=jilszh$腾讯云
+兖州新闻|,http://43.138.196.212/q0l.php?id=jiyzxw$腾讯云
+肥城生活|,http://43.138.196.212/q0l.php?id=tafcsh$腾讯云
+宁阳2|,http://43.138.196.212/q0l.php?id=tany2$腾讯云
+东平综合|,http://43.138.196.212/q0l.php?id=tadpxw$腾讯云
+荣成综合|,http://43.138.196.212/q0l.php?id=whrczh$腾讯云
+荣成生活|,http://43.138.196.212/q0l.php?id=whrcsh$腾讯云
+莒县综合|,http://43.138.196.212/q0l.php?id=rzjx1$腾讯云
+无棣综合|,http://43.138.196.212/q0l.php?id=bzwdzh$腾讯云
+无棣综艺|,http://43.138.196.212/q0l.php?id=bzwdzy$腾讯云
+惠民综合|,http://43.138.196.212/q0l.php?id=bzhmzh$腾讯云
+庆云综合|,http://43.138.196.212/q0l.php?id=dzqyxw$腾讯云
+武城综合|,http://43.138.196.212/q0l.php?id=dzwcxw$腾讯云
+陵城综合|,http://43.138.196.212/q0l.php?id=dzlcxw$腾讯云
+夏津综合|,http://43.138.196.212/q0l.php?id=dzxjzh$腾讯云
+夏津公共|,http://43.138.196.212/q0l.php?id=dzxjgg$腾讯云
+禹城综艺|,http://43.138.196.212/q0l.php?id=dzyczy$腾讯云
+茌平综合|,http://43.138.196.212/q0l.php?id=lccpzh$腾讯云
+茌平生活|,http://43.138.196.212/q0l.php?id=lccpsh$腾讯云
+冠县综合|,http://43.138.196.212/q0l.php?id=lcgxzh$腾讯云
+莒南影视|,http://43.138.196.212/q0l.php?id=lyjnys$腾讯云
+沂水综合|,http://43.138.196.212/q0l.php?id=lyys1$腾讯云
+沂水生活|,http://43.138.196.212/q0l.php?id=lyys2$腾讯云
+罗庄综合|,http://43.138.196.212/q0l.php?id=lylzzh$腾讯云
+临沭综合|,http://43.138.196.212/q0l.php?id=lyls1$腾讯云
+临沭生活|,http://43.138.196.212/q0l.php?id=lyls2$腾讯云
+河东影视|,http://43.138.196.212/q0l.php?id=lyhdys$腾讯云
+平邑综合|,http://43.138.196.212/q0l.php?id=lypyxw$腾讯云
+曹县综合|,http://43.138.196.212/q0l.php?id=hzcxxw$腾讯云
+郓城新闻|,http://43.138.196.212/q0l.php?id=hzycxw$腾讯云
+郓城综艺|,http://43.138.196.212/q0l.php?id=hzyczy$腾讯云
+鄄城综合|,http://43.138.196.212/q0l.php?id=hzjczh$腾讯云
+齐鲁频道|,http://43.138.196.212/q0l.php?id=qlpd$腾讯云
+长清综合|,http://43.138.196.212/q0l.php?id=jncqxw$腾讯云
+长清生活|,http://43.138.196.212/q0l.php?id=jncqsh$腾讯云
+章丘TV-2|,http://43.138.196.212/q0l.php?id=jnzq2$腾讯云
+济铁电视台|,http://43.138.196.212/q0l.php?id=jnjrtv$腾讯云
+平度新闻综合|,http://43.138.196.212/q0l.php?id=qdpdxw$腾讯云
+平度生活服务|,http://43.138.196.212/q0l.php?id=qdpdsh$腾讯云
+临淄新闻综合|,http://43.138.196.212/q0l.php?id=zblzxw$腾讯云
+利津综合|,http://43.138.196.212/q0l.php?id=dyljxw$腾讯云
+利津文化生活|,http://43.138.196.212/q0l.php?id=dyljwh$腾讯云
+东营区综合|,http://43.138.196.212/q0l.php?id=dyqxw$腾讯云
+广饶综合|,http://43.138.196.212/q0l.php?id=dygrxw$腾讯云
+蓬莱新闻|,http://43.138.196.212/q0l.php?id=ytplxw$腾讯云
+莱阳民生综艺|,http://43.138.196.212/q0l.php?id=ytlyms$腾讯云
+牟平新闻|,http://43.138.196.212/q0l.php?id=ytmpxw$腾讯云
+潍坊新闻综合|,http://43.138.196.212/q0l.php?id=wfxwzh$腾讯云
+潍坊生活|,http://43.138.196.212/q0l.php?id=wfsh$腾讯云
+潍坊影视综艺|,http://43.138.196.212/q0l.php?id=wfyswy$腾讯云
+潍坊科教文旅|,http://43.138.196.212/q0l.php?id=wfkjwl$腾讯云
+潍城TV|,http://43.138.196.212/q0l.php?id=wfwc$腾讯云
+寒亭新闻|,http://43.138.196.212/q0l.php?id=wfhtxw$腾讯云
+任城综合|,http://43.138.196.212/q0l.php?id=jircxw$腾讯云
+泗水新闻综合|,http://43.138.196.212/q0l.php?id=jissxw$腾讯云
+泗水文化生活|,http://43.138.196.212/q0l.php?id=jisswh$腾讯云
+邹城综合|,http://43.138.196.212/q0l.php?id=jizcxw$腾讯云
+邹城文化生活|,http://43.138.196.212/q0l.php?id=jizcwh$腾讯云
+肥城综合|,http://43.138.196.212/q0l.php?id=tafczh$腾讯云
+岱岳TV|,http://43.138.196.212/q0l.php?id=tady$腾讯云
+威海新闻综合|,http://43.138.196.212/q0l.php?id=whxw$腾讯云zh
+莒县新闻|,http://43.138.196.212/q0l.php?id=rzjxxw$腾讯云
+五莲文化旅游|,http://43.138.196.212/q0l.php?id=rzwlwh$腾讯云
+武城综艺影视|,http://43.138.196.212/q0l.php?id=dzwczy$腾讯云
+乐陵新闻综合|,http://43.138.196.212/q0l.php?id=dzllxw$腾讯云
+乐陵城市生活|,http://43.138.196.212/q0l.php?id=dzllcs$腾讯云
+临清综合[768*576]|,http://43.138.196.212/q0l.php?id=lclqzh$腾讯云
+郯城TV-1|,http://43.138.196.212/q0l.php?id=lytc1$腾讯云
+郯城TV-2|,http://43.138.196.212/q0l.php?id=lytc2$腾讯云
+
+//成都 阿里云 纯真数据
+东平综合|,http://47.109.155.164/爱齐鲁.php?id=tadpzh$阿里云
+岱岳TV|,http://47.109.155.164/爱齐鲁.php?id=tady$阿里云
+长清新闻|,http://47.109.155.164/爱齐鲁.php?id=jncqxw$阿里云
+济铁电视台|,http://47.109.155.164/爱齐鲁.php?id=jnjrtv$阿里云
+济阳综合|,http://47.109.155.164/爱齐鲁.php?id=jnjyzh$阿里云
+平阴综合|,http://47.109.155.164/爱齐鲁.php?id=jnpyzh$阿里云
+商河综合|,http://47.109.155.164/爱齐鲁.php?id=jnshzh$阿里云
+章丘综合|,http://47.109.155.164/爱齐鲁.php?id=jnzqzh$阿里云
+广饶综合|,http://47.109.155.164/爱齐鲁.php?id=dygrzh$阿里云
+利津综合|,http://47.109.155.164/爱齐鲁.php?id=dyljzh$阿里云
+黄岛综合|,http://47.109.155.164/爱齐鲁.php?id=qdhdzh$阿里云
+即墨综合|,http://47.109.155.164/爱齐鲁.php?id=qdjmzh$阿里云
+胶州综合|,http://47.109.155.164/爱齐鲁.php?id=qdjzzh$阿里云
+李沧|,http://47.109.155.164/爱齐鲁.php?id=qdlc$阿里云
+崂山|,http://47.109.155.164/爱齐鲁.php?id=qdls$阿里云
+莱西综合|,http://47.109.155.164/爱齐鲁.php?id=qdlxzh$阿里云
+平度新闻综合|,http://47.109.155.164/爱齐鲁.php?id=qdpdxw$阿里云
+潍坊新闻综合|,http://47.109.155.164/爱齐鲁.php?id=wfxwzh$阿里云
+潍坊科教文旅|,http://47.109.155.164/爱齐鲁.php?id=wfkjwl$阿里云
+潍坊高新区|,http://47.109.155.164/爱齐鲁.php?id=wfgxq$阿里云
+安丘综合|,http://47.109.155.164/爱齐鲁.php?id=wfaqzh$阿里云
+昌乐综合|,http://47.109.155.164/爱齐鲁.php?id=wfclzh$阿里云
+昌邑综合|,http://47.109.155.164/爱齐鲁.php?id=wfcyzh$阿里云
+高密综合|,http://47.109.155.164/爱齐鲁.php?id=wfgmzh$阿里云
+寒亭新闻|,http://47.109.155.164/爱齐鲁.php?id=wfhtxw$阿里云
+潍城TV|,http://47.109.155.164/爱齐鲁.php?id=wfwc$阿里云
+长岛|,http://47.109.155.164/爱齐鲁.php?id=ytcd$阿里云
+福山综合|,http://47.109.155.164/爱齐鲁.php?id=ytfszh$阿里云
+海阳综合|,http://47.109.155.164/爱齐鲁.php?id=ythyzh$阿里云
+龙口综合|,http://47.109.155.164/爱齐鲁.php?id=ytlkzh$阿里云
+莱山综合|,http://47.109.155.164/爱齐鲁.php?id=ytlszh$阿里云
+莱阳综合|,http://47.109.155.164/爱齐鲁.php?id=ytlyzh$阿里云
+莱州综合|,http://47.109.155.164/爱齐鲁.php?id=ytlzzh$阿里云
+牟平综合|,http://47.109.155.164/爱齐鲁.php?id=ytmpzh$阿里云
+栖霞综合|,http://47.109.155.164/爱齐鲁.php?id=ytqxzh$阿里云
+招远综合|,http://47.109.155.164/爱齐鲁.php?id=ytzyzh$阿里云
+博山新闻|,http://47.109.155.164/爱齐鲁.php?id=zbbsxw$阿里云
+高青综合|,http://47.109.155.164/爱齐鲁.php?id=zbgqzh$阿里云
+桓台综合|,http://47.109.155.164/爱齐鲁.php?id=zbht1$阿里云
+临淄新闻综合|,http://47.109.155.164/爱齐鲁.php?id=zblzxw$阿里云
+沂源综合|,http://47.109.155.164/爱齐鲁.php?id=zbyyzh$阿里云
+淄川新闻|,http://47.109.155.164/爱齐鲁.php?id=zbzcxw$阿里云
+山亭综合|,http://47.109.155.164/爱齐鲁.php?id=zzstzh$阿里云
+峄城综合|,http://47.109.155.164/爱齐鲁.php?id=zzyczh$阿里云
+滨城TV|,http://47.109.155.164/爱齐鲁.php?id=bzbctv$阿里云
+惠民综合|,http://47.109.155.164/爱齐鲁.php?id=bzhmzh$阿里云
+无棣综合|,http://47.109.155.164/爱齐鲁.php?id=bzwdzh$阿里云
+邹平综合|,http://47.109.155.164/爱齐鲁.php?id=bzzpzh$阿里云
+陵城综合|,http://47.109.155.164/爱齐鲁.php?id=dzlczh$阿里云
+乐陵新闻综合|,http://47.109.155.164/爱齐鲁.php?id=dzllxw$阿里云
+宁津综合|,http://47.109.155.164/爱齐鲁.php?id=dznjzh$阿里云
+平原综合|,http://47.109.155.164/爱齐鲁.php?id=dzpyzh$阿里云
+庆云综合|,http://47.109.155.164/爱齐鲁.php?id=dzqyzh$阿里云
+武城综合|,http://47.109.155.164/爱齐鲁.php?id=dzwczh$阿里云
+夏津综合|,http://47.109.155.164/爱齐鲁.php?id=dzxjzh$阿里云
+禹城综合|,http://47.109.155.164/爱齐鲁.php?id=dzyczh$阿里云
+成武综合|,http://47.109.155.164/爱齐鲁.php?id=hzcwzh$阿里云
+曹县综合|,http://47.109.155.164/爱齐鲁.php?id=hzcxzh$阿里云
+鄄城综合|,http://47.109.155.164/爱齐鲁.php?id=hzjczh$阿里云
+郓城新闻|,http://47.109.155.164/爱齐鲁.php?id=hzycxw$阿里云
+金乡综合|,http://47.109.155.164/爱齐鲁.php?id=jijxzh$阿里云
+梁山综合|,http://47.109.155.164/爱齐鲁.php?id=jilszh$阿里云
+泗水新闻综合|,http://47.109.155.164/爱齐鲁.php?id=jissxw$阿里云
+鱼台新闻|,http://47.109.155.164/爱齐鲁.php?id=jiytxw$阿里云
+兖州新闻|,http://47.109.155.164/爱齐鲁.php?id=jiyzxw$阿里云
+邹城综合|,http://47.109.155.164/爱齐鲁.php?id=jizczh$阿里云
+茌平综合|,http://47.109.155.164/爱齐鲁.php?id=lccpzh$阿里云
+东阿综合|,http://47.109.155.164/爱齐鲁.php?id=lcdezh$阿里云
+高唐综合|,http://47.109.155.164/爱齐鲁.php?id=lcgtzh$阿里云
+冠县综合|,http://47.109.155.164/爱齐鲁.php?id=lcgxzh$阿里云
+临清综合|,http://47.109.155.164/爱齐鲁.php?id=lclqzh$阿里云
+莘县综合|,http://47.109.155.164/爱齐鲁.php?id=lcsxzh$阿里云
+阳谷综合|,http://47.109.155.164/爱齐鲁.php?id=lcygzh$阿里云
+河东综合|,http://47.109.155.164/爱齐鲁.php?id=lyhdzh$阿里云
+莒南综合|,http://47.109.155.164/爱齐鲁.php?id=lyjnzh$阿里云
+兰山综合|,http://47.109.155.164/爱齐鲁.php?id=lylszh$阿里云
+临沭综合|,http://47.109.155.164/爱齐鲁.php?id=lyls1$阿里云
+罗庄综合|,http://47.109.155.164/爱齐鲁.php?id=lylzzh$阿里云
+平邑综合|,http://47.109.155.164/爱齐鲁.php?id=lypyzh$阿里云
+沂南综合|,http://47.109.155.164/爱齐鲁.php?id=lyynzh$阿里云
+沂水综合|,http://47.109.155.164/爱齐鲁.php?id=lyys1$阿里云
+莒县综合|,http://47.109.155.164/爱齐鲁.php?id=rzjx1$阿里云
+五莲综合|,http://47.109.155.164/爱齐鲁.php?id=rzwlzh$阿里云
+威海新闻综合|,http://47.109.155.164/爱齐鲁.php?id=whxwzh$阿里云
+荣成综合|,http://47.109.155.164/爱齐鲁.php?id=whrczh$阿里云
+乳山综合|,http://47.109.155.164/爱齐鲁.php?id=whrszh$阿里云
+文登TV1|,http://47.109.155.164/爱齐鲁.php?id=whwd1$阿里云
+宁阳综合|,http://47.109.155.164/爱齐鲁.php?id=tany1$阿里云
+新泰综合|,http://47.109.155.164/爱齐鲁.php?id=taxtzh$阿里云
+东营新闻综合|,http://47.109.155.164/爱齐鲁.php?id=dyxwzh$阿里云
+东营区新闻综合|,http://47.109.155.164/爱齐鲁.php?id=dydyqxw$阿里云
+城阳综合|,http://47.109.155.164/爱齐鲁.php?id=qdcytv$阿里云
+滨海新闻综合|,http://47.109.155.164/爱齐鲁.php?id=wfbhxw$阿里云
+坊子新闻综合|,http://47.109.155.164/爱齐鲁.php?id=wffzxw$阿里云
+奎文电视台|,http://47.109.155.164/爱齐鲁.php?id=wfkwtv$阿里云
+临朐新闻综合|,http://47.109.155.164/爱齐鲁.php?id=wflqzh$阿里云
+寿光综合|,http://47.109.155.164/爱齐鲁.php?id=wfsgzh$阿里云
+张店1|,http://47.109.155.164/爱齐鲁.php?id=zbzd1$阿里云
+周村新闻|,http://47.109.155.164/爱齐鲁.php?id=zbzctv1$阿里云
+薛城新闻综合|,http://47.109.155.164/爱齐鲁.php?id=zzxcxw$阿里云
+临邑1|,http://47.109.155.164/爱齐鲁.php?id=dzly1$阿里云
+定陶新闻|,http://47.109.155.164/爱齐鲁.php?id=hzdt1$阿里云
+曲阜新闻综合|,http://47.109.155.164/爱齐鲁.php?id=jiqfxw$阿里云
+任城新闻综合|,http://47.109.155.164/爱齐鲁.php?id=jircxw$阿里云
+汶上综合|,http://47.109.155.164/爱齐鲁.php?id=jiwszh$阿里云
+东昌综合|,http://47.109.155.164/爱齐鲁.php?id=lcdczh$阿里云
+蒙阴综合|,http://47.109.155.164/爱齐鲁.php?id=lymy1$阿里云
+郯城综合|,http://47.109.155.164/爱齐鲁.php?id=lytc1$阿里云
+岚山TV|,http://47.109.155.164/爱齐鲁.php?id=rzls$阿里云
+
+
+
+
+🌏移动高清1,#genre#
+CCTV1综合,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000311/index.m3u8
+CCTV2财经,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000317/index.m3u8
+CCTV3综艺,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000359/index.m3u8
+CCTV4中文国际,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000320/index.m3u8
+CCTV5体育,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000360/index.m3u8
+CCTV5+体育赛事,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000316/index.m3u8
+CCTV6电影,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000361/index.m3u8
+CCTV7国防军事,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000318/index.m3u8
+CCTV8电视剧,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000362/index.m3u8
+CCTV9纪录,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000319/index.m3u8
+CCTV10科教,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000321/index.m3u8
+CCTV11戏曲,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000344/index.m3u8
+CCTV12社会与法,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000322/index.m3u8
+CCTV13新闻,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000345/index.m3u8
+CCTV14少儿,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000323/index.m3u8
+CCTV15音乐,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000346/index.m3u8
+CCTV17农业农村,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000303/index.m3u8
+CETV1--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000076/index.m3u8
+CETV4--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000666/index.m3u8
+CCTV4K超高清--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000382/index.m3u8
+CGTN俄语 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000357/index.m3u8
+CGTN法语 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000355/index.m3u8
+CGTN纪录 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000353/index.m3u8
+CGTN西语 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000354/index.m3u8
+CGTN阿语 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000356/index.m3u8
+//📽影视
+CHC家庭影院--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002028/index.m3u8
+CHC影迷电影--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002029/index.m3u8
+CHC动作电影--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002030/index.m3u8
+//🐿少儿
+卡酷少儿 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000661/index.m3u8
+动漫秀场--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002000/index.m3u8
+金鹰卡通--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002027/index.m3u8
+嘉佳卡通--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000074/index.m3u8
+优漫卡通--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000049/index.m3u8
+优优宝贝--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000641/index.m3u8
+新动漫--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000659/index.m3u8
+//🌺特色
+梨园频道--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000656/index.m3u8
+武术世界--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000657/index.m3u8
+文物宝库--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000658/index.m3u8
+生活时尚--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002019/index.m3u8
+金色学堂--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002018/index.m3u8
+劲爆体育--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002026/index.m3u8
+法治天地--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002010/index.m3u8
+纪实科教--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000332/index.m3u8
+智慧康养--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002031/index.m3u8
+中国交通--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000073/index.m3u8
+求索纪录--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000667/index.m3u8
+乐游--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002016/index.m3u8
+湖南茶--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000649/index.m3u8
+金鹰纪实--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000334/index.m3u8
+都市剧场--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002022/index.m3u8
+精彩影视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002012/index.m3u8
+快乐垂钓 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000648/index.m3u8
+东方财经 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002025/index.m3u8
+游戏风云 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00002024/index.m3u8
+重庆汽摩 8M1080,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000711/index.m3u8
+//🛰卫视
+北京卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000302/index.m3u8
+北京卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL40000001/index.m3u8
+山东卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000301/index.m3u8
+河北卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000330/index.m3u8
+河南卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000358/index.m3u8
+江苏卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000304/index.m3u8
+浙江卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000305/index.m3u8
+黑龙江卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000306/index.m3u8
+广东卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000307/index.m3u8
+深圳卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000308/index.m3u8
+东方卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000309/index.m3u8
+东南卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000310/index.m3u8
+湖南卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000324/index.m3u8
+湖北卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000325/index.m3u8
+辽宁卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000326/index.m3u8
+天津卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000327/index.m3u8
+安徽卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000328/index.m3u8
+贵州卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000329/index.m3u8
+江西卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000335/index.m3u8
+四川卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000348/index.m3u8
+重庆卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000341/index.m3u8
+海南卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000347/index.m3u8
+甘肃卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000349/index.m3u8
+吉林卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000363/index.m3u8
+青海卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000366/index.m3u8
+云南卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000367/index.m3u8
+广西卫视--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000368/index.m3u8
+//📺山东
+山东齐鲁--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000313/index.m3u8
+山东体育--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000315/index.m3u8
+山东新闻--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000314/index.m3u8
+山东农科--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000339/index.m3u8
+山东文旅--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000337/index.m3u8
+山东生活--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000336/index.m3u8
+山东综艺--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000338/index.m3u8
+山东少儿--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000340/index.m3u8
+山东教育--,http://ucdn.sd.chinamobile.com:8089/00/SNM/CHANNEL00000331/index.m3u8
+
+
+
+
+
+🌏移动高清2,#genre#
+CCTV1-综合,http://39.134.144.6:8089/PLTV/88888888/224/3221225859/index.m3u8
+CCTV2-财经,http://39.134.144.6:8089/PLTV/88888888/224/3221225751/index.m3u8
+CCTV3-综艺,http://39.134.144.6:8089/PLTV/88888888/224/3221226338/index.m3u8
+CCTV4-中文国际,http://39.134.144.6:8089/PLTV/88888888/224/3221225757/index.m3u8
+CCTV5-体育,http://39.134.144.6:8089/PLTV/88888888/224/3221226425/index.m3u8
+CCTV5+-体育赛事,http://39.134.144.6:8089/PLTV/88888888/224/3221225781/index.m3u8
+CCTV6-电影,http://39.134.144.6:8089/PLTV/88888888/224/3221226427/index.m3u8
+CCTV7-国防军事,http://39.134.144.6:8089/PLTV/88888888/224/3221225753/index.m3u8
+CCTV8-电视剧,http://39.134.144.6:8089/PLTV/88888888/224/3221226429/index.m3u8
+CCTV9-纪录,http://39.134.144.6:8089/PLTV/88888888/224/3221225759/index.m3u8
+CCTV10-科教,http://39.134.144.6:8089/PLTV/88888888/224/3221225761/index.m3u8
+CCTV11-戏曲,http://39.134.144.6:8089/PLTV/88888888/224/3221226407/index.m3u8
+CCTV12-社会与法,http://39.134.144.6:8089/PLTV/88888888/224/3221225763/index.m3u8
+CCTV13-新闻,http://39.134.144.6:8089/PLTV/88888888/224/3221226328/index.m3u8
+CCTV14-少儿,http://39.134.144.6:8089/PLTV/88888888/224/3221225765/index.m3u8
+CCTV15-音乐,http://39.134.144.6:8089/PLTV/88888888/224/3221226409/index.m3u8
+CCTV17-农业农村,http://39.134.144.6:8089/PLTV/88888888/224/3221226093/index.m3u8
+CCTV4K-超高清,http://39.134.144.6:8089/PLTV/88888888/224/3221226615/index.m3u8
+CETV1,http://39.134.144.6:8089/PLTV/88888888/224/3221226252/index.m3u8
+CETV4,http://39.134.144.6:8089/PLTV/88888888/224/3221226416/index.m3u8
+//🛰卫视
+北京-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226733/index.m3u8
+北京-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226146/index.m3u8
+天津-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226485/index.m3u8
+东方-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226347/index.m3u8
+山东-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226144/index.m3u8
+江苏-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226211/index.m3u8
+辽宁-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225789/index.m3u8
+湖南-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225767/index.m3u8
+浙江-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225585/index.m3u8
+四川-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226327/index.m3u8
+河南-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226415/index.m3u8
+江西-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226312/index.m3u8
+河北-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225779/index.m3u8
+安徽-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225775/index.m3u8
+东南-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226278/index.m3u8
+湖北-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225769/index.m3u8
+广东-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226213/index.m3u8
+黑龙江-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226148/index.m3u8
+深圳-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226150/index.m3u8
+重庆-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226310/index.m3u8
+贵州-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225777/index.m3u8
+海南-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226325/index.m3u8
+甘肃-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226387/index.m3u8
+吉林-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226507/index.m3u8
+云南-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226525/index.m3u8
+广西-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226402/index.m3u8
+青海-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226400/index.m3u8
+陕西-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226035/index.m3u8
+内蒙古-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226033/index.m3u8
+山西-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225954/index.m3u8
+宁夏-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225866/index.m3u8
+新疆-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221226073/index.m3u8
+西藏-卫视,http://39.134.144.6:8089/PLTV/88888888/224/3221225857/index.m3u8
+//📺山东
+山东-齐鲁,http://39.134.144.6:8089/PLTV/88888888/224/3221226045/index.m3u8
+山东-农科,http://39.134.144.6:8089/PLTV/88888888/224/3221226018/index.m3u8
+山东-生活,http://39.134.144.6:8089/PLTV/88888888/224/3221225841/index.m3u8
+山东-综艺,http://39.134.144.6:8089/PLTV/88888888/224/3221225855/index.m3u8
+山东-体育,http://39.134.144.6:8089/PLTV/88888888/224/3221226075/index.m3u8
+山东-新闻,http://39.134.144.6:8089/PLTV/88888888/224/3221226077/index.m3u8
+山东-文旅,http://39.134.144.6:8089/PLTV/88888888/224/3221225802/index.m3u8
+山东-少儿,http://39.134.144.6:8089/PLTV/88888888/224/3221226195/index.m3u8
+山东-教育,http://39.134.144.6:8089/PLTV/88888888/224/3221226049/index.m3u8
+日照-综合,http://223.99.189.25:8089/shandong_cabletv.live.zte.com/223.99.253.7:8081/00/SNM/CHANNEL00000262/index.m3u8
+日照-公共,http://223.99.189.25:8089/shandong_cabletv.live.zte.com/223.99.253.7:8081/00/SNM/CHANNEL00001100/index.m3u8
+日照-科教,http://223.99.189.25:8089/shandong_cabletv.live.zte.com/223.99.253.7:8081/00/SNM/CHANNEL00000263/index.m3u8
+莒县-综合,http://ucdn-zte.sd.chinamobile.com:8089/shandong_cabletv.live.zte.com////CHANNEL00001014/index.m3u8
+临沂-综合,http://39.134.144.6:8089/PLTV/88888888/224/3221225984/index.m3u8
+河东-综合,http://39.134.144.6:8089/PLTV/88888888/224/3221226426/index.m3u8
+//📽影视
+CHC-家庭影院,http://39.134.144.6:8089/PLTV/88888888/224/3221226472/index.m3u8
+CHC-动作电影,http://39.134.144.6:8089/PLTV/88888888/224/3221226474/index.m3u8
+CHC-影迷电影,http://39.134.144.6:8089/PLTV/88888888/224/3221226607/index.m3u8
+都市-剧场,http://39.134.144.6:8089/PLTV/88888888/224/3221226450/index.m3u8
+精彩-影视,http://39.134.144.6:8089/PLTV/88888888/224/3221226442/index.m3u8
+//🐿少儿
+动漫-秀场,http://39.134.144.6:8089/PLTV/88888888/224/3221226454/index.m3u8
+卡酷-少儿,http://39.134.144.6:8089/PLTV/88888888/224/3221226529/index.m3u8
+金鹰-卡通,http://39.134.144.6:8089/PLTV/88888888/224/3221226404/index.m3u8
+嘉佳-卡通,http://39.134.144.6:8089/PLTV/88888888/224/3221226503/index.m3u8
+新-动漫,http://39.134.144.6:8089/PLTV/88888888/224/3221226565/index.m3u8
+优漫-卡通,http://39.134.144.6:8089/PLTV/88888888/224/3221225970/index.m3u8
+//特色
+梨园-频道,http://39.134.144.6:8089/PLTV/88888888/224/3221226573/index.m3u8
+武术-世界,http://39.134.144.6:8089/PLTV/88888888/224/3221226444/index.m3u8
+文物-宝库,http://39.134.144.6:8089/PLTV/88888888/224/3221226571/index.m3u8
+生活-时尚,http://39.134.144.6:8089/PLTV/88888888/224/3221226579/index.m3u8
+金色-学堂,http://39.134.144.6:8089/PLTV/88888888/224/3221226581/index.m3u8
+劲爆-体育,http://39.134.144.6:8089/PLTV/88888888/224/3221226559/index.m3u8
+东方-财经,http://39.134.144.6:8089/PLTV/88888888/224/3221226446/index.m3u8
+法治-天地,http://39.134.144.6:8089/PLTV/88888888/224/3221226448/index.m3u8
+求索-纪录,http://39.134.144.6:8089/PLTV/88888888/224/3221226727/index.m3u8
+纪实-科教,http://39.134.144.6:8089/PLTV/88888888/224/3221226601/index.m3u8
+金鹰-纪实,http://39.134.144.6:8089/PLTV/88888888/224/3221226386/index.m3u8
+茶-频道,http://39.134.144.6:8089/PLTV/88888888/224/3221226569/index.m3u8
+乐-游,http://39.134.144.6:8089/PLTV/88888888/224/3221226577/index.m3u8
+
+
+
+
+
+📺咪咕体育v4,#genre#
+咪咕视频1,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000005969&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频2,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000007218&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频3,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000008001&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频4,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000010129&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频5,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000010948&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频6,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000028638&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频7,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000031494&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频8,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000000097&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频9,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000002019&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频10,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000003915&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频11,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000004193&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频12,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000005837&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频13,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000006077&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频14,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000006658&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频15,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000009788&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频16,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000010833&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频17,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000011297&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频18,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000011518&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频19,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000012558&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频20,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000012616&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频21,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000015470&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频22,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000019839&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频23,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000021904&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频24,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000025380&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频25,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000027691&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频26,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000031669&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕视频27,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000011518&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频28,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000011519&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频29,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000011520&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频30,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000011521&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕视频31,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000011522&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕体育4K,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000005180&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$30M UHD
+咪咕游戏赛事,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000008176&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕足球赛事1,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000005308&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕足球赛事2,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000001000008379&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$8M FHD
+咪咕足球赛事3,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000002809&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕足球赛事4,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000015560&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+咪咕足球赛事5,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/5000000011000265001/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000023434&livemode=1&stbId=001C366F865C602F58587E8BE8616930&mode=1&$5M FHD
+睛彩 竞技,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/3000000020000011528/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000011528&livemode=1&stbId=001C366F865C602F58587E8BE8616930
+睛彩 篮球,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/3000000020000011529/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000011529&livemode=1&stbId=001C366F865C602F58587E8BE8616930
+睛彩 青少,http://36.155.98.21/gslbserv.itv.cmvideo.cn:80/3000000020000011525/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000011525&livemode=1&stbId=001C366F865C602F58587E8BE8616930
+
+
+
+
+
+🛰国际频道,#genre#
+美国·彭博财经,https://liveprodusphoenixeast.akamaized.net/USPhx-HD/Channel-TX-USPhx-AWS-virginia-1/Source-USPhx-16k-1-s6lk2-BP-07-02-81ykIWnsMsg_live.m3u8
+美·红牛运动,http://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_1660.m3u8
+Hang Meas Now,http://clive.malisresidences.com:1935/hmnow/_definst_/smil:hmnow.smil/chunklist_w604029205_b1800000_sleng.m3u8
+Hang Meas Melody,http://clive.malisresidences.com:1935/hmmel/_definst_/smil:hmmel.smil/chunklist_w815944957_b1800000_sleng.m3u8
+Channel [V],http://111.221.137.234:44330/tsfile/live/0118_1.m3u8?key=txiptv&playlive=0&authid=0
+星空卫视,http://111.221.137.234:44330/tsfile/live/0112_2.m3u8?key=txiptv&playlive=0&authid=0
+翡翠台,http://mytv.cdn.loc.cc/o12.php?id=fct
+明珠台,http://111.221.137.234:44330/tsfile/live/0112_1.m3u8?key=txiptv&playlive=0&authid=0
+卡塔尔·半岛新闻,https://live-hls-aje-ak.getaj.net/AJE/01.m3u8
+RT新闻,https://rt-glb.rttv.com/dvr/rtnews/playlist_4500Kb.m3u8
+RT纪录,https://rt-rtd.rttv.com/live/rtdoc/playlist_4500Kb.m3u8
+TRT EBA,https://tv-e-okul01.medya.trt.com.tr/master.m3u8
+TRT Avaz,https://tv-trtavaz.medya.trt.com.tr/master.m3u8
+美国新闻,https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8
+韩国阿里郎,http://amdlive.ctnd.com.edgesuite.net/arirang_1ch/smil:arirang_1ch.smil/playlist.m3u8
+Lalegultv,https://lbl.netmedya.net/hls/lalegultv.m3u8
+Tolk HD,https://live-tolknews.cdnvideo.ru/tolknews/stream/playlist.m3u8
+Nika TV,https://live-nikatv.cdnvideo.ru/nikatv/nikatv.sdp/playlist.m3u8
+NVK Sakha,https://live-saha.cdnvideo.ru/saha2/saha_live.smil/tracks-v1a1/mono.m3u8
+Nizhniy Novgorod 24,https://live-vestinn.cdnvideo.ru/vestinn/nn24-khl/playlist.m3u8
+Yuvelirochka,https://live-uvelirochka.cdnvideo.ru/uvelirochka/uvelirochka_720p3/playlist.m3u8
+NNTV,https://live-nntv2.cdnvideo.ru/nntv2/cfd99gu0ai_nntv_tv/playlist.m3u8
+Huzur TV,https://hls-mycdn08724960135.cdnvideo.ru/mycdn08724960135/stream1/playlist.m3u8
+Kolyma Plus TV,https://tw2ywfm7jbp.a.trbcdn.net/livemaster/7phjk_live-papd7z4v92.smil/playlist.m3u8
+TV Studiya Fakt,https://042auhsnh0x.a.trbcdn.net/livemaster/rmhtb_live-7td9v6w34o6.smil/playlist.m3u8
+Volga 24 TV,https://live-nntv2.cdnvideo.ru/nntv2/vremyan/playlist.m3u8
+MTV,http://hls.volgograd1vtv.cdnvideo.ru/volgograd1vtv/volgograd1vtv.sdp/playlist.m3u8
+Rika TV,https://live-rikatv.cdnvideo.ru/rikatv/rikatv_tcode.sdp/playlist.m3u8
+CanalSur Mas,https://cdnlive.codev8.net/rtvalive/smil:channel42.smil/playlist.m3u8
+LTV Lebanon,https://p-ltv.akamaized.net/ltv/ltv.m3u8
+Superyscht TV,https://sy.wns.live/hls/stream.m3u8
+Dunya Naw TV,https://dunyanhls.wns.live/hls/stream.m3u8
+
+
+
+♬音乐频道,#genre#
+DJ我们不再是从前,https://vd2.bdstatic.com/mda-mhne550wq5m66zvj/1080p/cae_h264/1629803514331462220/mda-mhne550wq5m66zvj.mp4
+DJ小薇,https://vd3.bdstatic.com/mda-nd6jimimnfwyjuar/sc/cae_h264_delogo/1649345922829980302/mda-nd6jimimnfwyjuar.mp4
+DJ心在跳情在烧,https://vd4.bdstatic.com/mda-mhwf07t27w3gi1y7/1080p/cae_h264/1630406994590156367/mda-mhwf07t27w3gi1y7.mp4
+DJ13首经典老歌,https://vd4.bdstatic.com/mda-igbpw1bm4vdxitj0/logo/sc/mda-igbpw1bm4vdxitj0.mp4
+2021年最火伤感音乐,https://vdse.bdstatic.com//6d39df48360bdb12f73800397c4a6c02.mp4
+2021年网络火爆伤感情歌6首,https://vdse.bdstatic.com//80e0473f97055cec1c9c76c1c7e5498a.mp4
+2021热门伤感DJ,https://vdse.bdstatic.com//06b4e9b185b843e694e4d20e9b0a0aac.mp4
+2首车载DJ歌曲联唱,https://vd2.bdstatic.com/mda-jiugyuw4xwqiwzet/sc/mda-jiugyuw4xwqiwzet.mp4
+7DJ舞曲,https://vd2.bdstatic.com/mda-nch73gktvfmgdrbd/sc/cae_h264_delogo/1647644537085447432/mda-nch73gktvfmgdrbd.mp4?v_from_s=hkapp-haokan-nanjing&auth_key=1648813542-0-0-4a2d27d50015d19f3ed5cf5fbc261f79&bcevod_channel=searchbox_feed&pd=1&vt=1&cd=0&watermark=0&did=ced9e69a4f6154e91be590c1d5a488ab&logid=0942439256&vid=4192073541598205553&pt=0&appver=7.2.1.10&model=T7-5G10&osver=9&cr=2&abtest=peav_g52&sle=1&sl=1420&split=1235330&dt=1&nt=0&pe=0&prerender=0&kpdl=1&h265_m=-1&klogid=c770aa16cadb579d&kapid=1&psp=1&psk=1028&pif=0_0_0_0&qtfc=65535&qtut=0&stg=none
+DJ天后,https://vd3.bdstatic.com/mda-kk5f22n13qna8edp/v1-cae/sc/mda-kk5f22n13qna8edp.mp4
+DJ情歌5首,https://vd3.bdstatic.com/mda-mmg7iqkrutbwd7az/sc/cae_h264/1639851941696222972/mda-mmg7iqkrutbwd7az.mp4
+DJ情歌爱情迷了路,https://vd4.bdstatic.com/mda-mdbrb7fns70avrmt/1080p/cae_h264/1618222287/mda-mdbrb7fns70avrmt.mp4
+DJ情火拥抱你离去夜夜夜漫长,https://vd3.bdstatic.com/mda-nd3gy7ukv0reh4xv/sc/cae_h264_delogo/1649115109025912038/mda-nd3gy7ukv0reh4xv.mp4
+DJ无情书,https://vd3.bdstatic.com/mda-kkikg9rzshuhcxwy/v1-cae/sc/mda-kkikg9rzshuhcxwy.mp4
+DJ最烈的酒最猛的烟,https://vd4.bdstatic.com/mda-nd3eicnw62x3z3j0/hd/cae_h264_delogo/1649067794176996768/mda-nd3eicnw62x3z3j0.mp4
+DJ歌曲怎么爱都爱不够,https://vd3.bdstatic.com/mda-mksyipb0103ck0pm/sc/cae_h264_nowatermark/1638055298562460672/mda-mksyipb0103ck0pm.mp4
+DJ此生已过半,https://vd3.bdstatic.com/mda-mdaprhx095djift2/hd/mda-mdaprhx095djift2.mp4
+DJ没理由,https://bj.bcebos.com/v1/baidu-little-video/vod-gechgi84v43uhfhp/mda-kmbyf4x2aeqt8cds.mp4
+DJ流浪兄弟,https://vd2.bdstatic.com/mda-mhrdtax1km0idkc5/1080p/cae_h264/1629972852606533219/mda-mhrdtax1km0idkc5.mp4
+DJ潮湿的心,https://vd3.bdstatic.com/mda-jfsre2z1s4xk012w/sc/mda-jfsre2z1s4xk012w.mp4
+DJ爆红老歌10首车载,https://vd3.bdstatic.com/mda-nbhgwre9iykh09ya/sc/cae_h264_delogo/1645187028367793873/mda-nbhgwre9iykh09ya.mp4
+DJ爱难求,https://vd4.bdstatic.com/mda-mk99haw9m5kp6p5s/default/h264/1636526565199080954/mda-mk99haw9m5kp6p5s.mp4
+DJ版一个人挺好,https://vd3.bdstatic.com/mda-mh6gqq4b59z26cjx/1080p/cae_h264/1628504623473300938/mda-mh6gqq4b59z26cjx.mp4
+DJ版三月里的小雨,https://vd2.bdstatic.com/mda-mgwegh0bzv4cy6cb/1080p/cae_h264/1627727251470197083/mda-mgwegh0bzv4cy6cb.mp4
+DJ版原谅你的谎,https://vd4.bdstatic.com/mda-mhacxx5vhr2we882/1080p/cae_h264/1628673933350116053/mda-mhacxx5vhr2we882.mp4
+DJ版时间会知道你好不好,https://vd3.bdstatic.com/mda-mhairve7gvye1192/1080p/cae_h264/1629457148988604256/mda-mhairve7gvye1192.mp4
+DJ版望爱却步,https://vd4.bdstatic.com/mda-mh3ei4sg2jypty79/1080p/cae_h264/1628072927342489970/mda-mh3ei4sg2jypty79.mp4
+DJ版爱不得忘不舍,https://vd3.bdstatic.com/mda-mh8j8egnj8idbvd8/1080p/cae_h264/1629367979662473678/mda-mh8j8egnj8idbvd8.mp4
+DJ版蜜雪冰城,https://vd3.bdstatic.com/mda-mhbae2pwwxhyxjcz/1080p/cae_h264/1628767594518574030/mda-mhbae2pwwxhyxjcz.mp4
+DJ版黑街,https://vd3.bdstatic.com/mda-mk612p9ceppwbgxj/sc/cae_h264/1636246729628620650/mda-mk612p9ceppwbgxj.mp4
+DJ等爱,https://vd2.bdstatic.com/mda-mfhh1e0hwq212rrt/sc/h264/1623988905898256147/mda-mfhh1e0hwq212rrt.mp4
+DJ等爱的玫瑰,https://vd2.bdstatic.com/mda-jfsusw53dxs6kyvc/sc/mda-jfsusw53dxs6kyvc.mp4
+DJ给你留念,https://vd4.bdstatic.com/mda-kim3r6dpd04ypqn4/cae_h264_nowatermark/mda-kim3r6dpd04ypqn4.mp4
+DJ老歌607080爱听,https://vd2.bdstatic.com/mda-nd59vsq0r1e2j3g2/sc/cae_h264_delogo/1649230737582909591/mda-nd59vsq0r1e2j3g2.mp4
+DJ舍不得又能怎样呢,https://vd2.bdstatic.com/mda-ncv1qd3acxskd46p/sc/cae_h264_delogo/1648720820032252958/mda-ncv1qd3acxskd46p.mp4
+DJ舞曲01,https://vd2.bdstatic.com/mda-ncp5ggtppe1c0gw0/720p/h264_delogo/1648094099072851708/mda-ncp5ggtppe1c0gw0.mp4
+DJ舞曲02,https://vd2.bdstatic.com/mda-nch73gktvfmgdrbd/sc/cae_h264_delogo/1647644537085447432/mda-nch73gktvfmgdrbd.mp4
+DJ舞曲03,https://vd4.bdstatic.com/mda-idpg23napy9gsnxb/logo/sc/mda-idpg23napy9gsnxb.mp4
+DJ舞曲04,https://vdse.bdstatic.com//8258cbe0dfd6738613fe9efd33a7a83f.mp4
+DJ舞曲拼命的喝酒拼命的抽烟,https://vd2.bdstatic.com/mda-nd1n5vscnn77rui2/sc/cae_h264_delogo/1648915878369422268/mda-nd1n5vscnn77rui2.mp4
+DJ舞曲让我做你的眼睛,https://vd2.bdstatic.com/mda-mhaargrart2qrkdz/1080p/cae_h264/1629630942996744682/mda-mhaargrart2qrkdz.mp4
+DJ舞曲闯天涯,https://vd2.bdstatic.com/mda-mjf3hahmam95yfkd/sc/cae_h264_nowatermark/1634352379471224566/mda-mjf3hahmam95yfkd.mp4
+DJ连锁反应,https://vd2.bdstatic.com/mda-na26q8vkv1hegaw4/sc/cae_h264/1641186067929723723/mda-na26q8vkv1hegaw4.mp4
+DJ酒醉风雨情伤心苦酒朋友的酒红尘没有错,https://vd4.bdstatic.com/mda-nd1a4zuxf78py830/sc/cae_h264_delogo/1649003829932795060/mda-nd1a4zuxf78py830.mp4
+DJ醉过多少回,https://vd4.bdstatic.com/mda-megp46e98a4f2b9g/sc/h264/1621239560364992817/mda-megp46e98a4f2b9g.mp4
+dj舞曲女人版,https://vd3.bdstatic.com/mda-mkp88kxv6r8y73k9/sc/cae_h264/1637733263867775329/mda-mkp88kxv6r8y73k9.mp4
+dj舞曲英雄泪,https://vd3.bdstatic.com/mda-mkt45tnypacz3smk/sc/cae_h264/1638069225501294830/mda-mkt45tnypacz3smk.mp4
+一首伤感歌曲,https://vd3.bdstatic.com/mda-nbr5d212a9mkb4vp/cae_h264_delogo/1645848373794241498/mda-nbr5d212a9mkb4vp.mp4
+一首爱一回错一回DJ版,https://vd4.bdstatic.com/mda-mbim69siwwsgwp7d/v1-cae/1080p/mda-mbim69siwwsgwp7d.mp4
+人间惊鸿客,https://vd3.bdstatic.com/mda-mh2bbyjcqjxjhzkd/1080p/cae_h264/1627978577559447916/mda-mh2bbyjcqjxjhzkd.mp4
+唱着情歌流着泪,https://vd3.bdstatic.com/mda-mhwaejanf0ie6b8j/1080p/cae_h264/1630409563129833732/mda-mhwaejanf0ie6b8j.mp4
+无味DJ版,https://vd3.bdstatic.com/mda-mgqiagirsmmpuarm/1080p/cae_h264/1627218846577884242/mda-mgqiagirsmmpuarm.mp4
+潇洒的走DJ动感节奏,https://vd4.bdstatic.com/mda-kgirfiwxg342z9d8/v1-cae/sc/mda-kgirfiwxg342z9d8.mp4
+爱你到最后一刻,https://vd3.bdstatic.com/mda-mhr9c7q9xzgy1812/1080p/cae_h264/1630062648077583523/mda-mhr9c7q9xzgy1812.mp4
+爱难求情难断,https://vdse.bdstatic.com//0c8ed110c5522e9bd31752ecb999b1ab.mp4
+精选DJ洗脑神曲节奏欢快动感魔性,https://vd2.bdstatic.com/mda-ncsh78jh0xna7ngs/sc/cae_h264_delogo/1648389408244925817/mda-ncsh78jh0xna7ngs.mp4
+经典老歌DJ舞曲串烧708090后,https://vd3.bdstatic.com/mda-ihps4033ktcz7mfq/sc/mda-ihps4033ktcz7mfq.mp4
+经典老歌伤感女声篇,https://vd3.bdstatic.com/mda-ig8mrb0k4jjc5ydt/sc/mda-ig8mrb0k4jjc5ydt.mp4
+英雄泪,https://vd3.bdstatic.com/mda-ncnp6tm56ngrxbis/360p/h264_delogo/1648055585617071282/mda-ncnp6tm56ngrxbis.mp4
+野狼的士高,https://vd2.bdstatic.com/mda-ncp47pjrm7kqjfwq/720p/h264_delogo/1648091187992655346/mda-ncp47pjrm7kqjfwq.mp4
+鸳鸯DJ劲爆DJ,https://vd3.bdstatic.com/mda-nba9z1mqi949jyyb/sc/cae_h264_delogo/1644629210546304303/mda-nba9z1mqi949jyyb.mp4
+想你的时候问月亮,https://vdse.bdstatic.com//ec33a3aaab2aafb34d5816962f2a5ae5.mp4
+好歌分享《精选6首伤感DJ舞曲》HD[1280*720],https://vdse.bdstatic.com//0c87c8977d0a33498fe7362d3c60c22c.mp4
+《拈花一笑》《对面的小姐姐》《想你了小哥哥》《一朵情花开》[1921*1080],https://vdse.bdstatic.com//7cfaf27a4db89583e069a40fbc2ed84b.mp4
+网络金曲《拈花一笑》《陪你千山万水》《对面小姐姐》[1920*1080],https://vdse.bdstatic.com//c2deba4d320384736569e542ac531aff.mp4
+情歌DJ《拈花一笑》《对面的小姐姐》《酒醉的蝴蝶》[1920*1080],https://vdse.bdstatic.com//4eece717c6cc2fb9086a59a13ce30623.mp4
+车载DJ视频6,https://vdse.bdstatic.com//7e9d2da860d4ac39c0ea86502360d6fe.mp4
+情歌DJ《怎么可以如此冷血》《为爱受尽相思罪》HD,https://vdse.bdstatic.com//61e318ea76e984f2bedb66f1ed1583be.mp4
+DJ情歌串烧《痴情恋歌》《红颜知己》《事与愿违》《缘分相遇》HD,https://vdse.bdstatic.com//904548e7bec804905906557ed2752017.mp4
+动听DJ情歌《红颜知己》《今夜为你醉》《别忘了我在等你》等HD,https://vdse.bdstatic.com//92d49c2aebc0bbbe08149b8e08e4a443.mp4
+DJ伤感好听《红颜知己》《事与愿违》《缘分相遇》《知情念歌》HD,https://vdse.bdstatic.com//1a7b05ab4eab2d68a679e442f4d80fab.mp4
+《天路》《驼铃》《鸿雁》《九儿》《绒花》《小芳》[1920*1080],https://vdse.bdstatic.com//e4b7325ebf3010673a51a24f948a8a97.mp4
+《驼铃》《卓玛》《天边》《鸿雁》《天路》草原歌曲[1920*1080],https://vdse.bdstatic.com//f8f4740a4ca7ff31c3a2d8386fc14598.mp4
+毛宁《涛声依旧》《晚秋》《心雨》《春风吻上我的脸》《大中国》[1920*1080],https://vdse.bdstatic.com//21736d388636d7648510b2a36fc7cbfd.mp4
+山歌《阿里山的姑娘》《康定情歌》《山路十八弯》《敖包相会》[1920*1080],https://vdse.bdstatic.com//ae82f5b93166f47d85ff12124a021323.mp4
+《涛声依旧》《雾里看花》《窗外》《心雨》《听心》《晚秋》《母亲》[1920*1080],https://vdse.bdstatic.com//db8ba0fda2aad9cb15aa32887a160f06.mp4
+刀郎经典老歌《手心里的温柔》《西海情歌》《披着羊皮的狼》HD[1280*720],https://vdse.bdstatic.com//2f53687e421524efba9ba2b528f7bd12.mp4
+粤语和华语经典歌曲【完整版】,https://vdse.bdstatic.com//2922763f303705ef65c46689578439ea.mp4
+《给我一把爱情火》《无情风雨无情的你》《昨夜的我又梦到了你》HD,https://vdse.bdstatic.com//63a770491e7bae0ebe661452c27eaf33.mp4
+宇宁《千里江山（大型纪录片《紫禁城》主题歌HD,https://vdse.bdstatic.com//688046e42c39cf6585106f945e2798e7.mov
+经典粤语歌曲《上海滩》《铁血丹心》《神情神话》《沧海一声笑》HD,https://vdse.bdstatic.com//f9cda7e70273c267b61a3d0c969d2033.mp4
+音乐轮播3,http://tc-tct.douyucdn2.cn/dyliveflv1/85894rmovieChow_2000.flv?wsAuth=7d054e041804e80af8aa7e975e2d8573&token=cpn-androidmpro-0-85894-a3575d938a4aa309c687f5fb85a1009fc65cfbeeb2672310&logo=0&expire=0&did=d010b07dcb997ada9934081c873542f0&origin=tct&vhost=pla
+7首伤感情歌,https://vd2.bdstatic.com/mda-nbdj7sp20st0jd9d/sc/cae_h264_delogo/1644847557994341172/mda-nbdj7sp20st0jd9d.mp4
+许巍-蓝莲花(演唱会),http://em.21dtv.com/songs/60026063.mkv
+赵传-快乐似神仙(演唱会),http://em.21dtv.com/songs/60025784.mkv
+白冰+胡歌-美丽的神话,http://em.21dtv.com/songs/60029221.mkv
+伍佰-挪威的森林(演唱会),http://em.21dtv.com/songs/60032810.mkv
+陈慧娴-明日有明天(演唱会),http://em.21dtv.com/songs/60030151.mkv
+郑少秋-书剑恩仇录(演唱会),http://em.21dtv.com/songs/60039733.mkv
+成龙+金喜善-美丽的神话(hd剧情),http://em.21dtv.com/songs/60029219.mkv
+李登威-你欠扁(无原唱),http://em.21dtv.com/songs/60031948.mkv
+许巍-时光(演唱会),http://em.21dtv.com/songs/60039096.mkv
+ADELE-make you feel my love(演唱会),http://em.21dtv.com/songs/60067940.mkv
+张行+王梦麟-雨中即景(演唱会),http://em.21dtv.com/songs/60055753.mkv
+谭咏麟+李克勤-梦仍是一样(演唱会),http://em.21dtv.com/songs/60029634.mkv
+崔健-不是我不明白(演唱会),http://em.21dtv.com/songs/60011382.mkv
+徐小凤-每日怀念你(演唱会),http://em.21dtv.com/songs/60029044.mkv
+凤凰传奇-御龙归字谣,http://antiserver.kuwo.cn/anti.s?rid=MUSIC_1164118&response=res&format=mp4&type=convert_url
+芒种,https://vd3.bdstatic.com/mda-kat1tr4ka5st965k/hd/mda-kat1tr4ka5st965k.mp4?pd=20
+凤凰传奇-华夏传说,http://antiserver.kuwo.cn/anti.s?rid=MUSIC_40828850&response=res&format=mp4&type=convert_url
+卓依婷鲁冰花,http://vd3.bdstatic.com/mda-jf8fbjprnf1fvpxm/mda-jf8fbjprnf1fvpxm.mp4?playlist=%5B%22hd%22%2C%22sc%22%5D
+我曾,https://vd3.bdstatic.com/mda-jjm8i93paakzz8yj/hd/mda-jjm8i93paakzz8yj.mp4?pd=20&vt=1
+谢有才-兄弟(演唱会),http://em.21dtv.com/songs/60084288.mkv
+陈百强-偏偏喜欢你,http://em.21dtv.com/songs/60033420.mkv
+刘德华-亲爱的小孩,http://em.21dtv.com/songs/60069725.mkv
+许巍-纯真(演唱会),http://em.21dtv.com/songs/60013403.mkv
+崔萍-今宵多珍重(演唱会),http://em.21dtv.com/songs/60023923.mkv
+钟镇涛-让一切随风,http://em.21dtv.com/songs/60036212.mkv
+甄妮-七级半地震(演唱会),http://em.21dtv.com/songs/60033743.mkv
+卓依婷橄榄树,http://vd3.bdstatic.com/mda-jfagwdhxb30ymr13/mda-jfagwdhxb30ymr13.mp4?playlist=%5B%22hd%22%2C%22sc%22%5D
+孤芳自赏,https://vdse.bdstatic.com//650fda26067e619a8632b173052b3a08.mp4?authorization=bce-auth-v1%2F40f207e648424f47b2e3dfbb1014b1a5%2F2020-01-31T14%3A25%3A59Z%2F-1%2Fhost
+刘德华+林子祥-每一个晚上(演唱会),http://em.21dtv.com/songs/60029089.mkv
+依婷爱拼才会赢,http://vd3.bdstatic.com/mda-jfreugw1pcza8xr1/mda-jfreugw1pcza8xr1.mp4?playlist=%5B%22hd%22%2C%22sc%22%5D
+BEYOND-请将手放开,http://em.21dtv.com/songs/60035529.mkv
+薰妮-故乡的雨,http://em.21dtv.com/songs/60019097.mkv
+F.I.R-流浪者之歌(演唱会),http://em.21dtv.com/songs/60027684.mkv
+春晚1984,http://txmov2.a.kwimgs.com/upic/2022/01/31/15/BMjAyMjAxMzExNTU5NTRfNDAzMDAxOTlfNjYyNzMyMzg3MTRfMF8z_b_B192356dadbc90d207ba16964d4c2914c.mp4
+春晚1985,http://txmov2.a.kwimgs.com/upic/2022/01/31/16/BMjAyMjAxMzExNjAwMDFfNDAzMDAxOTlfNjYyNzMyNTAwMzJfMF8z_b_Be73c5abcbc0eeb2ec9fce6842e1362a4.mp4
+春晚1987,https://txmov2.a.kwimgs.com/bs3/video-hls/5195746663405928031_hlsb.m3u8
+春晚1988,https://txmov2.a.kwimgs.com/bs3/video-hls/5216575810935394655_hlsb.m3u8
+春晚1989,http://txmov2.a.kwimgs.com/upic/2022/01/31/16/BMjAyMjAxMzExNjAwMTVfNDAzMDAxOTlfNjYyNzMyNzQ2OTlfMF8z_b_Be477b27b9ce655d2372df56a5a3d96ef.mp4
+春晚2021,http://txmov2.a.kwimgs.com/upic/2022/01/30/17/BMjAyMjAxMzAxNzE4NTJfNDAzMDAxOTlfNjYxNzUzOTg3NjlfMF8z_b_Be41d9503181d7b0608a839ed401e02c2.mp4
+春晚2022,http://txmov2.a.kwimgs.com/upic/2022/02/01/11/BMjAyMjAyMDExMTEwMjNfNDAzMDAxOTlfNjYzNzA4MTk4NzNfMF8z_b_B898cc7ddd0025bf54ddb18ec1f723c84.mp4
+
+
+
+
+♬ 한국음악,#genre#
+장윤정-첫사랑,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/2/9c8789ddd1ea47228ba5ae29fbb2d4ca/607ef572fd0acce67ae2741c7c1e03fb.mp4/mp4/transform.mp4
+장윤정-초혼,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/2/9c8789ddd1ea47228ba5ae29fbb2d4ca/a40e5f3cc0ca6ba15bcefd2ac564770c.mp4/mp4/transform.mp4
+장윤정-어머나,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/1/31/9c8789ddd1ea47228ba5ae29fbb2d4ca/ee9d902e903eedf6c25c4a70259305d7.mp4/mp4/transform.mp4
+장윤정-어부바,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/17/55/9c8789ddd1ea47228ba5ae29fbb2d4ca/3b00bd8da71727d099abfad8ca332539.mp4/mp4/transform.mp4
+박주희-자기야,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/29/9c8789ddd1ea47228ba5ae29fbb2d4ca/e86041a58002ae0e2ec100dd087830c3.mp4/mp4/transform.mp4
+박상철-무조건,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/2/7/9c8789ddd1ea47228ba5ae29fbb2d4ca/83fd04eafe1e60858add67e28b597dea.mp4/mp4/transform.mp4
+이상번-꽃나비 사랑,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/17/58/9c8789ddd1ea47228ba5ae29fbb2d4ca/04bd82c485a1e45db893273541624cc5.mp4/mp4/transform.mp4
+오승근-장미꽃 한 송이,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/2/4/9c8789ddd1ea47228ba5ae29fbb2d4ca/0b64f7131af559be3ffaa0983c9924dd.mp4/mp4/transform.mp4
+박윤경-낭랑18세,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/53/9c8789ddd1ea47228ba5ae29fbb2d4ca/f038c82db48c47ef62bd47b2be008c6e.mp4/mp4/transform.mp4
+박정식-멋진인생,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/53/9c8789ddd1ea47228ba5ae29fbb2d4ca/e00e3ffcb921368330c642d511d2842f.mp4/mp4/transform.mp4
+컬투 - 사랑한다 사랑해,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/3/13/9c8789ddd1ea47228ba5ae29fbb2d4ca/5c60e6fd9066e9806204ed8d2440a0c9.mp4/mp4/transform.mp4
+머나먼 고향-금잔디,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/47/9c8789ddd1ea47228ba5ae29fbb2d4ca/58629dc5ee9fa6c8ef741bee7d297c96.mp4/mp4/transform.mp4
+그대없이는 못살아,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/19/44/9c8789ddd1ea47228ba5ae29fbb2d4ca/6471d5bb5fea409350c7931723b506c8.mp4/mp4/transform.mp4
+채정안-무정,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/2/21/9c8789ddd1ea47228ba5ae29fbb2d4ca/c93f700e9eed5d555e26e4a42fe381c0.mp4/mp4/transform.mp4
+배일호 - 장모님,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/53/9c8789ddd1ea47228ba5ae29fbb2d4ca/807ea1c54500ded912f8273829bb334b.mp4/mp4/transform.mp4
+배일호 최유나 - 부부,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/53/9c8789ddd1ea47228ba5ae29fbb2d4ca/ac1f687865dc32b9d78dbd8b91b867c8.mp4/mp4/transform.mp4
+사랑찾아 인생찾아,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/17/12/9c8789ddd1ea47228ba5ae29fbb2d4ca/9482c30c011f58b776a307dad7ef81ec.mp4/mp4/transform.mp4
+사랑으로,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/19/44/9c8789ddd1ea47228ba5ae29fbb2d4ca/a7b5f145673e07935248573a18d365b8.mp4/mp4/transform.mp4
+신형원-터,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/1/45/9c8789ddd1ea47228ba5ae29fbb2d4ca/f12e062579eb67a7ce6013649806f46c.mp4/mp4/transform.mp4
+최진희-꼬마인형,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/1/40/9c8789ddd1ea47228ba5ae29fbb2d4ca/7023be56b2d8992d03d5bedd0a6fa65a.mp4/mp4/transform.mp4
+이무송-사는 게 뭔지,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/1/31/9c8789ddd1ea47228ba5ae29fbb2d4ca/bcf798a67c57ddc7a00cf854445819f6.mp4/mp4/transform.mp4
+녹색지대-사랑을 할꺼야,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/2/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/dd7b657187073c8879901516974b41ef.mp4/mp4/transform.mp4
+김용임-찔레꽃,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/2/12/9c8789ddd1ea47228ba5ae29fbb2d4ca/0c044ad695e484b2e18c61398f102e8c.mp4/mp4/transform.mp4
+나훈아-모르고,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/3/14/9c8789ddd1ea47228ba5ae29fbb2d4ca/af4f903f4686e42e4ccee5c838b8491e.mp4/mp4/transform.mp4
+나훈아-무시로,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/2/7/9c8789ddd1ea47228ba5ae29fbb2d4ca/e8dcb255215b146fa05a309750a98911.mp4/mp4/transform.mp4
+태진아-동반자,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/3/13/9c8789ddd1ea47228ba5ae29fbb2d4ca/6541ab589372200f544e257abbacd572.mp4/mp4/transform.mp4
+태진아 - 물레방아 도는내력,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/3/13/9c8789ddd1ea47228ba5ae29fbb2d4ca/75d223165ef1986edd7564754b469275.mp4/mp4/transform.mp4
+조항조 - 사랑,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/47/9c8789ddd1ea47228ba5ae29fbb2d4ca/a01f0858c972ccee0ea839312843e9db.mp4/mp4/transform.mp4
+조항조-만약에,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/1/40/9c8789ddd1ea47228ba5ae29fbb2d4ca/f43d4af82a4c68787a0ad46d541ee272.mp4/mp4/transform.mp4
+사나이 눈물-남자 이유,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/1/52/9c8789ddd1ea47228ba5ae29fbb2d4ca/249f760732a3f9dbea56eb468a24347d.mp4/mp4/transform.mp4
+현철 - 앉으나 서나 당신 생각,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/15/2/9c8789ddd1ea47228ba5ae29fbb2d4ca/fba7f21c5d0c5ec2e947363e12838391.mp4/mp4/transform.mp4
+현철 - 싫다 싫어,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/15/2/9c8789ddd1ea47228ba5ae29fbb2d4ca/2367ff2c8cd82c3b68d1778f208cb74d.mp4/mp4/transform.mp4
+현철 - 봉선화연정,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/15/2/9c8789ddd1ea47228ba5ae29fbb2d4ca/a19b7c0c9f4df6dfcc2419d92770de4b.mp4/mp4/transform.mp4
+현철 - 내마음 별과 같이,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/15/2/9c8789ddd1ea47228ba5ae29fbb2d4ca/d370bfad23bc2ddb9f1e529d46e556ae.mp4/mp4/transform.mp4
+현철 - 나그네 설움,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/15/2/9c8789ddd1ea47228ba5ae29fbb2d4ca/73d92cf9316153efe283222b4ba0e2d8.mp4/mp4/transform.mp4
+송대관 - 해뜰날,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/53/9c8789ddd1ea47228ba5ae29fbb2d4ca/be2883e479015b652ad3b7904a0178f9.mp4/mp4/transform.mp4
+송대관-사랑해서 미안해,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/1862cfb159f3a22dd4fc1ce7b44b5560.mp4/mp4/transform.mp4
+송대관-분위기 좋고,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/b74ff29a5f57acd8f47eb8fc1928a40f.mp4/mp4/transform.mp4
+송대관-딱 좋아,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/47/9c8789ddd1ea47228ba5ae29fbb2d4ca/69e5680ffebf4e1f59d603c88d79cf4e.mp4/mp4/transform.mp4
+송대관-차표한장,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/47/9c8789ddd1ea47228ba5ae29fbb2d4ca/4f014c9c2f955f47fa582f347e9eec7b.mp4/mp4/transform.mp4
+송대관 - 유행가,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/53/9c8789ddd1ea47228ba5ae29fbb2d4ca/8bf32f128e1af7d85e8c599c08737fc7.mp4/mp4/transform.mp4
+설운도 - 누이,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/53/9c8789ddd1ea47228ba5ae29fbb2d4ca/4cdf9650dede1940cf338ba3a3a1e468.mp4/mp4/transform.mp4
+설운도-다함께 차차차,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/7fe6973474ce8beea80adc923b3c3a74.mp4/mp4/transform.mp4
+설운도-여자여자여자,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/2/4/9c8789ddd1ea47228ba5ae29fbb2d4ca/09fc7482ff7f612031d371bcf1d9fff0.mp4/mp4/transform.mp4
+설하윤-섬마을 선생님,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/47/9c8789ddd1ea47228ba5ae29fbb2d4ca/10f6e4e1147635ac8604701f7800efca.mp4/mp4/transform.mp4
+설하윤-아리랑 목동,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/a013a06389950fe9655059cb959053b5.mp4/mp4/transform.mp4
+설하윤-수은등,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/47/9c8789ddd1ea47228ba5ae29fbb2d4ca/a9cb576bb555a7365f0668c237c41f9c.mp4/mp4/transform.mp4
+설하윤-당돌한 여자,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/f6d0d92c71d68bb6b70a38897120ce3e.mp4/mp4/transform.mp4
+설하윤-남자는 여자를 귀찮게 하네,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/e7e348300e842b30243a54ad9b6049f9.mp4/mp4/transform.mp4
+주현미-또 만났네요,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/2/20/9c8789ddd1ea47228ba5ae29fbb2d4ca/af147c08a08cb9f996aa4a069c118279.mp4/mp4/transform.mp4
+주현미-러브레터,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/2/20/9c8789ddd1ea47228ba5ae29fbb2d4ca/b108cdec01e972f59ae8e83190e06626.mp4/mp4/transform.mp4
+주현미-추억으로 가는당신,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/1/40/9c8789ddd1ea47228ba5ae29fbb2d4ca/177c34f8c670dc7740a4d698ffa3cb7d.mp4/mp4/transform.mp4
+주현미-울면서 후회하네,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/1/40/9c8789ddd1ea47228ba5ae29fbb2d4ca/7155f2ffafe013bad429bd5895025874.mp4/mp4/transform.mp4
+보약같은 친구(3인),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/47/9c8789ddd1ea47228ba5ae29fbb2d4ca/95f7b87ff472ad11d51d962da61480e6.mp4/mp4/transform.mp4
+남행열차(3인),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/0bcc040b818c6660d332f18cf7917b2e.mp4/mp4/transform.mp4
+가요무대 주제가,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/46/9c8789ddd1ea47228ba5ae29fbb2d4ca/7e2fe27812ec1ebb53cb16d9a9a982de.mp4/mp4/transform.mp4
+부부란 이런 거라오,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/14/9c8789ddd1ea47228ba5ae29fbb2d4ca/307be918123ef228bd801ef42846a22f.mp4/mp4/transform.mp4
+송소희 - 홀로아리랑,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/14/32/9c8789ddd1ea47228ba5ae29fbb2d4ca/199ae39368688103cb7633eb2a455839.mp4/mp4/transform.mp4
+노사연 - 바램,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/17/54/9c8789ddd1ea47228ba5ae29fbb2d4ca/e8c29f7df8d502b1edbb06e0b0673ce0.mp4/mp4/transform.mp4
+장혜리 - 내게 남은 사랑을 드릴께요,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/17/38/9c8789ddd1ea47228ba5ae29fbb2d4ca/2a1efe0563aaa9960e7fce2768670f0b.mp4/mp4/transform.mp4
+사랑의 미로(도전천곡),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/19/31/9c8789ddd1ea47228ba5ae29fbb2d4ca/21da0f0f12469883cd7bfd4fbc972893.mp4/mp4/transform.mp4
+사랑의 미로(春),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/19/9c8789ddd1ea47228ba5ae29fbb2d4ca/1b41f648a074eea2e77c0279a616736b.mp4/mp4/transform.mp4
+J에게(春),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/59/9c8789ddd1ea47228ba5ae29fbb2d4ca/f25d222fbee3d10edbe7349823056993.mp4/mp4/transform.mp4
+남자는 배 여자는 항구(春),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/0/9c8789ddd1ea47228ba5ae29fbb2d4ca/61b0b56800acbc37bf2a441f8e8269eb.mp4/mp4/transform.mp4
+혼자가 아닌 나,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/25/9c8789ddd1ea47228ba5ae29fbb2d4ca/1e16c693d29de96bfb9061eabbf5fb55.mp4/mp4/transform.mp4
+그날 우리(간미연),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/7/9c8789ddd1ea47228ba5ae29fbb2d4ca/da054faf4570d14a2a2d533fea729e77.mp4/mp4/transform.mp4
+늘 고마운 사람,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/24/9c8789ddd1ea47228ba5ae29fbb2d4ca/eba4cbd54377014398634373268c9eb3.flv/mp4/transform.mp4
+눈물샤워,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/25/9c8789ddd1ea47228ba5ae29fbb2d4ca/c1bbcf1c163529f2577bc8bc7d0a12cc.mp4/mp4/transform.mp4
+좋은 사람,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/24/9c8789ddd1ea47228ba5ae29fbb2d4ca/d12569f9afbd340bcb3899a5bcf37dc0.mp4/mp4/transform.mp4
+터(여자친구),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/58/9c8789ddd1ea47228ba5ae29fbb2d4ca/02e570e8b6a35a5299be554bd431f6e6.mp4/mp4/transform.mp4
+시간아 멈춰라,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/14/9c8789ddd1ea47228ba5ae29fbb2d4ca/5dbab7c9f12dbcfd68823e5680addaaf.mp4/mp4/transform.mp4
+다 예뻐,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/25/9c8789ddd1ea47228ba5ae29fbb2d4ca/3dec52e1d0cd35c0d2845a951dcc6f6f.mp4/mp4/transform.mp4
+사랑인가봅니다,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/3/26/9c8789ddd1ea47228ba5ae29fbb2d4ca/9e27aa2119c410a71bbc929acc89fc84.mp4/mp4/transform.mp4
+그런 사람 또 없습니다,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/19/43/9c8789ddd1ea47228ba5ae29fbb2d4ca/d46d6c5e65868cec562ef0ea60f80466.mp4/mp4/transform.mp4
+나에게 그대만이(송하예),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/25/9c8789ddd1ea47228ba5ae29fbb2d4ca/6455fdcb0a769412d34828b469904ca0.mp4/mp4/transform.mp4
+내 남자친구에게(GFriend),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/25/9c8789ddd1ea47228ba5ae29fbb2d4ca/63f794cf19c476e5ebff4088b0346f29.mp4/mp4/transform.mp4
+내 남자친구에게(에이프릴),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/21/25/9c8789ddd1ea47228ba5ae29fbb2d4ca/c4ce3f8e2f19cb01a7eb7135224de2c6.mp4/mp4/transform.mp4
+오마이걸-내 얘길 들어봐,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/0/9c8789ddd1ea47228ba5ae29fbb2d4ca/29c876cc744620bd76094456e37c3c8b.mp4/mp4/transform.mp4
+붉은 노을_(수현·수지),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/19/43/9c8789ddd1ea47228ba5ae29fbb2d4ca/b59b4f8c4f3123281d9b1a94e3279b1a.mp4/mp4/transform.mp4
+순정-(김종민),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/8287f0e4571f01b23e9c98b1ff91c82a.mp4/mp4/transform.mp4
+샵 - 눈물,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/3/27/9c8789ddd1ea47228ba5ae29fbb2d4ca/10fe93629b72c2fa9dd310a0ab173a5d.mp4/mp4/transform.mp4
+거북이 - 빙고,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/17/53/9c8789ddd1ea47228ba5ae29fbb2d4ca/e28432757e27890d7948b2b3e1af76da.mp4/mp4/transform.mp4
+김현정 - 혼자한사랑,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/17/54/9c8789ddd1ea47228ba5ae29fbb2d4ca/a490245fbe507982c50d79ab2e2be0dd.mp4/mp4/transform.mp4
+코요테 - 불꽃,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/17/54/9c8789ddd1ea47228ba5ae29fbb2d4ca/b1e88e6c6fa4e92e656b5ea2185a2dbf.mp4/mp4/transform.mp4
+♪ 조항조 영상노래,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/21/15/52/9c8789ddd1ea47228ba5ae29fbb2d4ca/299f320d491a004a81fa546a251ceb45.mp4/mp4/transform.mp4
+♪ 오승근 영상노래,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/21/15/52/9c8789ddd1ea47228ba5ae29fbb2d4ca/8eb39dbe0d08c3f00a4f2f7417259e94.mp4/mp4/transform.mp4
+♪ 송대관 영상노래,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/7/4/55/9c8789ddd1ea47228ba5ae29fbb2d4ca/7c0a06eaaaa4d53008e5c69ee50456d4.mp4/mp4/transform.mp4
+♪ 주현미 영상노래(5곡),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/bdc980cd557c37aaae5797029524dde2.mp4/mp4/transform.mp4
+♪ 나훈아 노래모음,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/16/32/9c8789ddd1ea47228ba5ae29fbb2d4ca/1668b369be063a59db289bf408c1f79d.mp4/mp4/transform.mp4
+♪ 신유 노래모음,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/16/30/9c8789ddd1ea47228ba5ae29fbb2d4ca/2ad2045ecd7da6b22d958ecc2dbba37a.mp4/mp4/transform.mp4
+♪ 김용임 노래모음,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/16/32/9c8789ddd1ea47228ba5ae29fbb2d4ca/c963de1dd56dea6e66c749d74a4beebf.mp4/mp4/transform.mp4
+♪ 장윤정 노래모음,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/16/29/9c8789ddd1ea47228ba5ae29fbb2d4ca/f6d4d698d72de6ce7f5b089394076f6a.mp4/mp4/transform.mp4
+♪ 최진희 노래모음,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/16/28/9c8789ddd1ea47228ba5ae29fbb2d4ca/c8d489b96cfb11f22cccac81eabd8081.mp4/mp4/transform.mp4
+♪ 홍진영 노래모음,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/16/27/9c8789ddd1ea47228ba5ae29fbb2d4ca/3ad99b6e21aaa07e75c7b0abb4b40491.mp4/mp4/transform.mp4
+♪ 주현미 노래모음(20곡),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/4/48/9c8789ddd1ea47228ba5ae29fbb2d4ca/9c0abf668fcdff02ba5f8e3b764ba837.mp4/mp4/transform.mp4
+♪ 신나는 트로트(1시간),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/19/45/9c8789ddd1ea47228ba5ae29fbb2d4ca/712eed1155111b6fef13d512217b1fd4.mp4/mp4/transform.mp4
+♪ 인생 트로트 모음,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/16/42/9c8789ddd1ea47228ba5ae29fbb2d4ca/de24e1489965fb2be098ae22b6cfd7f3.mp4/mp4/transform.mp4
+♪ 감성 트로트 모음,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/25/16/34/9c8789ddd1ea47228ba5ae29fbb2d4ca/3daef15b646c482a22632080cf438047.mp4/mp4/transform.mp4
+
+//노래방
+반갑습니다(D调),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/23/20/25/9c8789ddd1ea47228ba5ae29fbb2d4ca/6538f6444b53fc374b7faacba99c0929.mp4/mp4/transform.mp4
+무조건 - 박상철,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/a62b2715a1ea88e6a37d8016183683a3.mp4/mp4/transform.mp4
+모르고 - 나훈아,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/a6e1efec7f1666ba85d86b1a61a543d7.mp4/mp4/transform.mp4
+장미꽃 한송이 - 오승근,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/a136602e8fd14d25770c9fe9dc5a4583.mp4/mp4/transform.mp4
+꽃나비사랑 - 이상번,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/25/9c8789ddd1ea47228ba5ae29fbb2d4ca/b566b131d20cc445109aa0aad1732e3e.mp4/mp4/transform.mp4
+있을때잘해  오승근,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/823bf5ae7ed184e8db889b73ec80fe4f.mp4/mp4/transform.mp4
+자기야 - 박주희,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/b472e75644a0dee4ecdf88a7acf0b064.mp4/mp4/transform.mp4
+아리랑낭낭(백난아),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/c06d8f9be19ce787cc7c126f549868bd.mp4/mp4/transform.mp4
+낭랑18세(백난아),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/50/acacbb4a1237437aa098e940823c7b91/479bd8c3a59806ba41936b4dbfa296e1.mp4/mp4/transform.mp4
+다함께 차차차,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/d821085dcdcbcb76213687880f62d532.mp4/mp4/transform.mp4
+환상의 커플,https://basic.jl.smartedu.cn/player//data7/transform/2024/3/13/19/41/9c8789ddd1ea47228ba5ae29fbb2d4ca/2d42dd7dcb4b752543fa43f75523ac64.mp4/mp4/transform.mp4
+동반자(태진아),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/58db0ce12edac53d3b3005ac8c0d9b71.mp4/mp4/transform.mp4
+오래오래(송대관),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/36/acacbb4a1237437aa098e940823c7b91/287502d69fbacf53b1912dbfdfa91cbd.mp4/mp4/transform.mp4
+네박자(송대관),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/47/acacbb4a1237437aa098e940823c7b91/ae50f09456247f9be5dcdda8b9ef6b20.mp4/mp4/transform.mp4
+분위기 좋고(송대관),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/50/acacbb4a1237437aa098e940823c7b91/c8dca0b25458c4cdb209c3ac6e540e08.mp4/mp4/transform.mp4
+해뜰날(송대관),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/e403de48f072232b549f649bb9330468.mp4/mp4/transform.mp4
+차표 한장,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/b7182b89b78d17da72bba49683303f32.mp4/mp4/transform.mp4
+님과 함께,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/37/acacbb4a1237437aa098e940823c7b91/04db2870bd8d3bf51ca7c729b28d2774.mp4/mp4/transform.mp4
+가라가라 - 캔(CAN) ,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/f1078b44bb075cd03eefc225771cd4c9.mp4/mp4/transform.mp4
+빙고 - 거북이,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/3dcf7fedb7af0fb2e7c6d62033b5d13d.mp4/mp4/transform.mp4
+흔들린 우정,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/a99a6b9c853cc284335d75b427a19fc0.mp4/mp4/transform.mp4
+바다의 왕자,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/7/13/9c8789ddd1ea47228ba5ae29fbb2d4ca/545d553c697bc2ddcc926de4b6504584.mp4/mp4/transform.mp4
+순정(코요태),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/199a59ce72d1529c0f69c60e6dbb9048.mp4/mp4/transform.mp4
+불꽃(코요태),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/51/acacbb4a1237437aa098e940823c7b91/534152c905cd13ff6897749c924bbccf.mp4/mp4/transform.mp4
+붉은 노을(이문세),https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/7/13/9c8789ddd1ea47228ba5ae29fbb2d4ca/84942eaf471fe54012d6bb2e39c797c2.mp4/mp4/transform.mp4
+내 남자친구에게 - 핑클,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/c02a200fb9af01ae37ce82e0fe49976f.mp4/mp4/transform.mp4
+아리아리 - 이정현,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/01c639b07458dcdd93f9a28ace3e53a5.mp4/mp4/transform.mp4
+와_이정현,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/c7b5e42b6c31ddba8ac49921721ca54f.mp4/mp4/transform.mp4
+바꿔_이정현,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/173bd588610c9dc6935201209466f3a1.mp4/mp4/transform.mp4
+남행열차,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/50/acacbb4a1237437aa098e940823c7b91/3405a66490ff4a172d1b19d9554f2941.mp4/mp4/transform.mp4
+당돌한 여자(서주경),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/38/acacbb4a1237437aa098e940823c7b91/c51c75afe525532aab12e7e73408ba6f.mp4/mp4/transform.mp4
+요즘여자남자  현숙,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/24/9c8789ddd1ea47228ba5ae29fbb2d4ca/451f137877ea133e3efc3cf814d02da1.mp4/mp4/transform.mp4
+월화수목금토일  현숙,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/24/9c8789ddd1ea47228ba5ae29fbb2d4ca/ad192eaab5c51bd7f461e899621fe3b9.mp4/mp4/transform.mp4
+강남멋장이 - 문희옥,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/fa72c3d40dd32be352a646c4528da04a.mp4/mp4/transform.mp4
+사랑의 거리 - 문희옥,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/a48f092142aec130a3865fe8eedd1278.mp4/mp4/transform.mp4
+그대없이는 못살아,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/24/9c8789ddd1ea47228ba5ae29fbb2d4ca/05a292b9ccce6ed591218b732ede6c26.mp4/mp4/transform.mp4
+찬찬찬,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/37/acacbb4a1237437aa098e940823c7b91/662cb0b7a999aa2385b7253bb9cfac85.mp4/mp4/transform.mp4
+누이(설운도),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/38/acacbb4a1237437aa098e940823c7b91/45332e4e921780406b95da84d7045300.mp4/mp4/transform.mp4
+여자여자여자,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/23/49/acacbb4a1237437aa098e940823c7b91/a861521701fc2a52fb3dee0c73b620eb.mp4/mp4/transform.mp4
+남자여(현지),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/49/acacbb4a1237437aa098e940823c7b91/2b2944c00b4f6efa69fd25e4d4ae7c7d.mp4/mp4/transform.mp4
+얄미운 사람,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/37/acacbb4a1237437aa098e940823c7b91/ad83ec5dc52ba73cb535d0187da49e80.mp4/mp4/transform.mp4
+둥지(남진),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/38/acacbb4a1237437aa098e940823c7b91/7701137c45b52e9fa0eb983652c91727.mp4/mp4/transform.mp4
+땡벌(강진),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/38/acacbb4a1237437aa098e940823c7b91/4f317b52410bc80660dff2b8e17353d5.mp4/mp4/transform.mp4
+당신이 좋아,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/cbcad58a598904de42d5c26f320a981f.mp4/mp4/transform.mp4
+좋아좋아,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/22c4ca654f084b08751f1e9e2a446cc1.mp4/mp4/transform.mp4
+친구에서 애인으로,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/45/acacbb4a1237437aa098e940823c7b91/751de0ca96b7ff1fd5f720b6bd3a2138.mp4/mp4/transform.mp4
+앉으나 서나 당신 생각,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/30/acacbb4a1237437aa098e940823c7b91/4a06d3d1139a8071f82c24c73ebba011.mp4/mp4/transform.mp4
+싫다싫어,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/119efb23e12612b7cff80771d681bccd.mp4/mp4/transform.mp4
+봉선화연정,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/9174ceb5c34d22572d05374566233f4b.mp4/mp4/transform.mp4
+머나먼 고향,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/44/acacbb4a1237437aa098e940823c7b91/0c41f2539db91a7938b21e709db9f55a.mp4/mp4/transform.mp4
+내 나이가 어때서(오승근),https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/24/acacbb4a1237437aa098e940823c7b91/639112a45452d8e1bbb267f9007fe20c.mp4/mp4/transform.mp4
+사랑은 아무나 하나,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/24/acacbb4a1237437aa098e940823c7b91/b67255d5cfdeeebe736a6de5e2ac2ca3.mp4/mp4/transform.mp4
+사랑해서 미안해,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/24/acacbb4a1237437aa098e940823c7b91/1d33941913cb0a8640a14726414bad63.mp4/mp4/transform.mp4
+내 사랑 그대여,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/24/acacbb4a1237437aa098e940823c7b91/c979014c97e1c79ff1d54731688056a0.mp4/mp4/transform.mp4
+산다는건,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/24/acacbb4a1237437aa098e940823c7b91/3602f9e689900822dfec1ab3710e50a0.mp4/mp4/transform.mp4
+사랑의 배터리,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/24/acacbb4a1237437aa098e940823c7b91/904c2b96ac389f66f92cd12f5368e7d9.mp4/mp4/transform.mp4
+진이,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/57/9c8789ddd1ea47228ba5ae29fbb2d4ca/5eed1d1f960f4c8dcb434a51ed302ce9.mp4/mp4/transform.mp4
+첨이야,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/57/9c8789ddd1ea47228ba5ae29fbb2d4ca/11d39dfccb207bd9523ed996f7b063ae.mp4/mp4/transform.mp4
+공작새,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/5/10/57/9c8789ddd1ea47228ba5ae29fbb2d4ca/7805f6b904c66c33567212579bb6dcc3.mp4/mp4/transform.mp4
+어머나(장윤정),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/36/acacbb4a1237437aa098e940823c7b91/6beb8ca0f76269888fc22a68ddf1a6de.mp4/mp4/transform.mp4
+꽃(장윤정),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/51/acacbb4a1237437aa098e940823c7b91/dcf0a9bec0c5438b5e6b388de27128a5.mp4/mp4/transform.mp4
+콩깍지,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/45/acacbb4a1237437aa098e940823c7b91/01e387d626624b6668d48cf2d57793b3.mp4/mp4/transform.mp4
+이따이따요(장윤정),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/38/acacbb4a1237437aa098e940823c7b91/c70c483a7c2b98ee479fd8b541fba9bd.mp4/mp4/transform.mp4
+살만합니다(장윤정),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/bbeea9988e1e5093b31bfe94ecb27118.mp4/mp4/transform.mp4
+첫사랑(장윤정),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/a3b1f42578ac81751cef4d52344952ff.mp4/mp4/transform.mp4
+초혼(장윤정),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/a90f8271491ccf3ec00e3695598e8c2d.mp4/mp4/transform.mp4
+올래(장윤정),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/33547b94b4cbbde11a2744d1b2267789.mp4/mp4/transform.mp4
+또 만났네요,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/51/acacbb4a1237437aa098e940823c7b91/ca5799a7e76c210e5303f557b044f307.mp4/mp4/transform.mp4
+신사동 그사람,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/50/acacbb4a1237437aa098e940823c7b91/9151c70a656ec7d1b7e3e88d2c161443.mp4/mp4/transform.mp4
+러브레터,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/51/acacbb4a1237437aa098e940823c7b91/99900af27a8c1957e7b13cc9c1bcc352.mp4/mp4/transform.mp4
+눈물의 부르스,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/49/acacbb4a1237437aa098e940823c7b91/2cc68524fc31009ed9a38a6a4a052155.mp4/mp4/transform.mp4
+길면3년 짧으면1년,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/50/acacbb4a1237437aa098e940823c7b91/f0ee731ead56439c3bc95b8fa6d67409.mp4/mp4/transform.mp4
+울면서 후회하네,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/f760c272840843ebef6cbccbb583df20.mp4/mp4/transform.mp4
+시계바늘(신유),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/1dd9f361ab0bb19bda781ec4b786bdd3.mp4/mp4/transform.mp4
+일소일노(신유),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/5e0d0143597e8356bd9679ace895087b.mp4/mp4/transform.mp4
+잠자는 공주(신유),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/44/acacbb4a1237437aa098e940823c7b91/a2ce48268f781b85578c5b726e2c45f9.mp4/mp4/transform.mp4
+사랑한다사랑해,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/d6c665fde26e107f9ae719ee4d04e8bd.mp4/mp4/transform.mp4
+사랑인가 봅니다,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/47/acacbb4a1237437aa098e940823c7b91/2b64263f26566339f57d87bdac1ad534.mp4/mp4/transform.mp4
+사랑찾아 인생찾아,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/39df9188532d74b3752ff46a2c993307.mp4/mp4/transform.mp4
+만약에(조항조),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/1a9e7209f3707a4d0cf7361ccb2c4c46.mp4/mp4/transform.mp4
+섬마을 선생님,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/36/acacbb4a1237437aa098e940823c7b91/91cce0deca49e58e57b3ee04ea50cf72.mp4/mp4/transform.mp4
+늘 고마운 사람(박승화),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/862a2e26e52c36c903a9f665da50e09b.mp4/mp4/transform.mp4
+너만을 사랑했다,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/60b17c58ae305e46dcf9a71c455a0d06.mp4/mp4/transform.mp4
+재회(설운도),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/15/5/52/acacbb4a1237437aa098e940823c7b91/95b3788cae9aef981e87a5da1e6844a4.mp4/mp4/transform.mp4
+장모님,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/92ef5fa6a71edc40e083acb677afdf4b.mp4/mp4/transform.mp4
+영영 - 나훈아,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/7ad356e80c4a9e25b02f79cc0dd27c26.mp4/mp4/transform.mp4
+사나이 눈물 - 조항조,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/0e6325155af610aadc96da075c1c1f39.mp4/mp4/transform.mp4
+원점 - 설운도,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/f37cfaaad94d6b5e8a9d08fef880f4d9.mp4/mp4/transform.mp4
+물방아 도는 내력,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/51/acacbb4a1237437aa098e940823c7b91/7720c7b310bef988fd5cda7bc04b62c7.mp4/mp4/transform.mp4
+술한잔해요(女),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/e2ac80ba6e63a7447e9e6882a0e7c298.mp4/mp4/transform.mp4
+술한잔해요(男),https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/26/9c8789ddd1ea47228ba5ae29fbb2d4ca/7feba658a2c07ba866fe80ea5d6cd6e0.mp4/mp4/transform.mp4
+바위섬 - 김원중,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/9/9c8789ddd1ea47228ba5ae29fbb2d4ca/2dee2c7cf8dd09c170ff4c3db2f0bba5.mp4/mp4/transform.mp4
+나에게그대만이 - 유해준,https://basic.jl.smartedu.cn/player//data7/transform/2024/2/19/4/25/9c8789ddd1ea47228ba5ae29fbb2d4ca/7b15310f4c27ae3b4836900d8250ee44.mp4/mp4/transform.mp4
+사랑(나훈아),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/2e838bd5302bb205f33a11fcca2a57d9.mp4/mp4/transform.mp4
+갈무리,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/6/7/39/acacbb4a1237437aa098e940823c7b91/85de3a27802e0711748e34c1a1fccc2a.mp4/mp4/transform.mp4
+무시로,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/23/55/acacbb4a1237437aa098e940823c7b91/39dcb846088fd7a1f2ef20cdc653678a.mp4/mp4/transform.mp4
+바램 - 임영웅 ,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/19/35/9c8789ddd1ea47228ba5ae29fbb2d4ca/17c6146a0f76edcbb017e7f8e1506c84.mp4/mp4/transform.mp4
+가버린 당신,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/22/9c8789ddd1ea47228ba5ae29fbb2d4ca/b03307a4114bb81ddf61ee2199e15711.mp4/mp4/transform.mp4
+혼자가 아닌 나(女),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/23/51/acacbb4a1237437aa098e940823c7b91/fbff8f410c9acc881280c0dbd8b52f44.mp4/mp4/transform.mp4
+혼자가 아닌 나(男),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/23/51/acacbb4a1237437aa098e940823c7b91/022f1686ef55cd370a82ac3d14c1428b.mp4/mp4/transform.mp4
+벌써일년 - WAX ,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/76d7bdab72fabf2fc118a03cdea88cf0.mp4/mp4/transform.mp4
+흔적,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/38/acacbb4a1237437aa098e940823c7b91/7a3ffe73ee991ac928786c4541aca6c8.mp4/mp4/transform.mp4
+사랑으로,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/23/49/acacbb4a1237437aa098e940823c7b91/fee8ad921f48739acb4bb8a48f0551a5.mp4/mp4/transform.mp4
+사랑과 우정사이(피),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/05f823fd41fb1817ada2c7842f958f8d.mp4/mp4/transform.mp4
+사랑하는 날까지,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/a6d739829601524b0079fd8fc51c1307.mp4/mp4/transform.mp4
+사랑을 위하여,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/7dfb6eaa43bef10490b760fa8bcea025.mp4/mp4/transform.mp4
+존재의 이유,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/15/5/52/acacbb4a1237437aa098e940823c7b91/96afec65e920c58b2324e292b914fd21.mp4/mp4/transform.mp4
+사랑을 할꺼야(녹색지대),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/2bcffd08e563718d3ac1e02744490610.mp4/mp4/transform.mp4
+슬퍼하지마,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/d22b154071a0a957abbc6f50c8e42d78.mp4/mp4/transform.mp4
+앉으나서나당신생각(현철),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/7cb4828b0f88f90f48658c604ecf3d92.mp4/mp4/transform.mp4
+애정이 꽃피던 시절,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/ec400d30e753da48e4bb531f1dc1e071.mp4/mp4/transform.mp4
+홀로아리랑 - 서유석,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/2fb8023fb8eb4b1da15db6ca6267e8e7.mp4/mp4/transform.mp4
+준비없는이별 - 녹색지대,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/2881a970742198c76f461868726499e2.mp4/mp4/transform.mp4
+내 사랑 내 곁에,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/22/9c8789ddd1ea47228ba5ae29fbb2d4ca/57da50f2ffb8b75119e0d53044ce8a0e.mp4/mp4/transform.mp4
+애모,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/22/9c8789ddd1ea47228ba5ae29fbb2d4ca/8ab1a3cdc35302cdc6d8189c1f504948.mp4/mp4/transform.mp4
+해변의 여인,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/22/9c8789ddd1ea47228ba5ae29fbb2d4ca/c4849df2fdf1377519a53b89709ad809.mp4/mp4/transform.mp4
+만남 - 노사연,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/ebcc5bcdd3c97f769fa4178d58e055ad.mp4/mp4/transform.mp4 
+J에게 - 이선희,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/49b761d26f0c4fe7888c5d203d44f485.mp4/mp4/transform.mp4
+사랑의 미로 - 최진희,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/08ba7eb1a5f41264806656b0381dcb05.mp4/mp4/transform.mp4
+가버린 당신 - 최진희,https://basic.jl.smartedu.cn/player//data7/transform/2024/1/28/18/10/9c8789ddd1ea47228ba5ae29fbb2d4ca/d4faa6de040481abbfd7f85acd6f1b4e.mp4/mp4/transform.mp4
+여심(최진희),https://basic.jl.smartedu.cn/player//data7/transform/2024/1/24/22/23/9c8789ddd1ea47228ba5ae29fbb2d4ca/48af8ff13f5892c6ab8369b3cd5a2eba.mp4/mp4/transform.mp4
+꼬마인형(최진희),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/23/54/acacbb4a1237437aa098e940823c7b91/232acc4c3a3f49c67ca00c6b34b22e30.mp4/mp4/transform.mp4
+터(신형원),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/47/acacbb4a1237437aa098e940823c7b91/99d1d6f5e6b23c6fdef8839c00d57936.mp4/mp4/transform.mp4
+가지마오(나훈아),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/50/acacbb4a1237437aa098e940823c7b91/fcaa20e2c9b27cc7c1fe439ba188d151.mp4/mp4/transform.mp4
+나그네 설움(백년설),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/50/acacbb4a1237437aa098e940823c7b91/d24b3dc7ce7ccea7800d8f0670bd971b.mp4/mp4/transform.mp4
+부부,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/50/acacbb4a1237437aa098e940823c7b91/ad69f0493d2f53688045dc06a6029380.mp4/mp4/transform.mp4
+내게 남은 사랑을 드릴께요,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/51/acacbb4a1237437aa098e940823c7b91/0c28e397ce17992cbf70d564880e5299.mp4/mp4/transform.mp4
+허공,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/37/acacbb4a1237437aa098e940823c7b91/ac1d57befa673be34a5e5fef4ee6aa22.mp4/mp4/transform.mp4
+사랑했나봐(윤도현),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/51/acacbb4a1237437aa098e940823c7b91/340b328dc484413d6cf5e8dc5893519e.mp4/mp4/transform.mp4
+물고기자리,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/51/acacbb4a1237437aa098e940823c7b91/6232e75f5eb4ddf5f137a857c9bfefbd.mp4/mp4/transform.mp4
+흰눈(이루),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/38/acacbb4a1237437aa098e940823c7b91/efcba17a385f72bf4b986d50038ec7cc.mp4/mp4/transform.mp4
+까만안경(이루),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/51/acacbb4a1237437aa098e940823c7b91/9cda88ce895054969a3d6011bdf3ad1d.mp4/mp4/transform.mp4
+울고넘는 박달재,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/85ef9bf42005655738782dc98a5ec2f1.mp4/mp4/transform.mp4
+행복이란,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/23/2/acacbb4a1237437aa098e940823c7b91/7ec575b2735b33df9b9b85054a452ac5.mp4/mp4/transform.mp4
+처녀총각,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/45/acacbb4a1237437aa098e940823c7b91/496185385c8fe7070bd694e997b2c754.mp4/mp4/transform.mp4
+유정천리,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/45/acacbb4a1237437aa098e940823c7b91/73e201dbadda58aa3ceaad32b5e9ae86.mp4/mp4/transform.mp4
+울긴 왜 울어,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/44/acacbb4a1237437aa098e940823c7b91/3d8841bfa5fd9a93522b54ac1cb231ad.mp4/mp4/transform.mp4
+찔레꽃,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/43/acacbb4a1237437aa098e940823c7b91/97faff3b4b10024d1baa9ce797411747.mp4/mp4/transform.mp4
+카페에서,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/1b586df13c743958330fa941435aea3c.mp4/mp4/transform.mp4
+우린 너무 쉽게 헤여졌어요,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/46/acacbb4a1237437aa098e940823c7b91/8b50d0aa2b45a16cf3aa3964a77878a7.mp4/mp4/transform.mp4
+이별(패티김),https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/8/38/acacbb4a1237437aa098e940823c7b91/c92a903ec030d7db1e984873b16f5caa.mp4/mp4/transform.mp4
+칠갑산,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/45/acacbb4a1237437aa098e940823c7b91/0e11fb16435aa5bf68fb737a80382dfd.mp4/mp4/transform.mp4
+제비처럼,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/2/22/41/acacbb4a1237437aa098e940823c7b91/824bdad7c17d048b418c5eac63f1b2c2.mp4/mp4/transform.mp4
+잘 있어요,https://basic.jl.smartedu.cn/player//data7/transform/2025/1/15/5/52/acacbb4a1237437aa098e940823c7b91/90d74479f0b17cce7b0c91cf18035385.mp4/mp4/transform.mp4
+
+
+
+
+♬ 贝乐虎儿歌,#genre#
+小兔子乖乖,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/836123b58f6ce4f36172eda47cd1fffe.mp4/mp4/transform.mp4
+两只老虎,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/805c93aa509f44603c60dfa74626e417.mp4/mp4/transform.mp4
+一只哈巴狗,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/840bb4f00947d88c3471d0fee0261246.mp4/mp4/transform.mp4
+大风车,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/3c83afd1bb241c6f0aabd47184069646.mp4/mp4/transform.mp4
+小毛驴,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/b52f7f574dabc0a02e294831c3e5b009.mp4/mp4/transform.mp4
+拔萝卜,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/1f19266b448c922b73814b73d50713bf.mp4/mp4/transform.mp4
+小龙人,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/00cccd947e56aca04b11416c1cdd81ec.mp4/mp4/transform.mp4
+数鸭子,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/d20214cd6933b6658a20bb238e75fa0b.mp4/mp4/transform.mp4
+打电话,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/41386ae67d8e8bbf7bcefd2b23c6c575.mp4/mp4/transform.mp4
+幸福拍手歌,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/27/acacbb4a1237437aa098e940823c7b91/6fc1dc611cd0eb98f3d4594c7c0af0dd.mp4/mp4/transform.mp4
+我的好妈妈,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/33/acacbb4a1237437aa098e940823c7b91/a1837b9b12e2f4b489d872d72da02ec5.mp4/mp4/transform.mp4
+三只熊,https://basic.jl.smartedu.cn/player//data7/transform/2025/3/10/11/18/acacbb4a1237437aa098e940823c7b91/1305be1e4f8228519c5af7cf954217ad.mp4/mp4/transform.mp4
+小燕子,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/8e2bd07b5f2aa57417bc137e77d7396b.mp4/mp4/transform.mp4
+小星星,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/8ed118f886c59b694123f6b8aeee9adc.mp4/mp4/transform.mp4
+找朋友,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/2/acacbb4a1237437aa098e940823c7b91/82413ffa3a0885cce0a2c649dcdfa0ee.mp4/mp4/transform.mp4
+春天在哪里,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/2/acacbb4a1237437aa098e940823c7b91/510a758cb6bb89158ed40ad4a6a17d3b.mp4/mp4/transform.mp4
+种太阳,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/2/acacbb4a1237437aa098e940823c7b91/4753913ca8439fef93c2b3211f4fce32.mp4/mp4/transform.mp4
+小白兔白又白,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/26/acacbb4a1237437aa098e940823c7b91/19920c4d0722dc4adc1e9d9eaf37e0f4.mp4/mp4/transform.mp4
+新年好,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/27/acacbb4a1237437aa098e940823c7b91/b322b0a5e0cf287f825489c851c13986.mp4/mp4/transform.mp4
+健康歌,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/27/acacbb4a1237437aa098e940823c7b91/1864342a1d5a46a0b760e815d429ef66.mp4/mp4/transform.mp4
+蜗牛与黄鹂鸟,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/8/27/acacbb4a1237437aa098e940823c7b91/e8fb0084822f22ef65c1d5b19cac2027.mp4/mp4/transform.mp4
+王老先生有块地,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/2/acacbb4a1237437aa098e940823c7b91/060ec60e5859d432422060f129a9d7e0.mp4/mp4/transform.mp4
+洋娃娃和小熊跳舞,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/2/acacbb4a1237437aa098e940823c7b91/81b13f1bd0e25d6f00cbd0bff334d333.mp4/mp4/transform.mp4
+鲁冰花,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/34/acacbb4a1237437aa098e940823c7b91/6c90ebea85cee7998dbab8f9795cf427.mp4/mp4/transform.mp4
+捉泥鳅,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/34/acacbb4a1237437aa098e940823c7b91/89d2292935a4354e90971f192772bcd7.mp4/mp4/transform.mp4
+哇哈哈,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/34/acacbb4a1237437aa098e940823c7b91/40cbba073d5925a478496ed498125796.mp4/mp4/transform.mp4
+我不上你的当,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/4/21/34/acacbb4a1237437aa098e940823c7b91/c4e0eb221f7335d3572e450481d62ca3.mp4/mp4/transform.mp4
+祖国祖国我们爱你,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/10/12/22/acacbb4a1237437aa098e940823c7b91/21c611dccbab3f03cf8990f9501edc59.mp4/mp4/transform.mp4
+祖国的花朵,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/8/21/54/acacbb4a1237437aa098e940823c7b91/63af4286f100ea8842db1ba5d495cce8.mp4/mp4/transform.mp4
+小跳蛙,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/8/21/54/acacbb4a1237437aa098e940823c7b91/c96d469cabbafab091f313d90c162cba.mp4/mp4/transform.mp4
+小手拍拍,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/8/21/54/acacbb4a1237437aa098e940823c7b91/0e46c1260ad1fdb38b347388ad0121fd.mp4/mp4/transform.mp4
+✿七色光,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/8/21/54/acacbb4a1237437aa098e940823c7b91/f4885154615501adb3cb3859a9bfbbcb.mp4/mp4/transform.mp4
+✿无敌小可爱,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/8/21/54/acacbb4a1237437aa098e940823c7b91/33e47383f7f53693f9a7db9132a661a8.mp4/mp4/transform.mp4
+✿小蝌蚪找妈妈,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/8/22/3/acacbb4a1237437aa098e940823c7b91/932123b8a9aa371fd461520ec2a674a0.mp4/mp4/transform.mp4
+✿宝贝宝贝,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/8/21/54/acacbb4a1237437aa098e940823c7b91/ab1dcfa6d2605263b856d62751d1d592.mp4/mp4/transform.mp4
+✿好爸爸坏爸爸,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/6/7/34/acacbb4a1237437aa098e940823c7b91/1d5405c5e22f7d2030c21ca16c42c650.mp4/mp4/transform.mp4
+✿小燕子(贝瓦儿歌),https://basic.jl.smartedu.cn/player//data7/transform/2025/2/6/7/34/acacbb4a1237437aa098e940823c7b91/a10fb5ad9a84a9fc61b07aff54279803.mp4/mp4/transform.mp4
+✿小兔子乖乖(童谣),https://basic.jl.smartedu.cn/player//data7/transform/2025/2/10/12/22/acacbb4a1237437aa098e940823c7b91/f1c72e654ba9b932cc5c2c5cbf95a333.mp4/mp4/transform.mp4
+✿三只熊(韩),https://basic.jl.smartedu.cn/player//data7/transform/2025/3/10/11/18/acacbb4a1237437aa098e940823c7b91/f9d7e1cab44483fad4600aaf1150fe69.mp4/mp4/transform.mp4
+✿嘀嘀嘟嘟汽车,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/6/7/10/acacbb4a1237437aa098e940823c7b91/863b449b96c451e62783091dabcce57a.mp4/mp4/transform.mp4
+✿认识车辆,https://basic.jl.smartedu.cn/player//data7/transform/2025/2/6/7/10/acacbb4a1237437aa098e940823c7b91/ad32de41899d961eaebe60c411aabc21.mp4/mp4/transform.mp4
