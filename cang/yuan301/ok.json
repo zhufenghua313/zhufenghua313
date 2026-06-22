@@ -1,0 +1,29 @@
+{"spider":"./lib/xs.jar;md5;7ffef3e5e7ecb6562f58d34dcca2077a",
+"hosts": ["cache.ott.wasulive.itv.cmvideo.cn=39.135.132.221","cache.ott.bestlive.itv.cmvideo.cn=39.135.132.221","cache.ott.ystenlive.itv.cmvideo.cn=39.135.132.221","cache.ott.hnbblive.itv.cmvideo.cn=39.135.132.221","cache.ott.fifalive.itv.cmvideo.cn=base-v4v6-cm-miguvideo.e.cdn.chinamobile.com"],
+"lives":[{"name":"刚哥无敌","type":0,"url":"./lib/tv.png","ua":"okhttp/3.15","timeout":5,"epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}","logo":"https://11.112114.xyz/logo/{name}.png"}],
+"logo":"./lib/logo.gif",
+"sites":[
+{"key": "热播","name": "热播┃影视","type": 3,"api": "csp_AppRJ","ext": {"url": "http://v.rbotv.cn"}},
+{"key": "农民","name": "农民┃影视","type": 3,"api": "csp_XYQHiker","ext": "./lib/农民.js"},
+{"key": "瓜子","name": "瓜子┃影视","type": 3,"api": "csp_Gz360"},
+{"key": "爱堪","name": "爱堪┃影视","type": 3,"api": "csp_Ikanbot"},
+{"key": "霍霍","name": "霍霍┃影视","type": 3,"api": "csp_SaoHuo","ext": "https://shdy5.us"},
+{"key":"柚子","name":"柚子┃影视综合","type":0,"api":"https://api.yzzy-api.com/inc/api.php"},
+{"key":"暴风","name":"暴风┃影视综合","type":1,"api":"https://bfzyapi.com/api.php/provide/vod"},
+{"key":"量子","name":"量子┃影视综合","type":1,"api":"https://cj.lziapi.com/api.php/provide/vod/"},
+{"key":"卧龙","name":"卧龙┃影视综合","type":1,"api":"https://collect.wolongzyw.com/api.php/provide/vod/"},
+{"key":"最大","name":"最大┃影视综合","type":1,"api":"https://zuida.xyz/api.php/provide/vod/"},
+{"key":"如意","name":"如意┃影视综合","type":1,"api":"https://cj.rycjapi.com/api.php/provide/vod/"},
+{"key":"天涯","name":"天涯┃影视综合","type":1,"api":"https://tyyszyapi.com/api.php/provide/vod/"},
+{"key":"爱奇","name":"爱奇┃影视综合","type":1,"api":"https://iqiyizyapi.com/api.php/provide/vod/"},
+{"key":"扁担","name":"扁担┃影视综合","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod"},
+{"key": "灵虎","name": "灵虎┃影视综艺","type": 3,"api": "csp_AppGet","ext": {"url": "","site": "https://bind.315999.xyz/89.txt","dataKey": "#getapp@TMD@2025","dataIv": "#getapp@TMD@2025","deviceId": "","version": "120"}},
+{"key":"少儿教育","name":"📚少儿教育","type":3,"api":"csp_Bili","searchable":0,"ext":"./lib/教育少儿.js","jar":"./lib/z.jar"},
+{"key":"小学教育","name":"📚小学教育","type":3,"api":"csp_Bili","searchable":0,"ext":"./lib/教育小学.js","jar":"./lib/z.jar"},
+{"key":"初中教育","name":"📚初中教育","type":3,"api":"csp_Bili","searchable":0,"ext":"./lib/教育初中.js","jar":"./lib/z.jar"},
+{"key":"高中教育","name":"📚高中教育","type":3,"api":"csp_Bili","searchable":0,"ext":"./lib/教育高中.js","jar":"./lib/z.jar"}
+],
+"parses": [
+{"name":"刚哥无敌1","type":0,"url":"https://jx.xmflv.com/?url=","ext":{"header":{"user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"}}},
+{"name":"刚哥无敌2","type":1,"url":"https://mfjx.iwsyy.xyz/?url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","bilibili","1905"],"header":{"User-Agent": "okhttp/4.9.1"}}}
+]}
