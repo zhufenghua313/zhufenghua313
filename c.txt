@@ -13,6 +13,7 @@
 { "name":"宝哥线路",   "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/baoge9/bao.json"   },
 { "name":"少儿央视线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/hj0359/tv.json" },
 { "name":"少儿线路", "url": "https://jihulab.com/ymz1231/xymz/-/raw/main/ymshaoer" }, 
+{ "name":"测试线路", "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/yingshi01/7.json" }, 
 { "name":"肥猫线路",   "url": "http://肥猫.com"       },
 { "name":"二小线路",   "url": "http://tvbox.王二小放牛娃.top" },
 { "name":"巧技线路", "url": "http://cdn.qiaoji8.com/tvbox.json" }
