@@ -1,0 +1,402 @@
+﻿{
+  "spider": "./lib/fty.jar;md5;70471410f8e5a1bf20eb64b6b402e5c2",
+  "wallpaper": "https://深色壁纸.xxooo.cf/",
+  "sites": [
+{
+"key":"大师兄",
+"name":"大师┃20260226",
+"type":3,
+"api":"csp_XBPQ",
+"searchable": 1,
+"jar":"./lib/spider.jar",
+"quickSearch": 1,
+"filterable": 1,
+"ext":{"分类url":"https://www.dsxysproo.com/dqvodshow/{cateId}-{area}-{by}-{class}-----{catePg}---{year}.html","分类":"电视剧$2#电影$1#动漫$4#综艺$3"}
+},
+{
+      "key": "卧龙资源",
+      "name": "卧龙┃影视",
+      "type": 1,
+      "api": "https://collect.wolongzyw.com/api.php/provide/vod/",
+      "playerType": 1,
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "动作片",
+        "喜剧片",
+        "爱情片",
+        "科幻片",
+        "剧情片",
+        "恐怖片",
+        "战争片",
+        "大陆剧",
+        "欧美剧",
+        "港澳剧",
+        "韩剧",
+        "动漫电影",
+        "日剧",
+        "台湾剧",
+        "泰剧",
+        "记录片",
+        "体育赛事",
+        "短剧"
+      ]
+    },
+{
+    "key":"闪电资源",
+    "name":"闪电┃影视(切)",
+    "type":1,
+    "api":"http://sdzyapi.com/api.php/provide/vod/",
+    "searchable":1,
+    "quickSearch":1
+},
+{
+    "key":"量子资源",
+    "name":"量子┃影视(切)",
+    "type":1,
+    "api":"http://cj.lziapi.com/api.php/provide/vod/",
+    "searchable":1,
+    "quickSearch":1
+},
+     {
+      "key": "量子资源2",
+      "name": "量子┃影视2",
+      "type": 1,
+      "api": "http://cj.lziapi.com/api.php/provide/vod/",
+      "playurl": "https://lziplayer.com/?url=",
+      "playerType": 1,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "动作片",
+        "喜剧片",
+        "爱情片",
+        "科幻片",
+        "剧情片",
+        "恐怖片",
+        "战争片",
+        "大陆剧",
+        "欧美剧",
+        "港澳剧",
+        "韩剧",
+        "动漫电影",
+        "日剧",
+        "台湾剧",
+        "泰剧",
+        "记录片",
+        "体育赛事",
+        "短剧"
+      ]
+    },
+{
+      "key":"百度资源",
+      "name":"百度┃影视(切)",
+      "type":1,
+      "api":"https://api.apibdzy.com/api.php/provide/vod/",
+      "searchable":1,
+      "quickSearch":1
+         },
+{
+      "key": "新6V影视",
+      "name": "新6V┃影视",
+      "type": 3,
+      "api": "csp_SixV",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 0,
+      "ext": "http://www.xb6v.com/"
+    }, 
+{
+      "key": "api_tyyszy",
+      "name": "天涯┃影视",
+      "type": 1,
+      "api": "https://tyyszy.com/api.php/provide/vod"
+    },
+{
+"key": "360",
+"name": "360┃影视",
+"type": 3,
+"api": "csp_SP360",
+"searchable": 0,
+"jar":"./lib/spider.jar",
+"quickSearch": 0,
+"filterable": 0,
+"changeable": 0
+},
+{
+"key": "lzdm",
+"name": "量子┃动漫",
+"type": 1,
+"api": "https://cj.lziapi.com/api.php/provide/vod/",
+"searchable": 1,
+"jar":"./lib/spider.jar",
+"quickSearch": 1,
+"filterable": 0,
+"categories": ["国产动漫","日韩动漫","欧美动漫","港台动漫","海外动漫"]
+},
+{
+"key": "csp_Bili短剧",
+"name": "哔哩┃短剧",
+"type": 3,
+"api": "csp_Bili",
+"searchable": 0,
+"jar":"./lib/spider.jar",
+"quickSearch": 0,
+"filterable": 1,
+"ext": "./lib/Bili短剧.json"
+},
+{
+"key": "哔哩哔哩",
+"name": "哔哩┃大全",
+"type": 3,
+"api": "csp_Bili",
+"searchable": 1,
+"jar":"./lib/spider.jar",
+"quickSearch": 1,
+"filterable": 1,
+"ext": "./lib/Bili.json"
+},
+{
+      "key": "MTV",
+      "name": "明星┃MV",
+      "type": 3,
+      "api": "csp_Bili",
+      "style": { "type": "rect", "ratio": 1.597 },
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "ext": "./lib/MTV.json"
+        },
+{
+      "key": "Biliych",
+      "name": "明星┃演唱会",
+      "type": 3,
+      "api": "csp_Bili",
+      "style": { "type": "rect", "ratio": 1.597 },
+      "searchable": 1,
+      "quickSearch": 0,
+      "changeable": 0,
+      "ext": "./lib/biliych.json"
+        },
+ {
+            "key": "哔哩哔哩小品",
+            "name": "哔哩｜小品",
+            "type": 3,
+            "api": "csp_Bili",
+            "searchable": 0,
+            "quickSearch": 0,
+            "jar":"./lib/wenyi.jar",
+            "filterable": 0,
+            "ext": {
+                "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
+                "json": "./lib/哔哩哔哩小品.json"
+            },
+            "style": { "type": "rect", "ratio": 1.597 }
+        },
+ {
+            "key": "哔哩哔哩相声",
+            "name": "哔哩｜相声",
+            "type": 3,
+            "api": "csp_Bili",
+            "searchable": 0,
+            "quickSearch": 0,
+            "jar":"./lib/wenyi.jar",
+            "filterable": 0,
+            "ext": {
+                "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
+                "json": "./lib/哔哩哔哩相声.json"
+            },
+            "style": { "type": "rect", "ratio": 1.597 }
+        },
+ {
+            "key": "哔哩哔哩戏曲",
+            "name": "哔哩｜戏曲",
+            "type": 3,
+            "api": "csp_Bili",
+            "searchable": 0,
+            "quickSearch": 0,
+            "jar":"./lib/wenyi.jar",
+            "filterable": 0,
+            "ext": {
+                "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
+                "json": "./lib/哔哩哔哩戏曲.json"
+            },
+            "style": { "type": "rect",  "ratio": 1.597 }
+        },
+        {
+            "key": "戏曲多多",
+            "name": "戏曲｜多多",
+            "type": 3,
+            "api": "csp_AppLY",
+            "jar":"./lib/wenyi.jar",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+ {
+            "key": "养生堂",
+            "name": "养生｜知识",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "jar":"./lib/wenyi.jar",
+            "ext": "./lib/养生堂.json",
+            "style": {
+                "type": "rect",
+                "ratio": 1.597
+            }
+        },
+ {
+            "key": "88看球",
+            "name": "88｜体育直播",
+            "type": 3,
+            "api": "csp_Kanqiu",
+            "jar":"./lib/wenyi.jar",
+            "gridview": 3,
+            "style": {
+                "type": "list"
+            }
+        },
+ {
+            "key": "哔哩哔哩听书",
+            "name": "哔哩｜听书",
+            "type": 3,
+            "api": "csp_Bili",
+            "searchable": 0,
+           "jar":"./lib/wenyi.jar",
+            "quickSearch": 0,
+            "filterable": 0,
+            "ext": {
+                "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
+                "json": "./lib/哔哩哔哩听书.json"
+                       },
+            "style": { "type": "rect",   "ratio": 1.597 }
+        },
+{
+      "key": "Aid",
+      "name": "急救┃教学",
+      "type": 3,
+      "api": "csp_FirstAid",
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "style": { "type": "rect", "ratio": 3.8 }
+     },
+{
+"key": "学堂",
+"name": "学堂┃教育",
+"type": 3,
+"api": "csp_Bili",
+"style": {"type": "rect","ratio": 1.597},
+"searchable": 0,
+"jar":"./lib/spider.jar",
+"quickSearch": 0,
+"changeable": 0,
+"ext": "./lib/blixt.json"
+},
+{
+"key": "少儿教育",
+"name": "幼小┃衔接",
+"type": 3,
+"api": "csp_Bili",
+"style": {"type": "rect","ratio": 1.597},
+"searchable": 0,
+"jar":"./lib/spider.jar",
+"quickSearch": 0,
+"changeable": 0,
+"ext": "./lib/少儿教育.json"
+},
+{
+"key": "小学课堂",
+"name": "小学┃课堂",
+"type": 3,
+"api": "csp_Bili",
+"style": {"type": "rect","ratio": 1.597},
+"searchable": 0,
+"jar":"./lib/spider.jar",
+"quickSearch": 0,
+"changeable": 0,
+"ext": "./lib/小学课堂.json"
+},
+{
+"key": "初中课堂",
+"name": "初中┃课堂",
+"type": 3,
+"api": "csp_Bili",
+"style": {"type": "rect","ratio": 1.597},
+"searchable": 0,
+"jar":"./lib/spider.jar",
+"quickSearch": 0,
+"changeable": 0,
+"ext": "./lib/初中课堂.json"
+},
+{
+"key": "高中教育",
+"name": "高中┃课堂",
+"type": 3,
+"api": "csp_Bili",
+"style": {"type": "rect","ratio": 1.597},
+"searchable": 0,
+"jar":"./lib/spider.jar",
+"quickSearch": 0,
+"changeable": 0,
+"ext": "./lib/高中课堂.json"
+},
+{
+"key": "高考",
+"name": "高中┃高考",
+"type": 3,
+"api": "csp_Bili",
+"style": {"type": "rect","ratio": 1.597},
+"searchable": 0,
+"jar":"./lib/spider.jar",
+"quickSearch": 0,
+"changeable": 0,
+"ext": "./lib/高中高考.json"
+}
+],
+  "doh": [
+{
+      "name": "Google",
+      "url": "https://dns.google/dns-query",
+      "ips": [   "8.8.4.4",  "8.8.8.8"   ]
+    },
+ {
+      "name": "Cloudflare",
+      "url": "https://cloudflare-dns.com/dns-query",
+      "ips": [ "1.1.1.1",  "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"  ]
+    },
+{
+      "name": "AdGuard",
+      "url": "https://dns.adguard.com/dns-query",
+      "ips": [ "94.140.14.140", "94.140.14.141" ]
+    },
+{
+      "name": "DNSWatch",
+      "url": "https://resolver2.dns.watch/dns-query",
+      "ips": ["84.200.69.80",  "84.200.70.40" ]
+    },
+ {
+      "name": "Quad9",
+      "url": "https://dns.quad9.net/dns-quer",
+      "ips": [  "9.9.9.9",  "149.112.112.112" ]
+    }
+ ],
+  "lives": [
+    { "name": "朱凤华的的直播20260226",
+      "type": 0,
+      "url": "https://1815192323.v.123pan.cn/1815192323/直链空间/zhibo/zhibo.txt",
+      "playerType": 1
+    }
+  ]
+}
