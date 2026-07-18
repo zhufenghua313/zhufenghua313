@@ -1125,11 +1125,6 @@ CHC影迷电影,http://39.134.144.6:8089/PLTV/88888888/224/3221226607/index.m3u8
 
 
 
-🛰国际频道,#genre#
-
-
-
-
 
 ♬音乐频道,#genre#
 DJ我们不再是从前,https://vd2.bdstatic.com/mda-mhne550wq5m66zvj/1080p/cae_h264/1629803514331462220/mda-mhne550wq5m66zvj.mp4
@@ -1213,41 +1208,15 @@ DJ伤感好听《红颜知己》《事与愿违》《缘分相遇》《知情念
 《给我一把爱情火》《无情风雨无情的你》《昨夜的我又梦到了你》HD,https://vdse.bdstatic.com//63a770491e7bae0ebe661452c27eaf33.mp4
 宇宁《千里江山（大型纪录片《紫禁城》主题歌HD,https://vdse.bdstatic.com//688046e42c39cf6585106f945e2798e7.mov
 经典粤语歌曲《上海滩》《铁血丹心》《神情神话》《沧海一声笑》HD,https://vdse.bdstatic.com//f9cda7e70273c267b61a3d0c969d2033.mp4
-音乐轮播3,http://tc-tct.douyucdn2.cn/dyliveflv1/85894rmovieChow_2000.flv?wsAuth=7d054e041804e80af8aa7e975e2d8573&token=cpn-androidmpro-0-85894-a3575d938a4aa309c687f5fb85a1009fc65cfbeeb2672310&logo=0&expire=0&did=d010b07dcb997ada9934081c873542f0&origin=tct&vhost=pla
 7首伤感情歌,https://vd2.bdstatic.com/mda-nbdj7sp20st0jd9d/sc/cae_h264_delogo/1644847557994341172/mda-nbdj7sp20st0jd9d.mp4
-许巍-蓝莲花(演唱会),http://em.21dtv.com/songs/60026063.mkv
-赵传-快乐似神仙(演唱会),http://em.21dtv.com/songs/60025784.mkv
-白冰+胡歌-美丽的神话,http://em.21dtv.com/songs/60029221.mkv
-伍佰-挪威的森林(演唱会),http://em.21dtv.com/songs/60032810.mkv
-陈慧娴-明日有明天(演唱会),http://em.21dtv.com/songs/60030151.mkv
-郑少秋-书剑恩仇录(演唱会),http://em.21dtv.com/songs/60039733.mkv
-成龙+金喜善-美丽的神话(hd剧情),http://em.21dtv.com/songs/60029219.mkv
-李登威-你欠扁(无原唱),http://em.21dtv.com/songs/60031948.mkv
-许巍-时光(演唱会),http://em.21dtv.com/songs/60039096.mkv
-ADELE-make you feel my love(演唱会),http://em.21dtv.com/songs/60067940.mkv
-张行+王梦麟-雨中即景(演唱会),http://em.21dtv.com/songs/60055753.mkv
-谭咏麟+李克勤-梦仍是一样(演唱会),http://em.21dtv.com/songs/60029634.mkv
-崔健-不是我不明白(演唱会),http://em.21dtv.com/songs/60011382.mkv
-徐小凤-每日怀念你(演唱会),http://em.21dtv.com/songs/60029044.mkv
 凤凰传奇-御龙归字谣,http://antiserver.kuwo.cn/anti.s?rid=MUSIC_1164118&response=res&format=mp4&type=convert_url
 芒种,https://vd3.bdstatic.com/mda-kat1tr4ka5st965k/hd/mda-kat1tr4ka5st965k.mp4?pd=20
 凤凰传奇-华夏传说,http://antiserver.kuwo.cn/anti.s?rid=MUSIC_40828850&response=res&format=mp4&type=convert_url
 卓依婷鲁冰花,http://vd3.bdstatic.com/mda-jf8fbjprnf1fvpxm/mda-jf8fbjprnf1fvpxm.mp4?playlist=%5B%22hd%22%2C%22sc%22%5D
 我曾,https://vd3.bdstatic.com/mda-jjm8i93paakzz8yj/hd/mda-jjm8i93paakzz8yj.mp4?pd=20&vt=1
-谢有才-兄弟(演唱会),http://em.21dtv.com/songs/60084288.mkv
-陈百强-偏偏喜欢你,http://em.21dtv.com/songs/60033420.mkv
-刘德华-亲爱的小孩,http://em.21dtv.com/songs/60069725.mkv
-许巍-纯真(演唱会),http://em.21dtv.com/songs/60013403.mkv
-崔萍-今宵多珍重(演唱会),http://em.21dtv.com/songs/60023923.mkv
-钟镇涛-让一切随风,http://em.21dtv.com/songs/60036212.mkv
-甄妮-七级半地震(演唱会),http://em.21dtv.com/songs/60033743.mkv
 卓依婷橄榄树,http://vd3.bdstatic.com/mda-jfagwdhxb30ymr13/mda-jfagwdhxb30ymr13.mp4?playlist=%5B%22hd%22%2C%22sc%22%5D
 孤芳自赏,https://vdse.bdstatic.com//650fda26067e619a8632b173052b3a08.mp4?authorization=bce-auth-v1%2F40f207e648424f47b2e3dfbb1014b1a5%2F2020-01-31T14%3A25%3A59Z%2F-1%2Fhost
-刘德华+林子祥-每一个晚上(演唱会),http://em.21dtv.com/songs/60029089.mkv
 依婷爱拼才会赢,http://vd3.bdstatic.com/mda-jfreugw1pcza8xr1/mda-jfreugw1pcza8xr1.mp4?playlist=%5B%22hd%22%2C%22sc%22%5D
-BEYOND-请将手放开,http://em.21dtv.com/songs/60035529.mkv
-薰妮-故乡的雨,http://em.21dtv.com/songs/60019097.mkv
-F.I.R-流浪者之歌(演唱会),http://em.21dtv.com/songs/60027684.mkv
 春晚1984,http://txmov2.a.kwimgs.com/upic/2022/01/31/15/BMjAyMjAxMzExNTU5NTRfNDAzMDAxOTlfNjYyNzMyMzg3MTRfMF8z_b_B192356dadbc90d207ba16964d4c2914c.mp4
 春晚1985,http://txmov2.a.kwimgs.com/upic/2022/01/31/16/BMjAyMjAxMzExNjAwMDFfNDAzMDAxOTlfNjYyNzMyNTAwMzJfMF8z_b_Be73c5abcbc0eeb2ec9fce6842e1362a4.mp4
 春晚1987,https://txmov2.a.kwimgs.com/bs3/video-hls/5195746663405928031_hlsb.m3u8
