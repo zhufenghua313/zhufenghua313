@@ -13,6 +13,9 @@
 { "name":"宝哥线路",   "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/baoge/bao.json"   },
 { "name":"少儿央视线路", "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/shaoer/tv.json" },
 { "name":"少儿线路", "url": "https://jihulab.com/ymz1231/xymz/-/raw/main/ymshaoer" }, 
-{ "name":"二小线路",   "url": "http://tvbox.王二小放牛娃.top" }
+{"url": "http://肥猫.net/tv","name": "肥猫线路"},
+{ "name":"二小线路",   "url": "http://tvbox.王二小放牛娃.top" },
+{"url": "https://9280.kstore.vip/newwex.json","name": "王二小线路"},
+{"url": "https://www.yingm.cc/dm/dm.json","name": "动漫专线"}
 ]
 }
