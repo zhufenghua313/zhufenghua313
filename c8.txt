@@ -1,0 +1,6 @@
+{
+  "urls": [
+{ "name":"我的AV线路fty",   "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/ceshi/fty/fty.json"},
+{ "name":"我AV线路lwlxh",   "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/ceshi/fzling/fz.json"}
+  ]
+}
