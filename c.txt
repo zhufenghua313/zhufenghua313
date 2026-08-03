@@ -1,6 +1,7 @@
 //以下全部出自网络和大佬资源，如有冒犯请联系删除。[所有内容仅供学习使用，请勿用于违法用途。//{ "name": "a181成人", "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wwb521/live/refs/heads/main/video.json" }
 {
 "urls": [
+{"name":"ligu线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/ligu/ligu.json" }, 
 { "name":"giray线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/giray/XBPQ.json" }, 
 { "name":"影视线路1",   "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/yingshi01/7.json"   },
 { "name":"综合线路1",   "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/zonghe01/zh.json"   },
@@ -17,7 +18,6 @@
 {"url": "http://肥猫.net/tv","name": "肥猫线路"},
 { "name":"二小线路",   "url": "http://tvbox.王二小放牛娃.top" },
 {"url": "https://9280.kstore.vip/newwex.json","name": "王二小线路"},
-{ "name":"ligu线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/ligu/ligu.json" }, 
 {"url": "https://www.yingm.cc/dm/dm.json","name": "动漫专线"}
 ]
 }
