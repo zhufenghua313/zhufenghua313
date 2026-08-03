@@ -377,6 +377,58 @@
             "filterable": 1,
             "ext": "./lib/八号影视.json"
         },
+ {
+      "key": "位昌影视",
+      "name": "位昌影视",
+      "type": 0,
+      "api": "https://www.huyaapi.com/api.php/provide/vod/from/hyyun/at/xml/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": [
+        "喜剧片",
+        "内地剧",
+        "动画片",
+        "综艺",
+        "短剧"
+      ]
+    }
+    ,
+    {
+      "key": "位昌影视备用",
+      "name": "位昌影视备用",
+      "type": 0,
+      "api": "https://www.hongniuzy3.com/api.php/provide/vod/from/hnm3u8/at/xml/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": [
+        "动作片",
+        "喜剧片",
+        "国产剧",
+        "中国动漫",
+        "综艺",
+        "短剧"
+      ]
+    },
+    {
+      "key": "量子",
+      "name": "量子┃影视",
+      "type": 1,
+      "api": "https://cj.lziapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "changeable": 1,
+      "jar": "https://play.iptv365.org/%E8%8F%9C%E5%A6%AE%E4%B8%9D/jars/haiwaikan.jar"
+    },
+    {
+      "key": "暴風",
+      "name": "暴風",
+      "type": 1,
+      "api": "https://bfzyapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "changeable": 1,
+      "jar": "https://play.iptv365.org/%E8%8F%9C%E5%A6%AE%E4%B8%9D/jars/haiwaikan.jar"
+    },
   {
       "key": "Aid",
       "name": "蓝天┃急救",
