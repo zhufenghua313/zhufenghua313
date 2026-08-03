@@ -17,6 +17,7 @@
 {"url": "http://肥猫.net/tv","name": "肥猫线路"},
 { "name":"二小线路",   "url": "http://tvbox.王二小放牛娃.top" },
 {"url": "https://9280.kstore.vip/newwex.json","name": "王二小线路"},
+{ "name":"lovesmile线路", "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/lovesmile.json" },
 {"url": "https://www.yingm.cc/dm/dm.json","name": "动漫专线"}
 ]
 }
