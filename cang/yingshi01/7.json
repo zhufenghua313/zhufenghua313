@@ -2,6 +2,15 @@
   "spider": "./lib/蓝天白云.txt;md5;329e914a90b0bb5c7cb69b0eaec19700",
   "wallpaper": "https://gitee.com/ltby1/vip/raw/master/蓝天白云.jpg",
   "sites": [
+      {
+      "key": "暴風",
+      "name": "暴風",
+      "type": 1,
+      "api": "https://bfzyapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "changeable": 1,
+      "jar": "https://play.iptv365.org/%E8%8F%9C%E5%A6%AE%E4%B8%9D/jars/haiwaikan.jar"
+    },
 {
             "key": "量子资源",
             "name": "量子｜影视",
@@ -421,15 +430,6 @@
       "jar": "https://play.iptv365.org/%E8%8F%9C%E5%A6%AE%E4%B8%9D/jars/haiwaikan.jar"
     },
     {
-      "key": "暴風",
-      "name": "暴風",
-      "type": 1,
-      "api": "https://bfzyapi.com/api.php/provide/vod",
-      "searchable": 1,
-      "changeable": 1,
-      "jar": "https://play.iptv365.org/%E8%8F%9C%E5%A6%AE%E4%B8%9D/jars/haiwaikan.jar"
-    },
-  {
       "key": "Aid",
       "name": "蓝天┃急救",
       "type": 3,
