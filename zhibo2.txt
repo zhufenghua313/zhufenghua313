@@ -1,4 +1,5 @@
 雍正王朝,#genre#
+//线路来源https://gitee.com/pcy1980/besttv
 雍正王朝第1集,https://vip.ffzy-play6.com/20250113/33723_227d6457/index.m3u8
 雍正王朝第2集,https://vip.ffzy-play6.com/20250113/33725_41f4893a/index.m3u8
 雍正王朝第3集,https://vip.ffzy-play6.com/20250113/33727_41504ebf/index.m3u8
