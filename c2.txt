@@ -1,10 +1,5 @@
 {"urls": [
-{"name":"4K线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/4K.json" }, 
-{"name":"7线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/7.json" }, 
-{"name":"7xi线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/7xi.json" }, 
-{"name":"999线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/999.json" }, 
-{"name":"can1线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/can1.json" },
-{"name":"cun线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/cun.json" },
+{"name":"zhangge线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/zhangge.json" }, 
 {"name":"duo线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/duo.json" },
 {"name":"fan线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/fan.json" },
 {"name":"gua线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/gua.json" },
