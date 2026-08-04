@@ -1,7 +1,17 @@
 {"urls": [
-{"url": "https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp","name": "饭太硬线路"},
-{"url": "http://肥猫.net/tv","name": "肥猫线路"},
-{"url": "https://9280.kstore.vip/newwex.json","name": "王二小线路"},
-{"url": "https://www.yingm.cc/dm/dm.json","name": "动漫专线"}
+{"name":"4K线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/4K.json" }, 
+{"name":"7线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/7.json" }, 
+{"name":"7xi线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/7xi.json" }, 
+{"name":"999线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/999.json" }, 
+{"name":"can1线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/can1.json" },
+{"name":"cun线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/cun.json" },
+{"name":"duo线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/duo.json" },
+{"name":"fan线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/fan.json" },
+{"name":"gua线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/gua.json" },
+{"name":"guan2线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/guan2.json" },
+{"name":"guan3线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/guan3.json" },
+{"name":"mao线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/mao.json" },
+{"name":"og线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/og.json" },
+{"name":"yixing线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/m/yixing.json" }
 ]
 }
