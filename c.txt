@@ -18,6 +18,7 @@
 {"url": "http://肥猫.net/tv","name": "肥猫线路"},
 { "name":"二小线路",   "url": "http://tvbox.王二小放牛娃.top" },
 {"url": "https://9280.kstore.vip/newwex.json","name": "王二小线路"},
+{"name":"aimys线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/aimys.txt" }, 
 {"url": "https://www.yingm.cc/dm/dm.json","name": "动漫专线"}
 ]
 }
