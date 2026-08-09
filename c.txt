@@ -3,6 +3,7 @@
 "urls": [
 {"name":"ligu线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/ligu/ligu.json" }, 
 { "name":"giray线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/giray/XBPQ.json" }, 
+{"name":"zhangge线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/zhangge.json" }, 
 { "name":"影视线路1",   "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/yingshi01/7.json"   },
 { "name":"综合线路1",   "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/zonghe01/zh.json"   },
 { "name":"心魔影视",   "url": "https://ghproxy.net/raw.githubusercontent.com/zhufenghua313/zhufenghua313/refs/heads/main/cang/shenlei/tvbox.json" },
