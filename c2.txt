@@ -1,5 +1,5 @@
 {"urls": [
-{"name":"BX线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/cedric/BX.json" }, 
+{"name":"box线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/box.json" }, 
 {"name":"test线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/cedric/test.json" }
 ]
 }
