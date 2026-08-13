@@ -1,5 +1,5 @@
-﻿{
-  "spider": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/fty.jar;md5;70471410f8e5a1bf20eb64b6b402e5c2",
+{
+  "spider": "./lib/fty.jar;md5;70471410f8e5a1bf20eb64b6b402e5c2",
   "wallpaper": "https://深色壁纸.xxooo.cf/",
   "sites": [
    {"key": "说明","name": "我的少儿央视频道","type": 3,"api": "csp_DouDou","searchable": 0,"quickSearch": 0,"filterable": 0},
@@ -11,8 +11,8 @@
      "searchable":1,
      "quickSearch":1,
      "filterable":1,
-     "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/兔小贝.json",
-     "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/ymz.jar"
+     "ext":"./lib/兔小贝.json",
+     "jar": "./lib/ymz.jar"
      }, 
  { 
       "key": "csp_XYQHiker_兔小贝2",
@@ -22,8 +22,8 @@
       "searchable":1,
       "quickSearch":1,
       "filterable":1,
-      "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/兔小贝2.json",
-      "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/ymz.jar"
+      "ext":"./lib/兔小贝2.json",
+      "jar": "./lib/ymz.jar"
       }, 
 {
           "key": "央视经典",
@@ -33,7 +33,7 @@
           "searchable": 0,
           "quickSearch": 1,
           "filterable": 1,
-          "ext": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/哔哩经典.json"
+          "ext": "./lib/哔哩经典.json"
        },
 {
           "key": "cctv",
@@ -42,8 +42,8 @@
           "api": "csp_CCTV",
           "searchable": 0,
          "filterable": 0,
-           "ext": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/央视大全.json",
-          "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/HeChengChaXiu.jar"
+           "ext": "./lib/央视大全.json",
+          "jar": "./lib/HeChengChaXiu.jar"
     },  
    {
        "key": "csp_XYQHiker_童趣",
@@ -53,8 +53,8 @@
        "searchable":1,
        "quickSearch":1,
        "filterable":1,
-       "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/播视童趣.json",
-       "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/ymz.jar"
+       "ext":"./lib/播视童趣.json",
+       "jar": "./lib/ymz.jar"
        }, 
  {
        "key":"幼儿启蒙",
@@ -64,8 +64,8 @@
        "searchable":0,
        "quickSearch":1,
        "filterable":1,
-       "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/幼儿启蒙.json",
-       "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+       "ext":"./lib/幼儿启蒙.json",
+       "jar": "./lib/Bili.jar"
        },      
   {
             "key": "益智",
@@ -75,8 +75,8 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 0,
-            "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/益智动画.json", 
-            "jar":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+            "ext":"./lib/益智动画.json", 
+            "jar":"./lib/Bili.jar"
         },  
   {
          "key":"幼小衔接",
@@ -86,8 +86,8 @@
          "searchable":0,
          "quickSearch":1,
          "filterable":1,
-         "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/幼小衔接.json",
-         "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+         "ext":"./lib/幼小衔接.json",
+         "jar": "./lib/Bili.jar"
         },
   {
          "key":"小灯塔",
@@ -97,8 +97,8 @@
          "searchable":0,
          "quickSearch":1,
          "filterable":1,
-         "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/小灯塔百科.json",
-         "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+         "ext":"./lib/小灯塔百科.json",
+         "jar": "./lib/Bili.jar"
         },
  {
          "key":"小灯塔科学",
@@ -108,8 +108,8 @@
          "searchable":0,
          "quickSearch":1,
          "filterable":1,
-         "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/小灯塔科学.json",
-         "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+         "ext":"./lib/小灯塔科学.json",
+         "jar": "./lib/Bili.jar"
         },
    {
           "key":"小灯塔地理",
@@ -119,8 +119,8 @@
           "searchable":0,
           "quickSearch":1,
           "filterable":1,
-          "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/小灯塔地理.json",
-          "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+          "ext":"./lib/小灯塔地理.json",
+          "jar": "./lib/Bili.jar"
          },
    {
            "key":"小灯塔国学",
@@ -130,8 +130,8 @@
            "searchable":0,
            "quickSearch":1,
            "filterable":1,
-           "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/小灯塔国学.json",
-           "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+           "ext":"./lib/小灯塔国学.json",
+           "jar": "./lib/Bili.jar"
            },
    {
             "key":"小灯塔人文",
@@ -141,8 +141,8 @@
             "searchable":0,
             "quickSearch":1,
             "filterable":1,
-            "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/小灯塔人文.json",
-            "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+            "ext":"./lib/小灯塔人文.json",
+            "jar": "./lib/Bili.jar"
             },
 		
    {
@@ -153,8 +153,8 @@
              "searchable":0,
              "quickSearch":1,
              "filterable":1,
-             "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/儿童拼音.json",
-             "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+             "ext":"./lib/儿童拼音.json",
+             "jar": "./lib/Bili.jar"
             },
     {
               "key":"儿童识字",
@@ -164,8 +164,8 @@
               "searchable":0,
               "quickSearch":1,
               "filterable":1,
-              "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/儿童识字.json",
-              "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+              "ext":"./lib/儿童识字.json",
+              "jar": "./lib/Bili.jar"
              },
     {
               "key":"儿童英语",
@@ -175,8 +175,8 @@
               "searchable":0,
               "quickSearch":1,
               "filterable":1,
-              "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/儿童英语.json",
-              "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+              "ext":"./lib/儿童英语.json",
+              "jar": "./lib/Bili.jar"
              },
      {
                "key":"儿童硬笔",
@@ -186,8 +186,8 @@
                "searchable":0,
                "quickSearch":1,
                "filterable":1,
-               "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/儿童硬笔.json",
-               "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+               "ext":"./lib/儿童硬笔.json",
+               "jar": "./lib/Bili.jar"
               },
      {
               "key":"儿童思维",
@@ -197,8 +197,8 @@
               "searchable":0,
               "quickSearch":1,
               "filterable":1,
-              "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/儿童思维.json",
-              "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+              "ext":"./lib/儿童思维.json",
+              "jar": "./lib/Bili.jar"
               },
    {
                "key":"儿童口才",
@@ -208,8 +208,8 @@
                "searchable":0,
                "quickSearch":1,
                "filterable":1,
-               "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/儿童口才.json",
-               "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar" 
+               "ext":"./lib/儿童口才.json",
+               "jar": "./lib/Bili.jar" 
                },
      {
                 "key":"儿童编程",
@@ -219,8 +219,8 @@
                 "searchable":0,
                 "quickSearch":1,
                 "filterable":1,
-                "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/儿童编程.json",
-                "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+                "ext":"./lib/儿童编程.json",
+                "jar": "./lib/Bili.jar"
                },
       {
                 "key":"儿童武术",
@@ -230,8 +230,8 @@
                 "searchable":0,
                 "quickSearch":1,
                 "filterable":1,
-                "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/儿童武术.json",
-                "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+                "ext":"./lib/儿童武术.json",
+                "jar": "./lib/Bili.jar"
               },
 		
     { 
@@ -242,8 +242,8 @@
                 "searchable":0,
                 "quickSearch":1,
                 "filterable":1,
-                "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/兴趣培养.json",
-                "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+                "ext":"./lib/兴趣培养.json",
+                "jar": "./lib/Bili.jar"
                },
     {
                 "key":"小学",
@@ -253,8 +253,8 @@
                 "searchable":0,
                 "quickSearch":1,
                 "filterable":1,
-                "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/哔哩哔哩小学.json",
-                "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+                "ext":"./lib/哔哩哔哩小学.json",
+                "jar": "./lib/Bili.jar"
                },	
  {
                  "key":"初中",
@@ -263,8 +263,8 @@
                  "searchable":0,
                  "quickSearch":1,
                  "filterable":1,
-                 "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/哔哩哔哩初中.json",
-                 "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+                 "ext":"./lib/哔哩哔哩初中.json",
+                 "jar": "./lib/Bili.jar"
                  },		
    {
                   "key":"高中",
@@ -273,8 +273,8 @@
                   "searchable":0,
                   "quickSearch":1,
                   "filterable":1,
-                  "ext":"https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/哔哩哔哩高中.json",
-                  "jar": "https://1815192323.v.123pan.cn/1815192323/直链空间/cang/hj0359/lib/Bili.jar"
+                  "ext":"./lib/哔哩哔哩高中.json",
+                  "jar": "./lib/Bili.jar"
                   }
   ],
   "doh": [
