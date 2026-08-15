@@ -1,11 +1,11 @@
 {"urls": [
 {"name":"box线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/box.json" }, 
-{"name":"cldj线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/master/cldj.json" }, 
-{"name":"cljy线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/master/cljy.json" }, 
-{"name":"clwy线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/master/clwy.json" }, 
-{"name":"clys线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/master/clys.json" }, 
-{"name":"clys4k线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/master/clys4k.json" }, 
-{"name":"master线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/master/master.json" }, 
+{"name":"灿烂短剧", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/canlan/cldj.json" }, 
+{"name":"灿烂教育", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/canlan/cljy.json" }, 
+{"name":"灿烂文艺", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/canlan/clwy.json" }, 
+{"name":"灿烂影视", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/canlan/clys.json" }, 
+{"name":"灿烂4k线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/canlan/clys4k.json" }, 
+{"name":"master线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/canlan/master.json" }, 
 {"name":"ligu线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/ligu/ligu.json" }
 ]
 }
