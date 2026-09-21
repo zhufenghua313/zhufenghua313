@@ -1,8 +1,8 @@
 //以下全部出自网络和大佬资源，如有冒犯请联系删除。[所有内容仅供学习使用，请勿用于违法用途。//{ "name": "a181成人", "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/wwb521/live/refs/heads/main/video.json" }
 {
 "urls": [
-{"name":"ligu线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/ligu/ligu.json" }, 
 { "name":"giray线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/giray/XBPQ.json" }, 
+{"name":"ligu线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/ligu/ligu.json" }, 
 {"name":"zhangge线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhangge/zhangge.json" }, 
 {"name":"灿烂短剧", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/canlan/cldj.json" }, 
 {"name":"灿烂教育", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/canlan/cljy.json" }, 
