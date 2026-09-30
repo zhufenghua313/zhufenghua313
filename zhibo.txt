@@ -82,7 +82,6 @@ CETV4,http://27.36.89.129:6666/923287339$佛山咪咕联通
 陕西新闻资讯频道,http://27.36.89.129:6666/956909289$佛山咪咕联通
 财富天下,http://27.36.89.129:6666/956923159$佛山咪咕联通
 镇江新闻综合,http://27.36.89.129:6666/639731783$佛山咪咕联通
-海南广播电视总台新闻频道,http://27.36.89.129:6666/9620675$佛山咪咕联通17
 海南广播电视总台自贸频道,http://27.36.89.129:6666/962045226$佛山咪咕联通
 海南广播电视总台社会与法频道,http://27.36.89.129:6666/962045223$佛山咪咕联通
 海南广播电视总台文旅频道,http://27.36.89.129:6666/962067526$佛山咪咕联通
@@ -323,10 +322,6 @@ CGTN法语,https://0472.org/hls/cgtnf.m3u8$美国 CloudFlare节点
 CGTN俄语,https://0472.org/hls/cgtne.m3u8$美国 CloudFlare节点
 CGTN英语,https://0472.org/hls/cgtn.m3u8$美国 CloudFlare节点
 CGTN记录,https://0472.org/hls/cgtnd.m3u8$美国 CloudFlare节点
-CGTN_Arabic,https://arabic-livews.cgtn.com/hls/LSveq57bErWLinBnxosqjisZ220802LSTefTAS9zc9mpU08y3np9TH220802cd/playlist.m3u8
-CGTN_Español,https://espanol-livews.cgtn.com/hls/LSveOGBaBw41Ea7ukkVAUdKQ220802LSTexu6xAuFH8VZNBLE1ZNEa220802cd/playlist.m3u8
-CGTN_Français,https://francais-livews.cgtn.com/hls/LSvev95OuFZtKLc6CeKEFYXj220802LSTeV6PO0Ut9r71Uq3k5goCA220802cd/playlist.m3u8
-CGTN_Русский,https://russian-livews.cgtn.com/hls/LSvexABhNipibK5KRuUkvHZ7220802LSTeze9o8tdFXMHsb1VosgoT220802cd/playlist.m3u8
 CGTN_Documentary,https://english-livebkali.cgtn.com/live/doccgtn.m3u8
 美国·彭博财经,https://liveprodusphoenixeast.akamaized.net/USPhx-HD/Channel-TX-USPhx-AWS-virginia-1/Source-USPhx-16k-1-s6lk2-BP-07-02-81ykIWnsMsg_live.m3u8
 美·红牛运动,http://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_1660.m3u8
@@ -393,10 +388,6 @@ CGTN_Documentary,https://english-livebkali.cgtn.com/live/doccgtn.m3u8
 浙江公共新闻,https://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8
 浙江国际,http://115.29.208.41:33333/list7/zjtv.php?id=10
 浙江国际,https://ali-xwl.cztv.com/live/channel101080Pnew.m3u8
-杭州综合,http://jellyfin.eversouthhangzhou.com.cn:8188/rtp/233.50.201.173:5140
-杭州明珠,http://jellyfin.eversouthhangzhou.com.cn:8188/rtp/233.50.201.174:5140
-杭州生活,http://jellyfin.eversouthhangzhou.com.cn:8188/rtp/233.50.201.175:5140
-杭州影视,http://jellyfin.eversouthhangzhou.com.cn:8188/rtp/233.50.201.176:5140
 绍兴新闻综合,http://live.shaoxing.com.cn/video/s10001-sxhb/index.m3u8
 绍兴公共频道,http://live.shaoxing.com.cn/video/s10001-sxtv2/index.m3u8
 绍兴文化影视,http://live.shaoxing.com.cn/video/s10001-sxtv3/index.m3u8
@@ -417,7 +408,6 @@ http://hzcm-live.media.hugd.com/613c47f0ab0d4eaa98b21378d0db6ded/0051d31c9dd543a
 奉化综合,http://115.29.208.41:33333/list7/gdy.php?id=ningbofh
 象山新闻综合,https://play-sh13.quklive.com/live/1702360350551252.m3u8?auth_key=2037107484-800189c57a5a44d3b823b60cf84f6756-0-a6f6828a62d5c167cff5e68735fa0d39
 舟山新闻综合,http://115.29.208.41:33333/list7/zjdft.php?id=1699001836208185
-温州新闻综合,http://jellyfin.eversouthhangzhou.com.cn:8188/rtp/233.50.201.87:5140
 乐清新闻频道,http://115.29.208.41:33333/list7/gdy.php?id=wenzhouyq
 苍南新闻综合,http://115.29.208.41:33333/list7/zjdft.php?id=1726543353849105
 东阳新闻综合,http://115.29.208.41:33333/list7/zjdft.php?id=1681113308206040
@@ -429,7 +419,6 @@ http://hzcm-live.media.hugd.com/613c47f0ab0d4eaa98b21378d0db6ded/0051d31c9dd543a
 磐石综合,http://stream5.jlntv.cn/ps/playlist.m3u8
 辉南新闻综合,http://stream5.jlntv.cn/hn/sd/live.m3u8
 黑龙江七台河新闻综合,http://live.qthnews.org.cn:1935/live/live1/800k/tzwj_video.m3u8
-黑龙江七台河民生社教,http://live.qthnews.org.cn:1935/live/live2/800k/tzwj_video.m3u8
 广西南宁影视娱乐,http://hls.nntv.cn/nnlive/YSYL_244.m3u8
 广西南宁新闻综合,http://hls.nntv.cn/nnlive/XWZH_24.m3u8$ IPV4网络
 四川松潘频道,http://live.spccmc.com:90/live/spxwzh.m3u8$ IPV4网络
@@ -496,7 +485,6 @@ http://hzcm-live.media.hugd.com/613c47f0ab0d4eaa98b21378d0db6ded/0051d31c9dd543a
 湖州文化娱乐,https://hzcm-live.media.hugd.com/613c47f0ab0d4eaa98b21378d0db6ded/0051d31c9dd543a7825eea4e49675b2a.m3u8?auth_key=2277598059-0a5ebfa1c0dc4671b42a60810fc37039-0-fa625b7d1feab612062453c12e3c8887
 湖州新闻综合,http://hzcm-live.media.hugd.com/3f5fa7d64c7c46a38c6bd8ad35e836cc/65128273761b4731ae53729ea6dcf932.m3u8?auth_key=2277598215-9d21c15111244bea8d298c361d31a72e-0-d031198f58d44b0e91ba2e3f3b188865
 荥阳综合,http://tvpull.dxhmt.cn:9081/tv/10182-1.m3u8
-萝北综合,https://rmplive.hljtv.com/live/luobei.m3u8
 会东电视台,http://exfile.schdxww.com:80/nmip-media/channellive/channel100055/playlist.m3u8
 
 
