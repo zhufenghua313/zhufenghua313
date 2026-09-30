@@ -1,0 +1,39 @@
+{
+  "spider": "./spider/教育.jar",
+  "wallpaper":"http://tool.teyonds.com/api/",
+  "logo": "./jiaoyu.gif",
+  "warningText": "CCTV灿烂回看,精彩不容错过\n按菜单键可切换内容分类",
+  "sites": [
+    {
+      "key": "cctv",
+      "name": "🇨🇳CCTV灿烂回看江苏版",
+      "type": 3,
+      "api": "csp_CCTV",
+      "jar": "./spider/cctv.jar",
+      "searchable": 0,
+      "filterable": 0,
+      "ext": "./json/央视大全.json"
+    },
+    {
+      "key": "央库云",
+      "name": "🌟央视┃影视",
+      "type": 3,
+      "api": "./py/央库云.py",
+      "searchable": 0,
+      "changeable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2
+    },
+    {
+      "key": "ysjd",
+      "name": "🌟央视┃经典🌟",
+      "type": 3,
+      "api": "csp_Bili",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "ext": "./json/央视经典.json"
+    }
+  ]
+}
