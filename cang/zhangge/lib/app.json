@@ -1,0 +1,68 @@
+[
+  {
+    "name": "推荐",
+    "list": [
+      {
+        "name": "熊猫TV",
+        "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/i4Dzm3lx66ej",
+        "icon": "http://shichang.yunchangtv.vip:118/upload/images/20260113/17682809456965d371a97ef.png",
+        "version": "       点击下载"
+      },
+      {
+        "name": "4k美眉",
+        "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/iE4hM3lx62qh",
+        "icon": "https://mpimg.cn/view.php/8b5738b8dfa993f9d500baab81ae99fe.png",
+        "version": "      点击下载"
+      }
+    ]
+  },
+  {
+ 
+    "name": "影视APP",
+    "list": [
+      {"name": "爱4K", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/ic1hZ3lx5iri", "icon": "https://mpimg.cn/view.php/a7540750c8636f5d84912b9ec4cacedf.webp", "version": "点击下载"},
+      {"name": "芒果4k", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/ipKv23lx5sub", "icon": "https://mpimg.cn/view.php/fee95d28022316152b779f2407b439da.png", "version": "点击下载"},
+      {"name": "春意天下永久版", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/iLzRM3lx400h", "icon": "#", "version": "点击下载"},
+      {"name": "永久影视", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/ivwjF3lx5zad", "icon": "#", "version": "点击下载"},
+      {"name": "4K免费影视", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/irmxX3lx5hpa", "icon": "http://zibb2025.tdddz.cn/upload/images/20251215/1765730290693ee7f211c37.png", "version": "点击下载"}
+    ]
+  },
+  {
+    "name": "直播APP",
+    "list": [
+      {"name": "全球直播", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/iZcBB3lx5upi", "icon": "http://zibb2024.tdddz.cn/upload/images/20250111/173660048267826ba240746.png", "version": "点击下载"},
+      {"name": "直播APP2", "url": "#", "icon": "#", "version": "点击下载"},
+      {"name": "直播APP3", "url": "#", "icon": "#", "version": "点击下载"},
+      {"name": "直播APP4", "url": "#", "icon": "#", "version": "点击下载"},
+      {"name": "直播APP5", "url": "#", "icon": "#", "version": "点击下载"}
+    ]
+  },
+  {
+    "name": "腰疼APP",
+    "list": [
+      {"name": "熊猫TV", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/i4Dzm3lx66ej ", "icon": "http://shichang.yunchangtv.vip:118/upload/images/20260113/17682809456965d371a97ef.png", "version": "点击下载"},
+      {"name": "4k美眉", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/iE4hM3lx62qh", "icon": "https://mpimg.cn/view.php/8b5738b8dfa993f9d500baab81ae99fe.png", "version": "点击下载"},
+      {"name": "三级影视", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/iLVaD3lx654d", "icon": "https://mpimg.cn/view.php/843599c0710d3166df43351bad994682.webp", "version": "点击下载"},
+      {"name": "香蕉4K", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/ijwje3lx65u", "icon": "https://mpimg.cn/view.php/8f6457491110f90ec0e0c61ec0eb2d24.png", "version": "点击下载"},
+      {"name": "骚火影视", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/iKYkr3m9k4dc", "icon": "https://mpimg.cn/view.php/a941d8be57f5a12b28464e7e01bd217a.png", "version": "点击下载"}
+    ]
+  },
+  {
+      "name": "工具APP",
+    "list": [
+      {"name": "APP应用仓库", "url": "https://mpimg.cn/down.php/c9413ca635cd5aa410a78a631d7cd0cc.apk", "icon": "https://mpimg.cn/view.php/6d266bebaa0118bb96ecfb99330bef6a.png", "version": "点击下载"},
+      {"name": "APP2", "url": "#", "icon": "#", "version": "点击下载"},
+      {"name": "APP3", "url": "#", "icon": "#", "version": "点击下载"},
+      {"name": "APP4", "url": "#", "icon": "#", "version": "点击下载"},
+      {"name": "APP5", "url": "#", "icon": "#", "version": "点击下载"}
+    ]
+  },
+  {
+    "name": "工具类",
+    "list": [
+    
+      {"name": "APP应用仓库", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/i0gUt3m9ovpa", "icon": "https://mpimg.cn/view.php/6d266bebaa0118bb96ecfb99330bef6a.png", "version": "点击下载"},
+      {"name": "腰疼市场", "url": "https://lz.qaiu.top/parser?url=https://wwbkk.lanzoup.com/ixO5Q3k1zp2h", "icon": "https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png", "version": "点击下载"},
+    ]
+  }
+]
