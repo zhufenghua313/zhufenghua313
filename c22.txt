@@ -1,53 +1,9 @@
 {
     "urls": [
-        {
-            "url": "http://肥猫.net/tv",
-            "name": "🚀1-肥猫"
-        },
-        {
-            "url": "http://www.饭太硬.cc/tv",
-            "name": "🚀2-饭太硬"
-        },
-        {
-            "url": "https://9877.kstore.space/ONE/one.json",
-            "name": "🚀3-one"
-        },
-        {
-            "url": "http://xn--ihqu10cn4c.xn--v4q818bf34b.top/",
-            "name": "🚀4-我不是摸鱼儿‌"
-        },
-        {
-            "url": "https://tv.xn--yhqu5zs87a.top",
-            "name": "🚀5-菜妮丝"
-        },
-        {
-            "url": "https://cyao2q.github.io/files/m.json",
-            "name": "🚀6-不会唱歌的鱼妖"
-        },
+        { "name":"智谱清言02", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhipu/tv_xin.json" },
         {
             "url": "http://tvbox.xn--4kq62z5rby2qupq9ub.top/",
             "name": "🚀7-王二小放牛娃"
-        },
-        {
-            "url": "https://700sjro44343.vicp.fun/eggp/0211/tv.json",
-            "name": "🚀9-二月红接口"
-        },
-        {
-            "url": "http://宝盒接口.top",
-            "name": "🚀10-宝盒接口"
-        },
-        {
-            "url": "https://qist.wyfc.qzz.io/xiaosa/api.json",
-            "name": "🚀11-潇洒"
-        },
-        {
-            "url": "https://cdn.githubraw.com/xuexuguang/tvbox_spider/main/tv/kk/heroaku_dtes.json",
-            "name": "🚀12-英雄"
-        },
-        {
-            "url": "https://ztha.top/TVBox/thdjk.json",
-            "name": "🚀13-挺好"
-        }
-  
+        }  
     ]
 }
