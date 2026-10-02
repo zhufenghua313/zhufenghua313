@@ -20,6 +20,7 @@
 { "name":"宝哥线路",   "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/baoge/bao.json"   },
 { "name":"少儿央视线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/shaoer/tv.json" },
 { "name":"少儿线路", "url": "https://jihulab.com/ymz1231/xymz/-/raw/main/ymshaoer" }, 
+{ "name":"智谱清言线路", "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/zhipu/tv_jinglao.json" },
 { "name":"二月红线路",  "url": "https://1815192323.cdn.123clouddisk.com/1815192323/直链空间/cang/hong/tv.json" },
 {"url": "http://肥猫.net/tv","name": "肥猫线路"},
 { "name":"二小线路",   "url": "http://tvbox.王二小放牛娃.top" },
