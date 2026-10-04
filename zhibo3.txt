@@ -1,81 +1,146 @@
-央视频道,#genre#
-CCTV1,http://121.19.134.6:808/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV2,http://121.19.134.6:808/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV3,http://121.19.134.202:808/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV4,http://121.19.134.202:808/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV5,http://121.19.134.202:808/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV5+,http://121.19.134.202:808/tsfile/live/0018_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV5+赛事,http://121.19.134.6:808/tsfile/live/0018_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV6,http://121.19.134.6:808/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV7,http://121.19.134.6:808/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV8,http://121.19.134.202:808/tsfile/live/0008_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV9,http://121.19.134.202:808/tsfile/live/0009_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV10,http://121.19.134.202:808/tsfile/live/0010_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV11,http://121.19.134.6:808/tsfile/live/0011_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV12,http://121.19.134.202:808/tsfile/live/0012_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV13,http://121.19.134.202:808/tsfile/live/0013_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV14,http://121.19.134.6:808/tsfile/live/0014_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV15,http://121.19.134.202:808/tsfile/live/0015_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV16,http://121.19.134.202:808/tsfile/live/0016_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV17,http://121.19.134.6:808/tsfile/live/0019_1.m3u8?key=txiptv&playlive=1&authid=0
-卫视频道,#genre#
-北京卫视4K,http://121.19.134.6:808/tsfile/live/1005_1.m3u8?key=txiptv&playlive=1&authid=0
-三沙卫视,http://121.19.134.6:808/tsfile/live/1025_1.m3u8?key=txiptv&playlive=1&authid=0
-东南卫视,http://121.19.134.6:808/tsfile/live/1032_1.m3u8?key=txiptv&playlive=1&authid=0
-东方卫视,http://121.19.134.6:808/tsfile/live/1016_1.m3u8?key=txiptv&playlive=1&authid=0
-云南卫视,http://121.19.134.202:808/tsfile/live/0119_1.m3u8?key=txiptv&playlive=1&authid=0
-兵团卫视,http://121.19.134.6:808/tsfile/live/0115_1.m3u8?key=txiptv&playlive=1&authid=0
-内蒙古卫视,http://121.19.134.202:808/tsfile/live/0109_1.m3u8?key=txiptv&playlive=1&authid=0
-北京卫视,http://121.19.134.202:808/tsfile/live/1015_1.m3u8?key=txiptv&playlive=1&authid=0
-吉林卫视,http://121.19.134.6:808/tsfile/live/1033_1.m3u8?key=txiptv&playlive=1&authid=0
-四川卫视,http://121.19.134.6:808/tsfile/live/1029_1.m3u8?key=txiptv&playlive=1&authid=0
-天津卫视,http://121.19.134.6:808/tsfile/live/1018_1.m3u8?key=txiptv&playlive=1&authid=0
-宁夏卫视,http://121.19.134.202:808/tsfile/live/0112_1.m3u8?key=txiptv&playlive=1&authid=0
-安徽卫视,http://121.19.134.202:808/tsfile/live/1013_1.m3u8?key=txiptv&playlive=1&authid=0
-山东卫视,http://121.19.134.6:808/tsfile/live/1019_1.m3u8?key=txiptv&playlive=1&authid=0
-山西卫视,http://121.19.134.6:808/tsfile/live/0118_1.m3u8?key=txiptv&playlive=1&authid=0
-广东卫视,http://121.19.134.6:808/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0
-广西卫视,http://121.19.134.6:808/tsfile/live/0113_1.m3u8?key=txiptv&playlive=1&authid=0
-新疆卫视,http://121.19.134.6:808/tsfile/live/0110_1.m3u8?key=txiptv&playlive=1&authid=0
-江苏卫视,http://121.19.134.202:808/tsfile/live/1012_1.m3u8?key=txiptv&playlive=1&authid=0
-江西卫视,http://121.19.134.202:808/tsfile/live/1022_1.m3u8?key=txiptv&playlive=1&authid=0
-河北卫视,http://121.19.134.202:808/tsfile/live/1006_1.m3u8?key=txiptv&playlive=1&authid=0
-河南卫视,http://121.19.134.6:808/tsfile/live/1034_1.m3u8?key=txiptv&playlive=1&authid=0
-浙江卫视,http://121.19.134.6:808/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0
-海南卫视,http://121.19.134.202:808/tsfile/live/1030_1.m3u8?key=txiptv&playlive=1&authid=0
-深圳卫视,http://121.19.134.6:808/tsfile/live/1014_1.m3u8?key=txiptv&playlive=1&authid=0
-湖北卫视,http://121.19.134.6:808/tsfile/live/1024_1.m3u8?key=txiptv&playlive=1&authid=0
-湖南卫视,http://121.19.134.202:808/tsfile/live/1010_1.m3u8?key=txiptv&playlive=1&authid=0
-甘肃卫视,http://121.19.134.202:808/tsfile/live/0141_1.m3u8?key=txiptv&playlive=1&authid=0
-西藏卫视,http://121.19.134.202:808/tsfile/live/0111_1.m3u8?key=txiptv&playlive=1&authid=0
-贵州卫视,http://121.19.134.202:808/tsfile/live/1023_1.m3u8?key=txiptv&playlive=1&authid=0
-辽宁卫视,http://121.19.134.202:808/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0
-重庆卫视,http://121.19.134.6:808/tsfile/live/1030_1.m3u8?key=txiptv&playlive=1&authid=0
-青海卫视,http://121.19.134.6:808/tsfile/live/0140_1.m3u8?key=txiptv&playlive=1&authid=0
-黑龙江卫视,http://121.19.134.6:808/tsfile/live/1013_1.m3u8?key=txiptv&playlive=1&authid=0
-其他频道,#genre#
-CETV1,http://121.19.134.202:808/tsfile/live/1035_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-CETV2,http://121.19.134.202:808/tsfile/live/1038_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-CGTN,http://121.19.134.202:808/tsfile/live/1005_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-保定公共,http://121.19.134.202:808/tsfile/live/1008_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-保定文化娱乐,http://121.19.134.6:808/tsfile/live/1009_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-保定新闻综合,http://121.19.134.202:808/tsfile/live/1007_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-保定生活健康,http://121.19.134.202:808/tsfile/live/1009_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-卡通动画,http://121.19.134.6:808/tsfile/live/1026_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-唐山影视,http://121.19.134.6:808/tsfile/live/1035_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-四海垂钓,http://121.19.134.6:808/tsfile/live/1037_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-山东教育,http://121.19.134.202:808/tsfile/live/1033_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-廊坊新闻,http://121.19.134.6:808/tsfile/live/1038_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-快乐垂钓,http://121.19.134.6:808/tsfile/live/1036_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-河北三农,http://121.19.134.6:808/tsfile/live/1004_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-河北少儿科教,http://121.19.134.6:808/tsfile/live/1003_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-河北影视,http://121.19.134.6:808/tsfile/live/1002_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-河北影视剧,http://121.19.134.202:808/tsfile/live/1002_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-河北经济,http://121.19.134.6:808/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-河北经济生活,http://121.19.134.202:808/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-河北都市,http://121.19.134.6:808/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-涿州新闻,http://121.19.134.6:808/tsfile/live/1010_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-秦皇岛,http://121.19.134.6:808/tsfile/live/1039_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-金鹰卡通,http://121.19.134.6:808/tsfile/live/1022_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-金鹰纪实,http://121.19.134.202:808/tsfile/live/1037_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
-靓彩河北,http://121.19.134.6:808/tsfile/live/1006_1.m3u8?key=txiptv&playlive=1&authid=0 # SD 640x360
+央视直播,#genre#
+CCTV-1 综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221225654/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-2 财经,http://gxyd.484947.xyz/PLTV/77777777/224/3221225657/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-3 综艺,http://gxyd.484947.xyz/PLTV/77777777/224/3221225713/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-4 中文国际,http://gxyd.484947.xyz/PLTV/77777777/224/3221225761/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-5 体育,http://gxyd.484947.xyz/PLTV/77777777/224/3221225801/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-5 体育,http://gxyd.484947.xyz/PLTV/77777777/224/3221225660/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-6 电影,http://gxyd.484947.xyz/PLTV/77777777/224/3221225715/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-7 国防军事,http://gxyd.484947.xyz/PLTV/77777777/224/3221225700/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-8 电视剧,http://gxyd.484947.xyz/PLTV/77777777/224/3221225716/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-9 纪录,http://gxyd.484947.xyz/PLTV/77777777/224/3221225663/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-10 科教,http://gxyd.484947.xyz/PLTV/77777777/224/3221225704/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-11 戏曲,http://gxyd.484947.xyz/PLTV/77777777/224/3221225739/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-12 社会与法,http://gxyd.484947.xyz/PLTV/77777777/224/3221225645/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-13 新闻,http://gxyd.484947.xyz/PLTV/77777777/224/3221225742/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-14 少儿,http://gxyd.484947.xyz/PLTV/77777777/224/3221225648/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-15 音乐,http://gxyd.484947.xyz/PLTV/77777777/224/3221225693/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-16 奥林匹克,http://gxyd.484947.xyz/PLTV/77777777/224/3221225937/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-17 农业农村,http://gxyd.484947.xyz/PLTV/77777777/224/3221225766/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-5+ 体育赛事,http://gxyd.484947.xyz/PLTV/77777777/224/3221225712/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV4k,http://gxyd.484947.xyz/PLTV/77777777/224/3221226689/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CCTV-16 （4K）,http://gxyd.484947.xyz/PLTV/77777777/224/3221226690/index.m3u8?servicetype=1&IASHttpSessionId=OTT
+CGTN,http://gxyd.484947.xyz/PLTV/77777777/224/3221225816/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CGTN法语频道,http://gxyd.484947.xyz/PLTV/77777777/224/3221225878/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CGTN俄语频道,http://gxyd.484947.xyz/PLTV/77777777/224/3221225825/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CGTN阿拉伯语频道,http://gxyd.484947.xyz/PLTV/77777777/224/3221225822/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CGTN西班牙语频道,http://gxyd.484947.xyz/PLTV/77777777/224/3221225875/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+CGTN外语纪录频道,http://gxyd.484947.xyz/PLTV/77777777/224/3221225707/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+
+卫视直播,#genre#
+中国天气,http://gxyd.484947.xyz/PLTV/77777777/224/3221226443/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+北京卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225889/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+江苏卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225722/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+东方卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225718/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+浙江卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225731/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+湖南卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225719/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+湖北卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225721/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+广东卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225666/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+广西卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225767/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+黑龙江卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225734/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+海南卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225752/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+重庆卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225745/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+深圳卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225725/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+四川卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225757/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+河南卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226383/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+东南卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225904/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+贵州卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225770/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+江西卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225957/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+辽宁卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225779/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+安徽卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225701/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+河北卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225773/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+山东卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225672/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+天津卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225675/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+吉林卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226389/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+陕西卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225754/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+甘肃卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225764/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+宁夏卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225782/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+内蒙古卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225751/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+云南卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225794/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+山西卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226398/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+青海卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225705/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+西藏卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226416/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+中国教育电视台1频道,http://gxyd.484947.xyz/PLTV/77777777/224/3221225776/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+中国教育电视台2频道,http://gxyd.484947.xyz/PLTV/77777777/224/3221225881/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+中国教育电视台4频道,http://gxyd.484947.xyz/PLTV/77777777/224/3221225723/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+新疆卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225788/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+
+广西本地,#genre#
+广西卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225767/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+广西综艺旅游,http://gxyd.484947.xyz/PLTV/77777777/224/3221226409/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+广西都市,http://gxyd.484947.xyz/PLTV/77777777/224/3221226335/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+广西影视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226336/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+广西新闻,http://gxyd.484947.xyz/PLTV/77777777/224/3221226407/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+广西国际,http://38.75.136.137:98/gslb/dsdqpub/gxgj.m3u8?auth=testpub
+广西乐思购,http://gxyd.484947.xyz/PLTV/77777777/224/3221226420/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+广西移动,http://gxyd.484947.xyz/PLTV/77777777/224/3221226338/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+南宁新闻综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226341/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+南宁文旅生活,http://gxyd.484947.xyz/PLTV/77777777/224/3221226344/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+南宁影视娱乐,http://gxyd.484947.xyz/PLTV/77777777/224/3221226337/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+南宁新闻综合,http://hls.nntv.cn/nnlive/XWZH_24.m3u8
+南宁文旅生活,http://hls.nntv.cn/nnlive/WLSH_24.m3u8
+南宁影视娱乐,http://hls.nntv.cn/nnlive/YSYL_244.m3u8
+柳州新闻综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226348/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+柳州科教,http://gxyd.484947.xyz/PLTV/77777777/224/3221226434/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+桂林新闻综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226343/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+桂林科教旅游,http://gxyd.484947.xyz/PLTV/77777777/224/3221226339/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+来宾综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226357/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+北海经济科教,http://gxyd.484947.xyz/PLTV/77777777/224/3221226431/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+北海新闻综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226346/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+梧州教育生活,http://gxyd.484947.xyz/PLTV/77777777/224/3221226444/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+梧州新闻综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226349/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+崇左综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226351/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+贺州综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226352/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+玉林新闻综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226354/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+百色综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226353/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+河池新闻综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226356/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+钦州综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226347/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+防城港新闻综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226350/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+贵港新闻综合,http://gxyd.484947.xyz/PLTV/77777777/224/3221226345/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+贵港科教生活,http://gxyd.484947.xyz/PLTV/77777777/224/3221226424/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+
+特别直播,#genre#
+凤凰资讯,http://gxyd.484947.xyz/PLTV/77777777/224/3221226324/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+凤凰中文,http://gxyd.484947.xyz/PLTV/77777777/224/3221226331/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+凤凰香港台,http://gxyd.484947.xyz/PLTV/77777777/224/3221226321/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV怡伴健康,http://gxyd.484947.xyz/PLTV/77777777/224/3221225684/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV精品体育,http://gxyd.484947.xyz/PLTV/77777777/224/3221225724/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV精品大剧,http://gxyd.484947.xyz/PLTV/77777777/224/3221225737/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV爱情喜剧,http://gxyd.484947.xyz/PLTV/77777777/224/3221225698/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV农业致富,http://gxyd.484947.xyz/PLTV/77777777/224/3221225687/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV军事评论,http://gxyd.484947.xyz/PLTV/77777777/224/3221225749/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV动作电影,http://gxyd.484947.xyz/PLTV/77777777/224/3221225703/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV黑莓电影,http://gxyd.484947.xyz/PLTV/77777777/224/3221225740/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV欢乐剧场,http://gxyd.484947.xyz/PLTV/77777777/224/3221226049/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV炫舞未来,http://gxyd.484947.xyz/PLTV/77777777/224/3221225973/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV频道精选,http://gxyd.484947.xyz/PLTV/77777777/224/3221225763/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV中国功夫,http://gxyd.484947.xyz/PLTV/77777777/224/3221225690/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV睛彩竞技,http://gxyd.484947.xyz/PLTV/77777777/224/3221225972/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV睛彩篮球,http://gxyd.484947.xyz/PLTV/77777777/224/3221225961/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV睛彩青少,http://gxyd.484947.xyz/PLTV/77777777/224/3221226055/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV睛彩广场舞,http://gxyd.484947.xyz/PLTV/77777777/224/3221226326/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV精品萌宠,http://gxyd.484947.xyz/PLTV/77777777/224/3221225979/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV黑莓动画,http://gxyd.484947.xyz/PLTV/77777777/224/3221225710/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV哒啵电竞,http://gxyd.484947.xyz/PLTV/77777777/224/3221225880/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+NewTV哒啵赛事,http://gxyd.484947.xyz/PLTV/77777777/224/3221225760/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+高尔夫.网球,http://gxyd.484947.xyz/PLTV/77777777/224/3221225884/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+
+其他直播,#genre#
+北京纪实科教,http://gxyd.484947.xyz/PLTV/77777777/224/3221225995/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+北京纪实科教,http://gxyd.484947.xyz/PLTV/77777777/224/3221226410/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+广东珠江,http://gxyd.484947.xyz/PLTV/77777777/224/3221225717/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+金鹰纪实,http://gxyd.484947.xyz/PLTV/77777777/224/3221225699/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+兵团卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226423/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+延边卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226273/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+大湾区卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225748/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+三沙卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226405/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+厦门卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225823/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+山东教育卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221225708/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+康巴卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226270/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+西藏藏语,http://gxyd.484947.xyz/PLTV/77777777/224/3221225828/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+安多卫视,http://gxyd.484947.xyz/PLTV/77777777/224/3221226271/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+优漫卡通,http://gxyd.484947.xyz/PLTV/77777777/224/3221225791/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+北京卡酷少儿,http://gxyd.484947.xyz/PLTV/77777777/224/3221225730/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+哈哈炫动,http://gxyd.484947.xyz/PLTV/77777777/224/3221225711/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+金鹰卡通,http://gxyd.484947.xyz/PLTV/77777777/224/3221225702/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
+嘉佳卡通,http://gxyd.484947.xyz/PLTV/77777777/224/3221225797/index.m3u8?servicetype=1&servicetype=3&IASHttpSessionId=OTT
