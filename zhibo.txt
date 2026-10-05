@@ -949,47 +949,6 @@ CHC影迷电影,http://39.134.144.6:8089/PLTV/88888888/224/3221226607/index.m3u8
 茶频道,http://39.134.144.6:8089/PLTV/88888888/224/3221226569/index.m3u8$济南移动2
 乐游,http://39.134.144.6:8089/PLTV/88888888/224/3221226577/index.m3u8$济南移动2
 
-CCTV5体育,http://223.112.114.228:50080/newlive/live/hls/180/live.m3u8$江苏移动
-
-CCTV1综合,http://120.198.95.220:9901/tsfile/live/1015_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-CCTV3综艺,http://120.198.95.220:9901/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-CCTV7国防军事,http://120.198.95.220:9901/tsfile/live/1022_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-CCTV8电视剧,http://120.198.95.220:9901/tsfile/live/1023_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-CCTV12社会与法,http://120.198.95.220:9901/tsfile/live/1027_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-湖南卫视,http://120.198.95.220:9901/tsfile/live/1044_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-浙江卫视,http://120.198.95.220:9901/tsfile/live/1045_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-东方卫视,http://120.198.95.220:9901/tsfile/live/1047_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-山东卫视,http://120.198.95.220:9901/tsfile/live/1063_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-天津卫视,http://120.198.95.220:9901/tsfile/live/1067_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-深圳卫视,http://120.198.95.220:9901/tsfile/live/1048_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-黑龙江卫视,http://120.198.95.220:9901/tsfile/live/1049_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-辽宁卫视,http://120.198.95.220:9901/tsfile/live/1051_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-四川卫视,http://120.198.95.220:9901/tsfile/live/1060_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-贵州卫视,http://120.198.95.220:9901/tsfile/live/1052_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-河南卫视,http://120.198.95.220:9901/tsfile/live/1064_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-山西卫视,http://120.198.95.220:9901/tsfile/live/1057_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-陕西卫视,http://120.198.95.220:9901/tsfile/live/1068_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-云南卫视,http://120.198.95.220:9901/tsfile/live/1056_1.m3u8?key=txiptv&playlive=1&down=1$120.198.95.220$广东移动
-
-CCTV1综合,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111211/1.m3u8?channel-id=ystenlive&Contentid=100000000100111211&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV2财经,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111001/1.m3u8?channel-id=ystenlive&Contentid=100000000100111001&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV3综艺,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111002/1.m3u8?channel-id=ystenlive&Contentid=100000000100111002&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV4中文国际,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111003/1.m3u8?channel-id=ystenlive&Contentid=100000000100111003&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV5体育,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111004/1.m3u8?channel-id=ystenlive&Contentid=100000000100111004&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV5+体育赛事,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111005/1.m3u8?channel-id=ystenlive&Contentid=100000000100111005&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV6电影,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111006/1.m3u8?channel-id=ystenlive&Contentid=100000000100111006&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV7国防军事,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111007/1.m3u8?channel-id=ystenlive&Contentid=100000000100111007&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV8电视剧,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111008/1.m3u8?channel-id=ystenlive&Contentid=100000000100111008&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV9纪录,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111009/1.m3u8?channel-id=ystenlive&Contentid=100000000100111009&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV10科教,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111010/1.m3u8?channel-id=ystenlive&Contentid=100000000100111010&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV11戏曲,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111011/1.m3u8?channel-id=ystenlive&Contentid=100000000100111011&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV12社会与法,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111012/1.m3u8?channel-id=ystenlive&Contentid=100000000100111012&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV13新闻,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111013/1.m3u8?channel-id=ystenlive&Contentid=100000000100111013&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV14少儿,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111014/1.m3u8?channel-id=ystenlive&Contentid=100000000100111014&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV15音乐,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111015/1.m3u8?channel-id=ystenlive&Contentid=100000000100111015&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV16奥林匹克,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111091/1.m3u8?channel-id=ystenlive&Contentid=100000000100111091&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-CCTV17农业农村,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111016/1.m3u8?channel-id=ystenlive&Contentid=100000000100111016&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
-北京卫视,http://gslbserv.itv.cmvideo.cn:80/000000001666/100000000100111018/1.m3u8?channel-id=ystenlive&Contentid=100000000100111018&livemode=1&stbId=005303FF00023020200378530D21F7F9$咪咕官转
 
 
 
