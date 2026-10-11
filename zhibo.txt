@@ -4,7 +4,8 @@ CCTV2,http://112.123.243.37:50085/tsfile/live/0002_1.m3u8?key=txiptv&playlive=0&
 CCTV3,http://112.123.243.37:50085/tsfile/live/0003_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
 CCTV4,http://112.123.243.37:50085/tsfile/live/0004_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
 CCTV5,http://112.123.243.37:50085/tsfile/live/0005_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
-CCTV5+,http://112.123.243.37:50085/tsfile/live/0019_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
+CCTV5+,http://183.129.255.66:8480/hls/6/index.m3u8$杭州电信
+CCTV5+,http://198.204.228.26/live/cctv5p.m3u8$Missouri未知1
 CCTV6,http://112.123.243.37:50085/tsfile/live/0007_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
 CCTV7,http://112.123.243.37:50085/tsfile/live/0008_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
 CCTV8,http://112.123.243.37:50085/tsfile/live/0009_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
@@ -15,8 +16,12 @@ CCTV12,http://112.123.243.37:50085/tsfile/live/0013_1.m3u8?key=txiptv&playlive=0
 CCTV13,http://112.123.243.37:50085/tsfile/live/0014_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
 CCTV14,http://112.123.243.37:50085/tsfile/live/0015_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
 CCTV15,http://112.123.243.37:50085/tsfile/live/0016_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
-CCTV16,http://112.123.243.37:50085/tsfile/live/0017_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
-CCTV17,http://112.123.243.37:50085/tsfile/live/0018_1.m3u8?key=txiptv&playlive=0&authid=0$安徽联通
+CCTV16,http://183.129.255.66:8480/hls/17/index.m3u8$杭州电信
+CCTV16,http://bztv.tvbus.cc:8081/cdnlive/cctv16.m3u8$美国科罗拉多州
+CCTV16,http://198.204.228.26/live/cctv16hd.m3u8$Missouri未知1
+CCTV17,http://183.129.255.66:8480/hls/18/index.m3u8$杭州电信
+CCTV17,http://bztv.tvbus.cc:8081/cdnlive/cctv17.m3u8$美国科罗拉多州
+CCTV17,http://198.204.228.26/live/cctv17hd.m3u8$Missouri未知1
 
 CCTV1,http://101.66.199.13:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=0&authid=0$浙江联通1
 CCTV2,http://101.66.199.13:9901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=0&authid=0$浙江联通1
