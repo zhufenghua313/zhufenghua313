@@ -103,7 +103,7 @@ function LSset(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function LSdel(k){try{localStorage.removeItem(k)}catch(e){}}
 function toast(t,ok){const m=$('msg');m.textContent=t;m.className='msg show '+(ok==='e'?'m-err':ok==='i'?'m-info':'m-ok');setTimeout(()=>m.classList.remove('show'),2600)}
 function gh(path,opt){const u=GHAPI+path+(path.includes('?')?'&':'?')+'_t='+Date.now();
- return fetch(u,{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json','Cache-Control':'no-cache'},...opt})
+ return fetch(u,{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'},...opt})
  .then(async r=>{if(!r.ok){const e=await r.json().catch(()=>({message:'HTTP '+r.status}));throw new Error(e.message)}return r.json()})}
 function b64(s){return btoa(unescape(encodeURIComponent(s)))}
 function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
