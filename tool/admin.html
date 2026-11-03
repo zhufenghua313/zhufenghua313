@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仓库管理后台</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;color:#1f2937}
+.top{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.top h1{font-size:18px;font-weight:700}
+.top .sub{font-size:12px;opacity:.85}
+#token-status{font-size:12px;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,.15)}
+.wrap{max-width:1100px;margin:0 auto;padding:14px}
+.breadcrumb{font-size:13px;color:#6b7280;margin-bottom:10px;display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.breadcrumb a{color:#2563eb;cursor:pointer;text-decoration:none}
+.toolbar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.btn{border:none;border-radius:8px;padding:8px 16px;font-size:13.5px;cursor:pointer;font-family:inherit;transition:.15s}
+.btn-p{background:#2563eb;color:#fff}.btn-p:hover{background:#1d4ed8}
+.btn-g{background:#16a34a;color:#fff}.btn-g:hover{background:#15803d}
+.btn-r{background:#dc2626;color:#fff}.btn-r:hover{background:#b91c1c}
+.btn-w{background:#fff;border:1px solid #d1d5db;color:#374151}.btn-w:hover{background:#f3f4f6}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.list{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+.item{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid #f3f4f6;cursor:pointer;transition:.12s}
+.item:last-child{border-bottom:none}
+.item:hover{background:#f8fafc}
+.item .ic{width:30px;font-size:19px;text-align:center;margin-right:10px}
+.item .nm{flex:1;font-size:14px;word-break:break-all}
+.item .mt{color:#9ca3af;font-size:11.5px;margin-left:8px}
+.item .ops{display:flex;gap:6px}
+.mini{border:1px solid #d1d5db;background:#fff;border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer;font-family:inherit}
+.mini:hover{background:#f3f4f6}
+.mini.dz{color:#dc2626;border-color:#fecaca}
+#editor-box{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:14px;display:none}
+#editor{width:100%;height:56vh;font-family:Consolas,"Courier New",monospace;font-size:13px;border:1px solid #d1d5db;border-radius:8px;padding:12px;resize:vertical;line-height:1.6}
+.ebar{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.fname{font-size:14px;font-weight:700;color:#111827;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.badge{font-size:11px;background:#eef2ff;color:#3730a3;padding:2px 8px;border-radius:99px;font-weight:400}
+#setup{max-width:560px;margin:40px auto;background:#fff;border-radius:14px;padding:26px;box-shadow:0 1px 5px rgba(0,0,0,.08)}
+#setup h2{font-size:17px;margin-bottom:8px}
+#setup p{font-size:13px;color:#6b7280;line-height:1.8;margin-bottom:14px}
+#setup input{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:13px;font-family:Consolas,monospace}
+#setup .btn{margin-top:14px;width:100%}
+.msg{position:fixed;top:16px;left:50%;transform:translateX(-50%);padding:10px 22px;border-radius:99px;font-size:13.5px;color:#fff;z-index:99;opacity:0;transition:.3s;pointer-events:none}
+.msg.show{opacity:1}
+.m-ok{background:#16a34a}.m-err{background:#dc2626}.m-info{background:#2563eb}
+.dlg-mask{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:98}
+.dlg{background:#fff;border-radius:12px;padding:20px;width:92%;max-width:420px}
+.dlg h3{font-size:15px;margin-bottom:10px}
+.dlg input{width:100%;padding:9px 11px;border:1px solid #d1d5db;border-radius:8px;font-size:13.5px;margin-bottom:14px;font-family:Consolas,monospace}
+.dlg .r{text-align:right;display:flex;gap:8px;justify-content:flex-end}
+.hint{font-size:12px;color:#9ca3af;margin-top:8px}
+@media(max-width:600px){.item .mt{display:none}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div><h1>📁 仓库管理后台</h1><div class="sub">zhufenghua313/zhufenghua313 · 走 api.github.com 轻通道</div></div>
+  <div id="token-status">未连接</div>
+</div>
+<div class="wrap" id="main-app" style="display:none">
+  <div class="breadcrumb" id="bc"></div>
+  <div class="toolbar">
+    <button class="btn btn-p" onclick="newFile()">📄 新建文件</button>
+    <button class="btn btn-w" onclick="loadDir(curPath)">🔄 刷新</button>
+    <button class="btn btn-w" onclick="logout()">🚪 换令牌</button>
+  </div>
+  <div class="list" id="flist"></div>
+  <div id="editor-box">
+    <div class="fname"><span id="ef-name"></span><span class="badge" id="ef-size"></span></div>
+    <textarea id="editor" spellcheck="false" placeholder="文件内容..."></textarea>
+    <div class="ebar">
+      <button class="btn btn-g" id="save-btn" onclick="saveFile()">💾 保存</button>
+      <button class="btn btn-w" onclick="closeEditor()">返回列表</button>
+      <button class="btn btn-w" onclick="renameFile()">✏️ 改名</button>
+      <button class="btn btn-r" onclick="deleteFile()">🗑 删除</button>
+      <span class="hint" id="ef-info"></span>
+    </div>
+  </div>
+</div>
+<div id="setup">
+  <h2>🔐 首次使用 — 粘贴 GitHub 令牌</h2>
+  <p>把您生成的令牌（github_pat_ 开头）粘贴到下面。<br>令牌只存在<b>您这台电脑的浏览器</b>里，不经过任何服务器。<br>换电脑 / 令牌作废后重新粘贴即可。</p>
+  <input type="password" id="pat-input" placeholder="github_pat_……（粘贴到这里）">
+  <button class="btn btn-p" onclick="doLogin()">连 接</button>
+  <p class="hint">钥匙生成处：github.com/settings/tokens（tv-admin）</p>
+</div>
+<div class="msg" id="msg"></div>
+<div class="dlg-mask" id="dlg-mask"><div class="dlg">
+  <h3 id="dlg-title"></h3><input id="dlg-input"><div class="r">
+  <button class="btn btn-w" onclick="dlgClose()">取消</button>
+  <button class="btn btn-p" id="dlg-ok">确定</button></div>
+</div></div>
+<script>
+const REPO='zhufenghua313/zhufenghua313', API='https://api.github.com/repos/'+REPO;
+let PAT='', curPath='', curSha={}, editing=null;
+const $=id=>document.getElementById(id);
+function toast(t,ok){const m=$('msg');m.textContent=t;m.className='msg show '+(ok==='e'?'m-err':ok==='i'?'m-info':'m-ok');setTimeout(()=>m.classList.remove('show'),2600)}
+function gh(path,opt){return fetch(API+path,{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'},...opt})
+ .then(async r=>{if(!r.ok){const e=await r.json().catch(()=>({message:'HTTP '+r.status}));throw new Error(e.message)}return r.json()})}
+function b64(s){return btoa(unescape(encodeURIComponent(s)))}
+function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
+
+/* 登录 */
+function doLogin(){PAT=$('pat-input').value.trim();if(!PAT.startsWith('github_pat_'))return toast('令牌要以 github_pat_ 开头','e');
+ gh('/contents/').then(d=>{localStorage.setItem('tv-admin-pat',PAT);boot()})
+ .catch(e=>toast('连接失败：'+e.message,'e'))}
+function logout(){localStorage.removeItem('tv-admin-pat');location.reload()}
+function boot(){$('setup').style.display='none';$('main-app').style.display='block';$('token-status').textContent='✅ 已连接';loadDir('')}
+
+/* 目录浏览 */
+function loadDir(path){curPath=path;closeEditor();
+ gh('/contents'+(path?'/'+path:'')).then(items=>{
+  items.sort((a,b)=>(a.type===b.type?a.name.localeCompare(b.name):a.type==='dir'?-1:1));
+  let h='';let bc='<a onclick="loadDir(\'\')">🏠 仓库根目录</a>';
+  if(path){const seg=path.split('/');let acc='';seg.forEach(s=>{acc=acc?acc+'/'+s:s;bc+=' / <a onclick="loadDir(\''+acc+'\')">'+s+'</a>'})}
+  $('bc').innerHTML=bc;
+  if(path)h+='<div class="item" onclick="loadDir(\''+path.split('/').slice(0,-1).join('/')+'\')"><span class="ic">↩️</span><span class="nm" style="color:#6b7280">.. 返回上级</span></div>';
+  items.forEach(it=>{const fp=(path?path+'/':'')+it.name;
+   if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+(it.size||'')+'</span></div>'}
+   else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><span class="ic">📄</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+'</span><span class="ops">'
+    +'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
+    +'<button class="mini" onclick="event.stopPropagation();renameAsk(\''+fp+'\',\''+it.sha+'\')">改名</button>'
+    +'<button class="mini dz" onclick="event.stopPropagation();deleteAsk(\''+fp+'\',\''+it.sha+'\')">删除</button></span></div>'}});
+  $('flist').innerHTML=h}).catch(e=>toast('读取失败：'+e.message,'e'))}
+function fmtSize(b){if(b==null)return'';if(b>1048576)return(b/1048576).toFixed(1)+'MB';if(b>1024)return(b/1024).toFixed(1)+'KB';return b+'B'}
+
+/* 文件编辑 */
+function openFile(fp){gh('/contents/'+fp).then(f=>{editing={path:fp,sha:f.sha,size:f.size,name:f.name};
+ $('ef-name').textContent='📝 '+f.name;$('ef-size').textContent=fmtSize(f.size);
+ $('editor').value=unb64(f.content||'');$('flist').style.display='none';$('editor-box').style.display='block';
+ const big=f.size>800000;$('save-btn').disabled=big;$('ef-info').textContent=big?'文件超过800KB，网页编辑器装不下（防卡死），请用 GitHub Desktop':''})
+ .catch(e=>toast('打开失败：'+e.message,'e'))}
+function closeEditor(){$('editor-box').style.display='none';$('flist').style.display='block';editing=null}
+function saveFile(){if(!editing)return;const c=$('editor').value;
+ gh('/contents/'+editing.path,{method:'PUT',body:JSON.stringify({message:'tv-admin: update '+editing.name,content:b64(c),sha:editing.sha})})
+ .then(r=>{editing.sha=r.content.sha;toast('✅ 已保存（1分钟后 tv.efcc.cc 同步）')})
+ .catch(e=>toast('保存失败：'+e.message+'（若提示sha不匹配请刷新重开）','e'))}
+
+/* 新建/改名/删除（对话框） */
+function dlg(title,val,cb){$('dlg-title').textContent=title;$('dlg-input').value=val||'';$('dlg-mask').style.display='flex';
+ $('dlg-input').focus();$('dlg-ok').onclick=()=>{dlgClose();cb($('dlg-input').value.trim())}}
+function dlgClose(){$('dlg-mask').style.display='none'}
+function newFile(){dlg('📄 新建文件（可含路径如 abc/def.txt）','',name=>{if(!name)return;
+ gh('/contents/'+name,{method:'PUT',body:JSON.stringify({message:'tv-admin: create '+name,content:b64('\n')})})
+ .then(()=>{toast('✅ 已创建');loadDir(name.includes('/')?name.split('/').slice(0,-1).join('/'):curPath)}).catch(e=>toast('创建失败：'+e.message,'e'))})}
+function renameAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1).join('/');
+ gh('/contents/'+fp).then(f=>{const c=f.content||'';
+  dlg('✏️ 改名：'+parts.at(-1),fp,name=>{if(!name||name===fp)return;
+   gh('/contents/'+name,{method:'PUT',body:JSON.stringify({message:'tv-admin: rename '+parts.at(-1)+' → '+name.split('/').at(-1),content:c})})
+   .then(()=>gh('/contents/'+fp,{method:'DELETE',body:JSON.stringify({message:'tv-admin: remove old '+parts.at(-1),sha:sha})}))
+   .then(()=>{toast('✅ 改名完成');loadDir(dir)}).catch(e=>toast('改名失败：'+e.message,'e'))})})}
+function deleteAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1).join('/');
+ dlg('⚠️ 确认删除：'+parts.at(-1)+'？（不可恢复）','',x=>{if(x!=='删除')return toast('已取消','i');
+  gh('/contents/'+fp,{method:'DELETE',body:JSON.stringify({message:'tv-admin: delete '+parts.at(-1),sha:sha})})
+  .then(()=>{toast('🗑 已删除');loadDir(dir)}).catch(e=>toast('删除失败：'+e.message,'e'))})}
+
+/* 启动 */
+PAT=localStorage.getItem('tv-admin-pat')||'';
+if(PAT){gh('/contents/').then(()=>boot()).catch(()=>{localStorage.removeItem('tv-admin-pat');toast('本地令牌已失效，请重新粘贴','e')})}
+</script>
+</body>
+</html>
