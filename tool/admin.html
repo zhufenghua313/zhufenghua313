@@ -156,7 +156,9 @@ function saveFile(){if(!editing)return;const c=$('editor').value;
 /* 新建/改名/删除（对话框） */
 function dlg(title,val,cb){$('dlg-title').textContent=title;$('dlg-input').value=val||'';$('dlg-mask').style.display='flex';
  $('dlg-input').focus();$('dlg-ok').onclick=()=>{dlgClose();cb($('dlg-input').value.trim())}}
-function dlgClose(){$('dlg-mask').style.display='none'}
+function dlgClose(){$('dlg-mask').style.display='none';
+ const el=$('dlg-input');
+ if(el&&el.tagName==='SELECT'){const inp=document.createElement('input');inp.id='dlg-input';el.replaceWith(inp)}}
 function downloadFile(fp){toast('⏬ 正在下载 '+fp.split('/').pop()+' …','i');
  gh('/contents/'+fp).then(f=>{
   const b64=f.content||'';
@@ -184,9 +186,6 @@ function destDlg(title,cb){const m=$('dlg-mask');$('dlg-title').textContent=titl
   ds.sort();sel.innerHTML=ds.map(p=>'<option value="'+p+'">'+(p||'(仓库根目录)')+'</option>').join('');
   sel.disabled=false}).catch(()=>{sel.innerHTML='<option value="">(仓库根目录)</option>';sel.disabled=false});
  $('dlg-ok').onclick=()=>{const v=sel.value;dlgClose();cb(v)}}
-function dlgClose(){$('dlg-mask').style.display='none';
- const sel=$('dlg-input');
- if(sel&&sel.tagName==='SELECT'){const inp=document.createElement('input');inp.id='dlg-input';sel.replaceWith(inp)}}
 function newFolder(){dlg('📁 新建文件夹（可含路径如 abc/def）','',name=>{if(!name)return;
  gh('/contents/'+name+'/.gitkeep',{method:'PUT',body:JSON.stringify({message:'tv-admin: create folder '+name,content:b64('')})})
  .then(()=>{toast('✅ 文件夹已创建');const parent=name.includes('/')?name.split('/').slice(0,-1).join('/'):'';refreshSoon(parent)})
