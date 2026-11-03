@@ -102,7 +102,8 @@ function LSget(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function LSset(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function LSdel(k){try{localStorage.removeItem(k)}catch(e){}}
 function toast(t,ok){const m=$('msg');m.textContent=t;m.className='msg show '+(ok==='e'?'m-err':ok==='i'?'m-info':'m-ok');setTimeout(()=>m.classList.remove('show'),2600)}
-function gh(path,opt){return fetch(GHAPI+path,{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'},...opt})
+function gh(path,opt){const u=GHAPI+path+(path.includes('?')?'&':'?')+'_t='+Date.now();
+ return fetch(u,{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json','Cache-Control':'no-cache'},...opt})
  .then(async r=>{if(!r.ok){const e=await r.json().catch(()=>({message:'HTTP '+r.status}));throw new Error(e.message)}return r.json()})}
 function b64(s){return btoa(unescape(encodeURIComponent(s)))}
 function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
@@ -140,7 +141,7 @@ function openFile(fp){gh('/contents/'+fp).then(f=>{editing={path:fp,sha:f.sha,si
 function closeEditor(){$('editor-box').style.display='none';$('flist').style.display='block';editing=null}
 function saveFile(){if(!editing)return;const c=$('editor').value;
  gh('/contents/'+editing.path,{method:'PUT',body:JSON.stringify({message:'tv-admin: update '+editing.name,content:b64(c),sha:editing.sha})})
- .then(r=>{editing.sha=r.content.sha;toast('✅ 已保存（tv.efcc.cc约1分钟同步）');closeEditor();loadDir(editing.path.includes('/')?editing.path.split('/').slice(0,-1).join('/'):curPath)})
+ .then(r=>{editing.sha=r.content.sha;toast('✅ 已保存（tv.efcc.cc约1分钟同步）');closeEditor();setTimeout(()=>loadDir(editing.path.includes('/')?editing.path.split('/').slice(0,-1).join('/'):curPath),1500)})
  .catch(e=>toast('保存失败：'+e.message+'（若提示sha不匹配请刷新重开）','e'))}
 
 /* 新建/改名/删除（对话框） */
@@ -155,11 +156,11 @@ function renameAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1)
   dlg('✏️ 改名：'+parts.at(-1),fp,name=>{if(!name||name===fp)return;
    gh('/contents/'+name,{method:'PUT',body:JSON.stringify({message:'tv-admin: rename '+parts.at(-1)+' → '+name.split('/').at(-1),content:c})})
    .then(()=>gh('/contents/'+fp,{method:'DELETE',body:JSON.stringify({message:'tv-admin: remove old '+parts.at(-1),sha:sha})}))
-   .then(()=>{toast('✅ 改名完成');loadDir(dir)}).catch(e=>toast('改名失败：'+e.message,'e'))})})}
+   .then(()=>{toast('✅ 改名完成');setTimeout(()=>loadDir(dir),1500)}).catch(e=>toast('改名失败：'+e.message,'e'))})})}
 function deleteAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1).join('/');
  dlg('⚠️ 确认删除：'+parts.at(-1)+'？（请输入 删除 两个字再点确定）','',x=>{if(x!=='删除')return toast('已取消','i');
   gh('/contents/'+fp,{method:'DELETE',body:JSON.stringify({message:'tv-admin: delete '+parts.at(-1),sha:sha})})
-  .then(()=>{toast('🗑 已删除');loadDir(dir)}).catch(e=>toast('删除失败：'+e.message,'e'))})}
+  .then(()=>{toast('🗑 已删除');setTimeout(()=>loadDir(dir),1500)}).catch(e=>toast('删除失败：'+e.message,'e'))})}
 
 /* 启动 */
 PAT=LSget('tv-admin-pat')||'';
