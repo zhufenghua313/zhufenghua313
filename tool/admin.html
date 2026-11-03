@@ -68,6 +68,11 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
     <button class="btn btn-w" onclick="logout()">🚪 换令牌</button>
   </div>
   <input type="file" id="file-input" style="display:none" onchange="doUpload(this)">
+  <div id="drop-mask" style="display:none;position:fixed;inset:0;background:rgba(37,99,235,.12);border:4px dashed #2563eb;z-index:97;align-items:center;justify-content:center;flex-direction:column;gap:10px">
+    <div style="font-size:56px">📥</div>
+    <div style="font-size:19px;font-weight:700;color:#1d4ed8">松手即上传到当前目录</div>
+    <div id="drop-target-label" style="font-size:13px;color:#3b82f6"></div>
+  </div>
   <div class="list" id="flist"></div>
   <div id="editor-box">
     <div class="fname"><span id="ef-name"></span><span class="badge" id="ef-size"></span></div>
@@ -151,7 +156,8 @@ function dlg(title,val,cb){$('dlg-title').textContent=title;$('dlg-input').value
  $('dlg-input').focus();$('dlg-ok').onclick=()=>{dlgClose();cb($('dlg-input').value.trim())}}
 function dlgClose(){$('dlg-mask').style.display='none'}
 function pickFile(){$('file-input').click()}
-function doUpload(input){const f=input.files[0];if(!f)return;
+function doUpload(input){const f=input.files[0];if(!f)return;uploadOne(f);input.value=''}
+function uploadOne(f){
  if(f.size>25*1048576)return toast('文件超过25MB，网页装不下——APK等大文件请用 GitHub Desktop 传','e');
  if(f.size>5*1048576)toast('文件较大('+fmtSize(f.size)+')，上传中请稍候…','i');
  const fp=(curPath?curPath+'/':'')+f.name;
@@ -160,8 +166,17 @@ function doUpload(input){const f=input.files[0];if(!f)return;
   gh('/contents/'+fp,{method:'PUT',body:JSON.stringify({message:'tv-admin: upload '+f.name,content:b64})})
   .then(()=>{toast('📤 已上传 '+f.name);setTimeout(()=>loadDir(curPath),1500)})
   .catch(e=>toast('上传失败：'+(String(e.message).includes('sha')?'文件已存在——先删除或改名再传':e.message),'e'))};
- rd.readAsDataURL(f);
- input.value=''}
+ rd.readAsDataURL(f);}
+/* v8 拖拽上传：整个窗口=投放区，拖入显示提示层，松手即传 */
+let _dragDepth=0;
+window.addEventListener('dragenter',e=>{e.preventDefault();_dragDepth++;
+ $('drop-mask').style.display='flex';
+ $('drop-target-label').textContent='目标：'+(curPath||'仓库根目录')});
+window.addEventListener('dragleave',e=>{e.preventDefault();if(--_dragDepth<=0){_dragDepth=0;$('drop-mask').style.display='none'}});
+window.addEventListener('dragover',e=>e.preventDefault());
+window.addEventListener('drop',e=>{e.preventDefault();_dragDepth=0;$('drop-mask').style.display='none';
+ const fs=e.dataTransfer&&e.dataTransfer.files;if(!fs||!fs.length)return;
+ [...fs].forEach((f,i)=>setTimeout(()=>uploadOne(f),i*700))});
 function newFile(){dlg('📄 新建文件（可含路径如 abc/def.txt）','',name=>{if(!name)return;
  gh('/contents/'+name,{method:'PUT',body:JSON.stringify({message:'tv-admin: create '+name,content:b64('\n')})})
  .then(()=>{toast('✅ 已创建');loadDir(name.includes('/')?name.split('/').slice(0,-1).join('/'):curPath)}).catch(e=>toast('创建失败：'+e.message,'e'))})}
