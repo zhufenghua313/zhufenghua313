@@ -134,7 +134,7 @@ function loadDir(path){curPath=path;closeEditor();
   items.forEach(it=>{const fp=(path?path+'/':'')+it.name;
    if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+(it.size||'')+'</span></div>'}
    else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><span class="ic">📄</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+'</span><span class="ops">'
-    +'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
+    +'<button class="mini" onclick="event.stopPropagation();downloadFile(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
     +'<button class="mini" onclick="event.stopPropagation();renameAsk(\''+fp+'\',\''+it.sha+'\')">改名</button>'
     +'<button class="mini dz" onclick="event.stopPropagation();deleteAsk(\''+fp+'\',\''+it.sha+'\')">删除</button></span></div>'}});
   $('flist').innerHTML=h}).catch(e=>toast('读取失败：'+e.message,'e'))}
@@ -156,6 +156,20 @@ function saveFile(){if(!editing)return;const c=$('editor').value;
 function dlg(title,val,cb){$('dlg-title').textContent=title;$('dlg-input').value=val||'';$('dlg-mask').style.display='flex';
  $('dlg-input').focus();$('dlg-ok').onclick=()=>{dlgClose();cb($('dlg-input').value.trim())}}
 function dlgClose(){$('dlg-mask').style.display='none'}
+function downloadFile(fp){toast('⏬ 正在下载 '+fp.split('/').pop()+' …','i');
+ gh('/contents/'+fp).then(f=>{
+  const b64=f.content||'';
+  const mime=f.encoding==='base64'?(window.atob(b64).length?'application/octet-stream':'text/plain'):'text/plain';
+  const bin=atob(b64.replace(/\n/g,''));
+  const arr=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([arr]));
+  a.download=f.name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('✅ 已下载 '+f.name+'（浏览器下载文件夹）');
+ }).catch(e=>toast('下载失败：'+e.message,'e'))}
 function pickFile(){$('file-input').click()}
 function doUpload(input){const f=input.files[0];if(!f)return;uploadOne(f);input.value=''}
 function uploadOne(f){
