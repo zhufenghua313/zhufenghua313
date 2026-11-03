@@ -56,7 +56,7 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
 </head>
 <body>
 <div class="top">
-  <div><h1>📁 仓库管理后台</h1><div class="sub">zhufenghua313/zhufenghua313 · 走 api.github.com 轻通道</div></div>
+  <div><h1>📁 仓库管理后台</h1><div class="sub">zhufenghua313/zhufenghua313 · 走 gh.efcc.cc 高速通道</div></div>
   <div id="token-status">未连接</div>
 </div>
 <div class="wrap" id="main-app" style="display:none">
@@ -98,6 +98,9 @@ const REPO='zhufenghua313/zhufenghua313';
 const GHAPI='https://gh.efcc.cc/api/repos/'+REPO;
 let PAT='', curPath='', curSha={}, editing=null;
 const $=id=>document.getElementById(id);
+function LSget(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function LSset(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function LSdel(k){try{localStorage.removeItem(k)}catch(e){}}
 function toast(t,ok){const m=$('msg');m.textContent=t;m.className='msg show '+(ok==='e'?'m-err':ok==='i'?'m-info':'m-ok');setTimeout(()=>m.classList.remove('show'),2600)}
 function gh(path,opt){return fetch(GHAPI+path,{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'},...opt})
  .then(async r=>{if(!r.ok){const e=await r.json().catch(()=>({message:'HTTP '+r.status}));throw new Error(e.message)}return r.json()})}
@@ -106,9 +109,9 @@ function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
 
 /* 登录 */
 function doLogin(){PAT=$('pat-input').value.trim();if(!PAT.startsWith('github_pat_'))return toast('令牌要以 github_pat_ 开头','e');
- gh('/contents/').then(d=>{localStorage.setItem('tv-admin-pat',PAT);boot()})
+ gh('/contents/').then(d=>{LSset('tv-admin-pat',PAT);boot()})
  .catch(e=>toast('连接失败：'+e.message,'e'))}
-function logout(){localStorage.removeItem('tv-admin-pat');location.reload()}
+function logout(){LSdel('tv-admin-pat');location.reload()}
 function boot(){$('setup').style.display='none';$('main-app').style.display='block';$('token-status').textContent='✅ 已连接';loadDir('')}
 
 /* 目录浏览 */
@@ -159,8 +162,8 @@ function deleteAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1)
   .then(()=>{toast('🗑 已删除');loadDir(dir)}).catch(e=>toast('删除失败：'+e.message,'e'))})}
 
 /* 启动 */
-PAT=localStorage.getItem('tv-admin-pat')||'';
-if(PAT){gh('/contents/').then(()=>boot()).catch(()=>{localStorage.removeItem('tv-admin-pat');toast('本地令牌已失效，请重新粘贴','e')})}
+PAT=LSget('tv-admin-pat')||'';
+if(PAT){gh('/contents/').then(()=>boot()).catch(()=>{LSdel('tv-admin-pat');toast('本地令牌已失效，请重新粘贴','e')})}
 </script>
 </body>
 </html>
