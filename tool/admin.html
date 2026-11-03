@@ -63,6 +63,7 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
   <div class="breadcrumb" id="bc"></div>
   <div class="toolbar">
     <button class="btn btn-p" onclick="newFile()">📄 新建文件</button>
+    <button class="btn btn-p" onclick="newFolder()">📁 新建文件夹</button>
     <button class="btn btn-p" onclick="pickFile()">📤 上传文件</button>
     <button class="btn btn-w" onclick="loadDir(curPath)">🔄 刷新</button>
     <button class="btn btn-w" onclick="logout()">🚪 换令牌</button>
@@ -134,7 +135,7 @@ function loadDir(path){curPath=path;closeEditor();
   items.forEach(it=>{const fp=(path?path+'/':'')+it.name;
    if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+(it.size||'')+'</span></div>'}
    else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><span class="ic">📄</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+'</span><span class="ops">'
-    +'<button class="mini" onclick="event.stopPropagation();downloadFile(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
+    +'<button class="mini" onclick="event.stopPropagation();downloadFile(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();copyTo(\''+fp+'\')">复制</button>'+'<button class="mini" onclick="event.stopPropagation();moveTo(\''+fp+'\')">移动</button>'+'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
     +'<button class="mini" onclick="event.stopPropagation();renameAsk(\''+fp+'\',\''+it.sha+'\')">改名</button>'
     +'<button class="mini dz" onclick="event.stopPropagation();deleteAsk(\''+fp+'\',\''+it.sha+'\')">删除</button></span></div>'}});
   $('flist').innerHTML=h}).catch(e=>toast('读取失败：'+e.message,'e'))}
@@ -170,6 +171,39 @@ function downloadFile(fp){toast('⏬ 正在下载 '+fp.split('/').pop()+' …','
   URL.revokeObjectURL(a.href);
   toast('✅ 已下载 '+f.name+'（浏览器下载文件夹）');
  }).catch(e=>toast('下载失败：'+e.message,'e'))}
+/* v11: 目的地选择器（拉全仓库文件夹树→下拉选择） */
+function destDlg(title,cb){const m=$('dlg-mask');$('dlg-title').textContent=title;
+ const old=$('dlg-input');
+ if(old.tagName!=='SELECT'){const sel=document.createElement('select');sel.id='dlg-input';
+  sel.style.width='100%';sel.style.padding='9px 11px';sel.style.border='1px solid #d1d5db';sel.style.borderRadius='8px';sel.style.fontSize='13.5px';
+  sel.innerHTML='<option value="">(仓库根目录)</option>';old.replaceWith(sel)}
+ const sel=$('dlg-input');sel.innerHTML='<option value="">(仓库根目录)</option>';sel.disabled=true;
+ m.style.display='flex';
+ gh('/git/trees/main?recursive=1').then(t=>{const ds=[''];
+  (t.tree||[]).forEach(x=>{if(x.type==='tree')ds.push(x.path)});
+  ds.sort();sel.innerHTML=ds.map(p=>'<option value="'+p+'">'+(p||'(仓库根目录)')+'</option>').join('');
+  sel.disabled=false}).catch(()=>{sel.innerHTML='<option value="">(仓库根目录)</option>';sel.disabled=false});
+ $('dlg-ok').onclick=()=>{const v=sel.value;dlgClose();cb(v)}}
+function dlgClose(){$('dlg-mask').style.display='none';
+ const sel=$('dlg-input');
+ if(sel&&sel.tagName==='SELECT'){const inp=document.createElement('input');inp.id='dlg-input';sel.replaceWith(inp)}}
+function newFolder(){dlg('📁 新建文件夹（可含路径如 abc/def）','',name=>{if(!name)return;
+ gh('/contents/'+name+'/.gitkeep',{method:'PUT',body:JSON.stringify({message:'tv-admin: create folder '+name,content:b64('')})})
+ .then(()=>{toast('✅ 文件夹已创建');const parent=name.includes('/')?name.split('/').slice(0,-1).join('/'):'';setTimeout(()=>loadDir(parent),1500)})
+ .catch(e=>toast('创建失败：'+e.message,'e'))})}
+function copyTo(fp){destDlg('📤 复制到哪：'+fp.split('/').pop(),dest=>{
+ const name=fp.split('/').pop();const target=(dest?dest+'/':'')+name;
+ if(target===fp)return toast('源和目标相同','i');
+ gh('/contents/'+fp).then(f=>gh('/contents/'+target,{method:'PUT',body:JSON.stringify({message:'tv-admin: copy → '+target,content:f.content})}))
+ .then(()=>{toast('✅ 已复制到 '+(target));setTimeout(()=>loadDir(dest),1500)})
+ .catch(e=>toast('复制失败：'+(String(e.message).includes('sha')?'目标已有同名文件':e.message),'e'))})}
+function moveTo(fp){destDlg('➡️ 移动到哪：'+fp.split('/').pop(),dest=>{
+ const name=fp.split('/').pop();const target=(dest?dest+'/':'')+name;
+ if(target===fp)return toast('源和目标相同','i');
+ gh('/contents/'+fp).then(f=>gh('/contents/'+target,{method:'PUT',body:JSON.stringify({message:'tv-admin: move → '+target,content:f.content})})
+  .then(()=>gh('/contents/'+fp,{method:'DELETE',body:JSON.stringify({message:'tv-admin: remove old',sha:f.sha})})))
+ .then(()=>{toast('✅ 已移动到 '+(target));setTimeout(()=>loadDir(dest),1500)})
+ .catch(e=>toast('移动失败：'+(String(e.message).includes('sha')?'目标已有同名文件':e.message),'e'))})}
 function pickFile(){$('file-input').click()}
 function doUpload(input){const f=input.files[0];if(!f)return;uploadOne(f);input.value=''}
 function uploadOne(f){
