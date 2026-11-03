@@ -67,11 +67,12 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
     <button class="btn btn-w" onclick="loadDir(curPath)">🔄 刷新</button>
     <button class="btn btn-w" onclick="logout()">🚪 换令牌</button>
   </div>
+  <div style="font-size:12.5px;color:#9ca3af;margin:-6px 0 10px 2px">💡 上传：把文件直接<b style="color:#2563eb">拖进本窗口任意位置</b>，或点【📤 上传文件】按钮选电脑上的文件（限25MB内，更大的用 GitHub Desktop）</div>
   <input type="file" id="file-input" style="display:none" onchange="doUpload(this)">
   <div id="drop-mask" style="display:none;position:fixed;inset:0;background:rgba(37,99,235,.12);border:4px dashed #2563eb;z-index:97;align-items:center;justify-content:center;flex-direction:column;gap:10px">
     <div style="font-size:56px">📥</div>
     <div style="font-size:19px;font-weight:700;color:#1d4ed8">松手即上传到当前目录</div>
-    <div id="drop-target-label" style="font-size:13px;color:#3b82f6"></div>
+    <div id="drop-target-label" style="font-size:13px;color:#3b82f6"></div><div style="font-size:12px;color:#93c5fd">（也可以点工具栏【📤 上传文件】按钮）</div>
   </div>
   <div class="list" id="flist"></div>
   <div id="editor-box">
