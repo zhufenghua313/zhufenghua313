@@ -93,11 +93,13 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
   <button class="btn btn-p" id="dlg-ok">确定</button></div>
 </div></div>
 <script>
-const REPO='zhufenghua313/zhufenghua313', API='https://api.github.com/repos/'+REPO;
+const REPO='zhufenghua313/zhufenghua313';
+// 走 gh.efcc.cc 高速通道转发 api.github.com（国内直连API不通，2026-11-03实测）
+const GHAPI='https://gh.efcc.cc/api/repos/'+REPO;
 let PAT='', curPath='', curSha={}, editing=null;
 const $=id=>document.getElementById(id);
 function toast(t,ok){const m=$('msg');m.textContent=t;m.className='msg show '+(ok==='e'?'m-err':ok==='i'?'m-info':'m-ok');setTimeout(()=>m.classList.remove('show'),2600)}
-function gh(path,opt){return fetch(API+path,{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'},...opt})
+function gh(path,opt){return fetch(GHAPI+path,{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'},...opt})
  .then(async r=>{if(!r.ok){const e=await r.json().catch(()=>({message:'HTTP '+r.status}));throw new Error(e.message)}return r.json()})}
 function b64(s){return btoa(unescape(encodeURIComponent(s)))}
 function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
