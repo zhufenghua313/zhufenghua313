@@ -140,7 +140,7 @@ function openFile(fp){gh('/contents/'+fp).then(f=>{editing={path:fp,sha:f.sha,si
 function closeEditor(){$('editor-box').style.display='none';$('flist').style.display='block';editing=null}
 function saveFile(){if(!editing)return;const c=$('editor').value;
  gh('/contents/'+editing.path,{method:'PUT',body:JSON.stringify({message:'tv-admin: update '+editing.name,content:b64(c),sha:editing.sha})})
- .then(r=>{editing.sha=r.content.sha;toast('✅ 已保存（1分钟后 tv.efcc.cc 同步）')})
+ .then(r=>{editing.sha=r.content.sha;toast('✅ 已保存（tv.efcc.cc约1分钟同步）');closeEditor();loadDir(editing.path.includes('/')?editing.path.split('/').slice(0,-1).join('/'):curPath)})
  .catch(e=>toast('保存失败：'+e.message+'（若提示sha不匹配请刷新重开）','e'))}
 
 /* 新建/改名/删除（对话框） */
@@ -157,7 +157,7 @@ function renameAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1)
    .then(()=>gh('/contents/'+fp,{method:'DELETE',body:JSON.stringify({message:'tv-admin: remove old '+parts.at(-1),sha:sha})}))
    .then(()=>{toast('✅ 改名完成');loadDir(dir)}).catch(e=>toast('改名失败：'+e.message,'e'))})})}
 function deleteAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1).join('/');
- dlg('⚠️ 确认删除：'+parts.at(-1)+'？（不可恢复）','',x=>{if(x!=='删除')return toast('已取消','i');
+ dlg('⚠️ 确认删除：'+parts.at(-1)+'？（请输入 删除 两个字再点确定）','',x=>{if(x!=='删除')return toast('已取消','i');
   gh('/contents/'+fp,{method:'DELETE',body:JSON.stringify({message:'tv-admin: delete '+parts.at(-1),sha:sha})})
   .then(()=>{toast('🗑 已删除');loadDir(dir)}).catch(e=>toast('删除失败：'+e.message,'e'))})}
 
