@@ -178,9 +178,11 @@ function openFile(fp){gh('/contents/'+fp).then(f=>{editing={path:fp,sha:f.sha,si
  const big=f.size>800000;$('save-btn').disabled=big;$('ef-info').textContent=big?'文件超过800KB，网页编辑器装不下（防卡死），请用 GitHub Desktop':''})
  .catch(e=>toast('打开失败：'+e.message,'e'))}
 function closeEditor(){$('editor-box').style.display='none';$('flist').style.display='block';editing=null}
+function renameFile(){if(!editing)return;const fp=editing.path;const sha=editing.sha;closeEditor();renameAsk(fp,sha)}
+function deleteFile(){if(!editing)return;const fp=editing.path;const sha=editing.sha;closeEditor();deleteAsk(fp,sha)}
 function saveFile(){if(!editing)return;const c=$('editor').value;
  gh('/contents/'+editing.path,{method:'PUT',body:JSON.stringify({message:'tv-admin: update '+editing.name,content:b64(c),sha:editing.sha})})
- .then(r=>{editing.sha=r.content.sha;toast('✅ 已保存（tv.efcc.cc约1分钟同步）');closeEditor();refreshSoon(editing.path.includes('/')?editing.path.split('/').slice(0,-1).join('/'):curPath)})
+ .then(r=>{const p=editing.path;editing.sha=r.content.sha;toast('✅ 已保存（tv.efcc.cc约1分钟同步）');closeEditor();refreshSoon(p.includes('/')?p.split('/').slice(0,-1).join('/'):curPath)})
  .catch(e=>toast('保存失败：'+e.message+'（若提示sha不匹配请刷新重开）','e'))}
 
 /* 新建/改名/删除（对话框） */
