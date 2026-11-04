@@ -1,1 +1,197 @@
-huanying laidao wode wangzhan.
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>欢乐工具站 · tv.efcc.cc</title>
+<style>
+  :root{
+    --deep:#14213D; --deep2:#1B2A4A; --deep3:#2A4370;
+    --gold:#D9A521; --goldL:#E8BC4F; --goldXL:#F2D57E;
+    --bg:#F4F6FA; --card:#FFFFFF; --line:#DFE4EC;
+    --ink:#1A2233; --sub:#5B6577;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;}
+  a{text-decoration:none;color:inherit;}
+
+  /* ═══ 顶部导航 ═══ */
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25);}
+  .nav-in{max-width:1060px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;}
+  .brand .lamp{width:9px;height:9px;border-radius:50%;background:#E34B4B;box-shadow:0 0 10px 2px rgba(227,75,75,.85);animation:breath 2.6s ease-in-out infinite;}
+  @keyframes breath{0%,100%{opacity:1;box-shadow:0 0 10px 2px rgba(227,75,75,.85);}50%{opacity:.45;box-shadow:0 0 4px 1px rgba(227,75,75,.4);}}
+  .brand b{font-size:17px;letter-spacing:2px;font-weight:600;}
+  .brand span{font-size:12px;color:var(--goldL);letter-spacing:1px;padding-top:2px;}
+  .nav-links{display:flex;gap:6px;}
+  .nav-links a{color:#C7CEDC;font-size:13px;padding:6px 12px;border-radius:8px;transition:.2s;}
+  .nav-links a:hover{color:var(--goldXL);background:rgba(217,165,33,.12);}
+
+  /* ═══ 主视觉区 ═══ */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--deep) 0%,var(--deep2) 55%,var(--deep3) 100%);color:#fff;}
+  .hero::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(217,165,33,.16),transparent 65%);top:-190px;right:-130px;animation:float1 9s ease-in-out infinite;}
+  .hero::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(120,160,255,.10),transparent 65%);bottom:-160px;left:-110px;animation:float2 11s ease-in-out infinite;}
+  @keyframes float1{0%,100%{transform:translate(0,0);}50%{transform:translate(-24px,20px);}}
+  @keyframes float2{0%,100%{transform:translate(0,0);}50%{transform:translate(20px,-16px);}}
+  .hero-in{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:74px 20px 64px;text-align:center;}
+  .hero .kicker{display:inline-block;font-size:13px;letter-spacing:6px;color:var(--goldL);border:1px solid rgba(217,165,33,.45);padding:7px 18px;border-radius:999px;margin-bottom:26px;background:rgba(217,165,33,.07);}
+  .hero h1{font-size:clamp(38px,7vw,64px);font-weight:800;letter-spacing:4px;line-height:1.15;
+    background:linear-gradient(160deg,#FFFFFF 20%,var(--goldXL) 60%,var(--gold) 90%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .sub{margin-top:18px;font-size:clamp(15px,2.4vw,18px);color:#B9C3D6;letter-spacing:2px;line-height:1.9;}
+  .hero .sub b{color:var(--goldXL);font-weight:600;}
+  .feats{margin-top:34px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+  .feat{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#D5DCEA;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);padding:9px 16px;border-radius:10px;backdrop-filter:blur(4px);}
+  .feat i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(217,165,33,.8);}
+
+  /* ═══ 工具卡片区 ═══ */
+  main{flex:1;max-width:1060px;width:100%;margin:0 auto;padding:46px 20px 56px;}
+  .sec-title{display:flex;align-items:center;gap:14px;margin-bottom:26px;}
+  .sec-title::before{content:"";width:5px;height:26px;border-radius:3px;background:linear-gradient(180deg,var(--gold),var(--deep3));}
+  .sec-title h2{font-size:22px;letter-spacing:1px;color:var(--deep);}
+  .sec-title span{font-size:13px;color:var(--sub);letter-spacing:1px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:20px;}
+
+  .tool{position:relative;display:flex;flex-direction:column;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px 24px;transition:transform .25s,box-shadow .25s,border-color .25s;overflow:hidden;}
+  .tool::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--goldXL),transparent 70%);opacity:0;transition:.25s;}
+  .tool:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(20,33,61,.13);border-color:rgba(217,165,33,.55);}
+  .tool:hover::before{opacity:1;}
+  .tool .t-top{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .icon-box{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--deep),var(--deep3));box-shadow:0 6px 16px rgba(20,33,61,.28);}
+  .icon-box svg{width:26px;height:26px;}
+  .tag{font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:1px;white-space:nowrap;}
+  .tag.on{color:#2E7D4F;background:#E9F5EE;border:1px solid #BFE3CC;}
+  .tag.build{color:#9A6B00;background:#FBF3DD;border:1px solid #EAD198;}
+  .tool h3{font-size:19px;color:var(--deep);letter-spacing:.5px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .tool p{font-size:14px;color:var(--sub);line-height:1.85;}
+  .tool .go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:var(--deep3);letter-spacing:1px;}
+  .tool .go em{font-style:normal;transition:transform .2s;}
+  .tool:hover .go em{transform:translateX(4px);}
+  .tool .go::after{content:"";position:absolute;inset:0;}
+
+  /* 卡片3虚位样式 */
+  .tool.ghost{border-style:dashed;background:rgba(255,255,255,.55);}
+  .tool.ghost .icon-box{background:linear-gradient(135deg,#8E99AD,#C3CBD9);box-shadow:none;}
+  .tool.ghost h3{color:#7C8798;}
+  .tool.ghost p{color:#9AA3B2;}
+
+  /* ═══ 页脚 ═══ */
+  footer{background:var(--deep);color:#8E99AF;}
+  .foot-in{max-width:1060px;margin:0 auto;padding:34px 20px 30px;text-align:center;}
+  .universe{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+  .universe a{font-size:13.5px;color:#C7CEDC;border:1px solid rgba(199,206,220,.22);padding:7px 16px;border-radius:999px;transition:.2s;}
+  .universe a:hover{color:var(--goldXL);border-color:rgba(217,165,33,.5);}
+  .foot-note{font-size:12.5px;line-height:2;letter-spacing:.5px;}
+  .foot-note b{color:#D5DCEA;}
+
+  /* ═══ 进场动画 ═══ */
+  .rise{opacity:0;transform:translateY(16px);animation:rise .7s ease forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+  .d1{animation-delay:.08s}.d2{animation-delay:.2s}.d3{animation-delay:.32s}
+
+  @media (max-width:640px){
+    .nav-links{display:none;}
+    .hero-in{padding:56px 18px 50px;}
+    main{padding:36px 16px 46px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="/">
+      <span class="lamp"></span>
+      <b>欢乐工具站</b>
+      <span>tv.efcc.cc</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://efcc.cc" target="_blank">欢乐影视</a>
+      <a href="https://efcc.cc/live/" target="_blank">欢乐直播</a>
+      <a href="https://afcc.cc" target="_blank">欢乐搜索</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-in">
+    <div class="kicker rise">HAPPY TOOLS STATION</div>
+    <h1 class="rise d1">欢乐工具站</h1>
+    <p class="sub rise d2">一个域名，直达所有自建工具<br><b>页面住在 GitHub</b> · 由 tv.efcc.cc 高速转发</p>
+    <div class="feats rise d3">
+      <span class="feat"><i></i>零服务器</span>
+      <span class="feat"><i></i>零月租</span>
+      <span class="feat"><i></i>全球 CDN 加速</span>
+      <span class="feat"><i></i>手机电脑都顺手</span>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="sec-title">
+    <h2>工具箱</h2>
+    <span>TOOLS</span>
+  </div>
+  <div class="grid">
+
+    <a class="tool" href="/tool/admin.html">
+      <div class="t-top">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8BC4F" stroke-width="2" stroke-linecap="round">
+            <rect x="3" y="4" width="18" height="5" rx="1.5"/>
+            <rect x="3" y="14" width="18" height="5" rx="1.5"/>
+            <circle cx="7" cy="6.5" r=".8" fill="#E8BC4F" stroke="none"/>
+            <circle cx="7" cy="16.5" r=".8" fill="#E8BC4F" stroke="none"/>
+          </svg>
+        </div>
+        <span class="tag on">已上线</span>
+      </div>
+      <h3>欢乐 GitHub 管理平台</h3>
+      <p>在线管理 GitHub 仓库：文件增删改、内容编辑、上传下载，走 tv.efcc.cc 高速通道，是手机电脑都能用的仓库驾驶舱。</p>
+      <span class="go">打开平台 <em>→</em></span>
+    </a>
+
+    <a class="tool" href="/soft/sports/index.html">
+      <div class="t-top">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E8BC4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 8l8-4 8 4-8 4-8-4z"/>
+            <path d="M4 8v8l8 4 8-4V8"/>
+            <path d="M12 12v8"/>
+          </svg>
+        </div>
+        <span class="tag build">建设中</span>
+      </div>
+      <h3>程序制作平台</h3>
+      <p>先造积木，再用积木搭程序。第一个作品：学校运动会成绩管理系统——报名、计分、汇总全自动，目标 2027 年春季运动会实战。</p>
+      <span class="go">进入工地 <em>→</em></span>
+    </a>
+
+    <div class="tool ghost">
+      <div class="t-top">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+        </div>
+      </div>
+      <h3>虚位以待</h3>
+      <p>下一个工具想好了就挂门牌：学生奖励加分制、班级各项积分、题库考试、工程账目……本站就是欢乐宇宙的调度台。</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <div class="universe">
+      <a href="https://efcc.cc" target="_blank">欢乐影视</a>
+      <a href="https://efcc.cc/live/" target="_blank">欢乐直播 201</a>
+      <a href="https://afcc.cc" target="_blank">欢乐搜索</a>
+    </div>
+    <p class="foot-note"><b>欢乐工具站</b> · 欢乐宇宙的调度台<br>页面托管于 GitHub · Cloudflare 全球加速 · 零服务器零月租</p>
+  </div>
+</footer>
+
+</body>
+</html>
