@@ -222,7 +222,7 @@ function uploadOne(f){
  rd.onload=()=>{const b64=rd.result.split(',')[1];
   gh('/contents/'+fp,{method:'PUT',body:JSON.stringify({message:'tv-admin: upload '+f.name,content:b64})})
   .then(()=>{toast('📤 已上传 '+f.name);refreshSoon(curPath)})
-  .catch(e=>toast('上传失败：'+(String(e.message).includes('sha')?'文件已存在——先删除或改名再传':e.message),'e'))};
+  .catch(e=>toast('⚠️ 此目录已有同名文件：'+f.name+'——换个名字、先删旧的，或改名后再传','e'))};
  rd.readAsDataURL(f);}
 /* v8 拖拽上传：整个窗口=投放区，拖入显示提示层，松手即传 */
 let _dragDepth=0;
@@ -234,9 +234,13 @@ window.addEventListener('dragover',e=>e.preventDefault());
 window.addEventListener('drop',e=>{e.preventDefault();_dragDepth=0;$('drop-mask').style.display='none';
  const fs=e.dataTransfer&&e.dataTransfer.files;if(!fs||!fs.length)return;
  [...fs].forEach((f,i)=>setTimeout(()=>uploadOne(f),i*700))});
-function newFile(){dlg('📄 新建文件（可含路径如 abc/def.txt）','',name=>{if(!name)return;
- gh('/contents/'+name,{method:'PUT',body:JSON.stringify({message:'tv-admin: create '+name,content:b64('\n')})})
- .then(()=>{toast('✅ 已创建');loadDir(name.includes('/')?name.split('/').slice(0,-1).join('/'):curPath)}).catch(e=>toast('创建失败：'+e.message,'e'))})}
+function newFile(){dlg('📄 新建文件（在当前目录创建，可含子路径）','',name=>{if(!name)return;
+ const full=(curPath?curPath+'/':'')+name;
+ gh('/contents/'+full).then(()=>{
+  toast('⚠️ 此目录已有同名文件：'+full.split('/').pop()+'——换个名字再建','e')})
+ .catch(()=>gh('/contents/'+full,{method:'PUT',body:JSON.stringify({message:'tv-admin: create '+full,content:b64('\n')})})
+  .then(()=>{toast('✅ 已创建');loadDir(full.includes('/')?full.split('/').slice(0,-1).join('/'):curPath)}))
+ .catch(e=>toast('创建失败：'+e.message,'e'))})}
 function renameAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1).join('/');
  gh('/contents/'+fp).then(f=>{const c=f.content||'';
   dlg('✏️ 改名：'+parts.at(-1),fp,name=>{if(!name||name===fp)return;
