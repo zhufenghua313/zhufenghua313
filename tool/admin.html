@@ -188,9 +188,15 @@ function destDlg(title,cb){const m=$('dlg-mask');$('dlg-title').textContent=titl
   sel.disabled=false}).catch(()=>{sel.innerHTML='<option value="">(仓库根目录)</option>';sel.disabled=false});
  $('dlg-ok').onclick=()=>{const v=sel.value;dlgClose();cb(v)}}
 function newFolder(){dlg('📁 新建文件夹（可含路径如 abc/def）','',name=>{if(!name)return;
- gh('/contents/'+name+'/.gitkeep',{method:'PUT',body:JSON.stringify({message:'tv-admin: create folder '+name,content:b64('')})})
+ const put=sha=>gh('/contents/'+name+'/.gitkeep',{method:'PUT',body:JSON.stringify({message:'tv-admin: create folder '+name,content:b64(''),...(sha?{sha}:{})})});
+ put()
  .then(()=>{toast('✅ 文件夹已创建');const parent=name.includes('/')?name.split('/').slice(0,-1).join('/'):'';refreshSoon(parent)})
- .catch(e=>toast('创建失败：'+e.message,'e'))})}
+ .catch(e=>{
+  if(String(e.message).includes('sha')){
+   gh('/contents/'+name+'/.gitkeep').then(f=>put(f.sha))
+   .then(()=>{toast('📁 文件夹已存在（已就绪）');const parent=name.includes('/')?name.split('/').slice(0,-1).join('/'):'';refreshSoon(parent)})
+   .catch(()=>toast('创建失败：'+e.message,'e'))
+  } else toast('创建失败：'+e.message,'e')})})}
 function copyTo(fp){destDlg('📤 复制到哪：'+fp.split('/').pop(),dest=>{
  const name=fp.split('/').pop();const target=(dest?dest+'/':'')+name;
  if(target===fp)return toast('源和目标相同','i');
