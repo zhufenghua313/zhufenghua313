@@ -134,9 +134,8 @@ function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
 function doLogin(){PAT=$('pat-input').value.trim();if(!PAT.startsWith('github_pat_'))return toast('令牌要以 github_pat_ 开头','e');
  gh('/contents/').then(d=>{LSset('tv-admin-pat',PAT);boot();const sv=decodeURIComponent(location.hash.slice(1));loadDir(sv||'')})
  .catch(e=>toast('连接失败：'+e.message,'e'))}
-function logoutAsk(){dlg('🚪 确认退出登录？（30分钟不操作也会自动退出）','',x=>{
- if(x!=='退出')return toast('已取消','i');
- LSdel('tv-admin-pat');location.hash='';location.reload()})}
+function logoutAsk(){ /* v39: 一键直退（站长原则：退出要快，登录才要保险） */
+ LSdel('tv-admin-pat');location.hash='';location.reload()}
 function logout(){LSdel('tv-admin-pat');location.reload()}
 function boot(){$('setup').style.display='none';$('main-app').style.display='block';$('token-status').textContent='✅ 已连接'}
 
