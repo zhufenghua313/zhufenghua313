@@ -513,6 +513,13 @@ PAT=LSget('tv-admin-pat')||'';
 if(PAT){gh('/contents/').then(()=>{
   boot();
   /* v35: 恢复上次目录（URL hash记忆） */
+/* v36: 会话保护——30分钟无操作自动退出（防忘关下班），任意操作滚动续期 */
+(function(){
+ const IDLE_MS=30*60*1000;
+ let last=Date.now();
+ ['click','keydown','mousemove','touchstart'].forEach(ev=>document.addEventListener(ev,()=>{last=Date.now()},{passive:true}));
+ setInterval(()=>{if(Date.now()-last>IDLE_MS){LSdel('tv-admin-pat');toast('⏰ 30分钟没操作，已自动退出（保护模式）','i');setTimeout(()=>location.reload(),1500)}},60000);
+})();
   const saved=decodeURIComponent(location.hash.slice(1));
   if(saved)loadDir(saved);
  }).catch(()=>{LSdel('tv-admin-pat');toast('本地令牌已失效，请重新粘贴','e')})}
