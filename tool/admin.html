@@ -132,10 +132,10 @@ function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
 
 /* 登录 */
 function doLogin(){PAT=$('pat-input').value.trim();if(!PAT.startsWith('github_pat_'))return toast('令牌要以 github_pat_ 开头','e');
- gh('/contents/').then(d=>{LSset('tv-admin-pat',PAT);boot()})
+ gh('/contents/').then(d=>{LSset('tv-admin-pat',PAT);boot();const sv=decodeURIComponent(location.hash.slice(1));loadDir(sv||'')})
  .catch(e=>toast('连接失败：'+e.message,'e'))}
 function logout(){LSdel('tv-admin-pat');location.reload()}
-function boot(){$('setup').style.display='none';$('main-app').style.display='block';$('token-status').textContent='✅ 已连接';loadDir('')}
+function boot(){$('setup').style.display='none';$('main-app').style.display='block';$('token-status').textContent='✅ 已连接'}
 
 /* 目录浏览 */
 function loadDir(path){curPath=path;closeEditor();
