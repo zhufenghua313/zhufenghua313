@@ -139,6 +139,7 @@ function boot(){$('setup').style.display='none';$('main-app').style.display='blo
 
 /* 目录浏览 */
 function loadDir(path){curPath=path;closeEditor();
+ if(location.hash!=='#'+encodeURIComponent(path))location.hash='#'+encodeURIComponent(path);
  gh('/contents'+(path?'/'+path:'')).then(items=>{
   items.sort((a,b)=>(a.type===b.type?a.name.localeCompare(b.name):a.type==='dir'?-1:1));
   let h='';let bc='<a onclick="loadDir(\'\')">🏠 仓库根目录</a>';
@@ -509,7 +510,12 @@ function deleteAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1)
 
 /* 启动 */
 PAT=LSget('tv-admin-pat')||'';
-if(PAT){gh('/contents/').then(()=>boot()).catch(()=>{LSdel('tv-admin-pat');toast('本地令牌已失效，请重新粘贴','e')})}
+if(PAT){gh('/contents/').then(()=>{
+  boot();
+  /* v35: 恢复上次目录（URL hash记忆） */
+  const saved=decodeURIComponent(location.hash.slice(1));
+  if(saved)loadDir(saved);
+ }).catch(()=>{LSdel('tv-admin-pat');toast('本地令牌已失效，请重新粘贴','e')})}
 </script>
 <script>
 /* JSZip v3.10.1 内嵌（浏览器本地ZIP打包，无需CDN） */
