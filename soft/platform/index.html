@@ -94,12 +94,12 @@ document.getElementById("platLogout").addEventListener("click", function(){
 document.getElementById("pubSports").addEventListener("click", function(){
   var btn=this, msg=document.getElementById("pubMsg")||(function(){var d=document.createElement("div");d.id="pubMsg";d.style.cssText="text-align:center;font-size:13px;margin-top:8px";btn.parentNode.parentNode.querySelector(".info").appendChild(d);return d})();
   btn.disabled=true; btn.textContent="发布中…";
-  var card={icon:"🏃",title:"运动会管理系统",desc:"程序制作平台的第一件作品：报名、计分、汇总全自动——目标 2027 年春季运动会实战。当前开放模块：M1 基础配置。",href:"/soft/sports/index.html",go:"进入程序",external:true};
+  var card={icon:"🏃",title:"运动会管理系统",desc:"程序制作平台的第一件作品：报名、计分、汇总全自动——目标 2027 年春季运动会实战。当前开放模块：M1 基础配置。",href:"/soft/sports/index.html",go:"进入程序",external:true,status:"build"};
   var fd=new FormData(); fd.append("card",JSON.stringify(card));
   fetch("/soft/__admin/publish",{method:"POST",body:fd})
     .then(function(r){return r.json()})
     .then(function(d){
-      if(d.ok){ btn.textContent="✅ 已发布到首页"; msg.style.color="#2E7D4F"; msg.textContent="刷新 tv.efcc.cc 首页即可看到新卡片"; }
+      if(d.ok){ btn.textContent="✅ 已上架首页（状态：建设中）"; msg.style.color="#2E7D4F"; msg.textContent="刷新 tv.efcc.cc 首页即可看到新卡片；作品完成后改发布 status=on 即显示「已上线」"; }
       else { btn.disabled=false; btn.textContent="🚀 发布到工具站首页"; msg.style.color="#B03A2E"; msg.textContent=d.msg||"发布失败"; }
     })
     .catch(function(){ btn.disabled=false; btn.textContent="🚀 发布到工具站首页"; msg.style.color="#B03A2E"; msg.textContent="网络异常，稍后再试"; });
