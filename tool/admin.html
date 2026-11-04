@@ -62,7 +62,7 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
 <body>
 <div class="top">
   <div><h1>🚀 欢乐GitHub管理平台</h1><div class="sub">zhufenghua313/zhufenghua313</div></div>
-  <div id="token-status">未连接</div>
+  <div id="token-status">未登录</div>
 </div>
 <div class="wrap" id="main-app" style="display:none">
   <div class="breadcrumb" id="bc"></div>
@@ -105,7 +105,7 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
   <h2>🔐 粘贴 GitHub 令牌</h2>
   <p>只存本机浏览器。<a href="https://github.com/settings/tokens?type=beta" target="_blank" style="color:#2563eb">没有？点这生成</a></p>
   <input type="password" id="pat-input" placeholder="github_pat_……（粘贴到这里）">
-  <button class="btn btn-p" onclick="doLogin()">连 接</button>
+  <button class="btn btn-p" onclick="doLogin()">登 录</button>
   
 </div>
 <div class="msg" id="msg"></div>
@@ -133,11 +133,11 @@ function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
 /* 登录 */
 function doLogin(){PAT=$('pat-input').value.trim();if(!PAT.startsWith('github_pat_'))return toast('令牌要以 github_pat_ 开头','e');
  gh('/contents/').then(d=>{LSset('tv-admin-pat',PAT);boot();const sv=decodeURIComponent(location.hash.slice(1));loadDir(sv||'')})
- .catch(e=>toast('连接失败：'+e.message,'e'))}
+ .catch(e=>toast('登录失败：'+e.message,'e'))}
 function logoutAsk(){ /* v39: 一键直退（站长原则：退出要快，登录才要保险） */
  LSdel('tv-admin-pat');location.hash='';location.reload()}
 function logout(){LSdel('tv-admin-pat');location.reload()}
-function boot(){$('setup').style.display='none';$('main-app').style.display='block';$('token-status').textContent='✅ 已连接'}
+function boot(){$('setup').style.display='none';$('main-app').style.display='block';$('token-status').textContent='✅ 已登录'}
 
 /* 目录浏览 */
 function loadDir(path){curPath=path;closeEditor();
