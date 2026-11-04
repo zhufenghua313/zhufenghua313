@@ -12,7 +12,7 @@
   .btn-out{margin-left:auto;align-self:flex-start;padding:5px 11px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;flex-shrink:0;white-space:nowrap;line-height:1.4;}
   .btn-out:active{background:rgba(255,255,255,.22);}
   header{background:linear-gradient(120deg,var(--deep),var(--deep2));color:#fff;border-radius:14px;padding:22px 26px;margin-bottom:16px;position:relative;overflow:hidden;display:flex;align-items:flex-start;gap:8px;}
-  header::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(217,165,33,.15);}
+  header::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(217,165,33,.15);pointer-events:none;}
   .h-title{flex:1;min-width:0;}
   header h1{font-size:22px;}.header p{font-size:13px;color:rgba(255,255,255,.75);margin-top:6px;}
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
@@ -42,7 +42,7 @@
       <h1>🛠️ 欢乐工具站 · 后台</h1>
       <p>改密码、改首页导航按钮——都在这，一键生效</p>
     </div>
-    <button class="btn-out" type="button" onclick="doLogout()">🚪 退出</button>
+    <button class="btn-out" type="button" onclick="doLogout()">🚪 退出登录</button>
   </header>
 
   <div class="card">
