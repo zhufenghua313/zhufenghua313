@@ -523,7 +523,7 @@ if(PAT){gh('/contents/').then(()=>{
  setInterval(()=>{if(Date.now()-last>IDLE_MS){LSdel('tv-admin-pat');toast('⏰ 30分钟没操作，已自动退出（保护模式）','i');setTimeout(()=>location.reload(),1500)}},60000);
 })();
   const saved=decodeURIComponent(location.hash.slice(1));
-  if(saved)loadDir(saved);
+  loadDir(saved||''); /* v40: 空hash也加载根目录（主目录刷新空白修复） */
  }).catch(()=>{LSdel('tv-admin-pat');toast('本地令牌已失效，请重新粘贴','e')})}
 </script>
 <script>
