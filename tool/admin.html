@@ -189,15 +189,15 @@ function destDlg(title,cb){const m=$('dlg-mask');$('dlg-title').textContent=titl
  $('dlg-ok').onclick=()=>{const v=sel.value;dlgClose();cb(v)}}
 function newFolder(){dlg('📁 新建文件夹（在当前目录创建，可含子路径如 abc/def）','',name=>{if(!name)return;
  const full=(curPath?curPath+'/':'')+name;
- const put=sha=>gh('/contents/'+full+'/.gitkeep',{method:'PUT',body:JSON.stringify({message:'tv-admin: create folder '+full,content:b64('\n'),...(sha?{sha}:{})})});
- put()
- .then(()=>{toast('✅ 文件夹已创建');refreshSoon(full.includes('/')?full.split('/').slice(0,-1).join('/'):curPath)})
- .catch(e=>{
-  if(String(e.message).includes('sha')){
-   gh('/contents/'+full+'/.gitkeep').then(f=>put(f.sha))
-   .then(()=>{toast('📁 此文件夹已存在（已就绪）');refreshSoon(full.includes('/')?full.split('/').slice(0,-1).join('/'):curPath)})
-   .catch(()=>toast('创建失败：'+e.message,'e'))
-  } else toast('创建失败：'+e.message,'e')})})}
+ const dir=full.includes('/')?full.split('/').slice(0,-1).join('/'):curPath;
+ const mk=n=>{const fp=(curPath?curPath+'/':'')+n;
+  return gh('/contents/'+fp+'/.gitkeep',{method:'PUT',body:JSON.stringify({message:'tv-admin: create folder '+fp,content:b64('\n')})})
+  .then(()=>{toast('✅ 文件夹已创建'+(n!==name?'（名字：'+n+'）':''));refreshSoon(dir)})};
+ gh('/contents/'+full).then(()=>dupDlg(name,v=>{
+   if(v==='skip')return;
+   if(v==='rename')return autoName(curPath,name).then(n2=>mk(n2)).catch(e=>toast('创建失败：'+e.message,'e'));
+   mk(name)}))
+ .catch(()=>mk(name)).catch(e=>toast('创建失败：'+e.message,'e'))})}
 function copyTo(fp){destDlg('📤 复制到哪：'+fp.split('/').pop(),dest=>{
  const name=fp.split('/').pop();const target=(dest?dest+'/':'')+name;
  if(target===fp)return toast('源和目标相同','i');
@@ -212,18 +212,42 @@ function moveTo(fp){destDlg('➡️ 移动到哪：'+fp.split('/').pop(),dest=>{
  .then(()=>{toast('✅ 已移动到 '+(target));refreshSoon(dest)})
  .catch(e=>toast('移动失败：'+(String(e.message).includes('sha')?'目标已有同名文件':e.message),'e'))})}
 function refreshSoon(dir){setTimeout(()=>loadDir(dir),1500);setTimeout(()=>loadDir(dir),4500)}
+/* v22: Windows式重名处理——覆盖/改名(2)/取消 三选一 */
+function dupDlg(name,cb){const m=$('dlg-mask');
+ $('dlg-title').textContent='⚠️ 已有同名：'+name+'\n要覆盖，还是留两份？';
+ const old=$('dlg-input');
+ if(old.tagName!=='SELECT'){const sel=document.createElement('select');sel.id='dlg-input';
+  sel.style.width='100%';sel.style.padding='9px 11px';sel.style.border='1px solid #d1d5db';sel.style.borderRadius='8px';sel.style.fontSize='13.5px';
+  old.replaceWith(sel)}
+ const sel=$('dlg-input');
+ sel.innerHTML='<option value="skip">🚫 取消（不动原有文件）</option>'
+  +'<option value="rename">📝 两份都留：自动改名成 xxx(2)</option>'
+  +'<option value="overwrite">♻️ 覆盖旧文件（替换内容）</option>';
+ m.style.display='flex';
+ $('dlg-ok').onclick=()=>{const v=sel.value;dlgClose();cb(v)}}
+function autoName(dir,name){
+ const ext=name.match(/(\.[^.]+)$/)?name.match(/(\.[^.]+)$/)[1]:'';
+ const stem=ext?name.slice(0,-ext.length):name;
+ const tryN=n=>gh('/contents/'+(dir?dir+'/':'')+stem+'('+n+')'+ext).then(()=>tryN(n+1)).catch(()=>stem+'('+n+')'+ext);
+ return gh('/contents/'+(dir?dir+'/':'')+name).then(()=>tryN(2)).catch(()=>name)}
 function pickFile(){$('file-input').click()}
 function doUpload(input){const f=input.files[0];if(!f)return;uploadOne(f);input.value=''}
 function uploadOne(f){
  if(f.size>25*1048576)return toast('文件超过25MB，网页装不下——APK等大文件请用 GitHub Desktop 传','e');
  if(f.size>5*1048576)toast('文件较大('+fmtSize(f.size)+')，上传中请稍候…','i');
- const fp=(curPath?curPath+'/':'')+f.name;
- const rd=new FileReader();
- rd.onload=()=>{const b64=rd.result.split(',')[1];
-  gh('/contents/'+fp,{method:'PUT',body:JSON.stringify({message:'tv-admin: upload '+f.name,content:b64})})
-  .then(()=>{toast('📤 已上传 '+f.name);refreshSoon(curPath)})
-  .catch(e=>toast('⚠️ 此目录已有同名文件：'+f.name+'——换个名字、先删旧的，或改名后再传','e'))};
- rd.readAsDataURL(f);}
+ const doPut=(name)=>{const fp=(curPath?curPath+'/':'')+name;
+  const rd=new FileReader();
+  rd.onload=()=>{const b64=rd.result.split(',')[1];
+   gh('/contents/'+fp,{method:'PUT',body:JSON.stringify({message:'tv-admin: upload '+name,content:b64})})
+   .then(()=>{toast('📤 已上传 '+name+(name!==f.name?'（自动改名自 '+f.name+'）':''));refreshSoon(curPath)})
+   .catch(e=>toast('上传失败：'+e.message,'e'))};
+  rd.readAsDataURL(f)};
+ gh('/contents/'+(curPath?curPath+'/':'')+f.name)
+  .then(()=>dupDlg(f.name,v=>{
+    if(v==='skip')return toast('已跳过 '+f.name,'i');
+    if(v==='rename')return autoName(curPath,f.name).then(n2=>doPut(n2));
+    doPut(f.name)}))
+  .catch(()=>doPut(f.name));}
 /* v8 拖拽上传：整个窗口=投放区，拖入显示提示层，松手即传 */
 let _dragDepth=0;
 window.addEventListener('dragenter',e=>{e.preventDefault();_dragDepth++;
@@ -235,12 +259,14 @@ window.addEventListener('drop',e=>{e.preventDefault();_dragDepth=0;$('drop-mask'
  const fs=e.dataTransfer&&e.dataTransfer.files;if(!fs||!fs.length)return;
  [...fs].forEach((f,i)=>setTimeout(()=>uploadOne(f),i*700))});
 function newFile(){dlg('📄 新建文件（在当前目录创建，可含子路径）','',name=>{if(!name)return;
- const full=(curPath?curPath+'/':'')+name;
- gh('/contents/'+full).then(()=>{
-  toast('⚠️ 此目录已有同名文件：'+full.split('/').pop()+'——换个名字再建','e')})
- .catch(()=>gh('/contents/'+full,{method:'PUT',body:JSON.stringify({message:'tv-admin: create '+full,content:b64('\n')})})
-  .then(()=>{toast('✅ 已创建');loadDir(full.includes('/')?full.split('/').slice(0,-1).join('/'):curPath)}))
- .catch(e=>toast('创建失败：'+e.message,'e'))})}
+ const dir=curPath;const full=(dir?dir+'/':'')+name;
+ const mk=n=>gh('/contents/'+(dir?dir+'/':'')+n,{method:'PUT',body:JSON.stringify({message:'tv-admin: create '+(dir?dir+'/':'')+n,content:b64('\n')})})
+  .then(()=>{toast('✅ 已创建'+(n!==name?'（名字：'+n+'）':''));loadDir(dir)});
+ gh('/contents/'+full).then(()=>dupDlg(name,v=>{
+   if(v==='skip')return;
+   if(v==='rename')return autoName(dir,name).then(n2=>mk(n2)).catch(e=>toast('创建失败：'+e.message,'e'));
+   mk(name)}))
+ .catch(()=>mk(name)).catch(e=>toast('创建失败：'+e.message,'e'))})}
 function renameAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1).join('/');
  gh('/contents/'+fp).then(f=>{const c=f.content||'';
   dlg('✏️ 改名：'+parts.at(-1),fp,name=>{if(!name||name===fp)return;
