@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运动会基础配置（M1·积木生成版）</title>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ============================================================
+ * 积木 #1：配方表单积木 config-form v1
+ * ------------------------------------------------------------
+ * 给它一份 JSON 配方，它就长出一整页配置界面。
+ * 引擎不含任何"运动会"知识——业务全部在配方里。
+ * 用法：ConfigForm.create({ mount, recipe })
+ * ============================================================ */
+var ConfigForm = (function () {
+  "use strict";
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function $(id) { return document.getElementById(id); }
+  function deep(o) { return JSON.parse(JSON.stringify(o)); }
+  function getPath(obj, path) {
+    var parts = path.split("."), cur = obj;
+    for (var i = 0; i < parts.length; i++) {
+      if (cur == null) return undefined;
+      cur = cur[parts[i]];
+    }
+    return cur;
+  }
+  function setPath(obj, path, val) {
+    var parts = path.split("."), cur = obj;
+    for (var i = 0; i < parts.length - 1; i++) {
+      if (cur[parts[i]] == null) cur[parts[i]] = {};
+      cur = cur[parts[i]];
+    }
+    cur[parts[parts.length - 1]] = val;
+  }
+
+  /* ---------- 主题 ---------- */
+  function themeCSS(t) {
+    return ":root{" +
+      "--deep:" + t.deep + ";--deep2:" + t.deep2 + ";--gold:" + t.gold +
+      ";--bg:" + t.bg + ";--card:" + t.card + ";--line:" + t.line +
+      ";--ink:" + t.ink + ";--sub:" + t.sub + ";--err:" + t.err +
+      ";--ok:" + t.ok + ";--goldbg:" + t.goldbg + "}";
+  }
+
+  var BASE_CSS =
+    '*{box-sizing:border-box;margin:0;padding:0}' +
+    'body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65}' +
+    '.wrap{max-width:960px;margin:0 auto;padding:20px 16px 70px}' +
+    'header.top{background:linear-gradient(120deg,var(--deep),var(--deep2));color:#fff;border-radius:14px;padding:24px 28px;margin-bottom:16px;position:relative;overflow:hidden}' +
+    'header.top::after{content:"";position:absolute;right:-50px;top:-50px;width:170px;height:170px;border-radius:50%;background:rgba(217,165,33,.16)}' +
+    'header.top .badge{display:inline-block;background:rgba(217,165,33,.18);border:1px solid rgba(217,165,33,.55);color:#EDD9A3;font-size:13px;padding:3px 12px;border-radius:999px;margin-bottom:10px}' +
+    'header.top h1{font-size:24px;letter-spacing:1px}' +
+    'header.top p{font-size:13.5px;opacity:.82;margin-top:6px}' +
+    '.hintbar{background:var(--goldbg);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:14px;margin-bottom:16px;color:#6B5B1E}' +
+    '.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px}' +
+    '.card h2{font-size:17px;color:var(--deep);border-left:4px solid var(--gold);padding-left:10px;margin-bottom:14px}' +
+    '.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 16px}' +
+    '.fld label{display:block;font-size:13.5px;color:var(--sub);margin-bottom:5px}' +
+    '.fld input[type=text],.fld input[type=number],.fld input[type=datetime-local],.fld select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:#fff;color:var(--ink)}' +
+    '.fld input:focus,.fld select:focus{outline:none;border-color:var(--gold)}' +
+    '.grows{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 14px}' +
+    '.g-row{display:flex;align-items:center;gap:8px;background:#FAFBFD;border:1px solid var(--line);border-radius:8px;padding:8px 10px}' +
+    '.g-row .gn{font-size:14px;white-space:nowrap}' +
+    '.g-row input{width:64px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;font-size:15px;text-align:center}' +
+    '.g-row .gu{font-size:13px;color:var(--sub)}' +
+    '.checkline{display:flex;align-items:center;gap:8px;font-size:14.5px;padding:6px 0}' +
+    '.checkline input{width:17px;height:17px;accent-color:var(--deep)}' +
+    '.radiogroup .rd{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px;cursor:pointer;background:#fff}' +
+    '.radiogroup .rd:hover{border-color:var(--gold)}' +
+    '.radiogroup input{margin-top:4px;accent-color:var(--deep)}' +
+    '.radiogroup .rd .t{font-weight:600;font-size:14.5px}' +
+    '.radiogroup .rd .d{font-size:13px;color:var(--sub)}' +
+    '.tbl{width:100%;border-collapse:collapse;font-size:14px}' +
+    '.tbl th{background:var(--deep);color:#fff;padding:8px 8px;font-weight:600;text-align:left;white-space:nowrap}' +
+    '.tbl td{border-bottom:1px solid var(--line);padding:6px 6px;vertical-align:top}' +
+    '.tbl input,.tbl select{width:100%;min-width:70px;padding:6px 6px;border:1px solid var(--line);border-radius:6px;font-size:14px;background:#fff}' +
+    '.tbl .del{background:#F6E4E1;color:#B03A2E;border:1px solid #E4C4BE;border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;white-space:nowrap}' +
+    '.add{background:var(--goldbg);color:#8A6D14;border:1px dashed var(--gold);border-radius:8px;padding:8px 16px;cursor:pointer;font-size:14px;margin-top:10px}' +
+    '.add:hover{background:#F5EDD4}' +
+    '.rk{display:flex;align-items:center;gap:8px;background:#FAFBFD;border:1px solid var(--line);border-radius:8px;padding:8px 12px}' +
+    '.rk span{font-size:13.5px;color:var(--sub);white-space:nowrap}' +
+    '.rk input{width:60px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;text-align:center;font-size:15px}' +
+    '#ovBody{background:var(--deep);color:#EDEFF4;border-radius:12px;padding:16px 20px;font-size:14.5px;line-height:2.05}' +
+    '#ovBody b{color:#F0C65B;font-weight:600}' +
+    '.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}' +
+    '.btn{border:none;border-radius:9px;padding:10px 20px;font-size:14.5px;cursor:pointer;font-weight:600}' +
+    '.btn.deep{background:var(--deep);color:#fff}.btn.deep:hover{background:var(--deep2)}' +
+    '.btn.gold{background:var(--gold);color:#fff}.btn.gold:hover{background:#C79518}' +
+    '.btn.ghost{background:#fff;color:var(--deep);border:1px solid var(--line)}.btn.ghost:hover{border-color:var(--deep)}' +
+    '.btn.warn{background:#fff;color:var(--err);border:1px solid #E4C4BE}.btn.warn:hover{background:#FBF0EE}' +
+    '#msg{margin-top:14px;font-size:14.5px;line-height:1.8}' +
+    '#msg.err{color:var(--err)}#msg.ok{color:var(--ok)}' +
+    '#savedAt{font-size:13.5px;color:var(--sub);margin-top:10px}' +
+    'footer{margin-top:26px;text-align:center;font-size:13px;color:var(--sub);line-height:1.8}' +
+    '#toast{position:fixed;left:50%;top:18px;transform:translateX(-50%) translateY(-24px);background:rgba(27,42,74,.94);color:#fff;padding:11px 24px;border-radius:10px;font-size:15px;opacity:0;pointer-events:none;transition:all .25s;max-width:88vw;z-index:99}' +
+    '#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}' +
+    '@media(max-width:640px){.card{padding:14px}.grows{grid-template-columns:1fr 1fr}.tbl{font-size:13px}}';
+
+  /* ---------- 字段渲染器 ---------- */
+  var FIELDS = {
+    text: function (f, val, attrs) {
+      return '<div class="fld"><label>' + esc(f.label) + '</label>' +
+        '<input type="text" data-path="' + f.key + '" value="' + esc(val) + '"' + (attrs || '') + '></div>';
+    },
+    number: function (f, val, attrs) {
+      return '<div class="fld"><label>' + esc(f.label) + '</label>' +
+        '<input type="number" data-path="' + f.key + '" value="' + esc(val) + '"' + (attrs || '') + '></div>';
+    },
+    datetime: function (f, val) {
+      return '<div class="fld"><label>' + esc(f.label) + '</label>' +
+        '<input type="datetime-local" data-path="' + f.key + '" value="' + esc(val) + '"></div>';
+    },
+    radio: function (f, val) {
+      var h = '<div class="fld radiogroup"><label>' + esc(f.label) + '</label>';
+      f.options.forEach(function (o) {
+        h += '<label class="rd"><input type="radio" name="rg_' + f.key + '" value="' + esc(o.value) + '"' +
+          (val === o.value ? ' checked' : '') + '><span><span class="t">' + esc(o.title) + '</span>' +
+          (o.desc ? '<br><span class="d">' + esc(o.desc) + '</span>' : '') + '</span></label>';
+      });
+      return h + '</div>';
+    },
+    checkbox: function (f, val) {
+      return '<div class="fld"><label style="font-size:14.5px;color:var(--ink)" class="checkline">' +
+        '<input type="checkbox" data-path="' + f.key + '"' + (val ? ' checked' : '') + '> ' + esc(f.label) + '</label></div>';
+    },
+    rankRow: function (f, val) {
+      var h = '<div class="fld"><label>' + esc(f.label) + '</label><div class="grows" style="grid-template-columns:repeat(auto-fit,minmax(96px,1fr))">';
+      for (var i = 0; i < f.count; i++) {
+        h += '<div class="rk"><span>第' + (i + 1) + '名</span>' +
+          '<input type="number" min="0" max="99" step="1" data-rank="' + i + '" value="' +
+          (val && val[i] != null ? val[i] : "") + '"></div>';
+      }
+      return h + '</div></div>';
+    }
+  };
+
+  /* ---------- 动态行组渲染器（gradeRows / itemRows） ---------- */
+  function renderGradeRows(sec, data) {
+    var h = '<div class="grows" id="gradeRows">';
+    data[sec.dataKey].forEach(function (g, i) {
+      h += '<div class="g-row"><span class="gn">' + esc(g.name) + '</span>' +
+        '<input type="number" min="1" max="20" data-gi="' + i + '" data-gk="classes" value="' + g.classes + '">' +
+        '<span class="gu">班</span>' +
+        '<button class="del" type="button" data-gdel="' + i + '" title="删除此年级">×</button></div>';
+    });
+    return h + '</div>' +
+      '<button class="add" type="button" id="addGrade">＋ 添加年级</button>';
+  }
+
+  function renderEventRows(sec, data) {
+    var h = '<table class="tbl"><thead><tr>';
+    sec.columns.forEach(function (c) { h += '<th>' + esc(c.label) + '</th>'; });
+    h += '<th></th></tr></thead><tbody id="evBody">';
+    data[sec.dataKey].forEach(function (ev, i) {
+      h += '<tr>';
+      sec.columns.forEach(function (c) {
+        if (c.type === "select") {
+          h += '<td><select data-ei="' + i + '" data-ek="' + c.key + '">';
+          c.options.forEach(function (o) {
+            h += '<option value="' + esc(o) + '"' + (ev[c.key] === o ? ' selected' : '') + '>' + esc(o) + '</option>';
+          });
+          h += '</select></td>';
+        } else {
+          h += '<td><input type="text" data-ei="' + i + '" data-ek="' + c.key + '" value="' + esc(ev[c.key]) + '"></td>';
+        }
+      });
+      h += '<td><button class="del" type="button" data-edel="' + i + '">删</button></td></tr>';
+    });
+    return h + '</tbody></table><button class="add" type="button" id="addEvent">＋ ' + esc(sec.addLabel || "添加行") + '</button>';
+  }
+
+  /* ---------- 主创建函数 ---------- */
+  function create(opts) {
+    var recipe = opts.recipe;
+    var LS_KEY = recipe.storage.key; /* 必须最先赋值：loadSaved 在渲染前就要用它（var 提升陷阱） */
+    /* _rebuild 模式：由 rebuild() 传入新数据 */
+    var data = opts._data ? deep(opts._data) : (recipe.defaults ? deep(recipe.defaults) : {});
+    /* 首次挂载：渲染【前】先读本地存档——晚了会被 collect() 用 DOM 默认值洗掉 */
+    var loadedSaved = false, pre = null;
+    if (!opts._rebuild) {
+      try { pre = loadSaved(); } catch (e) { pre = null; }
+      if (pre && pre.meta && pre.meta.exportedAt) { data = pre; loadedSaved = true; }
+    }
+
+    var mount = typeof opts.mount === "string" ? $(opts.mount.slice(1)) : opts.mount;
+    if (!mount) { console.error("ConfigForm: mount 不存在"); return; }
+
+    /* —— 主题注入（rebuild 时复用同一 style，避免重复堆积） —— */
+    var style = document.getElementById("cf-style-" + recipe.storage.key) || document.createElement("style");
+    style.id = "cf-style-" + recipe.storage.key;
+    style.textContent = themeCSS(recipe.theme) + BASE_CSS;
+    if (!style.parentNode) document.head.appendChild(style);
+
+    /* —— 骨架 —— */
+    var head = recipe.header || {};
+    mount.innerHTML =
+      '<div class="wrap">' +
+      '<header class="top"><span class="badge">' + esc(head.badge || "") + '</span>' +
+      '<h1>' + esc(head.title || "") + '</h1><p>' + esc(head.sub || "") + '</p></header>' +
+      (recipe.hint ? '<div class="hintbar">' + recipe.hint + '</div>' : '') +
+      '<div id="sections"></div>' +
+      '<div id="overviewCard" class="card" style="background:var(--card)">' +
+      '<h2>' + esc(recipe.overview.title) + '</h2><div id="ovBody"></div>' +
+      '<div class="btnrow">' +
+      '<button class="btn deep" id="btnSave">' + esc(recipe.actions.save) + '</button>' +
+      '<button class="btn gold" id="btnExport">' + esc(recipe.actions.export) + '</button>' +
+      '<button class="btn ghost" id="btnImport">' + esc(recipe.actions.import) + '</button>' +
+      '<button class="btn warn" id="btnReset">' + esc(recipe.actions.reset) + '</button>' +
+      '</div><div id="msg"></div><div id="savedAt"></div></div>' +
+      (recipe.footer ? '<footer>' + recipe.footer + '</footer>' : '') +
+      '</div>' +
+      '<div id="toast"></div>';
+
+    /* —— 区段渲染 —— */
+    var secWrap = mount.querySelector("#sections");
+    recipe.sections.forEach(function (sec) {
+      var div = document.createElement("div");
+      div.className = "card";
+      var inner = "<h2>" + esc(sec.title) + "</h2>";
+      if (sec.type === "gradeRows") {
+        inner += renderGradeRows(sec, data);
+      } else if (sec.type === "eventRows") {
+        inner += renderEventRows(sec, data);
+      } else if (sec.type === "grid") {
+        inner += '<div class="grid">';
+        sec.fields.forEach(function (f) {
+          var val = getPath(data, f.key);
+          inner += FIELDS[f.type](f, val, f.attrs);
+        });
+        inner += '</div>';
+      } else if (sec.type === "plain") {
+        sec.fields.forEach(function (f) {
+          inner += FIELDS[f.type](f, getPath(data, f.key), f.attrs);
+        });
+      }
+      div.innerHTML = inner;
+      secWrap.appendChild(div);
+    });
+
+    /* —— 数据收集 —— */
+    function collect() {
+      // 普通字段
+      mount.querySelectorAll("[data-path]").forEach(function (el) {
+        var path = el.getAttribute("data-path");
+        var v;
+        if (el.type === "checkbox") v = el.checked;
+        else if (el.type === "number") v = el.value === "" ? null : Number(el.value);
+        else v = el.value;
+        setPath(data, path, v);
+      });
+      // 单选组
+      mount.querySelectorAll("input[type=radio]:checked").forEach(function (el) {
+        setPath(data, el.name.replace(/^rg_/, ""), el.value);
+      });
+      // 年级行
+      var gs = [];
+      mount.querySelectorAll("#gradeRows .g-row").forEach(function (row) {
+        var name = row.querySelector(".gn").textContent;
+        var num = row.querySelector("input[data-gk=classes]").value;
+        gs.push({ name: name, classes: parseInt(num, 10) || 1 });
+      });
+      if (mount.querySelector("#gradeRows")) data.grades = gs; // 行组存在才回写（空也回写，支持全删）
+      // 项目行
+      var evs = [];
+      var sec0 = recipe.sections.filter(function (s) { return s.type === "eventRows"; })[0];
+      if (sec0) {
+        mount.querySelectorAll("#evBody tr").forEach(function (tr) {
+          var ev = {};
+          sec0.columns.forEach(function (c) {
+            var el = tr.querySelector('[data-ek="' + c.key + '"]');
+            ev[c.key] = el ? el.value : "";
+          });
+          evs.push(ev);
+        });
+        data[sec0.dataKey] = evs;
+      }
+      // 名次分行
+      var ranks = [];
+      mount.querySelectorAll("input[data-rank]").forEach(function (el) {
+        ranks.push(el.value === "" ? null : Number(el.value));
+      });
+      if (ranks.length) data.scoring = data.scoring || {}, data.scoring.ranks = ranks;
+      return data;
+    }
+
+    /* —— 概览计算（声明式） —— */
+    var CALC = {
+      gradeSummary: function (d, p) {
+        var gs = d.grades || [];
+        var total = 0, parts = [];
+        gs.forEach(function (g) { total += g.classes; parts.push(g.name.replace("年级", "") + "·" + g.classes + "班"); });
+        return gs.length + " 个年级 · " + total + " 个班（" + parts.join(" / ") + "）";
+      },
+      athleteScale: function (d, p) {
+        var total = 0;
+        (d.grades || []).forEach(function (g) { total += g.classes * (p.perClass || 8); });
+        var max = String(total).padStart(3, "0");
+        return "约 " + total + " 名（每班" + (p.perClass / 2) + "男" + (p.perClass / 2) + "女） ｜ 号码范围 001 – " + max + "（" + (p.zeroPad || 3) + "位数连排）";
+      },
+      eventSummary: function (d, p) {
+        var evs = d[p.eventsKey] || [];
+        var j = 0, t = 0, dbl = [];
+        evs.forEach(function (e) {
+          if (e[p.typeKey] === "径赛") j++; else t++;
+          if (e[p.scoringKey] === "双倍") dbl.push(e[p.nameKey]);
+        });
+        return evs.length + " 项（径赛 " + j + " / 田赛 " + t + "）" +
+          (dbl.length ? " ｜ 双倍计分：" + dbl.join("、") : "");
+      },
+      recordDesc: function (d, p) {
+        var r = d[p.root] || {};
+        if (r.mode === "off") return "破纪录不加分（" + (p.offText || "仅刷新纪录") + "）";
+        if (r.mode === "uniform") return "统一加 " + (r.uniform || 0) + " 分" +
+          (r.needConfirm ? "（新纪录须管理员确认生效）" : "");
+        return "分级加分：乡镇 " + (r.town || 0) + " 分 / 区 " + (r.district || 0) + " 分" +
+          (r.needConfirm ? "（新纪录须管理员确认生效）" : "");
+      },
+      windowDesc: function (d, p) {
+        var w = d[p.root] || {};
+        var parts = [];
+        if (w.entryDeadline) parts.push("报名截止 " + w.entryDeadline.replace("T", " "));
+        if (w.meetStart) parts.push("比赛 " + w.meetStart.replace("T", " ") + " 起");
+        if (w.publicityEnd) parts.push("公示期至 " + w.publicityEnd.replace("T", " "));
+        return parts.length ? parts.join(" ｜ ") : "未设置（可在时间窗区填写）";
+      }
+    };
+
+    function updateOverview() {
+      var d = collect();
+      var html = "";
+      recipe.overview.lines.forEach(function (ln) {
+        var txt = null;
+        if (ln.calc && CALC[ln.calc]) {
+          txt = CALC[ln.calc](d, ln.params || {});
+        } else if (ln.template) {
+          txt = ln.template.replace(/\{([^}]+)\}/g, function (m, k) {
+            var v = getPath(d, k);
+            return v == null ? "" : String(v);
+          });
+          txt = esc(txt);
+        }
+        if (txt != null) {
+          if (ln.prefix) txt = esc(ln.prefix) + txt;
+          html += "<div>" + txt + "</div>";
+        }
+      });
+      $("ovBody").innerHTML = html.replace(/——/g, "—");
+    }
+
+    /* —— toast —— */
+    var toastTimer = null;
+    function toast(txt) {
+      var el = $("toast");
+      if (!el) return;
+      el.textContent = txt;
+      el.classList.add("show");
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { el.classList.remove("show"); }, 2400);
+    }
+    function setMsg(txt, cls) {
+      var el = $("msg");
+      if (el) { el.textContent = txt; el.className = cls || ""; }
+    }
+
+    /* —— 保存/恢复/导入导出（LS_KEY 已在 create 函数开头赋值） —— */
+    function save() {
+      var d = collect();
+      d.meta.exportedAt = new Date().toISOString();
+      try {
+        localStorage.setItem(LS_KEY, JSON.stringify(d));
+        setMsg("✅ 已保存到本机（localStorage）", "ok");
+        toast("已保存到本机 ✅");
+        $("savedAt").textContent = "上次保存：" + new Date().toLocaleString("zh-CN");
+      } catch (e) {
+        setMsg("保存失败：" + e.message, "err");
+      }
+    }
+    function loadSaved() {
+      try {
+        var raw = localStorage.getItem(LS_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
+    }
+    function exportJSON() {
+      var d = collect();
+      d.meta.exportedAt = new Date().toISOString();
+      var blob = new Blob([JSON.stringify(d, null, 2)], { type: "application/json" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = recipe.storage.file;
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 500);
+      toast("配置 JSON 已导出 ⬇");
+    }
+    function importJSON() {
+      var inp = document.createElement("input");
+      inp.type = "file"; inp.accept = ".json";
+      inp.onchange = function () {
+        var f = inp.files[0];
+        if (!f) return;
+        var rd = new FileReader();
+        rd.onload = function () {
+          try {
+            var d = JSON.parse(rd.result);
+            if (!d.meta || !d.meta.page) throw new Error("不是本模块导出的配置文件");
+            rebuild(d);
+            setMsg("✅ 已导入配置（" + f.name + "）", "ok");
+            toast("配置已导入 ⬆");
+          } catch (e) {
+            setMsg("导入失败：" + e.message + "（文件格式不对或不是本模块的配置）", "err");
+          }
+        };
+        rd.readAsText(f);
+      };
+      inp.click();
+    }
+    function resetDefaults() {
+      if (!confirm("确定恢复默认配置？当前未保存的修改将丢失。")) return;
+      rebuild(deep(recipe.defaults));
+      setMsg("ℹ️ 已恢复默认配置。改完记得保存。", "ok");
+    }
+
+    /* —— 重渲染（数据→界面） —— */
+    function rebuild(d) {
+      data = deep(d);
+      // 简单起见：整体重挂
+      mount.innerHTML = "";
+      create({ mount: mount, recipe: recipe, _rebuild: true, _data: data });
+    }
+
+    /* —— 事件绑定（每个 mount 只绑一次；rebuild 换闭包不换监听，防堆积） —— */
+    mount.__cfAPI = {
+      collect: collect, rebuild: rebuild, save: save,
+      exportJSON: exportJSON, importJSON: importJSON,
+      resetDefaults: resetDefaults, update: updateOverview, recipe: recipe
+    };
+    if (!mount.__cfWired) {
+      mount.__cfWired = true;
+      mount.addEventListener("input", function (e) {
+        var t = e.target;
+        if (t.hasAttribute && (t.hasAttribute("data-path") || t.hasAttribute("data-gk") ||
+          t.hasAttribute("data-ek") || t.hasAttribute("data-rank") || t.type === "radio")) {
+          mount.__cfAPI.update();
+        }
+      });
+      mount.addEventListener("click", function (e) {
+        var t = e.target, api = mount.__cfAPI;
+        if (t.id === "btnSave") return api.save();
+        if (t.id === "btnExport") return api.exportJSON();
+        if (t.id === "btnImport") return api.importJSON();
+        if (t.id === "btnReset") return api.resetDefaults();
+        if (t.id === "addGrade") {
+          var d = api.collect();
+          var names = ["一年级", "二年级", "三年级", "四年级", "五年级", "六年级"];
+          d.grades.push({ name: names[d.grades.length] || (d.grades.length + 1) + "年级", classes: 4 });
+          api.rebuild(d);
+          return;
+        }
+        if (t.id === "addEvent") {
+          var d2 = api.collect();
+          var sec0 = api.recipe.sections.filter(function (s) { return s.type === "eventRows"; })[0];
+          var row = {};
+          sec0.columns.forEach(function (c) { row[c.key] = c.default != null ? c.default : ""; });
+          d2[sec0.dataKey].push(row);
+          api.rebuild(d2);
+          var trs = mount.querySelectorAll("#evBody tr");
+          var last = trs[trs.length - 1];
+          if (last) { var ip = last.querySelector("input"); if (ip) ip.focus(); }
+          return;
+        }
+        if (t.hasAttribute && t.hasAttribute("data-gdel")) {
+          var d3 = api.collect();
+          d3.grades.splice(parseInt(t.getAttribute("data-gdel"), 10), 1);
+          api.rebuild(d3);
+          return;
+        }
+        if (t.hasAttribute && t.hasAttribute("data-edel")) {
+          var d4 = api.collect();
+          var sec1 = api.recipe.sections.filter(function (s) { return s.type === "eventRows"; })[0];
+          d4[sec1.dataKey].splice(parseInt(t.getAttribute("data-edel"), 10), 1);
+          api.rebuild(d4);
+          return;
+        }
+      });
+    }
+
+    /* —— 提示（数据已在渲染前载入完成） —— */
+    if (!opts._rebuild) {
+      if (loadedSaved) {
+        setMsg("ℹ️ 已载入上次保存的配置。改完记得保存。", "ok");
+        $("savedAt").textContent = "上次保存：" + new Date(pre.meta.exportedAt).toLocaleString("zh-CN");
+      } else {
+        setMsg("ℹ️ 已载入" + (recipe.storage.defaultLabel || "默认配置") + "。改完记得保存。", "ok");
+      }
+    }
+    updateOverview();
+
+    return { collect: collect, rebuild: rebuild, save: save };
+  }
+
+  return { create: create, version: "config-form v1" };
+})();
+
+
+/* ============================================================
+ * 配方：M1 基础配置（运动会平台的第一个模块）
+ * 全部业务知识集中于此——引擎是通用的，配方是专属的。
+ * 班数默认值考证自 2025-04 程序册（一5/二6/三7/四9/五8）。
+ * ============================================================ */
+var M1_RECIPE = {
+  header: {
+    badge: "积木生成 · config-form v1",
+    title: "运动会 · 基础配置",
+    sub: "第1步地基 M1 ｜ 管理员功能 ｜ 由平台积木生成（删除重做法·重生版）"
+  },
+  hint: "ℹ️ 此页为<b>管理员功能</b>。按需求第5、6条：全站需登录使用，本页在 M2（账号权限）完成后将挂在管理员账号下；当前阶段先直开。所有改动需点“保存到本机”才生效。",
+  footer: "运动会平台 · 第1步地基 ｜ 积木：config-form v1 ｜ 配方：m1-recipe v1<br>方法论：删除重做法——手搓版已完成使命，本页由积木生成。",
+  theme: {
+    deep: "#1B2A4A", deep2: "#2A4370", gold: "#D9A521", goldbg: "#FBF6E9",
+    bg: "#F2F4F7", card: "#FFFFFF", line: "#DFE4EC",
+    ink: "#232A3B", sub: "#69738A", err: "#B03A2E", ok: "#2E7D4F"
+  },
+  storage: { key: "sports_meet_m1_config", file: "运动会基础配置.json", defaultLabel: "默认配置（2025年真实班数）" },
+  actions: { save: "💾 保存到本机", export: "⬇ 导出配置 JSON", import: "⬆ 导入配置 JSON", reset: "恢复默认" },
+
+  defaults: {
+    meta: { page: "M1基础配置", brick: "config-form v1", exportedAt: "" },
+    school: { name: "羊里小学", meetName: "2027年春季运动会" },
+    schedule: { fieldDay: "", trackDay: "" },
+    grades: [
+      { name: "一年级", classes: 5 }, { name: "二年级", classes: 6 },
+      { name: "三年级", classes: 7 }, { name: "四年级", classes: 9 },
+      { name: "五年级", classes: 8 }
+    ],
+    events: [
+      { name: "60米", type: "径赛", grades: "all", scoring: "标准", form: "个人" },
+      { name: "200米", type: "径赛", grades: "all", scoring: "标准", form: "个人" },
+      { name: "400米", type: "径赛", grades: "3-5", scoring: "标准", form: "个人" },
+      { name: "4×100米混合接力", type: "径赛", grades: "3-5", scoring: "双倍", form: "团体" },
+      { name: "跳高", type: "田赛", grades: "all", scoring: "标准", form: "个人" },
+      { name: "跳远", type: "田赛", grades: "all", scoring: "标准", form: "个人" },
+      { name: "铅球", type: "田赛", grades: "all", scoring: "标准", form: "个人" }
+    ],
+    scoring: { ranks: [7, 5, 4, 3, 2, 1] },
+    record: { mode: "uniform", uniform: 10, town: 10, district: 20, needConfirm: true },
+    windows: { entryDeadline: "", meetStart: "", meetEnd: "", publicityEnd: "" }
+  },
+
+  sections: [
+    {
+      type: "grid", title: "🏫 基本信息", fields: [
+        { key: "school.name", label: "学校名称", type: "text" },
+        { key: "school.meetName", label: "本届运动会名称", type: "text" },
+        { key: "schedule.fieldDay", label: "田赛日（如：4月10日 周四下午）", type: "text" },
+        { key: "schedule.trackDay", label: "径赛日（如：4月11日 周五上午）", type: "text" }
+      ]
+    },
+    {
+      type: "gradeRows", title: "🎓 年级与班数（每年可变）", dataKey: "grades"
+    },
+    {
+      type: "eventRows", title: "📋 比赛项目设置", dataKey: "events", addLabel: "添加项目",
+      columns: [
+        { key: "name", label: "项目名称", type: "text", default: "新项目" },
+        { key: "type", label: "类型", type: "select", options: ["径赛", "田赛"] },
+        { key: "grades", label: "参加年级", type: "select", options: ["all", "3-5"], default: "all" },
+        { key: "scoring", label: "计分", type: "select", options: ["标准", "双倍"] },
+        { key: "form", label: "形式", type: "select", options: ["个人", "团体"] }
+      ]
+    },
+    {
+      type: "plain", title: "🏅 计分规则（前六名）", fields: [
+        { key: "scoring.ranks", label: "分名次得分（站长11条规则第2条：7-5-4-3-2-1）", type: "rankRow", count: 6 }
+      ]
+    },
+    {
+      type: "plain", title: "🥇 破纪录加分（历史口径可切换）", fields: [
+        {
+          key: "record.mode", label: "加分模式", type: "radio", options: [
+            { value: "off", title: "不加分", desc: "破纪录只刷新纪录，不加分" },
+            { value: "uniform", title: "统一加分", desc: "不分级别，破纪录统一加固定分" },
+            { value: "tiered", title: "分级加分", desc: "乡镇级与区级分开计（历年领导口径不同）" }
+          ]
+        },
+        { key: "record.uniform", label: "统一加分值（如 10）", type: "number" },
+        { key: "record.town", label: "乡镇级加分值", type: "number" },
+        { key: "record.district", label: "区级加分值", type: "number" },
+        { key: "record.needConfirm", label: "新纪录须管理员确认后才生效（防止误录改写校史记录）", type: "checkbox" }
+      ]
+    },
+    {
+      type: "grid", title: "⏰ 时间窗（截止/锁定/公示）", fields: [
+        { key: "windows.entryDeadline", label: "报名截止（过期锁定报名）", type: "datetime" },
+        { key: "windows.meetStart", label: "运动会开始", type: "datetime" },
+        { key: "windows.meetEnd", label: "运动会结束", type: "datetime" },
+        { key: "windows.publicityEnd", label: "成绩公示期结束", type: "datetime" }
+      ]
+    }
+  ],
+
+  overview: {
+    title: "👁 总览（实时联动）",
+    lines: [
+      { template: "{school.name} ｜ {school.meetName}", prefix: "学校：" },
+      { calc: "gradeSummary", prefix: "年级班级：" },
+      { calc: "athleteScale", prefix: "运动员规模：", params: { perClass: 8, zeroPad: 3 } },
+      { calc: "eventSummary", prefix: "比赛项目：", params: { eventsKey: "events", typeKey: "type", scoringKey: "scoring", nameKey: "name" } },
+      { template: "计分：前六名 7-5-4-3-2-1 ｜ 接力双倍" },
+      { calc: "recordDesc", prefix: "破纪录：", params: { root: "record" } },
+      { calc: "windowDesc", prefix: "时间窗：", params: { root: "windows" } }
+    ]
+  }
+};
+
+
+ConfigForm.create({ mount: "#app", recipe: M1_RECIPE });
+</script>
+</body>
+</html>
