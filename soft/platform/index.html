@@ -90,6 +90,20 @@ document.getElementById("platLogout").addEventListener("click", function(){
     location.replace(location.pathname);
   });
 });
+/* 🚀 发布到工具站首页：把作品写进 KV 货架清单，首页动态长出卡片 */
+document.getElementById("pubSports").addEventListener("click", function(){
+  var btn=this, msg=document.getElementById("pubMsg")||(function(){var d=document.createElement("div");d.id="pubMsg";d.style.cssText="text-align:center;font-size:13px;margin-top:8px";btn.parentNode.parentNode.querySelector(".info").appendChild(d);return d})();
+  btn.disabled=true; btn.textContent="发布中…";
+  var card={icon:"🏃",title:"运动会管理系统",desc:"程序制作平台的第一件作品：报名、计分、汇总全自动——目标 2027 年春季运动会实战。当前开放模块：M1 基础配置。",href:"/soft/sports/index.html",go:"进入程序",external:true};
+  var fd=new FormData(); fd.append("card",JSON.stringify(card));
+  fetch("/soft/__admin/publish",{method:"POST",body:fd})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d.ok){ btn.textContent="✅ 已发布到首页"; msg.style.color="#2E7D4F"; msg.textContent="刷新 tv.efcc.cc 首页即可看到新卡片"; }
+      else { btn.disabled=false; btn.textContent="🚀 发布到工具站首页"; msg.style.color="#B03A2E"; msg.textContent=d.msg||"发布失败"; }
+    })
+    .catch(function(){ btn.disabled=false; btn.textContent="🚀 发布到工具站首页"; msg.style.color="#B03A2E"; msg.textContent="网络异常，稍后再试"; });
+});
 </script>
 
 <section class="hero">
@@ -130,7 +144,10 @@ document.getElementById("platLogout").addEventListener("click", function(){
         <p>报名、计分、汇总全自动——目标 2027 年春季运动会实战。</p>
         <p class="mods">进度：<b>M1 基础配置 ✓ 已投产</b> · M2 账号权限 … M10 现场空白表（十模块规划中）</p>
       </div>
-      <a class="enter" href="/soft/sports/index.html">进入作品 →</a>
+      <div style="display:flex;flex-direction:column;gap:8px;align-self:center;">
+        <a class="enter" href="/soft/sports/index.html">进入作品 →</a>
+        <button type="button" id="pubSports" style="background:linear-gradient(135deg,#D9A521,#E8BC4F);color:#14213D;border:none;border-radius:9px;padding:9px 16px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;">🚀 发布到工具站首页</button>
+      </div>
     </div>
   </div>
 
