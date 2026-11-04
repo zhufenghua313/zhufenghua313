@@ -5,192 +5,264 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>运动会管理系统 · M2 账号管理</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314213D'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8BC4F'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E">
-<style>
-  :root{--deep:#14213D;--deep2:#1B2A4A;--deep3:#2A4370;--gold:#D9A521;--goldL:#E8BC4F;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
-  .wrap{max-width:860px;margin:0 auto;padding:22px 16px 60px;}
-  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25);}
-  .nav-in{max-width:860px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
-  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:16px;}
-  .lamp{width:10px;height:10px;border-radius:50%;background:var(--goldL);box-shadow:0 0 8px var(--goldL);animation:br 2s infinite;}
-  @keyframes br{50%{opacity:.35;}}
-  .nav-right{display:flex;align-items:center;gap:10px;}
-  .btn-out{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit;}
-  a.back{color:var(--goldL);font-size:13.5px;text-decoration:none;opacity:.85;}
-  header.top{background:linear-gradient(120deg,var(--deep),var(--deep2));color:#fff;border-radius:14px;padding:22px 26px;margin:16px 0;position:relative;overflow:hidden;}
-  header.top::after{content:"";position:absolute;right:-50px;top:-50px;width:170px;height:170px;border-radius:50%;background:rgba(217,165,33,.16);pointer-events:none;}
-  header.top .badge{display:inline-block;background:rgba(217,165,33,.18);border:1px solid rgba(217,165,33,.55);color:#EDD9A3;font-size:13px;padding:3px 12px;border-radius:999px;margin-bottom:10px;}
-  header.top h1{font-size:22px;letter-spacing:1px;}
-  header.top p{font-size:13px;opacity:.82;margin-top:6px;}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
-  .card h2{font-size:16.5px;color:var(--deep);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
-  .card h2::before{content:"";display:inline-block;width:4px;height:17px;background:var(--gold);border-radius:2px;}
-  .card .desc{font-size:13px;color:var(--sub);margin-bottom:14px;line-height:1.7;}
-  label{display:block;font-size:13px;color:var(--sub);margin:10px 0 4px;}
-  input,select{width:100%;padding:10px 12px;font-size:14px;font-family:inherit;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);outline:none;}
-  input:focus,select:focus{border-color:var(--gold);}
-  .btn-gold{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--goldL));color:#14213D;border:none;border-radius:10px;padding:11px 22px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;}
-  .btn-gold:active{opacity:.9;}
-  .btn-ghost{background:#fff;color:var(--sub);border:1px solid var(--line);border-radius:10px;padding:9px 16px;font-size:13px;cursor:pointer;font-family:inherit;}
-  .msg{font-size:13.5px;margin-top:10px;min-height:18px;}
-  .msg.ok{color:var(--ok);}.msg.err{color:var(--err);}
-  table{width:100%;border-collapse:collapse;font-size:13.5px;}
-  th{background:var(--deep);color:#fff;padding:9px 10px;text-align:left;font-weight:500;white-space:nowrap;}
-  th:first-child{border-radius:8px 0 0 0;}th:last-child{border-radius:0 8px 0 0;}
-  td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
-  tr:hover td{background:#FAFBFD;}
-  .role-tag{display:inline-block;font-size:12px;padding:2px 10px;border-radius:999px;white-space:nowrap;}
-  .role-class{color:#1D4ED8;background:#E8EFFF;border:1px solid #C3D7F7;}
-  .role-scorer{color:#9A6B00;background:#FBF3DD;border:1px solid #EAD198;}
-  .role-admin{color:#2E7D4F;background:#E9F5EE;border:1px solid #BFE3CC;}
-  .op{background:none;border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-size:12.5px;cursor:pointer;margin-right:6px;color:var(--sub);}
-  .op.red{color:var(--err);border-color:#EAC5C0;}
-  .hint{font-size:12.5px;color:var(--sub);margin-top:10px;line-height:1.7;background:var(--bg);border-radius:8px;padding:10px 12px;}
-  .empty{text-align:center;color:var(--sub);padding:26px 0;font-size:13.5px;}
-  footer{text-align:center;font-size:12.5px;color:var(--sub);margin-top:8px;line-height:1.8;}
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  @media(max-width:560px){.two-col{grid-template-columns:1fr;}}
-</style>
 </head>
 <body>
-<nav>
-  <div class="nav-in">
-    <div class="brand"><span class="lamp"></span><b>运动会管理系统</b><span>M2 账号</span></div>
-    <div class="nav-right">
-      <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
-      <a class="back" href="/soft/sports/index.html">← M1 配置</a>
-    </div>
-  </div>
-</nav>
-
-<div class="wrap">
-  <header class="top">
-    <span class="badge">M2 账号权限 · 手搓 v1</span>
-    <h1>账号管理</h1>
-    <p>班级 / 成绩录入员 / 程序管理员三种角色，供运动会各岗位登录使用</p>
-  </header>
-
-  <div class="card">
-    <h2>👤 添加 / 修改账号</h2>
-    <p class="desc">用户名建议带年级班级（如 class-3-1 = 三年级一班）；修改已有账号时密码留空 = 不改密码。</p>
-    <form id="accForm">
-      <div class="two-col">
-        <div>
-          <label>用户名（字母/数字/横线，3-30位）</label>
-          <input id="fUser" required placeholder="如 class-3-1 或 laoshi-01" autocomplete="off">
-        </div>
-        <div>
-          <label>角色</label>
-          <select id="fRole">
-            <option value="class">class · 班级账号（可查全部，只改本班报名）</option>
-            <option value="scorer">scorer · 成绩录入员（赛期内录成绩）</option>
-            <option value="admin">admin · 程序管理员（参数与账号管理）</option>
-          </select>
-        </div>
-      </div>
-      <label>备注（如：三年级一班 / 王老师）</label>
-      <input id="fNote" maxlength="50" placeholder="选填">
-      <label>密码（至少6位；修改时留空 = 不改）</label>
-      <input id="fPw" type="password" placeholder="建议：班级-2027 这类好记格式" autocomplete="new-password">
-      <div style="margin-top:14px;display:flex;gap:10px;">
-        <button type="submit" class="btn-gold">💾 保存账号</button>
-        <button type="button" class="btn-ghost" id="btnReset">清空重填</button>
-      </div>
-      <div class="msg" id="accMsg"></div>
-    </form>
-  </div>
-
-  <div class="card">
-    <h2>📋 账号列表</h2>
-    <p class="desc" id="accCount">加载中…</p>
-    <div style="overflow-x:auto;">
-    <table id="accTable">
-      <thead><tr><th>用户名</th><th>角色</th><th>备注</th><th>操作</th></tr></thead>
-      <tbody id="accBody"></tbody>
-    </table>
-    </div>
-    <div class="empty" id="accEmpty" style="display:none;">还没有账号——用上面表单创建第一个</div>
-    <div class="hint">💡 使用说明：<br>① 班级账号建议按「class-年级-班」命名（如 class-3-1），发放给各班主任；<br>② 密码格式建议：班级名-2027 之类，好记不难猜；<br>③ 运动会结束后可整批删除账号。<br>⚠️ 本页为 M2 手搓版：账号数据已入库，各账号的登录与权限生效在下一阶段接入。</div>
-  </div>
-
-  <footer>运动会管理系统 · M2 账号权限 ｜ 手搓 v1（将由积木重生替代）<br>方法论：删除重做法</footer>
-</div>
-
+<div id="app"></div>
 <script>
-function el(id){return document.getElementById(id);}
-function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+/* ============================================================
+ * 积木 #2：管理页积木 manager-page v1
+ * ------------------------------------------------------------
+ * 给它一份 JSON 配方（API地址+列定义+表单字段），它就长出
+ * 一整页"列表 + 增删改"管理界面——带退出按钮、手机适配。
+ * 引擎不含任何"账号"知识——业务全部在配方里。
+ * 适用：M2账号 / M3报名审核 / M7成绩录入 / 未来的列表管理页
+ * ============================================================ */
+var ManagerPage = (function () {
+  "use strict";
 
-/* —— 退出（先收证再跳，防竞态） —— */
-el("btnOut").addEventListener("click",function(){
-  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace("/soft/sports/index.html")})
-  .catch(function(){location.replace("/soft/sports/index.html")});
-});
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+  function $(id) { return document.getElementById(id); }
 
-/* —— 账号列表加载 —— */
-var ACCS={};
-function loadList(){
-  fetch("/soft/__admin/accounts").then(function(r){return r.json()}).then(function(d){
-    if(!d.ok){el("accCount").textContent="加载失败："+(d.msg||"");return;}
-    ACCS=d.accounts||{};
-    var names=Object.keys(ACCS).sort();
-    el("accCount").textContent="共 "+names.length+" 个账号";
-    var tb=el("accBody");tb.innerHTML="";
-    if(!names.length){el("accEmpty").style.display="block";return;}
-    el("accEmpty").style.display="none";
-    names.forEach(function(u){
-      var a=ACCS[u];
-      var tr=document.createElement("tr");
-      tr.innerHTML="<td><b>"+esc(u)+"</b></td>"+
-        "<td><span class='role-tag role-"+esc(a.role)+"'>"+roleName(a.role)+"</span></td>"+
-        "<td style='color:var(--sub)'>"+esc(a.note||"—")+"</td>"+
-        "<td><button class='op' data-edit='"+esc(u)+"'>改</button><button class='op red' data-del='"+esc(u)+"'>删</button></td>";
-      tb.appendChild(tr);
+  function themeCSS(t) {
+    t = t || {};
+    return ":root{" +
+      "--deep:" + (t.deep || "#1B2A4A") + ";--deep2:" + (t.deep2 || "#2A4370") + ";" +
+      "--gold:" + (t.gold || "#D9A521") + ";--goldbg:" + (t.goldbg || "#FBF6E9") + ";" +
+      "--bg:" + (t.bg || "#F4F6FA") + ";--card:" + (t.card || "#fff") + ";--line:" + (t.line || "#DFE4EC") + ";" +
+      "--ink:" + (t.ink || "#1A2233") + ";--sub:" + (t.sub || "#5B6577") + ";" +
+      "--err:" + (t.err || "#B03A2E") + ";--ok:" + (t.ok || "#2E7D4F") + "}";
+  }
+
+  var BASE_CSS = [
+    "*{box-sizing:border-box;margin:0;padding:0}",
+    "body{font-family:'Microsoft YaHei','PingFang SC',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}",
+    ".wrap{max-width:900px;margin:0 auto;padding:22px 16px 60px}",
+    "header.top{background:linear-gradient(120deg,var(--deep),var(--deep2));color:#fff;border-radius:14px;padding:24px 28px;margin-bottom:16px;position:relative;overflow:hidden}",
+    "header.top::after{content:'';position:absolute;right:-50px;top:-50px;width:170px;height:170px;border-radius:50%;background:rgba(217,165,33,.16);pointer-events:none}",
+    "#mpLogout{position:absolute;top:18px;right:18px;z-index:3;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit}",
+    "#mpLogout:active{background:rgba(255,255,255,.22)}",
+    "header.top .badge{display:inline-block;background:rgba(217,165,33,.18);border:1px solid rgba(217,165,33,.55);color:#EDD9A3;font-size:13px;padding:3px 12px;border-radius:999px;margin-bottom:10px}",
+    "header.top h1{font-size:24px;letter-spacing:1px}",
+    "header.top p{font-size:13.5px;opacity:.82;margin-top:6px}",
+    ".card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}",
+    ".card h2{font-size:17px;color:var(--deep);border-left:4px solid var(--gold);padding-left:10px;margin-bottom:14px}",
+    "label{display:block;font-size:13.5px;color:var(--sub);margin:10px 0 5px}",
+    "input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink)}",
+    "input:focus,select:focus{outline:none;border-color:var(--gold)}",
+    ".btnrow{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}",
+    ".btn{padding:11px 22px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}",
+    ".btn.gold{background:linear-gradient(135deg,var(--gold),#E8BC4F);color:var(--deep)}",
+    ".btn.ghost{background:#fff;color:var(--sub);border:1px solid var(--line)}",
+    ".msg{margin-top:12px;font-size:14px;min-height:20px}",
+    ".msg.ok{color:var(--ok)}.msg.err{color:var(--err)}",
+    ".count{font-size:14px;color:var(--sub);margin:8px 0}",
+    "table{width:100%;border-collapse:collapse;font-size:14px}",
+    "th{text-align:left;background:var(--goldbg);color:#6B5B1E;padding:10px 12px;font-size:13px;white-space:nowrap}",
+    "td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}",
+    "tr:hover td{background:rgba(217,165,33,.04)}",
+    ".op{border:1px solid var(--line);background:#fff;border-radius:7px;padding:6px 12px;font-size:13px;cursor:pointer;margin-right:6px;color:var(--deep)}",
+    ".op.red{color:var(--err)}",
+    ".empty{display:none;text-align:center;color:var(--sub);padding:26px 0;font-size:14px}",
+    ".tagcell{display:inline-block;font-size:12px;padding:3px 10px;border-radius:999px;white-space:nowrap}",
+    "@media(max-width:640px){.hidemobile{display:none}header.top{padding:18px 16px}}",
+  ].join("");
+
+  function create(opts) {
+    var recipe = opts.recipe;
+    var mount = typeof opts.mount === "string" ? $(opts.mount.slice(1)) : opts.mount;
+    if (!mount) { console.error("ManagerPage: mount 不存在"); return; }
+
+    /* —— 主题 —— */
+    var style = document.getElementById("mp-style-" + (recipe.storageKey || "default")) || document.createElement("style");
+    style.id = "mp-style-" + (recipe.storageKey || "default");
+    style.textContent = themeCSS(recipe.theme) + BASE_CSS;
+    if (!style.parentNode) document.head.appendChild(style);
+
+    /* —— 骨架 —— */
+    var head = recipe.header || {};
+    var cols = recipe.columns || [];
+    var fields = recipe.form || [];
+    var formHtml = fields.map(function (f) {
+      var ctrl;
+      if (f.type === "select") {
+        ctrl = "<select id=\"" + f.id + "\">" + (f.options || []).map(function (o) {
+          return "<option value=\"" + esc(o.value) + "\">" + esc(o.label) + "</option>";
+        }).join("") + "</select>";
+      } else {
+        ctrl = "<input id=\"" + f.id + "\" type=\"" + (f.type || "text") + "\" placeholder=\"" + esc(f.placeholder || "") + "\" " +
+          (f.required ? "required" : "") + " autocomplete=\"" + (f.autocomplete || "off") + "\">";
+      }
+      return "<label>" + esc(f.label) + "</label>" + ctrl;
+    }).join("");
+
+    mount.innerHTML =
+      '<div class="wrap">' +
+      '<header class="top">' +
+      '<button type="button" id="mpLogout">🚪 退出登录</button>' +
+      '<span class="badge">' + esc(head.badge || "") + '</span>' +
+      '<h1>' + esc(head.title || "") + '</h1><p>' + esc(head.sub || "") + '</p>' +
+      '</header>' +
+      (recipe.hint ? '<div style="background:var(--goldbg);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:14px;margin-bottom:16px;color:#6B5B1E">' + recipe.hint + '</div>' : '') +
+      '<div class="card"><h2>' + esc(recipe.formTitle || "新增 / 修改") + '</h2>' +
+      '<form id="mpForm">' + formHtml +
+      '<div class="btnrow"><button class="btn gold" type="submit">' + esc(recipe.saveLabel || "保存") + '</button>' +
+      '<button class="btn ghost" type="button" id="mpReset">' + esc(recipe.resetLabel || "清空重填") + '</button></div>' +
+      '<div class="msg" id="mpMsg"></div></form></div>' +
+      '<div class="card"><h2>' + esc(recipe.listTitle || "列表") + '</h2>' +
+      '<div class="count" id="mpCount">加载中…</div>' +
+      '<div style="overflow-x:auto"><table><thead><tr>' +
+      cols.map(function (c) { return "<th>" + esc(c.label) + "</th>"; }).join("") + "<th>操作</th>" +
+      '</tr></thead><tbody id="mpBody"></tbody></table></div>' +
+      '<div class="empty" id="mpEmpty">' + esc(recipe.emptyText || "暂无数据") + '</div>' +
+      '</div>' +
+      (recipe.footer ? '<footer style="text-align:center;font-size:12.5px;color:var(--sub);margin-top:6px;line-height:1.8">' + recipe.footer + '</footer>' : '') +
+      '</div>';
+
+    /* —— 数据与方法 —— */
+    var ROWS = {};
+
+    function loadList() {
+      fetch(recipe.api.list).then(function (r) { return r.json(); }).then(function (d) {
+        if (!d.ok) { $("mpCount").textContent = "加载失败：" + (d.msg || ""); return; }
+        ROWS = d[recipe.api.dataKey || "list"] || {};
+        var ids = Object.keys(ROWS).sort();
+        $("mpCount").textContent = (recipe.countPrefix || "共 ") + ids.length + (recipe.countSuffix || " 条");
+        var tb = $("mpBody"); tb.innerHTML = "";
+        $("mpEmpty").style.display = ids.length ? "none" : "block";
+        ids.forEach(function (id) {
+          var row = ROWS[id];
+          var tr = document.createElement("tr");
+          tr.innerHTML = cols.map(function (c) {
+            var v = c.map ? c.map(row, id) : esc(row[c.key] != null ? row[c.key] : "—");
+            return "<td" + (c.mobile === false ? " class=\"hidemobile\"" : "") + ">" + v + "</td>";
+          }).join("") +
+            "<td><button class=\"op\" data-edit=\"" + esc(id) + "\">改</button>" +
+            "<button class=\"op red\" data-del=\"" + esc(id) + "\">删</button></td>";
+          tb.appendChild(tr);
+        });
+      }).catch(function () { $("mpCount").textContent = "网络异常，稍后再试"; });
+    }
+
+    $("mpForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var m = $("mpMsg"); m.className = "msg";
+      var fd = new FormData();
+      fields.forEach(function (f) { fd.append(f.param || f.id, $(f.id).value); });
+      fetch(recipe.api.save, { method: "POST", body: fd })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          m.className = "msg " + (d.ok ? "ok" : "err"); m.textContent = d.msg || "";
+          if (d.ok) { $("mpForm").reset(); loadList(); }
+        })
+        .catch(function () { m.className = "msg err"; m.textContent = "网络异常，稍后再试"; });
     });
-  }).catch(function(){el("accCount").textContent="网络异常，稍后再试";});
-}
-function roleName(r){return r==="class"?"班级":r==="scorer"?"录入员":"管理员";}
+    $("mpReset").addEventListener("click", function () { $("mpForm").reset(); $("mpMsg").textContent = ""; });
 
-/* —— 表单提交（创建/更新） —— */
-el("accForm").addEventListener("submit",function(e){
-  e.preventDefault();
-  var m=el("accMsg");m.className="msg";
-  var fd=new FormData();
-  fd.append("username",el("fUser").value.trim());
-  fd.append("role",el("fRole").value);
-  fd.append("note",el("fNote").value.trim());
-  fd.append("password",el("fPw").value);
-  fetch("/soft/__admin/account-save",{method:"POST",body:fd})
-    .then(function(r){return r.json()})
-    .then(function(d){
-      m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
-      if(d.ok){el("accForm").reset();loadList();}
-    })
-    .catch(function(){m.className="msg err";m.textContent="网络异常，稍后再试";});
-});
-el("btnReset").addEventListener("click",function(){el("accForm").reset();el("accMsg").textContent="";});
+    $("mpBody").addEventListener("click", function (e) {
+      var t = e.target;
+      if (t.hasAttribute && t.hasAttribute("data-edit")) {
+        var id = t.getAttribute("data-edit"), row = ROWS[id];
+        fields.forEach(function (f) {
+          var el2 = $(f.id);
+          if (f.type === "select") el2.value = row[f.key] || (f.options[0] || {}).value || "";
+          else el2.value = f.editMap ? (f.editMap(row, id) || "") : (row[f.key] != null ? row[f.key] : "");
+        });
+        $("mpMsg").textContent = (recipe.editingPrefix || "正在修改：") + id + (recipe.editingSuffix || "");
+        $("mpMsg").className = "msg";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      if (t.hasAttribute && t.hasAttribute("data-del")) {
+        var id2 = t.getAttribute("data-del");
+        var msg = recipe.delConfirm ? recipe.delConfirm(id2) : ("确定删除「" + id2 + "」？不可撤销。");
+        if (!confirm(msg)) return;
+        var fd = new FormData();
+        fd.append(recipe.api.idParam || "username", id2);
+        fetch(recipe.api.del, { method: "POST", body: fd })
+          .then(function (r) { return r.json(); })
+          .then(function (d) { loadList(); alert(d.msg || ""); })
+          .catch(function () { alert("网络异常，稍后再试"); });
+      }
+    });
 
-/* —— 行操作（事件委托：改/删） —— */
-el("accBody").addEventListener("click",function(e){
-  var t=e.target;
-  if(t.hasAttribute&&t.hasAttribute("data-edit")){
-    var u=t.getAttribute("data-edit"),a=ACCS[u];
-    el("fUser").value=u;el("fRole").value=a.role;el("fNote").value=a.note||"";
-    el("fPw").value="";el("accMsg").textContent="正在修改："+u+"（密码留空=不改）";el("accMsg").className="msg";
-    window.scrollTo({top:0,behavior:"smooth"});
+    $("mpLogout").addEventListener("click", function () {
+      /* 先收证再跳（防竞态，积木v1.2同款） */
+      fetch("/soft/__auth/logout", { method: "POST" }).then(function () { location.replace(location.pathname); })
+        .catch(function () { location.replace(location.pathname); });
+    });
+
+    loadList();
+    return { reload: loadList };
   }
-  if(t.hasAttribute&&t.hasAttribute("data-del")){
-    var u2=t.getAttribute("data-del");
-    if(!confirm("确定删除账号「"+u2+"」？此操作不可撤销。"))return;
-    var fd=new FormData();fd.append("username",u2);
-    fetch("/soft/__admin/account-del",{method:"POST",body:fd})
-      .then(function(r){return r.json()})
-      .then(function(d){loadList();alert(d.msg||"");})
-      .catch(function(){alert("网络异常，稍后再试");});
-  }
-});
 
-loadList();
+  return { create: create, version: "manager-page v1" };
+})();
+
+
+/* ============================================================
+ * 配方：M2 账号管理（运动会管理系统的第二个模块）
+ * 全部业务知识集中于此——引擎是通用的，配方是专属的。
+ * 角色体系来自需求第5条：class/scorer/admin（总管理员=站长本人）
+ * ============================================================ */
+var M2_RECIPE = {
+  storageKey: "m2-accounts",
+  header: {
+    badge: "M2 账号权限 · 积木生成",
+    title: "运动会管理系统",
+    sub: "第2模块 M2 账号管理 ｜ 管理员功能 ｜ 由平台积木生成（删除重做法·重生版）"
+  },
+  hint: "ℹ️ 三种角色：<b>班级</b>=班主任（报名+查成绩）、<b>录入员</b>=录比赛成绩、<b>管理员</b>=程序管理员。总管理员（站长）用站密码登录，不列在此表。",
+  footer: "运动会管理系统 · M2 账号权限 ｜ 积木：manager-page v1 ｜ 配方：m2-accounts v1",
+  formTitle: "➕ 新增 / 修改账号",
+  saveLabel: "💾 保存账号",
+  resetLabel: "清空重填",
+  listTitle: "📋 账号列表",
+  countPrefix: "共 ",
+  countSuffix: " 个账号",
+  emptyText: "还没有账号——用上面的表单创建第一个",
+  editingPrefix: "正在修改：",
+  editingSuffix: "（密码留空=不改）",
+  theme: {}, /* 用引擎默认深蓝金 */
+
+  api: {
+    list: "/soft/__admin/accounts",
+    save: "/soft/__admin/account-save",
+    del: "/soft/__admin/account-del",
+    dataKey: "accounts",   /* 列表接口返回的键名 */
+    idParam: "username"    /* 删除接口的 id 参数名 */
+  },
+
+  /* 列定义（table 列） */
+  columns: [
+    { key: "username", label: "用户名", map: function (row, id) { return "<b>" + id + "</b>"; } },
+    { key: "role", label: "角色", map: function (row) {
+        var names = { class: ["班级", "#E9F5EE,#2E7D4F"], scorer: ["录入员", "#FBF3DD,#9A6B00"], admin: ["管理员", "#EEF2FF,#3730A3"] };
+        var n = names[row.role] || [row.role, "#f0f0f0,#666"];
+        return "<span class='tagcell' style='background:" + n[1].split(",")[0] + ";color:" + n[1].split(",")[1] + "'>" + n[0] + "</span>";
+      } },
+    { key: "note", label: "备注", mobile: false }
+  ],
+
+  /* 表单字段（新增/修改） */
+  form: [
+    { id: "fUser", label: "用户名（3-30位字母/数字/横线，如 class-3-1）", type: "text", param: "username", required: true, placeholder: "如 class-3-1 或 laoshi-01", autocomplete: "off", key: "username" },
+    { id: "fRole", label: "角色", type: "select", param: "role", key: "role", options: [
+        { value: "class", label: "班级（班主任）" },
+        { value: "scorer", label: "成绩录入员" },
+        { value: "admin", label: "程序管理员" }
+      ] },
+    { id: "fNote", label: "备注（选填，50字内）", type: "text", param: "note", placeholder: "如：三年级一班 王老师", key: "note", autocomplete: "off" },
+    { id: "fPw", label: "密码（新建必填；修改留空=不改）", type: "password", param: "password", placeholder: "建议：班级-2027 这类好记格式", autocomplete: "new-password", key: "", editMap: function () { return ""; } }
+  ],
+
+  delConfirm: function (id) { return "确定删除账号「" + id + "」？此操作不可撤销。"; }
+};
+
+
+ManagerPage.create({ mount: "#app", recipe: M2_RECIPE });
 </script>
 </body>
 </html>
