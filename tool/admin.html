@@ -145,16 +145,30 @@ function loadDir(path){curPath=path;closeEditor();
   $('flist').innerHTML=h;loadTimes(path,items)}).catch(e=>toast('读取失败：'+e.message,'e'))}
 function fmtTime(iso){if(!iso)return'';const d=new Date(iso);
  const p=n=>String(n).padStart(2,'0');
- return (d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())}
+ return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())}
 function loadTimes(path,items){
  const base='https://gh.efcc.cc/api/repos/zhufenghua313/zhufenghua313/commits';
+ /* v26: 目录大小=全树递归求和（一个git trees API拿全部，本地累加） */
+ const needSize=items.filter(x=>x.type==='dir').map(x=>x.name);
+ if(needSize.length){
+  fetch(base.replace('/commits','')+'/git/trees/main?recursive=1&t='+Date.now(),{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'}})
+   .then(r=>r.json()).then(t=>{
+    const tree=t.tree||[];
+    items.forEach((it,idx)=>{
+     if(it.type!=='dir')return;
+     const prefix=(path?path+'/':'')+it.name+'/';
+     let sum=0;tree.forEach(x=>{if(x.path.startsWith(prefix)&&x.type==='blob')sum+=x.size||0});
+     const row=document.querySelectorAll('#flist .item')[idx];
+     if(row&&row.querySelector('.mt'))row.querySelector('.mt').textContent=fmtSize(sum)+' · '+fmtTime(it.mtime)+'待更新'})})}
  items.forEach((it,idx)=>{
   const fp=(path?path+'/':'')+it.name;
   fetch(base+'?path='+encodeURIComponent(fp)+'&per_page=1',{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'}})
    .then(r=>r.json()).then(cs=>{
     if(cs&&cs[0]){const t=cs[0].commit.committer.date;
      const row=document.querySelectorAll('#flist .item')[idx];
-     if(row&&row.querySelector('.mt'))row.querySelector('.mt').textContent=(it.size!=null?fmtSize(it.size)+' · ':'')+fmtTime(t)}})
+     if(row&&row.querySelector('.mt')){
+      if(it.type==='dir'){row.querySelector('.mt').textContent=row.querySelector('.mt').textContent.replace('待更新',fmtTime(t))}
+      else row.querySelector('.mt').textContent=(it.size!=null?fmtSize(it.size)+' · ':'')+fmtTime(t)}}})
    .catch(()=>{})})}
 function fmtSize(b){if(b==null)return'';if(b>1048576)return(b/1048576).toFixed(1)+'MB';if(b>1024)return(b/1024).toFixed(1)+'KB';return b+'B'}
 
