@@ -104,7 +104,7 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
 <div id="setup">
   <h2>🔐 粘贴 GitHub 令牌</h2>
   <p>只存本机浏览器。<a href="https://github.com/settings/tokens?type=beta" target="_blank" style="color:#2563eb">没有？点这生成</a><br><span style="font-size:12px;color:#888">输入框若已自动填好（本机记住的令牌），直接点「登 录」即可。</span></p>
-  <input type="password" id="pat-input" placeholder="github_pat_……（粘贴到这里）">
+  <input type="password" id="pat-input" name="github_pat" autocomplete="off" placeholder="github_pat_……（粘贴到这里）">
   <button class="btn btn-p" onclick="doLogin()">登 录</button>
   
 </div>
