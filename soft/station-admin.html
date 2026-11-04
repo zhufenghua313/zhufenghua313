@@ -9,8 +9,11 @@
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
   .wrap{max-width:760px;margin:0 auto;padding:22px 16px 60px;}
-  header{background:linear-gradient(120deg,var(--deep),var(--deep2));color:#fff;border-radius:14px;padding:22px 26px;margin-bottom:16px;position:relative;overflow:hidden;}
+  .btn-out{margin-left:auto;align-self:flex-start;padding:8px 14px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;cursor:pointer;font-family:inherit;flex-shrink:0;}
+  .btn-out:active{background:rgba(255,255,255,.22);}
+  header{background:linear-gradient(120deg,var(--deep),var(--deep2));color:#fff;border-radius:14px;padding:22px 26px;margin-bottom:16px;position:relative;overflow:hidden;display:flex;align-items:flex-start;gap:8px;}
   header::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(217,165,33,.15);}
+  .h-title{flex:1;min-width:0;}
   header h1{font-size:22px;}.header p{font-size:13px;color:rgba(255,255,255,.75);margin-top:6px;}
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
   .card h2{font-size:17px;color:var(--deep);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
@@ -37,8 +40,11 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>🛠️ 欢乐工具站 · 后台</h1>
-    <p>改密码、改首页导航按钮——都在这，一键生效</p>
+    <div class="h-title">
+      <h1>🛠️ 欢乐工具站 · 后台</h1>
+      <p>改密码、改首页导航按钮——都在这，一键生效</p>
+    </div>
+    <button class="btn-out" type="button" onclick="doLogout()">🚪 退出后台</button>
   </header>
 
   <div class="card">
@@ -64,7 +70,6 @@
     <div class="hint">当前效果预览：进入 <b>首页</b> 右上角查看，约1分钟内生效。<br>恢复默认三兄弟（影视/直播/搜索）：直接按默认内容保存即可。</div>
   </div>
 
-  <button class="btn-out" type="button" onclick="doLogout()">🚪 退出欢乐工具站后台</button>
   <a class="back" href="/">← 返回欢乐工具站首页</a>
   <footer>tv.efcc.cc 后台 · 配置存于 Cloudflare KV（tv-config）<br>密码永不写进网页或文档——安全第一</footer>
 </div>
