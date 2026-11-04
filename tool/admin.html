@@ -193,6 +193,7 @@ function newFolder(){dlg('📁 新建文件夹（在当前目录创建，可含�
  const mk=n=>{const fp=(curPath?curPath+'/':'')+n;
   return gh('/contents/'+fp+'/.gitkeep',{method:'PUT',body:JSON.stringify({message:'tv-admin: create folder '+fp,content:b64('\n')})})
   .then(()=>{toast('✅ 文件夹已创建'+(n!==name?'（名字：'+n+'）':''));refreshSoon(dir)})};
+ toast('⏳ 正在检查重名…','i');
  gh('/contents/'+full).then(()=>dupDlg(name,v=>{
    if(v==='skip')return;
    if(v==='rename')return autoName(curPath,name).then(n2=>mk(n2)).catch(e=>toast('创建失败：'+e.message,'e'));
@@ -214,6 +215,7 @@ function moveTo(fp){destDlg('➡️ 移动到哪：'+fp.split('/').pop(),dest=>{
 function refreshSoon(dir){setTimeout(()=>loadDir(dir),1500);setTimeout(()=>loadDir(dir),4500)}
 /* v22: Windows式重名处理——覆盖/改名(2)/取消 三选一 */
 function dupDlg(name,cb){const m=$('dlg-mask');
+ dlgClose();   /* v23: 先关掉上一层弹窗（新建文件的dlg），避免确定按钮读到旧input */
  $('dlg-title').textContent='⚠️ 已有同名：'+name+'\n要覆盖，还是留两份？';
  const old=$('dlg-input');
  if(old.tagName!=='SELECT'){const sel=document.createElement('select');sel.id='dlg-input';
@@ -242,6 +244,7 @@ function uploadOne(f){
    .then(()=>{toast('📤 已上传 '+name+(name!==f.name?'（自动改名自 '+f.name+'）':''));refreshSoon(curPath)})
    .catch(e=>toast('上传失败：'+e.message,'e'))};
   rd.readAsDataURL(f)};
+ toast('⏳ 正在检查重名…','i');
  gh('/contents/'+(curPath?curPath+'/':'')+f.name)
   .then(()=>dupDlg(f.name,v=>{
     if(v==='skip')return toast('已跳过 '+f.name,'i');
