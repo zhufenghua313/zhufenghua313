@@ -134,7 +134,10 @@ function loadDir(path){curPath=path;closeEditor();
   $('bc').innerHTML=bc;
   if(path)h+='<div class="item" onclick="loadDir(\''+path.split('/').slice(0,-1).join('/')+'\')"><span class="ic">↩️</span><span class="nm" style="color:#6b7280">.. 返回上级</span></div>';
   items.forEach(it=>{const fp=(path?path+'/':'')+it.name;
-   if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+(it.size||'')+'</span></div>'}
+   if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtTime(it.mtime)+'</span><span class="ops">'
+    +'<button class="mini" onclick="event.stopPropagation();downloadDir(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();copyDirTo(\''+fp+'\')">复制</button>'+'<button class="mini" onclick="event.stopPropagation();moveDirTo(\''+fp+'\')">移动</button>'
+    +'<button class="mini" onclick="event.stopPropagation();renameDirAsk(\''+fp+'\')">改名</button>'
+    +'<button class="mini dz" onclick="event.stopPropagation();deleteDirAsk(\''+fp+'\')">删除</button></span></div>'}
    else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><span class="ic">📄</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+' · '+fmtTime(it.mtime)+'</span><span class="ops">'
     +'<button class="mini" onclick="event.stopPropagation();downloadFile(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();copyTo(\''+fp+'\')">复制</button>'+'<button class="mini" onclick="event.stopPropagation();moveTo(\''+fp+'\')">移动</button>'+'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
     +'<button class="mini" onclick="event.stopPropagation();renameAsk(\''+fp+'\',\''+it.sha+'\')">改名</button>'
