@@ -144,6 +144,8 @@ function loadDir(path){curPath=path;closeEditor();
   let h='';let bc='<a onclick="loadDir(\'\')">🏠 仓库根目录</a>';
   if(path){const seg=path.split('/');let acc='';seg.forEach(s=>{acc=acc?acc+'/'+s:s;bc+=' / <a onclick="loadDir(\''+acc+'\')">'+s+'</a>'})}
   $('bc').innerHTML=bc;
+  const selRow='<div class="item" style="background:#f8fafc"><input type="checkbox" class="allpick" onclick="toggleAll(this)"><span class="ic">🗂</span><span class="nm" style="color:#6b7280;font-weight:600">全选 / 全不选（本目录）</span></div>';
+  h+=selRow;
   if(path)h+='<div class="item" onclick="loadDir(\''+path.split('/').slice(0,-1).join('/')+'\')"><span class="ic">↩️</span><span class="nm" style="color:#6b7280">.. 返回上级</span></div>';
   items.forEach(it=>{const fp=(path?path+'/':'')+it.name;
    if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><input type="checkbox" class="pick" data-pick="'+fp+'" onclick="event.stopPropagation();updateBatchBar()"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtTime(it.mtime)+'</span><span class="ops">'
@@ -154,6 +156,7 @@ function loadDir(path){curPath=path;closeEditor();
     +'<button class="mini" onclick="event.stopPropagation();downloadFile(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();copyTo(\''+fp+'\')">复制</button>'+'<button class="mini" onclick="event.stopPropagation();moveTo(\''+fp+'\')">移动</button>'+'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
     +'<button class="mini" onclick="event.stopPropagation();renameAsk(\''+fp+'\',\''+it.sha+'\')">改名</button>'
     +'<button class="mini dz" onclick="event.stopPropagation();deleteAsk(\''+fp+'\',\''+it.sha+'\')">删除</button></span></div>'}});
+  h+=selRow;
   $('flist').innerHTML=h;loadTimes(path,items)}).catch(e=>toast('读取失败：'+e.message,'e'))}
 function fmtTime(iso){if(!iso)return'';const d=new Date(iso);
  const p=n=>String(n).padStart(2,'0');
@@ -356,6 +359,10 @@ function deleteDirAsk(fp){const parts=fp.split('/');const dir=parts.slice(0,-1).
    next()}).catch(e=>toast('删除失败：'+e.message,'e'))})}
 /* v32: 批量操作 */
 function picked(){return [...document.querySelectorAll('.pick:checked')].map(x=>({path:x.dataset.pick,el:x}))}
+function toggleAll(master){
+ document.querySelectorAll('.pick').forEach(x=>x.checked=master.checked);
+ updateBatchBar();
+ toast(master.checked?'已全选':'已全部取消','i')}
 function updateBatchBar(){const p=picked();$('batch-count').textContent='已选 '+p.length+' 项';$('batchbar').classList.toggle('show',p.length>0)}
 function clearPick(){document.querySelectorAll('.pick').forEach(x=>x.checked=false);updateBatchBar()}
 function eachSeq(list,fn,label){ /* 逐项串行执行（防API限流），全完提示 */
