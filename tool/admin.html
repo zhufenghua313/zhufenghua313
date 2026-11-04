@@ -52,6 +52,10 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
 .dlg input{width:100%;padding:9px 11px;border:1px solid #d1d5db;border-radius:8px;font-size:13.5px;margin-bottom:14px;font-family:Consolas,monospace}
 .dlg .r{text-align:right;display:flex;gap:8px;justify-content:flex-end}
 .hint{font-size:12px;color:#9ca3af;margin-top:8px}
+.pick{width:15px;height:15px;cursor:pointer;flex:none;margin-right:2px}
+.batchbar{display:none;background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:8px 12px;margin-bottom:10px;align-items:center;gap:8px;flex-wrap:wrap}
+.batchbar.show{display:flex}
+.batchbar b{color:#3730a3;font-size:13px}
 @media(max-width:600px){.item .mt{display:none}}
 </style>
 </head>
@@ -68,6 +72,14 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
     <button class="btn btn-p" onclick="pickFile()">📤 上传文件</button>
     <button class="btn btn-w" onclick="loadDir(curPath)">🔄 刷新</button>
     <button class="btn btn-w" onclick="logout()">🚪 换令牌</button>
+  </div>
+  <div class="batchbar" id="batchbar">
+    <b id="batch-count">已选 0 项</b>
+    <button class="mini" onclick="batchDownload()">📦 一起下载</button>
+    <button class="mini" onclick="batchMove()">➡️ 一起移动</button>
+    <button class="mini" onclick="batchCopy()">📤 一起复制</button>
+    <button class="mini dz" onclick="batchDelete()">🗑 一起删除</button>
+    <button class="mini" onclick="clearPick()">取消选择</button>
   </div>
   <div style="font-size:12.5px;color:#9ca3af;margin:-6px 0 10px 2px">💡 上传：把文件直接<b style="color:#2563eb">拖进本窗口任意位置</b>，或点【📤 上传文件】按钮选电脑上的文件（限25MB内，更大的用 GitHub Desktop）</div>
   <input type="file" id="file-input" style="display:none" onchange="doUpload(this)">
@@ -134,11 +146,11 @@ function loadDir(path){curPath=path;closeEditor();
   $('bc').innerHTML=bc;
   if(path)h+='<div class="item" onclick="loadDir(\''+path.split('/').slice(0,-1).join('/')+'\')"><span class="ic">↩️</span><span class="nm" style="color:#6b7280">.. 返回上级</span></div>';
   items.forEach(it=>{const fp=(path?path+'/':'')+it.name;
-   if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtTime(it.mtime)+'</span><span class="ops">'
+   if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><input type="checkbox" class="pick" data-pick="'+fp+'" onclick="event.stopPropagation();updateBatchBar()"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtTime(it.mtime)+'</span><span class="ops">'
     +'<button class="mini" onclick="event.stopPropagation();downloadDir(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();copyDirTo(\''+fp+'\')">复制</button>'+'<button class="mini" onclick="event.stopPropagation();moveDirTo(\''+fp+'\')">移动</button>'
     +'<button class="mini" onclick="event.stopPropagation();renameDirAsk(\''+fp+'\')">改名</button>'
     +'<button class="mini dz" onclick="event.stopPropagation();deleteDirAsk(\''+fp+'\')">删除</button></span></div>'}
-   else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><span class="ic">📄</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+' · '+fmtTime(it.mtime)+'</span><span class="ops">'
+   else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><input type="checkbox" class="pick" data-pick="'+fp+'" data-b64="'+it.sha+'" data-type="file" onclick="event.stopPropagation();updateBatchBar()"><span class="ic">📄</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+' · '+fmtTime(it.mtime)+'</span><span class="ops">'
     +'<button class="mini" onclick="event.stopPropagation();downloadFile(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();copyTo(\''+fp+'\')">复制</button>'+'<button class="mini" onclick="event.stopPropagation();moveTo(\''+fp+'\')">移动</button>'+'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
     +'<button class="mini" onclick="event.stopPropagation();renameAsk(\''+fp+'\',\''+it.sha+'\')">改名</button>'
     +'<button class="mini dz" onclick="event.stopPropagation();deleteAsk(\''+fp+'\',\''+it.sha+'\')">删除</button></span></div>'}});
@@ -342,6 +354,103 @@ function deleteDirAsk(fp){const parts=fp.split('/');const dir=parts.slice(0,-1).
     gh('/contents/'+f.path).then(c=>gh('/contents/'+f.path,{method:'DELETE',body:JSON.stringify({message:'tv-admin: dir del '+f.path,sha:c.sha})}).then(()=>next()).catch(()=>next()))
     .catch(()=>next())};
    next()}).catch(e=>toast('删除失败：'+e.message,'e'))})}
+/* v32: 批量操作 */
+function picked(){return [...document.querySelectorAll('.pick:checked')].map(x=>({path:x.dataset.pick,el:x}))}
+function updateBatchBar(){const p=picked();$('batch-count').textContent='已选 '+p.length+' 项';$('batchbar').classList.toggle('show',p.length>0)}
+function clearPick(){document.querySelectorAll('.pick').forEach(x=>x.checked=false);updateBatchBar()}
+function eachSeq(list,fn,label){ /* 逐项串行执行（防API限流），全完提示 */
+ return new Promise(res=>{let i=0;const nx=()=>{if(i>=list.length)return res();
+  fn(list[i++]).catch(()=>{}).then(()=>setTimeout(nx,400))};nx()}).then(()=>toast(label))}
+function batchDownload(){const p=picked();if(!p.length)return;
+ toast('⏳ 正在打包 '+p.length+' 项（ZIP）…','i');
+ gh('/git/trees/main?recursive=1').then(t=>{
+  const tree=t.tree||[];const zip=new JSZip();let jobs=Promise.resolve();
+  p.forEach(sel=>{
+   const isDir=!sel.el.dataset.type;
+   if(isDir){
+    const files=tree.filter(x=>x.path.startsWith(sel.path+'/')&&x.type==='blob');
+    const root=sel.path.split('/').pop();
+    files.forEach(f=>{jobs=jobs.then(()=>zipAdd(zip,f.path.slice(sel.path.length+1),root+'/'+f.path.slice(sel.path.length+1),f.path))})
+   }else{jobs=jobs.then(()=>zipAdd(zip,sel.path,sel.path,sel.path))}
+  });
+  jobs.then(()=>zip.generateAsync({type:'blob',compression:'DEFLATE'}).then(blob=>{
+   const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+   a.download=(curPath?curPath.split('/').pop():'repo')+'-批量.zip';a.click();URL.revokeObjectURL(a.href);
+   toast('✅ 已下载批量ZIP（'+p.length+'项）')}))
+ }).catch(e=>toast('打包失败：'+e.message,'e'))}
+function zipAdd(zip,rel,fullPath){ /* 拉单文件进zip（内部路径=保持目录结构） */
+ return fetch('https://gh.efcc.cc/api/repos/zhufenghua313/zhufenghua313/contents/'+encodeURIComponent(fullPath).replace(/%2F/g,'/')+'?t='+Date.now(),
+  {headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'}})
+  .then(r=>r.json()).then(c=>{
+   if(c.content){const bin=atob(c.content.replace(/\n/g,''));
+    const arr=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
+    zip.file(rel,arr)}
+   return Promise.resolve()}).catch(()=>Promise.resolve())}
+function batchMove(){const p=picked();if(!p.length)return;
+ destDlg('➡️ '+p.length+' 项一起移动到哪？',dest=>{
+  toast('⏳ 正在移动 '+p.length+' 项…','i');
+  gh('/git/trees/main?recursive=1').then(t=>{
+   const tree=t.tree||[];let jobs=Promise.resolve();let total=0;
+   p.forEach(sel=>{
+    const name=sel.path.split('/').pop();
+    const target=(dest?dest+'/':'')+name;
+    const isDir=!sel.el.dataset.type;
+    const files=isDir?tree.filter(x=>x.path.startsWith(sel.path+'/')&&x.type==='blob'):[{path:sel.path}];
+    files.forEach(f=>{
+     const src=f.path;const dst=isDir?target+f.path.slice(sel.path.length):target;
+     jobs=jobs.then(()=>gh('/contents/'+src).then(c=>{
+      total++;
+      return gh('/contents/'+dst,{method:'PUT',body:JSON.stringify({message:'tv-admin: batch move '+src,content:c.content})})
+       .then(()=>gh('/contents/'+src,{method:'DELETE',body:JSON.stringify({message:'tv-admin: rm '+src,sha:c.sha})}));
+     }));
+    });
+   });
+   return jobs.then(()=>{toast('✅ 已移动 '+p.length+' 项（共'+total+'个文件）');clearPick();refreshSoon(dest)});
+  }).catch(e=>toast('移动失败：'+e.message,'e'));
+ })}
+
+function batchCopy(){const p=picked();if(!p.length)return;
+ destDlg('📤 '+p.length+' 项一起复制到哪？',dest=>{
+  toast('⏳ 正在复制 '+p.length+' 项…','i');
+  gh('/git/trees/main?recursive=1').then(t=>{
+   const tree=t.tree||[];let jobs=Promise.resolve();let total=0;
+   p.forEach(sel=>{
+    const name=sel.path.split('/').pop();
+    const target=(dest?dest+'/':'')+name;
+    const isDir=!sel.el.dataset.type;
+    const files=isDir?tree.filter(x=>x.path.startsWith(sel.path+'/')&&x.type==='blob'):[{path:sel.path}];
+    files.forEach(f=>{
+     const src=f.path;const dst=isDir?target+f.path.slice(sel.path.length):target;
+     jobs=jobs.then(()=>gh('/contents/'+src).then(c=>{
+      total++;
+      return gh('/contents/'+dst,{method:'PUT',body:JSON.stringify({message:'tv-admin: batch copy '+src,content:c.content})});
+     }));
+    });
+   });
+   return jobs.then(()=>{toast('✅ 已复制 '+p.length+' 项（共'+total+'个文件）');clearPick();refreshSoon(dest)});
+  }).catch(e=>toast('复制失败：'+e.message,'e'));
+ })}
+
+function batchDelete(){const p=picked();if(!p.length)return;
+ dlg('⚠️ 确认删除 '+p.length+' 项？（请输入 删除 两个字再点确定）','',x=>{if(x!=='删除')return toast('已取消','i');
+  toast('⏳ 正在删除 '+p.length+' 项…','i');
+  gh('/git/trees/main?recursive=1').then(t=>{
+   const tree=t.tree||[];let jobs=Promise.resolve();let total=0;
+   p.forEach(sel=>{
+    const isDir=!sel.el.dataset.type;
+    const files=isDir?tree.filter(x=>x.path.startsWith(sel.path+'/')&&x.type==='blob'):[{path:sel.path}];
+    files.forEach(f=>{
+     jobs=jobs.then(()=>gh('/contents/'+f.path).then(c=>{
+      total++;
+      return gh('/contents/'+f.path,{method:'DELETE',body:JSON.stringify({message:'tv-admin: batch del '+f.path,sha:c.sha})});
+     }));
+    });
+   });
+   return jobs.then(()=>{toast('🗑 已删除 '+p.length+' 项（共'+total+'个文件）');clearPick();refreshSoon(curPath)});
+  }).catch(e=>toast('删除失败：'+e.message,'e'));
+ })}
+
 function pickFile(){$('file-input').click()}
 function doUpload(input){const f=input.files[0];if(!f)return;uploadOne(f);input.value=''}
 function uploadOne(f){
