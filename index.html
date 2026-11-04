@@ -78,9 +78,8 @@
   /* ═══ 页脚 ═══ */
   footer{background:var(--deep);color:#8E99AF;}
   .foot-in{max-width:1060px;margin:0 auto;padding:34px 20px 30px;text-align:center;}
-  .universe{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
-  .universe a{font-size:13.5px;color:#C7CEDC;border:1px solid rgba(199,206,220,.22);padding:7px 16px;border-radius:999px;transition:.2s;}
-  .universe a:hover{color:var(--goldXL);border-color:rgba(217,165,33,.5);}
+  .admin-link{font-size:12px;color:#8A93A6;text-decoration:none;border-bottom:1px dashed rgba(138,147,166,.4);opacity:.75;}
+  .admin-link:hover{color:var(--goldL);opacity:1;}
   .foot-note{font-size:12.5px;line-height:2;letter-spacing:.5px;}
   .foot-note b{color:#D5DCEA;}
 
@@ -167,15 +166,6 @@
       <span class="go">进入工地 <em>→</em></span>
     </a>
 
-    <a class="tool" href="/soft/station-admin.html">
-      <div class="t-top">
-        <span class="tag on" style="background:rgba(46,125,79,.14);color:#2E7D4F">管理入口</span>
-      </div>
-      <h3>工具站后台管理</h3>
-      <p>改程序制作平台的进入密码、改首页右上角导航按钮——都在后台，一键生效。</p>
-      <span class="go">进入后台 <em>→</em></span>
-    </a>
-
     <div class="tool ghost">
       <div class="t-top">
         <div class="icon-box">
@@ -193,12 +183,7 @@
 
 <footer>
   <div class="foot-in">
-    <div class="universe">
-      <a href="https://efcc.cc" target="_blank">欢乐影视</a>
-      <a href="https://efcc.cc/live/" target="_blank">欢乐直播 201</a>
-      <a href="https://afcc.cc" target="_blank">欢乐搜索</a>
-    </div>
-    <p class="foot-note"><b>欢乐工具站</b> · 欢乐宇宙的调度台<br>页面托管于 GitHub · Cloudflare 全球加速 · 零服务器零月租</p>
+    <p class="foot-note"><b>欢乐工具站</b> · 欢乐宇宙的调度台<br>页面托管于 GitHub · Cloudflare 全球加速 · 零服务器零月租<br><a href="/soft/station-admin.html" class="admin-link">后台登录</a></p>
   </div>
 </footer>
 
