@@ -135,11 +135,24 @@ function loadDir(path){curPath=path;closeEditor();
   if(path)h+='<div class="item" onclick="loadDir(\''+path.split('/').slice(0,-1).join('/')+'\')"><span class="ic">↩️</span><span class="nm" style="color:#6b7280">.. 返回上级</span></div>';
   items.forEach(it=>{const fp=(path?path+'/':'')+it.name;
    if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+(it.size||'')+'</span></div>'}
-   else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><span class="ic">📄</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+'</span><span class="ops">'
+   else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><span class="ic">📄</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+' · '+fmtTime(it.mtime)+'</span><span class="ops">'
     +'<button class="mini" onclick="event.stopPropagation();downloadFile(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();copyTo(\''+fp+'\')">复制</button>'+'<button class="mini" onclick="event.stopPropagation();moveTo(\''+fp+'\')">移动</button>'+'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
     +'<button class="mini" onclick="event.stopPropagation();renameAsk(\''+fp+'\',\''+it.sha+'\')">改名</button>'
     +'<button class="mini dz" onclick="event.stopPropagation();deleteAsk(\''+fp+'\',\''+it.sha+'\')">删除</button></span></div>'}});
-  $('flist').innerHTML=h}).catch(e=>toast('读取失败：'+e.message,'e'))}
+  $('flist').innerHTML=h;loadTimes(path,items)}).catch(e=>toast('读取失败：'+e.message,'e'))}
+function fmtTime(iso){if(!iso)return'';const d=new Date(iso);
+ const p=n=>String(n).padStart(2,'0');
+ return (d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())}
+function loadTimes(path,items){
+ const base='https://gh.efcc.cc/api/repos/zhufenghua313/zhufenghua313/commits';
+ items.forEach((it,idx)=>{
+  const fp=(path?path+'/':'')+it.name;
+  fetch(base+'?path='+encodeURIComponent(fp)+'&per_page=1',{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'}})
+   .then(r=>r.json()).then(cs=>{
+    if(cs&&cs[0]){const t=cs[0].commit.committer.date;
+     const row=document.querySelectorAll('#flist .item')[idx];
+     if(row&&row.querySelector('.mt'))row.querySelector('.mt').textContent=(it.size!=null?fmtSize(it.size)+' · ':'')+fmtTime(t)}})
+   .catch(()=>{})})}
 function fmtSize(b){if(b==null)return'';if(b>1048576)return(b/1048576).toFixed(1)+'MB';if(b>1024)return(b/1024).toFixed(1)+'KB';return b+'B'}
 
 /* 文件编辑 */
@@ -232,6 +245,69 @@ function autoName(dir,name){
  const stem=ext?name.slice(0,-ext.length):name;
  const tryN=n=>gh('/contents/'+(dir?dir+'/':'')+stem+'('+n+')'+ext).then(()=>tryN(n+1)).catch(()=>stem+'('+n+')'+ext);
  return gh('/contents/'+(dir?dir+'/':'')+name).then(()=>tryN(2)).catch(()=>name)}
+/* v24: 文件夹操作五件套 */
+function downloadDir(fp){toast('⏳ 正在打包下载 '+fp+'…','i');
+ gh('/git/trees/main?recursive=1').then(t=>{
+  const files=(t.tree||[]).filter(x=>x.path.startsWith(fp+'/')&&x.type==='blob');
+  let done=0;const parts=[];
+  const next=()=>{if(done>=files.length){
+    const blob=new Blob(parts,{type:'application/octet-stream'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download=fp.split('/').pop()+'.bundle.txt';a.click();URL.revokeObjectURL(a.href);
+    return toast('✅ 已下载打包('+files.length+'个文件)——注意：这是简易拼接包，含各文件内容分隔')}
+  const f=files[done++];
+  gh('/contents/'+f.path).then(c=>{parts.push('\n===== '+f.path+' =====\n'+(c.content?atob(c.content.replace(/\n/g,'')):'[二进制文件省略]'));next()})
+   .catch(()=>{parts.push('\n===== '+f.path+' =====\n[读取失败]');next()})};
+  next()}).catch(e=>toast('打包失败：'+e.message,'e'))}
+function copyDirTo(fp){destDlg('📤 文件夹复制到哪：'+fp.split('/').pop(),dest=>{
+ if((dest?dest+'/':'').startsWith(fp+'/')||(dest===fp))return toast('不能复制到自己里面','e');
+ toast('⏳ 正在复制文件夹 '+fp+'…','i');
+ gh('/git/trees/main?recursive=1').then(t=>{
+  const files=(t.tree||[]).filter(x=>x.path.startsWith(fp+'/')&&x.type==='blob');
+  const targetRoot=(dest?dest+'/':'')+fp.split('/').pop();
+  let done=0;const next=()=>{if(done>=files.length)return toast('✅ 文件夹已复制到 '+targetRoot+'（'+files.length+'个文件）'),refreshSoon(dest);
+   const f=files[done++];
+   gh('/contents/'+f.path).then(c=>gh('/contents/'+targetRoot+f.path.slice(fp.length),{method:'PUT',body:JSON.stringify({message:'tv-admin: dir copy '+f.path,content:c.content})}).then(()=>next()).catch(()=>next()))
+   .catch(()=>next())};
+  next()}).catch(e=>toast('复制失败：'+e.message,'e'))})}
+function moveDirTo(fp){destDlg('➡️ 文件夹移动到哪：'+fp.split('/').pop(),dest=>{
+ if((dest?dest+'/':'').startsWith(fp+'/')||(dest===fp))return toast('不能移动到自己里面','e');
+ toast('⏳ 正在移动文件夹 '+fp+'…','i');
+ gh('/git/trees/main?recursive=1').then(t=>{
+  const files=(t.tree||[]).filter(x=>x.path.startsWith(fp+'/')&&x.type==='blob');
+  const targetRoot=(dest?dest+'/':'')+fp.split('/').pop();
+  let done=0;const next=()=>{if(done>=files.length){
+    toast('✅ 文件夹已移动到 '+targetRoot);refreshSoon(dest);return loadDir('');}
+   const f=files[done++];
+   gh('/contents/'+f.path).then(c=>gh('/contents/'+targetRoot+f.path.slice(fp.length),{method:'PUT',body:JSON.stringify({message:'tv-admin: dir move '+f.path,content:c.content})})
+    .then(()=>gh('/contents/'+f.path,{method:'DELETE',body:JSON.stringify({message:'tv-admin: rm '+f.path,sha:c.sha})}).then(()=>next()).catch(()=>next()))
+   .catch(()=>next()))};
+  next()}).catch(e=>toast('移动失败：'+e.message,'e'))})}
+function renameDirAsk(fp){const parts=fp.split('/');const dir=parts.slice(0,-1).join('/');
+ dlg('✏️ 文件夹改名：'+parts.at(-1),fp,name=>{if(!name||name===fp)return;
+  if(!name.startsWith((dir?dir+'/':'')))return toast('请保持路径前缀不变，只改最后一段','e');
+  toast('⏳ 正在改名文件夹…','i');
+  moveDirTo.__rename=fp;
+  const target=name;
+  gh('/git/trees/main?recursive=1').then(t=>{
+   const files=(t.tree||[]).filter(x=>x.path.startsWith(fp+'/')&&x.type==='blob');
+   let done=0;const next=()=>{if(done>=files.length){
+     toast('✅ 文件夹已改名 → '+target.split('/').pop());refreshSoon(dir);return;}
+    const f=files[done++];
+    gh('/contents/'+f.path).then(c=>gh('/contents/'+target+f.path.slice(fp.length),{method:'PUT',body:JSON.stringify({message:'tv-admin: dir rename '+f.path,content:c.content})})
+     .then(()=>gh('/contents/'+f.path,{method:'DELETE',body:JSON.stringify({message:'tv-admin: rm '+f.path,sha:c.sha})}).then(()=>next()).catch(()=>next()))
+     .catch(()=>next()))};
+   next()}).catch(e=>toast('改名失败：'+e.message,'e'))})}
+function deleteDirAsk(fp){const parts=fp.split('/');const dir=parts.slice(0,-1).join('/');
+ dlg('⚠️ 确认删除整个文件夹：'+parts.at(-1)+'？（请输入 删除 两个字再点确定）','',x=>{if(x!=='删除')return toast('已取消','i');
+  toast('⏳ 正在删除文件夹 '+parts.at(-1)+'…','i');
+  gh('/git/trees/main?recursive=1').then(t=>{
+   const files=(t.tree||[]).filter(x=>x.path.startsWith(fp+'/')&&x.type==='blob');
+   let done=0;const next=()=>{if(done>=files.length)return toast('🗑 文件夹已删除（'+files.length+'个文件）'),refreshSoon(dir);
+    const f=files[done++];
+    gh('/contents/'+f.path).then(c=>gh('/contents/'+f.path,{method:'DELETE',body:JSON.stringify({message:'tv-admin: dir del '+f.path,sha:c.sha})}).then(()=>next()).catch(()=>next()))
+    .catch(()=>next())};
+   next()}).catch(e=>toast('删除失败：'+e.message,'e'))})}
 function pickFile(){$('file-input').click()}
 function doUpload(input){const f=input.files[0];if(!f)return;uploadOne(f);input.value=''}
 function uploadOne(f){
