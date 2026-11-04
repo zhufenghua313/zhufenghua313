@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>欢乐工具站 · 后台管理</title>
+<style>
+  :root{--deep:#14213D;--deep2:#1B2A4A;--gold:#D9A521;--goldL:#E8BC4F;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+  .wrap{max-width:760px;margin:0 auto;padding:22px 16px 60px;}
+  header{background:linear-gradient(120deg,var(--deep),var(--deep2));color:#fff;border-radius:14px;padding:22px 26px;margin-bottom:16px;position:relative;overflow:hidden;}
+  header::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(217,165,33,.15);}
+  header h1{font-size:22px;}.header p{font-size:13px;color:rgba(255,255,255,.75);margin-top:6px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
+  .card h2{font-size:17px;color:var(--deep);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+  .card h2::before{content:"";display:inline-block;width:4px;height:18px;background:var(--gold);border-radius:2px;}
+  .card .desc{font-size:13px;color:var(--sub);margin-bottom:16px;}
+  label{display:block;font-size:13.5px;color:var(--sub);margin:12px 0 5px;}
+  input[type=password],input[type=text],input[type=url]{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;font-size:14.5px;outline:none;background:#FBFCFE;}
+  input:focus{border-color:var(--gold);}
+  button{padding:11px 22px;border:none;border-radius:9px;cursor:pointer;font-size:14.5px;font-weight:bold;}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--deep);width:100%;margin-top:16px;}
+  .btn-ghost{background:none;border:1px solid var(--line);color:var(--sub);padding:6px 14px;font-size:13px;font-weight:normal;}
+  .msg{margin-top:12px;font-size:14px;min-height:20px;}
+  .msg.ok{color:var(--ok);}.msg.err{color:var(--err);}
+  .nav-row{display:grid;grid-template-columns:1fr 2fr auto auto;gap:8px;align-items:center;margin-bottom:8px;}
+  .nav-row input{padding:9px 11px;font-size:13.5px;}
+  .del{background:none;border:1px solid var(--line);border-radius:7px;color:var(--err);cursor:pointer;padding:8px 10px;font-size:13px;}
+  .hint{font-size:12.5px;color:var(--sub);margin-top:10px;line-height:1.7;background:var(--bg);border-radius:8px;padding:10px 12px;}
+  .back{display:inline-block;margin-top:8px;color:var(--sub);font-size:13px;text-decoration:none;}
+  footer{text-align:center;font-size:12.5px;color:var(--sub);margin-top:8px;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🛠️ 欢乐工具站 · 后台</h1>
+    <p>改密码、改首页导航按钮——都在这，一键生效</p>
+  </header>
+
+  <div class="card">
+    <h2>🔑 修改访问密码</h2>
+    <p class="desc">改完所有设备需用新密码重新登录（旧通行证自动作废）</p>
+    <form id="pwForm">
+      <label>旧密码</label>
+      <input type="password" id="oldpw" required autocomplete="current-password">
+      <label>新密码（至少6位，建议拼音词组+数字）</label>
+      <input type="password" id="newpw" minlength="6" required>
+      <label>确认新密码</label>
+      <input type="password" id="newpw2" minlength="6" required>
+      <button class="btn-gold" type="submit">一键修改密码</button>
+      <div class="msg" id="pwMsg"></div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>🧭 首页导航按钮</h2>
+    <p class="desc">首页右上角那排链接的文字和地址，改完约1分钟内首页生效</p>
+    <div id="navRows"></div>
+    <button class="btn-ghost" type="button" onclick="addRow('','')">＋ 加一个按钮</button>
+    <label style="margin-top:16px">请输入当前访问密码（确认是您本人）</label>
+    <input type="password" id="navPw">
+    <button class="btn-gold" type="button" onclick="saveNav()">保存导航按钮</button>
+    <div class="msg" id="navMsg"></div>
+    <div class="hint">当前效果预览：进入 <b>首页</b> 右上角查看。<br>恢复默认三兄弟（影视/直播/搜索）：直接按默认内容保存即可。</div>
+  </div>
+
+  <a class="back" href="/">← 返回欢乐工具站首页</a>
+  <footer>tv.efcc.cc 后台 · 配置存于 Cloudflare KV（tv-config）<br>密码永不写进网页或文档——安全第一</footer>
+</div>
+
+<script>
+function el(id){return document.getElementById(id);}
+function addRow(text, href){
+  var d=document.createElement("div"); d.className="nav-row";
+  d.innerHTML='<input type="text" placeholder="按钮文字" value="'+(text||"").replace(/"/g,"&quot;")+'">'+
+    '<input type="url" placeholder="链接地址 https://" value="'+(href||"").replace(/"/g,"&quot;")+'">'+
+    '<button type="button" class="del" onclick="this.parentNode.remove()">删</button>';
+  el("navRows").appendChild(d);
+}
+el("pwForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  var m=el("pwMsg");
+  if(el("newpw").value!==el("newpw2").value){ m.className="msg err"; m.textContent="两次输入的新密码不一致"; return; }
+  var fd=new FormData(); fd.append("old",el("oldpw").value); fd.append("new",el("newpw").value);
+  fetch("/soft/__admin/set-password",{method:"POST",body:fd})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      m.className="msg "+(d.ok?"ok":"err"); m.textContent=d.msg||"";
+      if(d.ok){ el("pwForm").reset(); }
+    })
+    .catch(function(){ m.className="msg err"; m.textContent="网络异常，稍后再试"; });
+});
+function saveNav(){
+  var rows=document.querySelectorAll(".nav-row"), nav=[], m=el("navMsg");
+  for(var i=0;i<rows.length;i++){
+    var t=rows[i].querySelectorAll("input")[0].value.trim(), h=rows[i].querySelectorAll("input")[1].value.trim();
+    if(t&&h) nav.push({text:t,href:h,external:h.indexOf("http")===0});
+  }
+  if(!nav.length){ m.className="msg err"; m.textContent="至少要有一个按钮"; return; }
+  var fd=new FormData(); fd.append("password",el("navPw").value); fd.append("nav",JSON.stringify(nav));
+  fetch("/soft/__admin/set-nav",{method:"POST",body:fd})
+    .then(function(r){return r.json()})
+    .then(function(d){ m.className="msg "+(d.ok?"ok":"err"); m.textContent=d.msg||""; })
+    .catch(function(){ m.className="msg err"; m.textContent="网络异常，稍后再试"; });
+}
+fetch("/soft/__admin/get-config").then(function(r){return r.json()}).then(function(d){
+  var nav=d.nav;
+  if(nav&&nav.length) nav.forEach(function(n){addRow(n.text,n.href)});
+  else { addRow("欢乐影视","https://efcc.cc"); addRow("欢乐直播","https://efcc.cc/live/"); addRow("欢乐搜索","https://afcc.cc"); }
+}).catch(function(){ addRow("欢乐影视","https://efcc.cc"); addRow("欢乐直播","https://efcc.cc/live/"); addRow("欢乐搜索","https://afcc.cc"); });
+</script>
+</body>
+</html>
