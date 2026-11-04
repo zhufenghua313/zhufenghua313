@@ -378,14 +378,14 @@ function batchDownload(){const p=picked();if(!p.length)return;
    a.download=(curPath?curPath.split('/').pop():'repo')+'-批量.zip';a.click();URL.revokeObjectURL(a.href);
    toast('✅ 已下载批量ZIP（'+p.length+'项）')}))
  }).catch(e=>toast('打包失败：'+e.message,'e'))}
-function zipAdd(zip,rel,fullPath){ /* 拉单文件进zip（内部路径=保持目录结构） */
+function zipAdd(zip,rel,zipPath,fullPath){ /* v33: 4参修正——rel=顶层名, zipPath=zip内路径（保持原目录结构）, fullPath=git真实路径 */
  return fetch('https://gh.efcc.cc/api/repos/zhufenghua313/zhufenghua313/contents/'+encodeURIComponent(fullPath).replace(/%2F/g,'/')+'?t='+Date.now(),
   {headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'}})
   .then(r=>r.json()).then(c=>{
    if(c.content){const bin=atob(c.content.replace(/\n/g,''));
     const arr=new Uint8Array(bin.length);
     for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
-    zip.file(rel,arr)}
+    zip.file(zipPath||rel,arr)}
    return Promise.resolve()}).catch(()=>Promise.resolve())}
 function batchMove(){const p=picked();if(!p.length)return;
  destDlg('➡️ '+p.length+' 项一起移动到哪？',dest=>{
