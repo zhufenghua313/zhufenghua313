@@ -180,7 +180,7 @@ function openFile(fp){gh('/contents/'+fp).then(f=>{editing={path:fp,sha:f.sha,si
 function closeEditor(){$('editor-box').style.display='none';$('flist').style.display='block';
  if(editing)refreshSoon(editing.path.includes('/')?editing.path.split('/').slice(0,-1).join('/'):curPath);
  editing=null}
-function renameFile(){if(!editing)return;const fp=editing.path;const sha=editing.sha;closeEditor();renameAsk(fp,sha)}
+function renameFile(){if(!editing)return;renameAsk(editing.path,editing.sha)}
 function deleteFile(){if(!editing)return;const fp=editing.path;const sha=editing.sha;closeEditor();deleteAsk(fp,sha)}
 function saveFile(){if(!editing)return;const c=$('editor').value;
  gh('/contents/'+editing.path,{method:'PUT',body:JSON.stringify({message:'tv-admin: update '+editing.name,content:b64(c),sha:editing.sha})})
