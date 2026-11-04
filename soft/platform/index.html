@@ -24,6 +24,8 @@
   .lamp{width:10px;height:10px;border-radius:50%;background:var(--goldL);box-shadow:0 0 8px var(--goldL);animation:br 2s infinite;}
   @keyframes br{50%{opacity:.35;}}
   .back-home{color:var(--goldL);font-size:13.5px;opacity:.85;}
+  .nav-right{display:flex;align-items:center;gap:12px;}
+  .btn-out{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit;}
 
   .hero{background:linear-gradient(120deg,var(--deep) 0%,var(--deep2) 60%,var(--deep3) 100%);color:#fff;padding:52px 20px 46px;text-align:center;position:relative;overflow:hidden;}
   .hero::before{content:"";position:absolute;left:-70px;top:-70px;width:240px;height:240px;border-radius:50%;background:rgba(217,165,33,.10);}
@@ -73,9 +75,23 @@
       <b>欢乐工具站</b>
       <span>PROGRAM FACTORY</span>
     </a>
-    <a class="back-home" href="/">← 返回首页</a>
+    <div class="nav-right">
+      <button class="btn-out" type="button" id="platLogout">🚪 退出登录</button>
+      <a class="back-home" href="/">← 返回首页</a>
+    </div>
   </div>
 </nav>
+
+<script>
+/* 车间页退出：先收证再跳回登录门（与积木 v1.2 同款确定性顺序） */
+document.getElementById("platLogout").addEventListener("click", function(){
+  fetch("/soft/__auth/logout", { method: "POST" }).then(function(){
+    location.replace(location.pathname);
+  }).catch(function(){
+    location.replace(location.pathname);
+  });
+});
+</script>
 
 <section class="hero">
   <h1>程序<em>制作平台</em></h1>

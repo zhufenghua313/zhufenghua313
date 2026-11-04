@@ -460,10 +460,13 @@ var ConfigForm = (function () {
         var t = e.target, api = mount.__cfAPI;
         if (t.id === "btnSave") return api.save();
         if (t.id === "cfLogout") {
-          /* 积木通用退出：收通行证+清本页存档标记，回登录门（Worker门会重新拦） */
-          fetch("/soft/__auth/logout", { method: "POST", keepalive: true }).catch(function () {});
-          try { localStorage.removeItem(recipe.storage.key + "__logged"); } catch (e) {}
-          location.replace(location.pathname);
+          /* 积木通用退出 v1.2：先等收证完成再跳转（修"点两次"竞态：
+             跳转先到Worker而通行证未收=被放行，看起来没退出） */
+          fetch("/soft/__auth/logout", { method: "POST" }).then(function () {
+            location.replace(location.pathname);
+          }).catch(function () {
+            location.replace(location.pathname);
+          });
           return;
         }
         if (t.id === "btnExport") return api.exportJSON();
