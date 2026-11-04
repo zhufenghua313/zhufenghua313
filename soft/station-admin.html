@@ -68,6 +68,15 @@
     <div class="hint">当前效果预览：进入 <b>首页</b> 右上角查看，约1分钟内生效。<br>恢复默认三兄弟（影视/直播/搜索）：直接按默认内容保存即可。</div>
   </div>
 
+  <div class="card">
+    <h2>📝 站点介绍（/about 页面内容）</h2>
+    <p class="desc">本站的介绍文字：特色功能、速度优势、欢迎语等。段落之间空一行；保存后 /about 页面立即生效。</p>
+    <textarea id="aboutText" rows="8" placeholder="一个域名，直达所有自建工具。&#10;&#10;（段落之间空一行）" style="width:100%;padding:11px 13px;font-size:14px;font-family:inherit;border:1px solid var(--line);border-radius:10px;resize:vertical;box-sizing:border-box;line-height:1.8;"></textarea>
+    <button class="btn-gold" type="button" onclick="saveAbout()" style="margin-top:12px">💾 保存站点介绍</button>
+    <div class="msg" id="aboutMsg"></div>
+    <div class="hint">效果预览：打开 <b>tv.efcc.cc/about</b> 查看。<br>支持多段文字（段间空一行），保存后立即生效。</div>
+  </div>
+
   <a class="back" href="/">← 返回欢乐工具站首页</a>
   <footer>tv.efcc.cc 后台 · 配置存于 Cloudflare KV（tv-config）<br>密码永不写进网页或文档——安全第一</footer>
 </div>
@@ -111,7 +120,18 @@ fetch("/soft/__admin/get-config").then(function(r){return r.json()}).then(functi
   var nav=d.nav;
   if(nav&&nav.length) nav.forEach(function(n){addRow(n.text,n.href)});
   else { addRow("欢乐影视","https://efcc.cc"); addRow("欢乐直播","https://efcc.cc/live/"); addRow("欢乐搜索","https://afcc.cc"); }
+  if(d.about) el("aboutText").value = d.about;
 }).catch(function(){ addRow("欢乐影视","https://efcc.cc"); addRow("欢乐直播","https://efcc.cc/live/"); addRow("欢乐搜索","https://afcc.cc"); });
+function saveAbout(){
+  var m=el("aboutMsg");
+  var txt=el("aboutText").value;
+  if(!txt.trim()){ m.className="msg err"; m.textContent="介绍内容不能为空"; return; }
+  var fd=new FormData(); fd.append("about",txt);
+  fetch("/soft/__admin/set-about",{method:"POST",body:fd})
+    .then(function(r){return r.json()})
+    .then(function(d){ m.className="msg "+(d.ok?"ok":"err"); m.textContent=d.msg||""; })
+    .catch(function(){ m.className="msg err"; m.textContent="网络异常，稍后再试"; });
+}
 function doLogout(){
   fetch("/soft/__auth/logout",{method:"POST"}).then(function(){
     location.replace("/soft/station-admin.html?loggedout=1");
