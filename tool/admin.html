@@ -187,14 +187,15 @@ function destDlg(title,cb){const m=$('dlg-mask');$('dlg-title').textContent=titl
   ds.sort();sel.innerHTML=ds.map(p=>'<option value="'+p+'">'+(p||'(仓库根目录)')+'</option>').join('');
   sel.disabled=false}).catch(()=>{sel.innerHTML='<option value="">(仓库根目录)</option>';sel.disabled=false});
  $('dlg-ok').onclick=()=>{const v=sel.value;dlgClose();cb(v)}}
-function newFolder(){dlg('📁 新建文件夹（可含路径如 abc/def）','',name=>{if(!name)return;
- const put=sha=>gh('/contents/'+name+'/.gitkeep',{method:'PUT',body:JSON.stringify({message:'tv-admin: create folder '+name,content:b64('\n'),...(sha?{sha}:{})})});
+function newFolder(){dlg('📁 新建文件夹（在当前目录创建，可含子路径如 abc/def）','',name=>{if(!name)return;
+ const full=(curPath?curPath+'/':'')+name;
+ const put=sha=>gh('/contents/'+full+'/.gitkeep',{method:'PUT',body:JSON.stringify({message:'tv-admin: create folder '+full,content:b64('\n'),...(sha?{sha}:{})})});
  put()
- .then(()=>{toast('✅ 文件夹已创建');const parent=name.includes('/')?name.split('/').slice(0,-1).join('/'):'';refreshSoon(parent)})
+ .then(()=>{toast('✅ 文件夹已创建');refreshSoon(full.includes('/')?full.split('/').slice(0,-1).join('/'):curPath)})
  .catch(e=>{
   if(String(e.message).includes('sha')){
-   gh('/contents/'+name+'/.gitkeep').then(f=>put(f.sha))
-   .then(()=>{toast('📁 文件夹已存在（已就绪）');const parent=name.includes('/')?name.split('/').slice(0,-1).join('/'):'';refreshSoon(parent)})
+   gh('/contents/'+full+'/.gitkeep').then(f=>put(f.sha))
+   .then(()=>{toast('📁 此文件夹已存在（已就绪）');refreshSoon(full.includes('/')?full.split('/').slice(0,-1).join('/'):curPath)})
    .catch(()=>toast('创建失败：'+e.message,'e'))
   } else toast('创建失败：'+e.message,'e')})})}
 function copyTo(fp){destDlg('📤 复制到哪：'+fp.split('/').pop(),dest=>{
@@ -211,6 +212,28 @@ function moveTo(fp){destDlg('➡️ 移动到哪：'+fp.split('/').pop(),dest=>{
  .then(()=>{toast('✅ 已移动到 '+(target));refreshSoon(dest)})
  .catch(e=>toast('移动失败：'+(String(e.message).includes('sha')?'目标已有同名文件':e.message),'e'))})}
 function refreshSoon(dir){setTimeout(()=>loadDir(dir),1500);setTimeout(()=>loadDir(dir),4500)}
+function pickFile(){$('file-input').click()}
+function doUpload(input){const f=input.files[0];if(!f)return;uploadOne(f);input.value=''}
+function uploadOne(f){
+ if(f.size>25*1048576)return toast('文件超过25MB，网页装不下——APK等大文件请用 GitHub Desktop 传','e');
+ if(f.size>5*1048576)toast('文件较大('+fmtSize(f.size)+')，上传中请稍候…','i');
+ const fp=(curPath?curPath+'/':'')+f.name;
+ const rd=new FileReader();
+ rd.onload=()=>{const b64=rd.result.split(',')[1];
+  gh('/contents/'+fp,{method:'PUT',body:JSON.stringify({message:'tv-admin: upload '+f.name,content:b64})})
+  .then(()=>{toast('📤 已上传 '+f.name);refreshSoon(curPath)})
+  .catch(e=>toast('上传失败：'+(String(e.message).includes('sha')?'文件已存在——先删除或改名再传':e.message),'e'))};
+ rd.readAsDataURL(f);}
+/* v8 拖拽上传：整个窗口=投放区，拖入显示提示层，松手即传 */
+let _dragDepth=0;
+window.addEventListener('dragenter',e=>{e.preventDefault();_dragDepth++;
+ $('drop-mask').style.display='flex';
+ $('drop-target-label').textContent='目标：'+(curPath||'仓库根目录')});
+window.addEventListener('dragleave',e=>{e.preventDefault();if(--_dragDepth<=0){_dragDepth=0;$('drop-mask').style.display='none'}});
+window.addEventListener('dragover',e=>e.preventDefault());
+window.addEventListener('drop',e=>{e.preventDefault();_dragDepth=0;$('drop-mask').style.display='none';
+ const fs=e.dataTransfer&&e.dataTransfer.files;if(!fs||!fs.length)return;
+ [...fs].forEach((f,i)=>setTimeout(()=>uploadOne(f),i*700))});
 function pickFile(){$('file-input').click()}
 function doUpload(input){const f=input.files[0];if(!f)return;uploadOne(f);input.value=''}
 function uploadOne(f){
