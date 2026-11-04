@@ -234,28 +234,6 @@ window.addEventListener('dragover',e=>e.preventDefault());
 window.addEventListener('drop',e=>{e.preventDefault();_dragDepth=0;$('drop-mask').style.display='none';
  const fs=e.dataTransfer&&e.dataTransfer.files;if(!fs||!fs.length)return;
  [...fs].forEach((f,i)=>setTimeout(()=>uploadOne(f),i*700))});
-function pickFile(){$('file-input').click()}
-function doUpload(input){const f=input.files[0];if(!f)return;uploadOne(f);input.value=''}
-function uploadOne(f){
- if(f.size>25*1048576)return toast('文件超过25MB，网页装不下——APK等大文件请用 GitHub Desktop 传','e');
- if(f.size>5*1048576)toast('文件较大('+fmtSize(f.size)+')，上传中请稍候…','i');
- const fp=(curPath?curPath+'/':'')+f.name;
- const rd=new FileReader();
- rd.onload=()=>{const b64=rd.result.split(',')[1];
-  gh('/contents/'+fp,{method:'PUT',body:JSON.stringify({message:'tv-admin: upload '+f.name,content:b64})})
-  .then(()=>{toast('📤 已上传 '+f.name);refreshSoon(curPath)})
-  .catch(e=>toast('上传失败：'+(String(e.message).includes('sha')?'文件已存在——先删除或改名再传':e.message),'e'))};
- rd.readAsDataURL(f);}
-/* v8 拖拽上传：整个窗口=投放区，拖入显示提示层，松手即传 */
-let _dragDepth=0;
-window.addEventListener('dragenter',e=>{e.preventDefault();_dragDepth++;
- $('drop-mask').style.display='flex';
- $('drop-target-label').textContent='目标：'+(curPath||'仓库根目录')});
-window.addEventListener('dragleave',e=>{e.preventDefault();if(--_dragDepth<=0){_dragDepth=0;$('drop-mask').style.display='none'}});
-window.addEventListener('dragover',e=>e.preventDefault());
-window.addEventListener('drop',e=>{e.preventDefault();_dragDepth=0;$('drop-mask').style.display='none';
- const fs=e.dataTransfer&&e.dataTransfer.files;if(!fs||!fs.length)return;
- [...fs].forEach((f,i)=>setTimeout(()=>uploadOne(f),i*700))});
 function newFile(){dlg('📄 新建文件（可含路径如 abc/def.txt）','',name=>{if(!name)return;
  gh('/contents/'+name,{method:'PUT',body:JSON.stringify({message:'tv-admin: create '+name,content:b64('\n')})})
  .then(()=>{toast('✅ 已创建');loadDir(name.includes('/')?name.split('/').slice(0,-1).join('/'):curPath)}).catch(e=>toast('创建失败：'+e.message,'e'))})}
