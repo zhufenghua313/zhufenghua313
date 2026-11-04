@@ -103,7 +103,7 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;background:#f0f2f5;c
 </div>
 <div id="setup">
   <h2>🔐 粘贴 GitHub 令牌</h2>
-  <p>只存本机浏览器。<a href="https://github.com/settings/tokens?type=beta" target="_blank" style="color:#2563eb">没有？点这生成</a></p>
+  <p>只存本机浏览器。<a href="https://github.com/settings/tokens?type=beta" target="_blank" style="color:#2563eb">没有？点这生成</a><br><span style="font-size:12px;color:#888">输入框若已自动填好（本机记住的令牌），直接点「登 录」即可。</span></p>
   <input type="password" id="pat-input" placeholder="github_pat_……（粘贴到这里）">
   <button class="btn btn-p" onclick="doLogin()">登 录</button>
   
@@ -132,7 +132,7 @@ function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
 
 /* 登录 */
 function doLogin(){PAT=$('pat-input').value.trim();if(!PAT.startsWith('github_pat_'))return toast('令牌要以 github_pat_ 开头','e');
- gh('/contents/').then(d=>{LSset('tv-admin-pat',PAT);boot();const sv=decodeURIComponent(location.hash.slice(1));loadDir(sv||'')})
+ gh('/contents/').then(d=>{LSset('tv-admin-pat',PAT);boot();const sv=decodeURIComponent(location.hash.slice(1));loadDir(sv||'');startIdleGuard()})
  .catch(e=>toast('登录失败：'+e.message,'e'))}
 function logoutAsk(){ /* v39: 一键直退（站长原则：退出要快，登录才要保险） */
  LSdel('tv-admin-pat');location.hash='';location.reload()}
@@ -510,21 +510,17 @@ function deleteAsk(fp,sha){const parts=fp.split('/');const dir=parts.slice(0,-1)
   gh('/contents/'+fp,{method:'DELETE',body:JSON.stringify({message:'tv-admin: delete '+parts.at(-1),sha:sha})})
   .then(()=>{toast('🗑 已删除');refreshSoon(dir)}).catch(e=>toast('删除失败：'+e.message,'e'))})}
 
-/* 启动 */
+/* 启动 — v41 安全改（站长 2026-11-04 21:31 需求）：
+   本机记住的令牌只帮填进输入框，绝不自动登录；必须亲手点「登 录」才进门 */
 PAT=LSget('tv-admin-pat')||'';
-if(PAT){gh('/contents/').then(()=>{
-  boot();
-  /* v35: 恢复上次目录（URL hash记忆） */
-/* v36: 会话保护——30分钟无操作自动退出（防忘关下班），任意操作滚动续期 */
-(function(){
+if(PAT){$('pat-input').value=PAT;}
+/* v36: 会话保护——30分钟无操作自动退出（防忘关下班），登录成功后启用 */
+function startIdleGuard(){(function(){
  const IDLE_MS=30*60*1000;
  let last=Date.now();
  ['click','keydown','mousemove','touchstart'].forEach(ev=>document.addEventListener(ev,()=>{last=Date.now()},{passive:true}));
  setInterval(()=>{if(Date.now()-last>IDLE_MS){LSdel('tv-admin-pat');toast('⏰ 30分钟没操作，已自动退出（保护模式）','i');setTimeout(()=>location.reload(),1500)}},60000);
-})();
-  const saved=decodeURIComponent(location.hash.slice(1));
-  loadDir(saved||''); /* v40: 空hash也加载根目录（主目录刷新空白修复） */
- }).catch(()=>{LSdel('tv-admin-pat');toast('本地令牌已失效，请重新粘贴','e')})}
+})();}
 </script>
 <script>
 /* JSZip v3.10.1 内嵌（浏览器本地ZIP打包，无需CDN） */
