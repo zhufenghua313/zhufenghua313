@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运动会管理系统 · M10 现场空白表</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314213D'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8BC4F'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--deep:#14213D;--deep2:#1B2A4A;--deep3:#2A4370;--gold:#D9A521;--goldL:#E8BC4F;--goldbg:#FBF6E9;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+  .wrap{max-width:900px;margin:0 auto;padding:22px 16px 70px;}
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25);}
+  .nav-in{max-width:900px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .nav-title{color:var(--goldL);font-weight:700;font-size:16px;}
+  .btn-out{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:6px 12px;font-size:12.5px;cursor:pointer;font-family:inherit;}
+  .hero{background:linear-gradient(135deg,var(--deep) 0%,var(--deep3) 100%);border-radius:14px;color:#fff;padding:20px 18px;margin-bottom:14px;box-shadow:0 6px 18px rgba(20,33,61,.25);}
+  .hero h1{font-size:20px;margin-bottom:6px;}
+  .hero p{font-size:13px;color:rgba(255,255,255,.75);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 14px;margin-bottom:14px;box-shadow:0 2px 8px rgba(20,33,61,.06);}
+  .card h2{font-size:15px;margin-bottom:10px;color:var(--deep);}
+  .btn{background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--deep);border:none;border-radius:9px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;margin:0 6px 6px 0;}
+  .btn-ghost{background:#fff;color:var(--deep);border:1.5px solid var(--gold);border-radius:9px;padding:9px 16px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;margin:0 6px 6px 0;}
+  .msg{font-size:12.5px;margin:8px 0;min-height:16px;color:var(--sub);}
+  .msg.ok{color:var(--ok);}
+  .msg.err{color:var(--err);}
+  footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px;line-height:1.8;}
+  .hint{font-size:12px;color:var(--sub);background:var(--goldbg);border:1px dashed var(--gold);border-radius:8px;padding:8px 10px;margin-bottom:12px;line-height:1.7;}
+  /* A4 纸页 */
+  #papers{display:flex;flex-direction:column;gap:22px;align-items:center;}
+  .paper{width:210mm;min-height:297mm;background:#fff;border:1px solid #C9D2E0;box-shadow:0 4px 14px rgba(20,33,61,.13);padding:15mm 14mm;position:relative;}
+  .pv-tag{position:absolute;top:6px;right:10px;font-size:10px;color:#98A2B6;letter-spacing:.5px;}
+  .doc{font-family:"SimSun","Songti SC",serif;color:#000;}
+  .doc .ev-title{text-align:center;font-family:"SimHei","Heiti SC",sans-serif;font-size:17pt;letter-spacing:1pt;margin:4mm 0 2mm;}
+  .doc .ev-sub{text-align:center;font-size:10.5pt;color:#333;margin-bottom:5mm;}
+  .doc table{width:100%;border-collapse:collapse;margin-bottom:5mm;}
+  .doc th,.doc td{border:1.2pt solid #444;padding:7pt 4pt;text-align:center;font-size:11pt;height:34pt;}
+  .doc th{background:#EFEBE0;font-family:"SimHei",sans-serif;font-weight:600;}
+  .doc .sig-line{font-size:10.5pt;color:#333;margin-top:4mm;line-height:2;}
+  @media print{
+    nav,.hero,.card,footer,.pv-tag{display:none!important;}
+    body{background:#fff;}
+    .wrap{max-width:none;padding:0;}
+    #papers{gap:0;}
+    .paper{border:none;box-shadow:none;page-break-after:always;min-height:auto;padding:12mm 13mm;}
+    .paper:last-child{page-break-after:auto;}
+  }
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <div class="nav-title">📋 现场记录表</div>
+  <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
+</div></nav>
+
+<div class="wrap">
+  <section class="hero">
+    <h1>现场空白表（裁判底稿）</h1>
+    <p>每场次一张 A4 · 号码姓名已预填 · 径赛记道次 · 田赛记轮次 · 接力记班级</p>
+  </section>
+
+  <div class="card">
+    <h2>🖨 输出</h2>
+    <div class="hint">现场用表：赛前批量打印分发各裁判组。径赛表（60米等）按道次录成绩；田赛表（跳高/跳远等）每运动员三次试跳成绩格；接力表按班级。全部页面号码姓名已从报名表预填——裁判只需写数字。</div>
+    <button class="btn" type="button" id="btnWord">⬇ 下载 Word 版（A4 全部场次）</button>
+    <button class="btn-ghost" type="button" id="btnPrint">🖨 打印 / 存 PDF</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div id="papers"><div style="text-align:center;color:var(--sub);padding:30px 0">加载中…</div></div>
+
+  <footer>运动会管理系统 · M10 现场空白表 ｜ 手搓 v1 ｜ 需求第9条收官<br>表数据来自 M3 报名 + M4 号码 + M6 赛程——十模块最后一环</footer>
+</div>
+
+<script>
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+var DATA={sched:null,numbers:{}};
+
+function gradeOf(cn){var m={"一":1,"二":2,"三":3,"四":4,"五":5,"六":6};var s=String(cn||"");for(var i=0;i<s.length;i++){if(m[s[i]])return m[s[i]];}return 0;}
+
+/* 场次名 → 该场运动员（复用 M7 的反查思路） */
+function matchAthletes(eventName){
+  var m=String(eventName).match(/([一二三四五六])年级(男子|女子)?(.+?)(预决赛|决赛)?$/);
+  var grade=m?m[1]:null, gender=m&&m[2]?(m[2]==="男子"?"男":"女"):null;
+  var ev=m?m[3]:String(eventName);
+  var isRelay=ev.indexOf("接力")>=0;
+  var isField=(/跳高|跳远|铅球|垒球|实心球/).test(ev);
+  var out=[];
+  var classes=Object.values(DATA.numbers||{});
+  if(isRelay){
+    classes.forEach(function(c){
+      if(grade){var g=gradeOf(c.className);var CN=["","一","二","三","四","五","六"];if(CN[g]!==grade)return;}
+      out.push({no:"",name:c.className,field:false,relay:true});
+    });
+    return {list:out,isField:false,isRelay:true};
+  }
+  classes.forEach(function(c){
+    var g=gradeOf(c.className);
+    (c.students||[]).forEach(function(s){
+      if(gender&&s.gender!==gender)return;
+      if(grade){var CN=["","一","二","三","四","五","六"];if(CN[g]!==grade)return;}
+      if((s.events||[]).map(String).indexOf(String(ev))>=0)out.push({no:s.no,name:s.name,cls:c.className,field:isField,relay:false});
+    });
+  });
+  return {list:out,isField:isField,isRelay:false};
+}
+
+function buildPapers(){
+  var box=el("papers");
+  var days=(DATA.sched&&DATA.sched.days)||[];
+  if(!days.length){box.innerHTML='<div style="text-align:center;color:var(--sub);padding:30px 0">还没有赛程——先在 M6 生成</div>';return;}
+  var html="";
+  days.forEach(function(day){
+    (day.items||[]).forEach(function(it,idx){
+      var ma=matchAthletes(it.name);
+      var tag="A4 · "+(ma.isRelay?"接力表":(ma.isField?"田赛表":"径赛表"));
+      html+='<div class="paper"><div class="pv-tag">'+tag+'</div><div class="doc">'
+        +'<div class="ev-title">'+esc(it.name)+'</div>'
+        +'<div class="ev-sub">'+esc(day.title)+(it.remark?(' ｜ '+esc(it.remark)):'')+' ｜ 第 '+(idx+1)+' 场</div>';
+      if(ma.isRelay){
+        html+='<table><tr><th style="width:12%">道次</th><th>班级</th><th style="width:22%">成绩</th><th style="width:12%">名次</th></tr>';
+        var n=ma.list.length||4;
+        for(var i=0;i<Math.max(n,4);i++){
+          var t=ma.list[i];
+          html+='<tr><td>'+(i+1)+'</td><td style="text-align:left;padding-left:8pt">'+(t?('　'+esc(t.name)):'')+'</td><td></td><td></td></tr>';
+        }
+        html+='</table>';
+      }else if(ma.isField){
+        html+='<table><tr><th style="width:12%">号码</th><th>姓名</th><th>第1次</th><th>第2次</th><th>第3次</th><th style="width:14%">最好成绩</th><th style="width:10%">名次</th></tr>';
+        if(!ma.list.length){for(var i=0;i<8;i++)html+='<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';}
+        ma.list.forEach(function(a){
+          html+='<tr><td>'+esc(a.no)+'</td><td style="text-align:left;padding-left:8pt">'+esc(a.name)+'<span style="color:#666;font-size:9pt">（'+esc(a.cls)+'）</span></td><td></td><td></td><td></td><td></td><td></td></tr>';
+        });
+        html+='</table>';
+      }else{
+        html+='<table><tr><th style="width:12%">道次</th><th style="width:12%">号码</th><th>姓名</th><th style="width:20%">成绩</th><th style="width:12%">名次</th></tr>';
+        if(!ma.list.length){for(var i=0;i<8;i++)html+='<tr><td>'+(i+1)+'</td><td></td><td></td><td></td><td></td></tr>';}
+        ma.list.forEach(function(a,i){
+          html+='<tr><td>'+(i+1)+'</td><td>'+esc(a.no)+'</td><td style="text-align:left;padding-left:8pt">'+esc(a.name)+'<span style="color:#666;font-size:9pt">（'+esc(a.cls)+'）</span></td><td></td><td></td></tr>';
+        });
+        html+='</table>';
+      }
+      html+='<div class="sig-line">裁判长签字：＿＿＿＿＿＿＿＿　　记录员签字：＿＿＿＿＿＿＿＿　　复核：＿＿＿＿＿＿＿＿</div>';
+      html+='</div></div>';
+    });
+  });
+  box.innerHTML=html;
+  el("msg").textContent="共 "+box.querySelectorAll('.paper').length+" 张现场表就绪";
+}
+
+function downloadWord(){
+  var inner=el("papers").innerHTML;
+  var doc='<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8">'
+    +'<title>现场记录表</title>'
+    /* 注意：JS字符串里绝不能出现「小于+叹号+双横线」组合——script逃逸模式炸弹 */
+    +'<style>@page{size:A4 portrait;margin:1.5cm}body{font-family:"SimSun";font-size:12pt;color:#000}'
+    +'.paper{page-break-after:always;width:100%;padding:0;margin:0;border:none;box-shadow:none;min-height:0}'
+    +'.paper:last-child{page-break-after:auto}'
+    +'.pv-tag{display:none}.doc .ev-title{text-align:center;font-family:"SimHei";font-size:16pt}.doc .ev-sub{text-align:center;font-size:10.5pt;margin:2mm 0 5mm}'
+    +'table{width:100%;border-collapse:collapse}th,td{border:1.2pt solid #444;padding:6pt 4pt;text-align:center;font-size:11pt;height:32pt}'
+    +'th{background:#EFEBE0;font-family:"SimHei"}.sig-line{font-size:10.5pt;margin-top:5mm;line-height:2}'
+    +'</style></head><body>'+inner+'</bo'+'dy></html>'; /* 拆串防注入误匹配 */
+  var blob=new Blob(["\ufeff"+doc],{type:"application/msword"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="运动会现场记录表.doc";
+  document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);
+}
+
+el("btnWord").addEventListener("click",downloadWord);
+el("btnPrint").addEventListener("click",function(){window.print();});
+el("btnOut").addEventListener("click",function(){
+  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace(location.pathname)})
+  .catch(function(){location.replace(location.pathname)});
+});
+
+Promise.all([
+  fetch("/soft/api/schedule").then(function(r){return r.json()}),
+  fetch("/soft/api/numbers").then(function(r){return r.json()})
+]).then(function(rs){
+  DATA.sched=rs[0].schedule||{days:[]};
+  DATA.numbers=rs[1].numbers||{};
+  /* 管理员才见全量号码；班主任视角只有本班（预填会不全，提示之） */
+  var keys=Object.keys(DATA.numbers);
+  if(rs[1].me && keys.length===1)el("msg").textContent="当前为班主任视角（仅本班数据）——现场表需管理员账号生成全量";
+  buildPapers();
+}).catch(function(){el("papers").innerHTML='<div style="text-align:center;color:var(--err);padding:30px 0">网络异常，请刷新重试</div>';});
+</script>
+</body>
+</html>
