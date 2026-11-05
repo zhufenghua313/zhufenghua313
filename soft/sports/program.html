@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运动会管理系统 · M5 程序册</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314213D'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8BC4F'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--deep:#14213D;--deep2:#1B2A4A;--deep3:#2A4370;--gold:#D9A521;--goldL:#E8BC4F;--goldbg:#FBF6E9;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+  .wrap{max-width:900px;margin:0 auto;padding:22px 16px 70px;}
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25);}
+  .nav-in{max-width:900px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .nav-in .nv-l{display:flex;align-items:center;gap:10px;color:#fff;font-size:17px;font-weight:600;}
+  .btn-out{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
+  .card h2{font-size:17px;color:var(--deep);border-left:4px solid var(--gold);padding-left:10px;margin-bottom:14px;}
+  .msg{font-size:13.5px;margin-top:10px;min-height:18px;}
+  .msg.ok{color:var(--ok);} .msg.err{color:var(--err);}
+  label{display:block;font-size:13px;color:var(--sub);margin:10px 0 4px;}
+  input,textarea{width:100%;padding:10px 12px;font-size:14px;font-family:inherit;border:1px solid var(--line);border-radius:9px;background:#fff;}
+  textarea{resize:vertical;}
+  .btnrow{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+  .btn{border:none;border-radius:10px;padding:12px 20px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#14213D;}
+  .btn-deep{background:var(--deep);color:#fff;}
+  .btn-ghost{background:#fff;color:var(--deep);border:1px solid var(--line);}
+
+  /* —— A4 纸样式 —— */
+  .papers{display:flex;flex-direction:column;gap:24px;align-items:center;}
+  .paper{width:210mm;min-height:297mm;background:#fff;box-shadow:0 4px 18px rgba(20,33,61,.15);padding:18mm 16mm;position:relative;font-family:"SimSun","Songti SC",serif;color:#000;}
+  .paper .pv-tag{position:absolute;top:6px;right:10px;font-family:"Microsoft YaHei";font-size:11px;color:#B8C0CE;}
+  .cover{text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;height:261mm;}
+  .cover .sch{font-size:30px;font-weight:bold;letter-spacing:6px;margin-bottom:22px;font-family:"SimHei";}
+  .cover .yr{font-size:17px;letter-spacing:3px;margin-bottom:52px;}
+  .cover .mt{font-size:52px;font-family:"SimHei";letter-spacing:16px;margin-bottom:52px;text-indent:16px;}
+  .cover .dt{font-size:16px;line-height:2;}
+  .cover .tip{font-size:13px;color:#555;margin-top:60px;letter-spacing:2px;}
+  .doc h2{text-align:center;font-family:"SimHei";font-size:21px;letter-spacing:5px;margin:18px 0 16px;font-weight:bold;}
+  .doc h2:not(:first-of-type){margin-top:28px;}
+  .doc p.sec{text-align:center;font-size:15px;letter-spacing:3px;margin:14px 0 8px;font-weight:bold;}
+  .doc ol{margin:6px 0 6px 2em;font-size:14.5px;line-height:1.9;}
+  .doc table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;}
+  .doc th,.doc td{border:1px solid #444;padding:5px 8px;text-align:center;}
+  .doc .kv td:first-child{width:30%;background:#F5F5F5;}
+  .doc .cls-head td{background:#EFEBE0;font-weight:bold;font-family:"SimHei";}
+  .doc .note{font-size:13px;color:#333;line-height:1.9;text-indent:2em;}
+  @media print{
+    nav,.noprint{display:none !important;}
+    body{background:#fff;}
+    .papers{gap:0;}
+    .paper{box-shadow:none;width:100%;min-height:auto;padding:12mm 10mm;page-break-after:always;}
+    .paper:last-child{page-break-after:auto;}
+    .paper .pv-tag{display:none;}
+  }
+  @media(max-width:850px){
+    .papers{align-items:stretch;}
+    .paper{width:100%;padding:16px 12px;min-height:auto;}
+  }
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <div class="nv-l">🏃 运动会管理系统 · 程序册</div>
+  <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
+</div></nav>
+
+<div class="wrap">
+
+  <div class="card noprint" id="metaCard">
+    <h2>📇 程序册信息（打印前确认）</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 14px;">
+      <div><label>学校名称</label><input id="fSchool" placeholder="如：羊里小学"></div>
+      <div><label>届名 / 年份</label><input id="fMeet" placeholder="如：2027年春季运动会"></div>
+      <div><label>田赛日（第一天）</label><input id="fDate1" placeholder="如：4月10日 星期四"></div>
+      <div><label>径赛日（第二天）</label><input id="fDate2" placeholder="如：4月11日 星期五"></div>
+      <div><label>地点</label><input id="fPlace" placeholder="如：学校运动场"></div>
+    </div>
+    <label>运动会须知（每行一条，留空用默认）</label>
+    <textarea id="fNotice" rows="4" placeholder="一、与会人员要遵守大会纪律，听从指挥……&#10;二、……"></textarea>
+    <div class="btnrow">
+      <button class="btn btn-deep" type="button" id="btnSaveMeta">💾 保存信息</button>
+      <button class="btn btn-gold" type="button" id="btnWord">⬇ 下载 Word 版</button>
+      <button class="btn btn-ghost" type="button" id="btnPrint">🖨 打印 / 存 PDF</button>
+    </div>
+    <div class="msg" id="metaMsg"></div>
+  </div>
+
+  <div class="papers" id="papers"></div>
+
+  <footer style="text-align:center;font-size:12.5px;color:var(--sub);margin-top:18px;line-height:1.8;">
+    运动会管理系统 · M5 程序册 ｜ 数据来自报名与号码生成 ｜ A4 纵向 · 打印建议：双面<br>
+    方法论：删除重做法——程序和平台一起成长
+  </footer>
+</div>
+
+<script>
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+var DATA={events:[],numbers:{},meta:null,program:{}};
+var IS_ADMIN=false;
+
+var DEFAULT_NOTICE=[
+  "一、与会人员要遵守大会纪律，听从指挥，讲文明，讲礼貌。运动员要尊重裁判员，服从裁判。",
+  "二、裁判员要认真负责，团结协作，认真执行比赛规则，做公正裁判。",
+  "三、比赛时，运动员必须将号码布佩戴胸前。",
+  "四、各班要在指定位置进行观看，不得在运动场内乱跑、逗留，严格遵守大会规章制度。",
+  "五、提高警惕，注意安全，防止事故发生。"
+];
+var DEFAULT_OPEN=["主席团成员入座","运动员、裁判员入场","升国旗、奏国歌","校长致开幕词","裁判员代表宣誓","运动员代表宣誓","宣布大会纪律","运动员、裁判员退场，比赛开始"];
+var DEFAULT_CLOSE=["主席团成员入座","运动员、裁判员入场","宣布比赛成绩","颁奖","致闭幕词","运动员、裁判员退场，比赛结束"];
+
+function gradeOf(cn){var m={"一":1,"二":2,"三":3,"四":4,"五":5,"六":6};for(var ch of cn){if(m[ch])return m[ch];}return 0;}
+function gName(g){return ["","一年级","二年级","三年级","四年级","五年级","六年级"][g]||"";}
+
+/* —— 生成 A4 纸 HTML —— */
+function buildPapers(){
+  var p=DATA.program||{};
+  var sch=esc(p.school||"（学校名称）");
+  var meet=esc(p.meetName||"（届名）");
+  var d1=esc(p.date1||"（第一天 · 田赛）"), d2=esc(p.date2||"（第二天 · 径赛）");
+  var place=esc(p.place||"学校运动场");
+  var notice=(p.notice||"").trim();
+  var noticeArr=notice?notice.split(/\n+/).filter(Boolean):DEFAULT_NOTICE;
+  var evs=DATA.events||[];
+  var fieldEvs=evs.filter(e=>e.type==="田赛"), trackEvs=evs.filter(e=>e.type==="径赛");
+  var nums=DATA.numbers||{};
+  var classKeys=Object.keys(nums).sort(function(a,b){
+    return gradeOf(nums[a].className||"")-gradeOf(nums[b].className||"")||String(nums[a].className||"").localeCompare(String(nums[b].className||""),"zh");
+  });
+  var total=0; classKeys.forEach(k=>{total+=(nums[k].students||[]).length});
+
+  var h="";
+  /* 第 1 页：封面 */
+  h+='<div class="paper"><div class="pv-tag">封面</div><div class="cover">'
+    +'<div class="sch">'+sch+'</div>'
+    +'<div class="yr">'+esc((p.meetName||"").indexOf("20")===0?(p.meetName||"").slice(0,5):"")+'</div>'
+    +'<div class="mt">程序册</div>'
+    +'<div class="dt">'+d1+'（田赛）<br>'+d2+'（径赛）<br>地点：'+place+'</div>'
+    +'<div class="tip">（本册供各班级及裁判员使用）</div>'
+    +'</div></div>';
+  /* 第 2 页：须知+作息+开闭幕式 */
+  h+='<div class="paper doc"><div class="pv-tag">须知 · 程序</div>'
+    +'<h2>运动会须知</h2><ol>'
+    +noticeArr.map(n=>'<li class="note">'+esc(n)+'</li>').join("")
+    +'</ol><h2>作息时间</h2><table class="kv">'
+    +'<tr><td>田赛（第一天）</td><td>'+d1+' 下午 13:30—16:00</td></tr>'
+    +'<tr><td>径赛（第二天）</td><td>'+d2+' 上午 8:00—11:15（开幕式 7:30）</td></tr>'
+    +'<tr><td>闭幕式</td><td>径赛日 11:20</td></tr></table>'
+    +'<h2>开幕式程序</h2><ol>'+DEFAULT_OPEN.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ol>'
+    +'<h2>闭幕式程序</h2><ol>'+DEFAULT_CLOSE.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ol>'
+    +'</div>';
+  /* 第 3 页：竞赛日程 */
+  h+='<div class="paper doc"><div class="pv-tag">竞赛日程</div><h2>竞赛日程</h2>'
+    +'<p class="sec">'+d1+' 下午 · 田赛</p><table><tr><th>组别</th><th>顺序</th></tr>';
+  var seq=0; fieldEvs.forEach(function(e){seq++;h+='<tr><td>'+esc(e.name)+'（按年级组）</td><td>'+seq+'</td></tr>';});
+  h+='</table><p class="sec">'+d2+' 上午 · 径赛</p><table><tr><th>组别</th><th>顺序</th></tr>';
+  seq=0; trackEvs.forEach(function(e){seq++;h+='<tr><td>'+esc(e.name)+'（按年级组，男先女后）</td><td>'+seq+'</td></tr>';});
+  h+='</table><p class="note" style="margin-top:14px;text-align:center">报名汇总：共 '+total+' 名运动员，'+classKeys.length+' 个班级参赛。</p></div>';
+  /* 第 4+ 页：号码对照表 */
+  if(classKeys.length){
+    h+='<div class="paper doc"><div class="pv-tag">号码对照表</div><h2>运动员号码对照表</h2>';
+    classKeys.forEach(function(k){
+      var c=nums[k]; var st=c.students||[];
+      h+='<table style="margin-bottom:6px"><tr class="cls-head"><td colspan="4">'+esc(c.className)+'　教练员：＿＿＿＿</td></tr>'
+        +'<tr><th>号码</th><th>姓名</th><th>性别</th><th>项目</th></tr>'
+        +st.map(function(s){return '<tr><td><b>'+esc(s.no)+'</b></td><td>'+esc(s.name)+'</td><td>'+esc(s.gender)+'</td><td>'+esc((s.events||[]).join("、"))+'</td></tr>'}).join("")
+        +'</table>';
+    });
+    h+='</div>';
+  }else{
+    h+='<div class="paper doc"><h2>运动员号码对照表</h2><p class="note" style="text-align:center">（尚未生成号码——请管理员先在 M4 生成）</p></div>';
+  }
+  el("papers").innerHTML=h;
+}
+
+/* —— Word 下载：把纸区包进 Word 兼容 HTML —— */
+function downloadWord(){
+  var p=DATA.program||{};
+  var inner=el("papers").innerHTML;
+  var title=(p.meetName||"运动会")+"程序册";
+  var doc='<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8">'
+    +'<title>'+esc(title)+'</title>'
+    +'<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->'
+    +'<style>@page{size:A4 portrait;margin:2cm}body{font-family:"SimSun";font-size:12pt;color:#000}'
+    +'.paper{page-break-after:always;width:100%;padding:0;margin:0;border:none;box-shadow:none;min-height:0}'
+    +'.paper:last-child{page-break-after:auto}'
+    +'h2{text-align:center;font-family:"SimHei";font-size:16pt}table{width:100%;border-collapse:collapse}th,td{border:1px solid #444;padding:4pt;text-align:center;font-size:10.5pt}'
+    +'.cls-head td{background:#EFEBE0;font-weight:bold}li{font-size:12pt;line-height:1.8}'
+    +'.pv-tag{display:none}.cover{text-align:center;padding-top:6cm}.sch{font-size:22pt;font-family:"SimHei";letter-spacing:6pt}.mt{font-size:36pt;font-family:"SimHei";letter-spacing:12pt;margin:2cm 0}'
+    +'</style></head><body>'+inner+'</body></html>';
+  var blob=new Blob(["\ufeff"+doc],{type:"application/msword"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=(p.school?p.school:"运动会")+(p.meetName?p.meetName:"")+"程序册.doc";
+  document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);
+}
+
+/* —— 加载 —— */
+fetch("/soft/api/program-data").then(function(r){return r.json()}).then(function(d){
+  if(!d.ok){el("metaMsg").className="msg err";el("metaMsg").textContent=d.msg||"加载失败";return;}
+  DATA=d;IS_ADMIN=!!d.meta; /* 管理员判定简化：能拿到 meta 视为管理员（后端已分权） */
+  var p=d.program||{};
+  if(p.school)el("fSchool").value=p.school;
+  if(p.meetName)el("fMeet").value=p.meetName;
+  if(p.date1)el("fDate1").value=p.date1;
+  if(p.date2)el("fDate2").value=p.date2;
+  if(p.place)el("fPlace").value=p.place;
+  if(p.notice)el("fNotice").value=p.notice;
+  buildPapers();
+}).catch(function(){el("metaMsg").className="msg err";el("metaMsg").textContent="网络异常，请刷新重试";});
+
+el("btnSaveMeta").addEventListener("click",function(){
+  var fd=new FormData();
+  fd.append("school",el("fSchool").value);fd.append("meetName",el("fMeet").value);
+  fd.append("date1",el("fDate1").value);fd.append("date2",el("fDate2").value);
+  fd.append("place",el("fPlace").value);fd.append("notice",el("fNotice").value);
+  fetch("/soft/api/program-meta",{method:"POST",body:fd})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      el("metaMsg").className="msg "+(d.ok?"ok":"err");el("metaMsg").textContent=d.msg||"";
+      if(d.ok){DATA.program={school:el("fSchool").value,meetName:el("fMeet").value,date1:el("fDate1").value,date2:el("fDate2").value,place:el("fPlace").value,notice:el("fNotice").value};buildPapers();}
+    })
+    .catch(function(){el("metaMsg").className="msg err";el("metaMsg").textContent="网络异常";});
+});
+el("btnWord").addEventListener("click",downloadWord);
+el("btnPrint").addEventListener("click",function(){window.print();});
+el("btnOut").addEventListener("click",function(){
+  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace(location.pathname)})
+  .catch(function(){location.replace(location.pathname)});
+});
+</script>
+</body>
+</html>
