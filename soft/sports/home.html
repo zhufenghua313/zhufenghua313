@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运动会管理系统 · 我的工作台</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314213D'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8BC4F'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--deep:#14213D;--deep2:#1B2A4A;--deep3:#2A4370;--gold:#D9A521;--goldL:#E8BC4F;--goldbg:#FBF6E9;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+  .wrap{max-width:860px;margin:0 auto;padding:22px 16px 70px;}
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);border-bottom:1px solid rgba(217,165,33,.25);}
+  .nav-in{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;}
+  .nav-title{color:var(--goldL);font-size:17px;font-weight:700;}
+  .btn-out{background:none;border:1px solid rgba(232,188,79,.4);color:var(--goldL);border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;font-family:inherit;}
+  .hero{background:linear-gradient(135deg,var(--deep),#2A4370);border-radius:14px;padding:24px 22px;color:#fff;margin-bottom:18px;box-shadow:0 6px 18px rgba(20,33,61,.25);}
+  .hero h1{font-size:21px;margin-bottom:6px;}
+  .hero .who{color:#E8BC4F;font-weight:700;}
+  .hero p{color:#C9D4E8;font-size:13.5px;line-height:1.7;}
+  .badge{display:inline-block;background:rgba(232,188,79,.15);border:1px solid rgba(232,188,79,.4);color:var(--goldL);border-radius:20px;padding:3px 12px;font-size:12px;margin-left:8px;}
+  .sec-title{font-size:15px;color:var(--deep);font-weight:700;margin:20px 0 10px;padding-left:10px;border-left:4px solid var(--gold);}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;}
+  .tile{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--ink);transition:all .15s;box-shadow:0 2px 8px rgba(20,33,61,.05);}
+  .tile:hover{border-color:var(--gold);box-shadow:0 4px 14px rgba(217,165,33,.18);transform:translateY(-2px);}
+  .tile .t{font-size:15px;font-weight:700;margin-bottom:4px;}
+  .tile .d{font-size:12.5px;color:var(--sub);line-height:1.6;}
+  .tile .em{margin-right:8px;}
+  .tile.gold{background:linear-gradient(135deg,#D9A521,#E8BC4F);border:none;}
+  .tile.gold .t{color:var(--deep);}
+  .tile.gold .d{color:#4A3B0E;}
+  .tile.blue{background:linear-gradient(135deg,#4A6DA7,#5B7EC4);border:none;}
+  .tile.blue .t{color:#fff;}
+  .tile.blue .d{color:#E3EAF5;}
+  .foot{text-align:center;color:var(--sub);font-size:12px;line-height:1.8;padding:14px 0;}
+  .loading{text-align:center;color:var(--sub);padding:60px 0;font-size:14px;}
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <div class="nav-title">🏃 运动会管理系统</div>
+  <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
+</div></nav>
+
+<div class="wrap">
+  <section class="hero">
+    <h1 id="hTitle">我的工作台</h1>
+    <p id="hSub">加载中…</p>
+  </section>
+  <div class="loading" id="loading">正在核验身份…</div>
+  <div id="content" style="display:none">
+    <div class="sec-title" id="secMain">我的工作</div>
+    <div class="grid" id="gridMain"></div>
+    <div class="sec-title" id="secView">查看（只读）</div>
+    <div class="grid" id="gridView"></div>
+  </div>
+  <footer class="foot">运动会管理系统 · 角色工作台 v1 ｜ 三种身份三种界面<br>班主任=报名+查看 · 成绩录入员=录成绩+查看 · 管理员=全部权限</footer>
+</div>
+
+<script>
+function el(id){return document.getElementById(id);}
+var ME=null;
+
+function tile(href,em,t,d,cls){
+  return '<a class="tile '+(cls||"")+'" href="'+href+'"><div class="t"><span class="em">'+em+'</span>'+t+'</div><div class="d">'+d+'</div></a>';
+}
+
+/* —— 按角色渲染三套界面 —— */
+function render(){
+  var role=ME.role, cls=ME.className||"";
+  var who=ME.username+(cls?"（"+cls+"）":"");
+  el("loading").style.display="none";
+  el("content").style.display="block";
+
+  var main="",view="";
+  if(role==="class"){
+    el("hTitle").innerHTML="班主任工作台";
+    el("hSub").innerHTML="您好，<span class='who'>"+who+"</span> —— 负责本班报名与信息查看";
+    main+=tile("/soft/sports/entry.html","📝","本班报名表","填写学生姓名、勾选项目（每人最多2项）——只有本班可编辑","gold");
+    view+=tile("/soft/sports/standings.html","🏆","班级积分榜","年级内排名 · 实时更新");
+    view+=tile("/soft/sports/summary.html","📄","汇总导出","年级成绩汇总（A4打印版）");
+    view+=tile("/soft/sports/program.html","📋","程序册","封面信息 · 竞赛日程 · 号码对照");
+    view+=tile("/soft/sports/schedule.html","📅","赛程表","田赛日 · 径赛日全部场次");
+    view+=tile("/soft/sports/field.html","🧾","现场记录表","裁判用空白表（打印）");
+    el("secMain").textContent="我的工作（本班）";
+  }else if(role==="scorer"){
+    el("hTitle").innerHTML="成绩录入员工作台";
+    el("hSub").innerHTML="您好，<span class='who'>"+ME.username+"</span> —— 负责比赛成绩录入（运动会开始至公示期结束）";
+    main+=tile("/soft/sports/score.html","✏️","成绩录入","选场次 → 系统带出运动员 → 录成绩点名次","gold");
+    view+=tile("/soft/sports/standings.html","🏆","班级积分榜","录入后实时刷新（计分引擎自动算）");
+    view+=tile("/soft/sports/summary.html","📄","汇总导出","年级成绩汇总（送主席台宣读版）");
+    view+=tile("/soft/sports/schedule.html","📅","赛程表","全部场次与顺序");
+    view+=tile("/soft/sports/field.html","🧾","现场记录表","裁判纸质底稿（打印）");
+    view+=tile("/soft/sports/program.html","📋","程序册","号码对照 · 竞赛日程");
+    el("secMain").textContent="我的工作（成绩）";
+  }else{
+    /* admin / master：全权限 */
+    var isMaster=role==="master";
+    el("hTitle").innerHTML="管理员工作台";
+    el("hSub").innerHTML="您好，<span class='who'>"+(isMaster?"总管理员":ME.username)+"</span> "+(isMaster?"—— 全部权限":"—— 规则参数与账号管理")+'<span class="badge">'+(isMaster?"总管理员":"程序管理员")+"</span>";
+    main+=tile("/soft/sports/index.html","⚙️","基础配置","学校信息 · 项目 · 年级 · 计分规则（含破纪录政策）");
+    main+=tile("/soft/sports/accounts.html","👥","账号管理","管理员/班主任/录入员账号 + 年级班级批量开通","gold");
+    main+=tile("/soft/sports/numbers.html","🔢","号码总览","报名完成后一键生成全校连排号码");
+    main+=tile("/soft/sports/score.html","✏️","成绩录入","管理员可补录（不受时间窗限制）");
+    main+=tile("/soft/sports/schedule.html","📅","赛程管理","自动生成 + 上下移微调");
+    main+=tile("/soft/sports/program.html","📋","程序册","封面信息 + A4打印 + Word下载");
+    view+=tile("/soft/sports/standings.html","🏆","班级积分榜","年级内排名 · 破纪录榜");
+    view+=tile("/soft/sports/summary.html","📄","汇总导出","主席台宣读版（A4/Word）");
+    view+=tile("/soft/sports/field.html","🧾","现场记录表","裁判底稿批量打印");
+    el("secMain").textContent="管理（全部权限）";
+  }
+  el("gridMain").innerHTML=main;
+  el("gridView").innerHTML=view;
+}
+
+el("btnOut").addEventListener("click",function(){
+  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace("/soft/sports/home.html")})
+  .catch(function(){location.replace("/soft/sports/home.html")});
+});
+
+fetch("/soft/api/me").then(function(r){return r.json()}).then(function(d){
+  if(!d.ok){location.replace("/soft/sports/home.html");return;}
+  ME=d;render();
+}).catch(function(){el("loading").textContent="网络异常，请刷新重试";});
+</script>
+</body>
+</html>
