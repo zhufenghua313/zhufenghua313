@@ -65,7 +65,7 @@
 </div>
 <div class="msg" id="msg"></div>
 
-<div class="hint">ℹ️ 「按传统自动生成」按程序册的老规矩排：田赛日高年级先赛（五→一倒序）、径赛日低年级先赛（一→五正序）、接力压轴。生成后可上下移微调、改备注、删场次。</div>
+<div class="hint">ℹ️ 「按传统自动生成」按 2025 真实程序册排（v1.1 修正）：跳高一年级先赛（一→五）、跳远五年级先赛（五→一）、铅球三→五年级、径赛全部五→一倒序、400米与接力五→三压轴。一年级不排铅球/400米/接力。生成后可上下移微调。</div>
 
 <div id="days"></div>
 
@@ -106,24 +106,45 @@ function render(){
 /* —— 传统自动生成（程序册规律） —— */
 function autoGen(){
   var g=["一年级","二年级","三年级","四年级","五年级"];
+  var gHi=["三年级","四年级","五年级"];
   var field=[],track=[];
-  /* 田赛日：高年级先赛（五→一倒序），每项目男女交替 */
-  ["跳高","跳远","铅球"].forEach(function(ev){
+  /* v1.1 按真实程序册金标准修正（2025-04-08 程序册对照）：
+     跳高 一→五正序；跳远 五→一倒序；铅球 三→五（高年级项目）
+     每项目男女交替 */
+  ["跳高"].forEach(function(ev){
+    g.forEach(function(gr){
+      field.push({name:gr+"男子"+ev+"预决赛",remark:""});
+      field.push({name:gr+"女子"+ev+"预决赛",remark:""});
+    });
+  });
+  ["跳远"].forEach(function(ev){
     for(var i=g.length-1;i>=0;i--){
       field.push({name:g[i]+"男子"+ev+"预决赛",remark:""});
       field.push({name:g[i]+"女子"+ev+"预决赛",remark:""});
     }
   });
-  /* 径赛日：低年级先赛（一→五正序），60→200→400，接力压轴 */
+  ["铅球"].forEach(function(ev){
+    gHi.forEach(function(gr){
+      field.push({name:gr+"男子"+ev+"预决赛",remark:""});
+      field.push({name:gr+"女子"+ev+"预决赛",remark:""});
+    });
+  });
+  /* 径赛：全部 五→一 倒序（60米/200米），400米/接力 五→三压轴 */
   ["60米","200米"].forEach(function(ev){
-    g.forEach(function(gr){
+    for(var i=g.length-1;i>=0;i--){
+      track.push({name:g[i]+"男子"+ev+"预决赛",remark:""});
+      track.push({name:g[i]+"女子"+ev+"预决赛",remark:""});
+    }
+  });
+  ["400米"].forEach(function(ev){
+    ["五年级","四年级","三年级"].forEach(function(gr){
       track.push({name:gr+"男子"+ev+"预决赛",remark:""});
       track.push({name:gr+"女子"+ev+"预决赛",remark:""});
     });
   });
-  ["400米","4×100米混合接力"].forEach(function(ev){
-    ["三年级","四年级","五年级"].forEach(function(gr){
-      track.push({name:gr+(ev.indexOf("接力")>=0?"":(gr.indexOf("男")<0?"男子":""))+ev+"预决赛",remark:ev.indexOf("接力")>=0?"女1、2棒 男3、4棒":""});
+  ["4×100米混合接力"].forEach(function(ev){
+    ["五年级","四年级","三年级"].forEach(function(gr){
+      track.push({name:gr+ev+"预决赛",remark:"女1、2棒 男3、4棒"});
     });
   });
   /* 修正径赛名（男子/女子在年级后） */

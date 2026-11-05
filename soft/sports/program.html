@@ -163,7 +163,7 @@ function buildPapers(){
     h+='<div class="paper doc"><div class="pv-tag">号码对照表</div><h2>运动员号码对照表</h2>';
     classKeys.forEach(function(k){
       var c=nums[k]; var st=c.students||[];
-      h+='<table style="margin-bottom:6px"><tr class="cls-head"><td colspan="4">'+esc(c.className)+'　教练员：＿＿＿＿</td></tr>'
+      h+='<table style="margin-bottom:6px"><tr class="cls-head"><td colspan="4">'+esc(c.className)+'　教练员：'+esc(c.coach||"＿＿＿＿")+'</td></tr>'
         +'<tr><th>号码</th><th>姓名</th><th>性别</th><th>项目</th></tr>'
         +st.map(function(s){return '<tr><td><b>'+esc(s.no)+'</b></td><td>'+esc(s.name)+'</td><td>'+esc(s.gender)+'</td><td>'+esc((s.events||[]).join("、"))+'</td></tr>'}).join("")
         +'</table>';

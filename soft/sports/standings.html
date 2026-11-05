@@ -24,6 +24,7 @@
   td{padding:8px;border:1px solid var(--line);text-align:center;}
   tr:nth-child(even) td{background:#FAFBFD;}
   .gold-row td{background:var(--goldbg) !important;font-weight:700;}
+  .grade-head td{background:var(--deep) !important;color:#fff;font-weight:700;font-size:14px;letter-spacing:2px;}
   .msg{font-size:13.5px;min-height:20px;margin-bottom:10px;}
   .msg.ok{color:var(--ok);}
   .msg.err{color:var(--err);}
@@ -80,13 +81,32 @@ var DATA=null;
 function renderStandings(){
   var c=DATA.config||{};
   el("ruleLine").textContent="当前规则：前六名 "+(c.ranks||[7,5,4,3,2,1]).join("-")+" ｜ 接力双倍 ｜ 破纪录："+(c.recMode==="off"?"不加分":(c.recMode==="tiered"?("乡镇+"+c.recTown+" 区+"+c.recDistrict):("统一+"+c.recPts)))+"分";
+  /* v1.1：年级分组排名（2025真实规则：同年级班级比较，不同年级不比） */
+  var gt=DATA.gradeTotals||{};
+  var grades=Object.keys(gt).sort();
   var tot=DATA.classTotals||{};
-  var names=Object.keys(tot).sort(function(a,b){return tot[b]-tot[a]});
-  var h="<tr><th>名次</th><th>班级</th><th>总分</th></tr>";
-  if(!names.length){el("totalTable").innerHTML=h;el("msg").textContent="还没有得分——成绩录入后这里实时更新";return;}
-  names.forEach(function(n,i){
-    h+="<tr class='"+(i<3?"gold-row":"")+"'><td><span class='rank"+(i+1)+"'>"+(i+1)+"</span></td><td style='text-align:left'>"+esc(n)+"</td><td><b>"+tot[n]+"</b></td></tr>";
-  });
+  var names=Object.keys(tot);
+  if(!names.length){el("totalTable").innerHTML="<tr><th>名次</th><th>班级</th><th>总分</th></tr>";el("msg").textContent="还没有得分——成绩录入后这里实时更新";return;}
+  var h="";
+  if(grades.length>1||grades[0]!=="其他"){
+    /* 年级分组模式 */
+    grades.forEach(function(gk){
+      var arr=gt[gk]||[];
+      if(!arr.length)return;
+      h+="<tr class='grade-head'><td colspan='3'>"+esc(gk)+"（年级内排名）</td></tr>";
+      arr.forEach(function(x,i){
+        h+="<tr class='"+(i<3?"gold-row":"")+"'><td><span class='rank"+(i+1)+"'>"+(i+1)+"</span></td><td style='text-align:left'>"+esc(x.className)+"</td><td><b>"+x.pts+"</b></td></tr>";
+      });
+    });
+    h="<tr><th>名次</th><th>班级</th><th>总分</th></tr>"+h;
+  }else{
+    /* 兜底：无法分组时全校排 */
+    names.sort(function(a,b){return tot[b]-tot[a]});
+    h="<tr><th>名次</th><th>班级</th><th>总分</th></tr>";
+    names.forEach(function(n,i){
+      h+="<tr class='"+(i<3?"gold-row":"")+"'><td><span class='rank"+(i+1)+"'>"+(i+1)+"</span></td><td style='text-align:left'>"+esc(n)+"</td><td><b>"+tot[n]+"</b></td></tr>";
+    });
+  }
   el("totalTable").innerHTML=h;
   var det=DATA.detail||{};
   var evs=Object.keys(det).sort();
