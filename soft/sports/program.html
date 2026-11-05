@@ -182,7 +182,9 @@ function downloadWord(){
   var title=(p.meetName||"运动会")+"程序册";
   var doc='<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8">'
     +'<title>'+esc(title)+'</title>'
-    +'<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->'
+    /* 注意：JS字符串里绝不能出现「小于+叹号+双横线」这种HTML注释开头组合——
+       它会让浏览器进入script逃逸模式，吞掉后面的script闭合标签
+       （2026-11-05 M5排障实录，详见项目账本） */
     +'<style>@page{size:A4 portrait;margin:2cm}body{font-family:"SimSun";font-size:12pt;color:#000}'
     +'.paper{page-break-after:always;width:100%;padding:0;margin:0;border:none;box-shadow:none;min-height:0}'
     +'.paper:last-child{page-break-after:auto}'
