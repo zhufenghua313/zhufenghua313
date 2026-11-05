@@ -85,8 +85,10 @@
 <body>
 <div class="wrap">
 
-  <div style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:10px;">
-    <a href="/soft/sports/home.html" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;text-decoration:none;display:inline-block;">🏠 工作台（账号管理在这里）</a>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+    <a href="/soft/sports/home.html" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;text-decoration:none;display:inline-block;">🏠 工作台</a>
+    <a href="/soft/sports/accounts.html" style="background:linear-gradient(135deg,#D9A521,#E8BC4F);color:#14213D;border:none;border-radius:9px;font-size:13px;padding:6px 12px;text-decoration:none;display:inline-block;font-weight:600;">👥 账号管理</a>
+    <button type="button" id="btnOut" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit;">🚪 退出登录</button>
   </div>
 
   <header class="top">
@@ -520,6 +522,12 @@ var msgEl=$("msg");
 msgEl.className="ok";
 msgEl.innerHTML="ℹ️ 已载入"+(saved&&saved.meta&&saved.meta.exportedAt?"上次保存的配置":"默认配置（2025年真实班数）")+"。改完记得保存。";
 $("savedAt").textContent=saved&&saved.meta&&saved.meta.exportedAt?("上次保存："+new Date(saved.meta.exportedAt).toLocaleString("zh-CN")):"尚未保存过";
+
+/* v1.2 退出登录（站长 14:15 指正：M1 没有退出按钮） */
+document.getElementById("btnOut").addEventListener("click",function(){
+  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace("/soft/sports/home.html")})
+  .catch(function(){location.replace("/soft/sports/home.html")});
+});
 </script>
 </body>
 </html>
