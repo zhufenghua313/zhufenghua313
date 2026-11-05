@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运动会管理系统 · M3 报名</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314213D'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8BC4F'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--deep:#14213D;--deep2:#1B2A4A;--deep3:#2A4370;--gold:#D9A521;--goldL:#E8BC4F;--goldbg:#FBF6E9;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+  .wrap{max-width:860px;margin:0 auto;padding:22px 16px 70px;}
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25);}
+  .nav-in{max-width:1060px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:17px;}
+  .brand b{font-weight:600;letter-spacing:1px;}
+  .brand span{font-size:12px;color:rgba(255,255,255,.45);font-family:Calibri,Arial;}
+  .lamp{width:10px;height:10px;border-radius:50%;background:var(--goldL);box-shadow:0 0 8px var(--goldL);animation:br 2s infinite;}
+  @keyframes br{50%{opacity:.35;}}
+  .btn-out{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
+  .card h2{font-size:17px;color:var(--deep);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .card h2::before{content:"";display:inline-block;width:4px;height:18px;background:var(--gold);border-radius:2px;}
+  .hint{font-size:13.5px;color:#6B5B1E;background:var(--goldbg);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;margin-bottom:16px;line-height:1.7;}
+  .stu{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px;background:#fff;}
+  .stu-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+  .stu-no{width:34px;height:34px;border-radius:10px;background:var(--deep);color:var(--goldL);display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:14px;flex-shrink:0;}
+  .stu-no.f{background:linear-gradient(135deg,#8A4A6B,#B06A8C);}
+  .stu-gender{font-size:13px;color:var(--sub);background:var(--bg);border-radius:999px;padding:3px 10px;}
+  .stu-top input[type=text]{flex:1;min-width:120px;padding:9px 12px;font-size:15px;border:1px solid var(--line);border-radius:9px;font-family:inherit;}
+  .evs{display:flex;flex-wrap:wrap;gap:8px;}
+  .ev{position:relative;}
+  .ev input{position:absolute;opacity:0;}
+  .ev label{display:inline-block;padding:7px 13px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;cursor:pointer;color:var(--sub);background:#fff;transition:.15s;user-select:none;}
+  .ev input:checked+label{background:var(--deep);color:var(--goldL);border-color:var(--deep);}
+  .ev.dis label{opacity:.35;cursor:not-allowed;text-decoration:line-through;}
+  .ev-note{font-size:12px;color:#999;margin-left:4px;}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+  .btn{padding:12px 22px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;}
+  .btn.gold{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#14213D;}
+  .btn.ghost{background:#fff;color:var(--deep);border:1px solid var(--line);}
+  .btn.lock{background:#fff;color:var(--err);border:1px solid var(--err);}
+  .msg{font-size:14px;margin-top:12px;min-height:20px;}
+  .msg.ok{color:var(--ok);}.msg.err{color:var(--err);}
+  .lockbar{display:none;background:#FDF0EE;border:1px solid #EAC8C2;border-left:4px solid var(--err);border-radius:8px;padding:10px 14px;font-size:13.5px;color:#8B3A30;margin-bottom:14px;}
+  .lockbar.show{display:block;}
+  .adminbar{display:none;margin-bottom:16px;}
+  .adminbar.show{display:block;}
+  select{padding:9px 12px;border:1px solid var(--line);border-radius:9px;font-size:14px;font-family:inherit;background:#fff;}
+  .stat{font-size:13px;color:var(--sub);margin-top:4px;}
+  @media(max-width:520px){.stu-top input[type=text]{min-width:90px;}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <div class="brand"><span class="lamp"></span><b id="navClass">运动会报名</b><span>M3 ENTRY</span></div>
+  <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
+</div></nav>
+
+<div class="wrap">
+  <div class="lockbar" id="lockBar">🔒 报名已锁定——名单不能再修改，如有问题请联系管理员。</div>
+
+  <div class="adminbar card" id="adminBar">
+    <h2>🛠 管理员控制</h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+      <select id="adminClassSel"></select>
+      <button class="btn ghost" type="button" id="btnLoadClass">查看该班</button>
+      <button class="btn lock" type="button" id="btnLock">🔒 锁定报名</button>
+      <button class="btn ghost" type="button" id="btnUnlock">🔓 解锁</button>
+    </div>
+    <div class="stat" id="adminStat"></div>
+  </div>
+
+  <div class="card">
+    <h2>📋 本班报名表（4男 + 4女，每人 1-2 项）</h2>
+    <div class="hint">ℹ️ 每名学生选 <b>1-2 个项目</b>；<b>400米和接力</b>仅三至五年级可报；打 <b>✓</b> 即选中。填完点底部「保存报名」。</div>
+    <div id="stuList"></div>
+    <div class="btnrow">
+      <button class="btn gold" type="button" id="btnSave">💾 保存报名</button>
+      <button class="btn ghost" type="button" id="btnClear">清空重填</button>
+    </div>
+    <div class="msg" id="saveMsg"></div>
+    <div class="stat" id="stat"></div>
+  </div>
+</div>
+
+<script>
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+var EVENTS=[], MY={grade:1,className:"",username:""}, IS_ADMIN=false, LOCKED=false;
+
+/* 年级从班名提取（"三年级一班"→3；失败按1处理，宽松） */
+function gradeOf(name){
+  var m=String(name||"").match(/([一二三四五])年级/);
+  var map={"一":1,"二":2,"三":3,"四":4,"五":5};
+  return m&&map[m[1]]?map[m[1]]:1;
+}
+
+/* —— 渲染 8 个学生槽（1-4男 5-8女） —— */
+function renderStuList(saved){
+  saved=saved||[];
+  var h="";
+  for(var i=0;i<8;i++){
+    var gender=i<4?"男":"女";
+    var s=saved[i]||{name:"",events:[]};
+    h+='<div class="stu"><div class="stu-top">'+
+      '<div class="stu-no'+(gender==="女"?" f":"")+'">'+(i+1)+'</div>'+
+      '<span class="stu-gender">'+gender+'</span>'+
+      '<input type="text" id="nm'+i+'" maxlength="20" placeholder="学生姓名" value="'+esc(s.name)+'">'+
+      '</div><div class="evs">';
+    for(var j=0;j<EVENTS.length;j++){
+      var ev=EVENTS[j];
+      var dis=(ev.grades==="3-5"&&MY.grade<3)?" dis":"";
+      var chk=s.events.indexOf(ev.name)>=0?" checked":"";
+      h+='<span class="ev'+dis+'"><input type="checkbox" id="ev'+i+'_'+j+'" data-stu="'+i+'" data-name="'+esc(ev.name)+'"'+chk+(dis?" disabled":"")+'><label for="ev'+i+'_'+j+'">'+esc(ev.name)+(ev.grades==="3-5"?'<span class="ev-note">3-5年级</span>':"")+'</label></span>';
+    }
+    h+='</div></div>';
+  }
+  el("stuList").innerHTML=h;
+}
+
+/* —— 收集表单数据 + 前端校验 —— */
+function collect(){
+  var students=[];
+  for(var i=0;i<8;i++){
+    var name=el("nm"+i).value.trim();
+    var evs=[];
+    var boxes=document.querySelectorAll('[data-stu="'+i+'"]');
+    boxes.forEach(function(b){if(b.checked)evs.push(b.getAttribute("data-name"));});
+    if(!name&&evs.length)return{err:"第"+(i+1)+"位学生还没写姓名"};
+    if(name&&!evs.length)return{err:name+"：还没选项目（每人1-2项）"};
+    if(name)students.push({name:name,gender:i<4?"男":"女",events:evs});
+  }
+  return{students:students};
+}
+
+/* —— 保存 —— */
+el("btnSave").addEventListener("click",function(){
+  var m=el("saveMsg");m.className="msg";
+  var r=collect();
+  if(r.err){m.className="msg err";m.textContent=r.err;return;}
+  if(!r.students.length){m.className="msg err";m.textContent="还没有填任何学生";return;}
+  var boys=r.students.filter(function(s){return s.gender==="男"}).length;
+  if(boys>4||r.students.length-boys>4){m.className="msg err";m.textContent="每班最多4男4女（当前男"+boys+"女"+(r.students.length-boys)+"）";return;}
+  var fd=new FormData();
+  fd.append("students",JSON.stringify(r.students));
+  if(IS_ADMIN){
+    var sel=el("adminClassSel");
+    var opt=sel.options[sel.selectedIndex];
+    fd.append("class",sel.value);fd.append("className",opt?opt.getAttribute("data-cn")||sel.value:sel.value);
+  }
+  el("btnSave").disabled=true;el("btnSave").textContent="保存中…";
+  fetch("/soft/api/entry-save",{method:"POST",body:fd})
+    .then(function(r2){return r2.json()})
+    .then(function(d){
+      el("btnSave").disabled=false;el("btnSave").textContent="💾 保存报名";
+      m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
+      if(d.ok)loadData();
+    })
+    .catch(function(){el("btnSave").disabled=false;el("btnSave").textContent="💾 保存报名";m.className="msg err";m.textContent="网络异常，稍后再试";});
+});
+
+el("btnClear").addEventListener("click",function(){
+  if(!confirm("清空重填？（当前内容将丢失）"))return;
+  renderStuList([]);el("saveMsg").textContent="";
+});
+
+/* —— 退出（先收证再跳） —— */
+el("btnOut").addEventListener("click",function(){
+  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace(location.pathname)})
+  .catch(function(){location.replace(location.pathname)});
+});
+
+/* —— 管理员：选班/锁定 —— */
+el("btnLoadClass").addEventListener("click",function(){
+  var sel=el("adminClassSel");
+  if(sel.value)loadData(sel.value);
+});
+el("btnLock").addEventListener("click",function(){setLock("1");});
+el("btnUnlock").addEventListener("click",function(){setLock("0");});
+function setLock(v){
+  var fd=new FormData();fd.append("lock",v);
+  fetch("/soft/api/entry-lock",{method:"POST",body:fd})
+    .then(function(r){return r.json()})
+    .then(function(d){alert(d.msg||"");loadData();})
+    .catch(function(){alert("网络异常");});
+}
+
+/* —— 载入（admin 可指定看某班） —— */
+function loadData(adminTarget){
+  fetch("/soft/api/entry-data").then(function(r){return r.json()}).then(function(d){
+    if(!d.ok){location.replace(location.pathname);return;}
+    LOCKED=d.locked;
+    el("lockBar").className=LOCKED?"lockbar show":"lockbar";
+    var data=d.entries||{};
+    var key=adminTarget||d.me;
+    if(!key){key=Object.keys(data)[0]||"";}
+    var rec=data[key]||{students:[]};
+    MY.className=rec.className||d.myClass||key;
+    MY.grade=gradeOf(MY.className);
+    el("navClass").textContent=(MY.className||"运动会报名")+" · 报名表";
+    renderStuList(rec.students);
+    el("stat").textContent=rec.updatedAt?("上次保存："+new Date(rec.updatedAt).toLocaleString("zh-CN")+" · 共"+rec.students.length+"人"):"尚未保存过";
+    /* 管理员界面 */
+    fetch("/soft/api/events").then(function(r){return r.json()}).then(function(){});
+  }).catch(function(){
+    el("stat").textContent="加载失败，请刷新重试";
+  });
+}
+
+/* —— 启动：先拿身份再渲染 —— */
+fetch("/soft/api/events").then(function(r){return r.json()}).then(function(d){
+  EVENTS=d.events||[];
+  return fetch("/soft/api/entry-data").then(function(r){return r.json()}).then(function(d2){
+    if(!d2.ok){location.replace(location.pathname);return;}
+    LOCKED=d2.locked;
+    el("lockBar").className=LOCKED?"lockbar show":"lockbar";
+    var data=d2.entries||{};
+    var key=d2.me;
+    var rec=data[key]||{students:[]};
+    MY.className=rec.className||d2.myClass||key;
+    MY.grade=gradeOf(MY.className);
+    el("navClass").textContent=(MY.className||"运动会报名")+" · 报名表";
+    renderStuList(rec.students);
+    el("stat").textContent=rec.updatedAt?("上次保存："+new Date(rec.updatedAt).toLocaleString("zh-CN")+" · 共"+rec.students.length+"人"):"尚未保存过";
+    /* 管理员识别：有 classList 就是管理员视角 */
+    if(d2.classList&&d2.classList.length){
+      IS_ADMIN=true;
+      el("adminBar").className="adminbar card show";
+      var sel=el("adminClassSel");
+      sel.innerHTML=d2.classList.map(function(c){return '<option value="'+esc(c.username)+'" data-cn="'+esc(c.className)+'">'+esc(c.className)+'</option>'}).join("");
+      var myOpt=Array.from(sel.options).filter(function(o){return o.value===key});
+      if(myOpt.length)sel.value=key;else key=sel.value;
+      rec=data[key]||{students:[]};
+      MY.className=rec.className||key;MY.grade=gradeOf(MY.className);
+      renderStuList(rec.students);
+    }
+  });
+}).catch(function(){
+  el("stat").textContent="加载失败，请刷新重试";
+});
+</script>
+</body>
+</html>
