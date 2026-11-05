@@ -116,7 +116,10 @@ function renderStuList(saved){
     for(var j=0;j<EVENTS.length;j++){
       var ev=EVENTS[j];
       var dis=(ev.grades==="3-5"&&MY.grade<3)?" dis":"";
-      var chk=s.events.indexOf(ev.name)>=0?" checked":"";
+      /* v1.1 修复（站长 19:54 报障）：年级不符的项目（如一年级的铅球）
+         即使旧报名数据里有，也不显示勾选——否则"勾着+禁用"钉死改不动；
+         保存时 collect() 自然剔除（disabled 框不收集） */
+      var chk=(!dis&&s.events.indexOf(ev.name)>=0)?" checked":"";
       h+='<span class="ev'+dis+'"><input type="checkbox" id="ev'+i+'_'+j+'" data-stu="'+i+'" data-name="'+esc(ev.name)+'"'+chk+(dis?" disabled":"")+'><label for="ev'+i+'_'+j+'">'+esc(ev.name)+(ev.grades==="3-5"?'<span class="ev-note">3-5年级</span>':"")+'</label></span>';
     }
     h+='</div></div>';
