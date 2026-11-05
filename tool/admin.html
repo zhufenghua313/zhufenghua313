@@ -117,7 +117,7 @@ body:not(.logged) .top{display:none}
   <h2>🔐 粘贴 GitHub 令牌</h2>
   <p>只存本机浏览器。<a href="https://github.com/settings/tokens?type=beta" target="_blank" style="color:#2563eb">没有？点这生成</a><br><span style="font-size:12px;color:#888">输入框若已自动填好（本机记住的令牌），直接点「登 录」即可。</span></p>
   <input type="password" id="pat-input" name="github_pat" autocomplete="section-github current-password" placeholder="github_pat_……（粘贴到这里）">
-  <label style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#888;margin:8px 0 2px;cursor:pointer"><input type="checkbox" id="rpChk" style="width:14px;height:14px;cursor:pointer"> 记住令牌（本机·下次自动填好，直接点登录）</label>
+  <label style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#888;margin:8px 0 2px;cursor:pointer"><input type="checkbox" id="rpChk" style="width:14px;height:14px;margin:0;flex-shrink:0;cursor:pointer"> 记住令牌（本机·下次自动填好，直接点登录）</label>
   <button class="btn btn-p" onclick="doLogin()">登 录</button>
   <p style="font-size:12.5px;margin-top:10px"><a href="/tool/__auth/token-mail" style="color:#2563eb">忘记令牌？发到我的邮箱</a><br><span style="color:#888;font-size:11.5px">（v44：登录成功会自动云端备份令牌，忘记时邮件调出）</span></p>
 </div>
