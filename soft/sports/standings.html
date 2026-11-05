@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运动会管理系统 · M8 班级积分</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314213D'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8BC4F'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--deep:#14213D;--deep2:#1B2A4A;--deep3:#2A4370;--gold:#D9A521;--goldL:#E8BC4F;--goldbg:#FBF6E9;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+  .wrap{max-width:860px;margin:0 auto;padding:22px 16px 70px;}
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25);}
+  .nav-in{max-width:860px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-title{color:#fff;font-size:17px;font-weight:600;}
+  .btn-out{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit;}
+  .hero{background:linear-gradient(120deg,var(--deep) 0%,var(--deep2) 60%,var(--deep3) 100%);color:#fff;padding:34px 20px;text-align:center;margin-bottom:18px;position:relative;overflow:hidden;}
+  .hero h1{font-size:26px;letter-spacing:2px;}
+  .hero p{font-size:13.5px;opacity:.85;margin-top:8px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
+  .card h2{font-size:17px;color:var(--deep);border-left:4px solid var(--gold);padding-left:10px;margin-bottom:14px;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:var(--deep);color:#fff;padding:9px 8px;font-size:13px;font-weight:600;}
+  td{padding:8px;border:1px solid var(--line);text-align:center;}
+  tr:nth-child(even) td{background:#FAFBFD;}
+  .gold-row td{background:var(--goldbg) !important;font-weight:700;}
+  .msg{font-size:13.5px;min-height:20px;margin-bottom:10px;}
+  .msg.ok{color:var(--ok);}
+  .msg.err{color:var(--err);}
+  .rank1{color:#B8860B;font-weight:700;}
+  .rank2{color:#666;font-weight:700;}
+  .rank3{color:#A0522D;font-weight:700;}
+  .rec-badge{display:inline-block;background:#FDE8E8;color:#B03A2E;border:1px solid #F5B5B5;border-radius:6px;font-size:11px;padding:1px 6px;margin-left:4px;}
+  details{margin-bottom:10px;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  summary{padding:11px 14px;background:#FAFBFD;cursor:pointer;font-size:14px;font-weight:600;color:var(--deep);user-select:none;}
+  summary:hover{background:var(--goldbg);}
+  .dv{padding:6px 14px 12px;overflow-x:auto;}
+  .rule-line{font-size:12.5px;color:var(--sub);margin-top:10px;line-height:1.8;}
+  footer{text-align:center;font-size:12.5px;color:var(--sub);margin-top:8px;line-height:1.8;}
+  .empty{text-align:center;color:var(--sub);padding:30px 0;font-size:14px;}
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <div class="nav-title">🏃 班级积分榜</div>
+  <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
+</div></nav>
+
+<div class="wrap">
+  <section class="hero">
+    <h1>班级积分榜</h1>
+    <p>前六名 7-5-4-3-2-1 ｜ 接力双倍 ｜ 破纪录加分 ｜ 实时汇总</p>
+  </section>
+
+  <div class="card">
+    <h2>🏆 年级班级总分（实时）</h2>
+    <div class="msg" id="msg"></div>
+    <div style="overflow-x:auto"><table id="totalTable"></table></div>
+    <div class="rule-line" id="ruleLine"></div>
+  </div>
+
+  <div class="card">
+    <h2>📋 各场次得分明细（点击展开）</h2>
+    <div id="detailBox"><div class="empty">加载中…</div></div>
+  </div>
+
+  <div class="card" id="recCard" style="display:none">
+    <h2>🔥 破纪录榜</h2>
+    <div style="overflow-x:auto"><table id="recTable"></table></div>
+  </div>
+
+  <footer>运动会管理系统 · M8 计分引擎 ｜ 手搓 v1 ｜ 引擎在云端（Worker v4.25），本页实时展示<br>规则金标准：站长的老版计分Excel</footer>
+</div>
+
+<script>
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+var DATA=null;
+
+function renderStandings(){
+  var c=DATA.config||{};
+  el("ruleLine").textContent="当前规则：前六名 "+(c.ranks||[7,5,4,3,2,1]).join("-")+" ｜ 接力双倍 ｜ 破纪录："+(c.recMode==="off"?"不加分":(c.recMode==="tiered"?("乡镇+"+c.recTown+" 区+"+c.recDistrict):("统一+"+c.recPts)))+"分";
+  var tot=DATA.classTotals||{};
+  var names=Object.keys(tot).sort(function(a,b){return tot[b]-tot[a]});
+  var h="<tr><th>名次</th><th>班级</th><th>总分</th></tr>";
+  if(!names.length){el("totalTable").innerHTML=h;el("msg").textContent="还没有得分——成绩录入后这里实时更新";return;}
+  names.forEach(function(n,i){
+    h+="<tr class='"+(i<3?"gold-row":"")+"'><td><span class='rank"+(i+1)+"'>"+(i+1)+"</span></td><td style='text-align:left'>"+esc(n)+"</td><td><b>"+tot[n]+"</b></td></tr>";
+  });
+  el("totalTable").innerHTML=h;
+  var det=DATA.detail||{};
+  var evs=Object.keys(det).sort();
+  var dh="";
+  evs.forEach(function(ev){
+    var rows=det[ev]||[];
+    var scoring=rows.filter(function(r){return (r.pts+r.recPts)>0});
+    dh+="<details><summary>"+esc(ev)+"（"+scoring.length+" 人得分）</summary><div class='dv'><table><tr><th>号码</th><th>姓名/班级</th><th>名次</th><th>得分</th><th>破纪录</th></tr>";
+    rows.forEach(function(r){
+      dh+="<tr><td>"+esc(r.no)+"</td><td style='text-align:left'>"+esc(r.name)+(r.className?"<span style='color:#8B93A6;font-size:12px'>（"+esc(r.className)+"）</span>":"")+"</td><td>"+esc(r.rank||"—")+"</td><td><b>"+((r.pts+r.recPts)||"—")+"</b></td><td>"+(r.recPts?("<span class='rec-badge'>+"+r.recPts+"</span>"):"")+"</td></tr>";
+    });
+    dh+="</table></div></details>";
+  });
+  el("detailBox").innerHTML=dh||"<div class='empty'>暂无成绩数据</div>";
+  var rl=DATA.recLog||[];
+  if(rl.length){
+    el("recCard").style.display="block";
+    var rh="<tr><th>场次</th><th>号码</th><th>姓名</th><th>加分</th><th>备注</th></tr>";
+    rl.forEach(function(r){rh+="<tr><td style='text-align:left'>"+esc(r.event)+"</td><td>"+esc(r.no)+"</td><td>"+esc(r.name)+"</td><td><b>+"+r.extra+"</b></td><td>"+esc(r.note)+"</td></tr>";});
+    el("recTable").innerHTML=rh;
+  }
+}
+
+el("btnOut").addEventListener("click",function(){
+  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace(location.pathname)})
+  .catch(function(){location.replace(location.pathname)});
+});
+
+fetch("/soft/api/standings").then(function(r){return r.json()}).then(function(d){
+  if(!d.ok){el("msg").className="msg err";el("msg").textContent=d.msg||"加载失败";return;}
+  DATA=d;renderStandings();
+}).catch(function(){el("msg").className="msg err";el("msg").textContent="网络异常，请刷新重试";});
+</script>
+</body>
+</html>
