@@ -38,7 +38,9 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;color:#1f2937}
 .ebar{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}
 .fname{font-size:14px;font-weight:700;color:#111827;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .badge{font-size:11px;background:#eef2ff;color:#3730a3;padding:2px 8px;border-radius:99px;font-weight:400}
-#setup{max-width:460px;margin:40px auto;background:rgba(255,255,255,.06);border:1px solid rgba(217,165,33,.35);border-radius:16px;padding:34px 30px;box-shadow:0 18px 50px rgba(0,0,0,.4);backdrop-filter:blur(8px)}
+/* v45b:登录卡上下居中——body 未登录态做 flex 居中（对齐另两家门脸） */
+body:not(.logged){display:flex;min-height:100vh}
+#setup{max-width:460px;width:100%;margin:auto;background:rgba(255,255,255,.06);border:1px solid rgba(217,165,33,.35);border-radius:16px;padding:34px 30px;box-shadow:0 18px 50px rgba(0,0,0,.4);backdrop-filter:blur(8px)} /* margin:auto=安全居中：卡高于视口时不裁顶 */
 #setup h2{font-size:18px;margin-bottom:8px;color:#fff}
 #setup p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:14px}
 #setup input{width:100%;padding:11px 13px;border:1px solid rgba(255,255,255,.2);border-radius:10px;font-size:13px;font-family:Consolas,monospace;background:rgba(255,255,255,.08);color:#fff;outline:none}
