@@ -5,319 +5,244 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>运动会管理系统 · M3 报名</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314213D'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8BC4F'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--deep:#14213D;--deep2:#1B2A4A;--deep3:#2A4370;--gold:#D9A521;--goldL:#E8BC4F;--goldbg:#FBF6E9;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+  .wrap{max-width:860px;margin:0 auto;padding:22px 16px 70px;}
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25);}
+  .nav-in{max-width:1060px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:17px;}
+  .brand b{font-weight:600;letter-spacing:1px;}
+  .brand span{font-size:12px;color:rgba(255,255,255,.45);font-family:Calibri,Arial;}
+  .lamp{width:10px;height:10px;border-radius:50%;background:var(--goldL);box-shadow:0 0 8px var(--goldL);animation:br 2s infinite;}
+  @keyframes br{50%{opacity:.35;}}
+  .btn-out{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
+  .card h2{font-size:17px;color:var(--deep);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .card h2::before{content:"";display:inline-block;width:4px;height:18px;background:var(--gold);border-radius:2px;}
+  .hint{font-size:13.5px;color:#6B5B1E;background:var(--goldbg);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;margin-bottom:16px;line-height:1.7;}
+  .stu{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px;background:#fff;}
+  .stu-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+  .stu-no{width:34px;height:34px;border-radius:10px;background:var(--deep);color:var(--goldL);display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:14px;flex-shrink:0;}
+  .stu-no.f{background:linear-gradient(135deg,#8A4A6B,#B06A8C);}
+  .stu-gender{font-size:13px;color:var(--sub);background:var(--bg);border-radius:999px;padding:3px 10px;}
+  .stu-top input[type=text]{flex:1;min-width:120px;padding:9px 12px;font-size:15px;border:1px solid var(--line);border-radius:9px;font-family:inherit;}
+  .evs{display:flex;flex-wrap:wrap;gap:8px;}
+  .ev{position:relative;}
+  .ev input{position:absolute;opacity:0;}
+  .ev label{display:inline-block;padding:7px 13px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;cursor:pointer;color:var(--sub);background:#fff;transition:.15s;user-select:none;}
+  .ev input:checked+label{background:var(--deep);color:var(--goldL);border-color:var(--deep);}
+  .ev.dis label{opacity:.35;cursor:not-allowed;text-decoration:line-through;}
+  .ev-note{font-size:12px;color:#999;margin-left:4px;}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+  .btn{padding:12px 22px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;}
+  .btn.gold{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#14213D;}
+  .btn.ghost{background:#fff;color:var(--deep);border:1px solid var(--line);}
+  .btn.lock{background:#fff;color:var(--err);border:1px solid var(--err);}
+  .msg{font-size:14px;margin-top:12px;min-height:20px;}
+  .msg.ok{color:var(--ok);}.msg.err{color:var(--err);}
+  .lockbar{display:none;background:#FDF0EE;border:1px solid #EAC8C2;border-left:4px solid var(--err);border-radius:8px;padding:10px 14px;font-size:13.5px;color:#8B3A30;margin-bottom:14px;}
+  .lockbar.show{display:block;}
+  .adminbar{display:none;margin-bottom:16px;}
+  .adminbar.show{display:block;}
+  select{padding:9px 12px;border:1px solid var(--line);border-radius:9px;font-size:14px;font-family:inherit;background:#fff;}
+  .stat{font-size:13px;color:var(--sub);margin-top:4px;}
+  @media(max-width:520px){.stu-top input[type=text]{min-width:90px;}}
+</style>
 </head>
 <body>
-<div id="app"></div>
+<nav><div class="nav-in">
+  <div class="brand"><span class="lamp"></span><b id="navClass">运动会报名</b><span>M3 ENTRY</span></div>
+  <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+    <a href="/soft/sports/home.html" class="btn-out" style="text-decoration:none;display:inline-block;">🏠 工作台</a>
+    <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <div class="lockbar" id="lockBar">🔒 报名已锁定——名单不能再修改，如有问题请联系管理员。</div>
+
+  <div class="adminbar card" id="adminBar">
+    <h2>🛠 管理员控制</h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+      <select id="adminClassSel"></select>
+      <button class="btn ghost" type="button" id="btnLoadClass">查看该班</button>
+      <button class="btn lock" type="button" id="btnLock">🔒 锁定报名</button>
+      <button class="btn ghost" type="button" id="btnUnlock">🔓 解锁</button>
+    </div>
+    <div class="stat" id="adminStat"></div>
+  </div>
+
+  <div class="card">
+    <h2>📋 本班报名表（4男 + 4女，每人 1-2 项）</h2>
+    <div class="hint">ℹ️ 每名学生选 <b>1-2 个项目</b>；<b>400米和接力</b>仅三至五年级可报；打 <b>✓</b> 即选中。填完点底部「保存报名」。</div>
+    <div id="stuList"></div>
+    <div class="btnrow">
+      <button class="btn gold" type="button" id="btnSave">💾 保存报名</button>
+      <button class="btn ghost" type="button" id="btnClear">清空重填</button>
+    </div>
+    <div class="msg" id="saveMsg"></div>
+    <div class="stat" id="stat"></div>
+  </div>
+</div>
+
 <script>
-/* ============================================================
- * 积木 #3：多槽名单积木 slot-list-form v1
- * ------------------------------------------------------------
- * 给它一份 JSON 配方，它长出一整页"N 槽名单表单"：
- * 固定槽位（如 4男+4女）× 每槽子字段（姓名/性别/项目勾选）
- * + 数量与类型限制 + 服务器校验对接 + 锁定状态 + 退出。
- * 引擎零业务知识——报名/分组/评委名单…都能用。
- * 从 M3 报名手搓版提炼（删除重做法第3棒）。
- * ============================================================ */
-var SlotListForm = (function () {
-  "use strict";
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 
-  function esc(s) {
-    return String(s == null ? "" : s)
-      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+var EVENTS=[], MY={grade:1,className:"",username:""}, IS_ADMIN=false, LOCKED=false;
+
+/* 年级从班名提取（"三年级一班"→3；失败按1处理，宽松） */
+function gradeOf(name){
+  var m=String(name||"").match(/([一二三四五])年级/);
+  var map={"一":1,"二":2,"三":3,"四":4,"五":5};
+  return m&&map[m[1]]?map[m[1]]:1;
+}
+
+/* —— 渲染 8 个学生槽（1-4男 5-8女） —— */
+function renderStuList(saved){
+  saved=saved||[];
+  var h="";
+  for(var i=0;i<8;i++){
+    var gender=i<4?"男":"女";
+    var s=saved[i]||{name:"",events:[]};
+    h+='<div class="stu"><div class="stu-top">'+
+      '<div class="stu-no'+(gender==="女"?" f":"")+'">'+(i+1)+'</div>'+
+      '<span class="stu-gender">'+gender+'</span>'+
+      '<input type="text" id="nm'+i+'" maxlength="20" placeholder="学生姓名" value="'+esc(s.name)+'">'+
+      '</div><div class="evs">';
+    for(var j=0;j<EVENTS.length;j++){
+      var ev=EVENTS[j];
+      var dis=(ev.grades==="3-5"&&MY.grade<3)?" dis":"";
+      var chk=s.events.indexOf(ev.name)>=0?" checked":"";
+      h+='<span class="ev'+dis+'"><input type="checkbox" id="ev'+i+'_'+j+'" data-stu="'+i+'" data-name="'+esc(ev.name)+'"'+chk+(dis?" disabled":"")+'><label for="ev'+i+'_'+j+'">'+esc(ev.name)+(ev.grades==="3-5"?'<span class="ev-note">3-5年级</span>':"")+'</label></span>';
+    }
+    h+='</div></div>';
   }
-  function $(id) { return document.getElementById(id); }
+  el("stuList").innerHTML=h;
+}
 
-  const BASE_CSS =
-    '*{box-sizing:border-box;margin:0;padding:0}' +
-    'body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F4F6FA;color:#1A2233;font-size:16px;line-height:1.65}' +
-    '.wrap{max-width:860px;margin:0 auto;padding:22px 16px 70px}' +
-    'nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25)}' +
-    '.nav-in{max-width:860px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}' +
-    '.nav-title{color:#fff;font-size:16px;font-weight:600;letter-spacing:.5px}' +
-    '.nav-out{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit}' +
-    '.lockbar{background:#B03A2E;color:#fff;text-align:center;font-size:14px;padding:10px;border-radius:10px;margin-bottom:14px}' +
-    '.statbar{background:#fff;border:1px solid #DFE4EC;border-radius:10px;padding:12px 16px;font-size:14px;color:#5B6577;margin-bottom:16px}' +
-    '.card{background:#fff;border:1px solid #DFE4EC;border-radius:14px;padding:18px 18px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.05)}' +
-    '.card h2{font-size:16px;color:#14213D;margin-bottom:12px;border-left:4px solid #D9A521;padding-left:10px}' +
-    '.stu{border:1px solid #DFE4EC;border-radius:12px;padding:12px 14px;margin-bottom:12px;background:#FDFEFF}' +
-    '.stu-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}' +
-    '.stu-no{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#14213D,#2A4370);color:#E8BC4F;font-size:13px;display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0}' +
-    '.stu-gender{font-size:12px;padding:2px 10px;border-radius:999px;background:#EDF2FB;color:#2A4370;border:1px solid #C7D2E8}' +
-    '.stu-gender.f{background:#FDF0F3;color:#8C3350;border-color:#E8C4D0}' +
-    'input[type=text]{padding:9px 12px;border:1px solid #DFE4EC;border-radius:9px;font-size:15px;font-family:inherit;flex:1;min-width:110px;background:#fff}' +
-    'input[type=text]:focus{outline:none;border-color:#D9A521}' +
-    '.evs{display:flex;flex-wrap:wrap;gap:6px 14px;padding-left:34px}' +
-    '.ev{font-size:14px;color:#3A4358;display:flex;align-items:center;gap:4px}' +
-    '.ev.dis{opacity:.35;pointer-events:none}' +
-    '.ev input{accent-color:#D9A521;width:16px;height:16px}' +
-    '.hint{font-size:12.5px;color:#8A93A6;margin-top:8px}' +
-    '.msg{font-size:13.5px;margin-top:10px;min-height:18px}' +
-    '.msg.ok{color:#2E7D4F}.msg.err{color:#B03A2E}' +
-    '.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}' +
-    '.btn{border:none;border-radius:10px;padding:13px 26px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}' +
-    '.btn.gold{background:linear-gradient(135deg,#D9A521,#E8BC4F);color:#14213D}' +
-    '.btn.ghost{background:#fff;color:#14213D;border:1px solid #DFE4EC}' +
-    'footer{text-align:center;font-size:12.5px;color:#8A93A6;padding:26px 0;line-height:1.8}' +
-    '.adminbar{display:none;margin-bottom:14px}' +
-    '.adminbar.show{display:block}' +
-    'select{padding:9px 12px;border:1px solid #DFE4EC;border-radius:9px;font-size:14px;font-family:inherit;background:#fff;flex:1;min-width:140px}' +
-    '@media(max-width:560px){.evs{padding-left:0}}';
-
-  function create(opts) {
-    const recipe = opts.recipe;
-    const mount = typeof opts.mount === "string" ? $(opts.mount.slice(1)) : opts.mount;
-    if (!mount) { console.error("SlotListForm: mount 不存在"); return; }
-
-    const style = document.createElement("style");
-    style.textContent = BASE_CSS;
-    document.head.appendChild(style);
-
-    /* —— 骨架 —— */
-    const head = recipe.header || {};
-    mount.innerHTML =
-      '<div class="wrap">' +
-      '<nav><div class="nav-in"><div class="nav-title">' + esc(head.title || "") + '</div>' +
-      '<button type="button" class="nav-out" id="slLogout">🚪 退出登录</button></div></nav>' +
-      '<div class="lockbar" id="slLock" style="display:none">🔒 ' + esc(recipe.lockedText || "已锁定，不可修改") + '</div>' +
-      '<div class="statbar" id="slStat">' + esc(recipe.loadingText || "加载中…") + '</div>' +
-      (recipe.adminSelector ? '<div class="card adminbar" id="slAdmin"><h2>' + esc(recipe.adminSelector.title) + '</h2><div style="display:flex;gap:10px;align-items:center"><select id="slAdminSel"></select></div><div class="hint">' + esc(recipe.adminSelector.hint || "") + '</div></div>' : '') +
-      '<div class="card"><h2>' + esc(recipe.listTitle || "名单") + '</h2><div id="slList"></div>' +
-      '<div class="hint">' + esc(recipe.listHint || "") + '</div>' +
-      '<div class="btnrow"><button type="button" class="btn gold" id="slSave">' + esc(recipe.saveLabel || "保存") + '</button>' +
-      (recipe.resetLabel ? '<button type="button" class="btn ghost" id="slReset">' + esc(recipe.resetLabel) + '</button>' : '') +
-      '</div><div class="msg" id="slMsg"></div></div>' +
-      '<footer>' + (recipe.footer || "") + '</footer></div>';
-
-    /* —— 状态 —— */
-    let DATA = { locked: false, entries: {}, me: null, myClass: "", classList: [] };
-    let TARGET = null; /* 当前编辑目标（班级用户名） */
-
-    /* —— 槽位渲染 —— */
-    function slotHTML(i, slot, events) {
-      const disabledCls = (ev) => {
-        /* 槽位类型（如"男"）与事件的 allowedTypes 限制 */
-        if (ev.allowedTypes && slot.type && !ev.allowedTypes.includes(slot.type)) return " dis";
-        return "";
-      };
-      const evs = events.map(ev =>
-        '<span class="ev' + disabledCls(ev) + '"><input type="checkbox" data-stu="' + i + '" data-name="' + esc(ev.name) + '" id="ev' + i + '_' + ev.idx + '"><label for="ev' + i + '_' + ev.idx + '">' + esc(ev.name) + (ev.team ? '（团体）' : '') + '</label></span>'
-      ).join("");
-      return '<div class="stu" data-slot="' + i + '">' +
-        '<div class="stu-top"><div class="stu-no">' + (i + 1) + '</div>' +
-        '<span class="stu-gender' + (slot.type === recipe.femaleType ? " f" : "") + '">' + esc(slot.label) + '</span>' +
-        '<input type="text" id="slNm' + i + '" maxlength="' + (recipe.maxNameLen || 20) + '" placeholder="' + esc(slot.placeholder || "姓名") + '" value=""></div>' +
-        '<div class="evs">' + evs + '</div></div>';
-    }
-
-    function renderList(students) {
-      const events = (DATA.events || []).map((e, idx) => Object.assign({ idx }, e));
-      const slots = recipe.slots;
-      let html = "";
-      for (let i = 0; i < slots.length; i++) {
-        html += slotHTML(i, slots[i], events);
-      }
-      $("slList").innerHTML = html;
-      /* 回填已有数据 */
-      (students || []).forEach((s, i) => {
-        if (i < slots.length && $("slNm" + i)) {
-          $("slNm" + i).value = s[recipe.stuNameKey || "name"] || "";
-          (s[recipe.stuEventsKey || "events"] || []).forEach(evName => {
-            const box = mount.querySelector('[data-stu="' + i + '"][data-name="' + evName + '"]');
-            if (box) box.checked = true;
-          });
-        }
-      });
-      applyGradeFilter();
-    }
-
-    /* —— 年级过滤（配方 filterFn(events, grade) 返回可灰显规则） —— */
-    function applyGradeFilter() {
-      if (!recipe.filterFn) return;
-      const grade = gradeOf(DATA.myClass || "");
-      const rules = recipe.filterFn(DATA.events || [], grade);
-      (rules || []).forEach(r => {
-        mount.querySelectorAll('[data-name="' + r.name + '"]').forEach(el => {
-          el.classList.toggle("dis", !r.allowed);
-        });
-      });
-    }
-    function gradeOf(className) {
-      const m = /([一二三四五六])年级/.exec(className || "");
-      if (m) return "一二三四五六".indexOf(m[1]) + 1;
-      return 0;
-    }
-
-    /* —— 收集与校验 —— */
-    function collect() {
-      const students = [];
-      const slots = recipe.slots;
-      for (let i = 0; i < slots.length; i++) {
-        const nm = $("slNm" + i) ? $("slNm" + i).value.trim() : "";
-        const evs = [];
-        mount.querySelectorAll('[data-stu="' + i + '"]:checked').forEach(b => {
-          if (!b.closest(".dis")) evs.push(b.getAttribute("data-name"));
-        });
-        if (!nm && evs.length) return { err: "第" + (i + 1) + "槽选了项目但没填姓名" };
-        if (nm) {
-          if (evs.length < (recipe.minEvents || 1)) return { err: nm + "：还没选项目（每人" + (recipe.minEvents || 1) + "-" + (recipe.maxEvents || 2) + "项）" };
-          if (evs.length > (recipe.maxEvents || 2)) return { err: nm + "：最多选 " + (recipe.maxEvents || 2) + " 项" };
-          students.push({ [recipe.stuNameKey || "name"]: nm, gender: slots[i].type, [recipe.stuEventsKey || "events"]: evs });
-        }
-      }
-      /* 类型上限（如男4女4） */
-      const caps = recipe.typeCaps || {};
-      const counts = {};
-      students.forEach(s => { counts[s.gender] = (counts[s.gender] || 0) + 1; });
-      for (const [t, cap] of Object.entries(caps)) {
-        if (counts[t] > cap) return { err: (recipe.typeLabelMap || {})[t] || t + " 超上限：最多 " + cap + " 人（当前 " + counts[t] + "）" };
-      }
-      return { students };
-    }
-
-    /* —— 保存 —— */
-    function save() {
-      const m = $("slMsg");
-      const c = collect();
-      if (c.err) { m.className = "msg err"; m.textContent = c.err; return; }
-      const fd = new FormData();
-      fd.append(recipe.api.studentsParam || "students", JSON.stringify(c.students));
-      if (DATA.me === null && TARGET) { fd.append(recipe.api.classParam || "class", TARGET); fd.append("className", DATA.entries[0] || ""); }
-      if (TARGET && !recipe.api.selfOnly) { fd.append(recipe.api.classParam || "class", TARGET); }
-      fetch(recipe.api.save, { method: "POST", body: fd })
-        .then(r => r.json())
-        .then(d => {
-          m.className = "msg " + (d.ok ? "ok" : "err");
-          m.textContent = d.msg || (d.ok ? "已保存" : "保存失败");
-          if (d.ok) loadData();
-        })
-        .catch(() => { m.className = "msg err"; m.textContent = "网络异常，稍后再试"; });
-    }
-
-    /* —— 数据加载 —— */
-    function loadData() {
-      fetch(recipe.api.data)
-        .then(r => r.json())
-        .then(d => {
-          if (!d.ok) { $("slStat").textContent = "加载失败：" + (d.msg || ""); return; }
-          DATA = d;
-          fetch(recipe.api.events).then(r => r.json()).then(e => {
-            if (e.ok) { DATA.events = e.events; boot(); }
-          });
-        })
-        .catch(() => { $("slStat").textContent = "网络异常，请刷新重试"; });
-    }
-
-    function boot() {
-      $("slLock").style.display = DATA.locked ? "block" : "none";
-      $("slSave").disabled = DATA.locked;
-      $("slSave").style.opacity = DATA.locked ? ".5" : "1";
-      TARGET = DATA.me; /* 班主任=自己 */
-      let rec = (DATA.entries || {})[DATA.me || ""] || { students: [] };
-      DATA.myClass = DATA.myClass || rec.className || "";
-      if (DATA.classList && DATA.classList.length) { /* 管理员视角 */
-        $("slAdmin").className = "card adminbar show";
-        const sel = $("slAdminSel");
-        sel.innerHTML = DATA.classList.map(c => '<option value="' + esc(c.username) + '">' + esc(c.className) + '</option>').join("");
-        const opt = Array.from(sel.options).find(o => o.value === TARGET);
-        if (!opt && sel.options.length) TARGET = sel.value;
-        rec = (DATA.entries || {})[TARGET] || { students: [] };
-        DATA.myClass = rec.className || TARGET;
-        sel.onchange = () => {
-          TARGET = sel.value;
-          const r2 = (DATA.entries || {})[TARGET] || { students: [] };
-          DATA.myClass = r2.className || TARGET;
-          renderList(r2.students);
-          updateStat(r2);
-        };
-      }
-      renderList(rec.students);
-      updateStat(rec);
-    }
-
-    function updateStat(rec) {
-      $("slStat").textContent = rec && rec.updatedAt
-        ? (recipe.statPrefix || "上次保存：") + new Date(rec.updatedAt).toLocaleString("zh-CN") + " · " + (rec.students || []).length + (recipe.statUnit || " 人")
-        : (recipe.freshText || "尚未保存过——填好后点保存");
-    }
-
-    /* —— 事件 —— */
-    $("slSave").addEventListener("click", save);
-    if ($("slReset")) $("slReset").addEventListener("click", () => { renderList([]); $("slMsg").textContent = ""; });
-    $("slLogout").addEventListener("click", () => {
-      fetch("/soft/__auth/logout", { method: "POST" }).then(() => location.replace(location.pathname))
-        .catch(() => location.replace(location.pathname));
-    });
-
-    loadData();
-    return { reload: loadData };
+/* —— 收集表单数据 + 前端校验 —— */
+function collect(){
+  var students=[];
+  for(var i=0;i<8;i++){
+    var name=el("nm"+i).value.trim();
+    var evs=[];
+    var boxes=document.querySelectorAll('[data-stu="'+i+'"]');
+    boxes.forEach(function(b){if(b.checked)evs.push(b.getAttribute("data-name"));});
+    if(!name&&evs.length)return{err:"第"+(i+1)+"位学生还没写姓名"};
+    if(name&&!evs.length)return{err:name+"：还没选项目（每人1-2项）"};
+    if(name)students.push({name:name,gender:i<4?"男":"女",events:evs});
   }
+  return{students:students};
+}
 
-  return { create: create, version: "slot-list-form v1" };
-})();
-
-
-/* ============================================================
- * 配方：M3 报名（运动会管理系统的第三个模块）
- * 业务知识集中于此——引擎是通用的，配方是专属的。
- * 槽位规则来自需求第1条：每班4男4女；每人1-2项。
- * 3-5年级限制来自需求第3条（400米/混合接力）。
- * ============================================================ */
-var M3_RECIPE = {
-  header: {
-    title: "运动会管理系统 · 报名表"
-  },
-  loadingText: "加载中…",
-  lockedText: "报名已锁定，不可修改——如有问题请联系管理员",
-  listTitle: "📋 本班参赛名单",
-  listHint: "填姓名、勾项目（每人 1-2 项）；最多 4 男 + 4 女。低年级同学注意：400米和混合接力是三至五年级项目。",
-  saveLabel: "💾 保存报名",
-  resetLabel: "清空重填",
-  statPrefix: "上次保存：",
-  statUnit: " 人",
-  freshText: "尚未保存过——填好后点保存",
-  footer: "运动会管理系统 · M3 报名 ｜ 积木：slot-list-form v1 ｜ 配方：m3-entry v1<br>方法论：删除重做法——手搓版已完成使命，本页由积木生成。",
-  femaleType: "女",
-  maxNameLen: 20,
-  minEvents: 1,
-  maxEvents: 2,
-  stuNameKey: "name",
-  stuEventsKey: "events",
-  slots: [
-    { label: "男", type: "男", placeholder: "学生姓名" },
-    { label: "男", type: "男", placeholder: "学生姓名" },
-    { label: "男", type: "男", placeholder: "学生姓名" },
-    { label: "男", type: "男", placeholder: "学生姓名" },
-    { label: "女", type: "女", placeholder: "学生姓名" },
-    { label: "女", type: "女", placeholder: "学生姓名" },
-    { label: "女", type: "女", placeholder: "学生姓名" },
-    { label: "女", type: "女", placeholder: "学生姓名" }
-  ],
-  typeCaps: { "男": 4, "女": 4 },
-  typeLabelMap: { "男": "男生", "女": "女生" },
-  adminSelector: {
-    title: "🔀 管理员：切换班级查看 / 代填",
-    hint: "选择班级后可查看其报名；保存将以该班身份提交"
-  },
-  api: {
-    events: "/soft/api/events",
-    data: "/soft/api/entry-data",
-    save: "/soft/api/entry-save",
-    studentsParam: "students",
-    classParam: "class"
-  },
-  /* 年级过滤：返回每个事件对当前年级是否开放（不开放→灰显禁用） */
-  filterFn: function (events, grade) {
-    return (events || []).map(function (ev) {
-      const allowed = !ev.grades || ev.grades === "all" ||
-        (ev.grades === "3-5" ? (grade >= 3 && grade <= 5) : true);
-      return { name: ev.name, allowed: allowed };
-    });
+/* —— 保存 —— */
+el("btnSave").addEventListener("click",function(){
+  var m=el("saveMsg");m.className="msg";
+  var r=collect();
+  if(r.err){m.className="msg err";m.textContent=r.err;return;}
+  if(!r.students.length){m.className="msg err";m.textContent="还没有填任何学生";return;}
+  var boys=r.students.filter(function(s){return s.gender==="男"}).length;
+  if(boys>4||r.students.length-boys>4){m.className="msg err";m.textContent="每班最多4男4女（当前男"+boys+"女"+(r.students.length-boys)+"）";return;}
+  var fd=new FormData();
+  fd.append("students",JSON.stringify(r.students));
+  if(IS_ADMIN){
+    var sel=el("adminClassSel");
+    var opt=sel.options[sel.selectedIndex];
+    fd.append("class",sel.value);fd.append("className",opt?opt.getAttribute("data-cn")||sel.value:sel.value);
   }
-};
+  el("btnSave").disabled=true;el("btnSave").textContent="保存中…";
+  fetch("/soft/api/entry-save",{method:"POST",body:fd})
+    .then(function(r2){return r2.json()})
+    .then(function(d){
+      el("btnSave").disabled=false;el("btnSave").textContent="💾 保存报名";
+      m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
+      if(d.ok)loadData();
+    })
+    .catch(function(){el("btnSave").disabled=false;el("btnSave").textContent="💾 保存报名";m.className="msg err";m.textContent="网络异常，稍后再试";});
+});
 
+el("btnClear").addEventListener("click",function(){
+  if(!confirm("清空重填？（当前内容将丢失）"))return;
+  renderStuList([]);el("saveMsg").textContent="";
+});
 
-SlotListForm.create({ mount: "#app", recipe: M3_RECIPE });
+/* —— 退出（先收证再跳） —— */
+el("btnOut").addEventListener("click",function(){
+  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace(location.pathname)})
+  .catch(function(){location.replace(location.pathname)});
+});
+
+/* —— 管理员：选班/锁定 —— */
+el("btnLoadClass").addEventListener("click",function(){
+  var sel=el("adminClassSel");
+  if(sel.value)loadData(sel.value);
+});
+el("btnLock").addEventListener("click",function(){setLock("1");});
+el("btnUnlock").addEventListener("click",function(){setLock("0");});
+function setLock(v){
+  var fd=new FormData();fd.append("lock",v);
+  fetch("/soft/api/entry-lock",{method:"POST",body:fd})
+    .then(function(r){return r.json()})
+    .then(function(d){alert(d.msg||"");loadData();})
+    .catch(function(){alert("网络异常");});
+}
+
+/* —— 载入（admin 可指定看某班） —— */
+function loadData(adminTarget){
+  fetch("/soft/api/entry-data").then(function(r){return r.json()}).then(function(d){
+    if(!d.ok){location.replace(location.pathname);return;}
+    LOCKED=d.locked;
+    el("lockBar").className=LOCKED?"lockbar show":"lockbar";
+    var data=d.entries||{};
+    var key=adminTarget||d.me;
+    if(!key){key=Object.keys(data)[0]||"";}
+    var rec=data[key]||{students:[]};
+    MY.className=rec.className||d.myClass||key;
+    MY.grade=gradeOf(MY.className);
+    el("navClass").textContent=(MY.className||"运动会报名")+" · 报名表";
+    renderStuList(rec.students);
+    el("stat").textContent=rec.updatedAt?("上次保存："+new Date(rec.updatedAt).toLocaleString("zh-CN")+" · 共"+rec.students.length+"人"):"尚未保存过";
+    /* 管理员界面 */
+    fetch("/soft/api/events").then(function(r){return r.json()}).then(function(){});
+  }).catch(function(){
+    el("stat").textContent="加载失败，请刷新重试";
+  });
+}
+
+/* —— 启动：先拿身份再渲染 —— */
+fetch("/soft/api/events").then(function(r){return r.json()}).then(function(d){
+  EVENTS=d.events||[];
+  return fetch("/soft/api/entry-data").then(function(r){return r.json()}).then(function(d2){
+    if(!d2.ok){location.replace(location.pathname);return;}
+    LOCKED=d2.locked;
+    el("lockBar").className=LOCKED?"lockbar show":"lockbar";
+    var data=d2.entries||{};
+    var key=d2.me;
+    var rec=data[key]||{students:[]};
+    MY.className=rec.className||d2.myClass||key;
+    MY.grade=gradeOf(MY.className);
+    el("navClass").textContent=(MY.className||"运动会报名")+" · 报名表";
+    renderStuList(rec.students);
+    el("stat").textContent=rec.updatedAt?("上次保存："+new Date(rec.updatedAt).toLocaleString("zh-CN")+" · 共"+rec.students.length+"人"):"尚未保存过";
+    /* 管理员识别：有 classList 就是管理员视角 */
+    if(d2.classList&&d2.classList.length){
+      IS_ADMIN=true;
+      el("adminBar").className="adminbar card show";
+      var sel=el("adminClassSel");
+      sel.innerHTML=d2.classList.map(function(c){return '<option value="'+esc(c.username)+'" data-cn="'+esc(c.className)+'">'+esc(c.className)+'</option>'}).join("");
+      var myOpt=Array.from(sel.options).filter(function(o){return o.value===key});
+      if(myOpt.length)sel.value=key;else key=sel.value;
+      rec=data[key]||{students:[]};
+      MY.className=rec.className||key;MY.grade=gradeOf(MY.className);
+      renderStuList(rec.students);
+    }
+  });
+}).catch(function(){
+  el("stat").textContent="加载失败，请刷新重试";
+});
 </script>
 </body>
 </html>
