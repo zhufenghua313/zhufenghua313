@@ -47,7 +47,10 @@
   .tag.wait{background:rgba(217,165,33,.14);color:#A87D14;}
   .brick p{font-size:13.5px;color:var(--sub);line-height:1.8;}
 
-  .product{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
+  .product{display:flex;flex-wrap:wrap;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 3px 14px rgba(20,33,61,.06);}
+  /* v1.1 修：flex-wrap 让运动会卡的流程区(100%宽)换行到底部——
+     之前无 wrap，流程区与文字列同行争宽，把标题挤成一字一行竖排（站长 12:41 截图指正） */
+  .product .flow-row{flex-basis:100%;}
   .product .icon{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--deep),var(--deep3));display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
   .product .info{flex:1;min-width:0;}
   .product h3{font-size:17px;margin-bottom:4px;}
@@ -148,7 +151,7 @@ document.getElementById("pubSports").addEventListener("click", function(){
         <p>报名、计分、汇总全自动——目标 2027 年春季运动会实战。</p>
         <p class="mods">进度：<b>M1-M10 十模块全成 ✓</b> ｜ 11-05 单日建成（积木复用+删除重做法）</p>
       </div>
-      <div style="align-self:center;width:100%;">
+      <div style="align-self:center;width:100%;" class="flow-row">
         <div class="mods" style="margin-bottom:8px;">📋 使用流程（按顺序点）</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
           <a class="enter" href="/soft/sports/index.html" style="background:#fff;color:var(--deep);border:1px solid var(--gold);">1️⃣ 基础配置</a>
