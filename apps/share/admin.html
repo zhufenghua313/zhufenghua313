@@ -137,6 +137,28 @@
 function el(x){return document.getElementById(x)}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 var DATA={files:[],codes:[]};
+/* ===== v4.29c 通行证本地化（手机浏览器cookie不稳，改Authorization头） ===== */
+var ADMIN_TOK="";
+try{ADMIN_TOK=localStorage.getItem("shareAdminTok")||""}catch(e){}
+function adminFetch(u,o){
+  o=o||{};
+  if(ADMIN_TOK){
+    o.headers=o.headers||{};
+    o.headers["Authorization"]="Bearer "+ADMIN_TOK;
+  }
+  return fetch(u,o);
+}
+function authFail(d){
+  if(d&&d.msg&&d.msg.indexOf("管理员")>=0){
+    ADMIN_TOK="";
+    try{localStorage.removeItem("shareAdminTok")}catch(e){}
+    el("app").style.display="none";
+    el("loginMask").style.display="flex";
+    el("loginErr").textContent="登录已失效，请重新输入密码";
+    return true;
+  }
+  return false;
+}
 
 function fmtSize(n){return n>=1048576?(n/1048576).toFixed(1)+" MB":Math.max(1,Math.round(n/1024))+" KB"}
 
@@ -170,7 +192,7 @@ function renderTable(){
   el("newFile").innerHTML=opts;
 }
 function loadFiles(){
-  fetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
+  adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
     if(!d.ok){el("fileTable").innerHTML='<p style="color:var(--err)">'+esc(d.msg||"加载失败")+'</p>';return;}
     DATA=d;renderTable();
   }).catch(function(){el("fileTable").innerHTML='<p style="color:var(--err)">网络异常</p>'});
@@ -180,7 +202,8 @@ el("btnAdd").addEventListener("click",function(){
   if(!pw||pw.length<4){m.className="msg err";m.textContent="提取码至少4位";return;}
   if(!file){m.className="msg err";m.textContent="先选文件";return;}
   var fd=new FormData();fd.append("pw",pw);fd.append("file",file);fd.append("hours",hours);
-  fetch("/share/__admin/code-save",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+  adminFetch("/share/__admin/code-save",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    if(authFail(d))return;
     m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok){el("newPw").value="";loadFiles();}
   }).catch(function(){m.className="msg err";m.textContent="网络异常"});
@@ -194,7 +217,8 @@ el("upForm").addEventListener("submit",function(e){
   m.className="msg";m.textContent="⏳ 正在上传（"+fmtSize(f.size)+"）…";
   var fd=new FormData();fd.append("file",f);
   var nm=el("upName").value.trim();if(nm)fd.append("name",nm);
-  fetch("/share/__admin/upload",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+  adminFetch("/share/__admin/upload",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    if(authFail(d))return;
     m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok){el("upForm").reset();loadFiles();}
   }).catch(function(){m.className="msg err";m.textContent="网络异常（文件可能较大，超时）";});
@@ -204,7 +228,8 @@ function renFile(name){
   var to=prompt("新文件名：",name);
   if(!to||to===name)return;
   var fd=new FormData();fd.append("from",name);fd.append("to",to);
-  fetch("/share/__admin/rename",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+  adminFetch("/share/__admin/rename",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    if(authFail(d))return;
     var m=el("addMsg");m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok)loadFiles();
   }).catch(function(){});
@@ -212,7 +237,8 @@ function renFile(name){
 function delFile(name){
   if(!confirm("删除「"+name+"」？\n（进 123 盘回收站，10天内可找回）"))return;
   var fd=new FormData();fd.append("name",name);
-  fetch("/share/__admin/delete",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+  adminFetch("/share/__admin/delete",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    if(authFail(d))return;
     var m=el("addMsg");m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok)loadFiles();
   }).catch(function(){});
@@ -220,7 +246,8 @@ function delFile(name){
 function delCode(pw){
   if(!confirm("删除提取码「"+pw+"」？已拿到的人再输就进不来了。"))return;
   var fd=new FormData();fd.append("pw",pw);
-  fetch("/share/__admin/code-del",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+  adminFetch("/share/__admin/code-del",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    if(authFail(d))return;
     var m=el("addMsg");m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok)loadFiles();
   }).catch(function(){});
@@ -229,7 +256,8 @@ el("pwForm").addEventListener("submit",function(e){
   e.preventDefault();
   var m=el("pwMsg");
   var fd=new FormData();fd.append("new",el("newAdminPw").value);
-  fetch("/share/__admin/set-pw",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+  adminFetch("/share/__admin/set-pw",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    if(authFail(d))return;
     m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok){el("pwForm").reset();setTimeout(function(){location.reload()},1200);}
   }).catch(function(){m.className="msg err";m.textContent="网络异常"});
@@ -238,8 +266,10 @@ function doLogin(){
   var err=el("loginErr");
   var fd=new FormData();fd.append("pw",el("loginPw").value);
   if(el("rememberPw").checked)fd.append("remember","1");
-  fetch("/share/__admin/login",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+  adminFetch("/share/__admin/login",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
     if(d.ok){
+      ADMIN_TOK=d.tok||"";
+      try{if(ADMIN_TOK)localStorage.setItem("shareAdminTok",ADMIN_TOK)}catch(e){}
       if(el("rememberPw").checked)localStorage.setItem("shareAdminRemember","1");
       else localStorage.removeItem("shareAdminRemember");
       el("loginMask").style.display="none";el("app").style.display="block";loadFiles();
@@ -264,8 +294,9 @@ el("btnOut").addEventListener("click",function(){
   fetch("/share/__admin/logout",{method:"POST"}).then(function(){location.reload()}).catch(function(){location.reload()});
 });
 /* 进门探测：带着旧 cookie 直接进 */
-fetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
+adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
   if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";DATA=d;renderTable();}
+  else if(ADMIN_TOK){authFail(d);}
 }).catch(function(){});
 </script>
 </body>
