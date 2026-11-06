@@ -70,12 +70,14 @@ body:not(.logged) .top{display:none}
 .batchbar b{color:#3730a3;font-size:13px}
 @media(max-width:600px){
 .item .mt{display:none}
-/* v46：手机防竖排——按钮列瘦身，文件名列保命 */
-.item{padding:11px 10px}
+/* v47：手机双行卡（站长方案：文件名一行靠左、按钮一行靠右，同框）
+   ——v46单行版按钮仍挤文件名，双行彻底分家 */
+.item{flex-wrap:wrap;padding:10px 10px 8px;gap:6px 0}
 .item .ic{width:24px;font-size:17px;margin-right:6px}
-.item .nm{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.item .ops{flex-shrink:0;gap:4px}
-.mini{padding:4px 8px;font-size:11px;white-space:nowrap}
+.item .pick{flex-shrink:0}
+.item .nm{flex:1;min-width:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .ops{flex-basis:100%;justify-content:flex-end;gap:5px;margin-top:2px}
+.mini{padding:5px 9px;font-size:11.5px;white-space:nowrap}
 }
 </style>
 </head>
