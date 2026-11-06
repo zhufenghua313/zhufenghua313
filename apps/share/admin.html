@@ -139,7 +139,7 @@ function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"
 var DATA={files:[],codes:[]};
 /* ===== v4.29c 通行证本地化（手机浏览器cookie不稳，改Authorization头） ===== */
 var ADMIN_TOK="";
-try{ADMIN_TOK=localStorage.getItem("shareAdminTok")||""}catch(e){}
+try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||""}catch(e){}
 function adminFetch(u,o){
   o=o||{};
   if(ADMIN_TOK){
@@ -151,7 +151,7 @@ function adminFetch(u,o){
 function authFail(d){
   if(d&&d.msg&&d.msg.indexOf("管理员")>=0){
     ADMIN_TOK="";
-    try{localStorage.removeItem("shareAdminTok")}catch(e){}
+    try{sessionStorage.removeItem("shareAdminTok")}catch(e){}
     el("app").style.display="none";
     el("loginMask").style.display="flex";
     el("loginErr").textContent="登录已失效，请重新输入密码";
@@ -269,9 +269,11 @@ function doLogin(){
   adminFetch("/share/__admin/login",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
     if(d.ok){
       ADMIN_TOK=d.tok||"";
-      try{if(ADMIN_TOK)localStorage.setItem("shareAdminTok",ADMIN_TOK)}catch(e){}
-      if(el("rememberPw").checked)localStorage.setItem("shareAdminRemember","1");
-      else localStorage.removeItem("shareAdminRemember");
+      try{if(ADMIN_TOK)sessionStorage.setItem("shareAdminTok",ADMIN_TOK)}catch(e){}
+      try{sessionStorage.removeItem("shareLoggedOut")}catch(e){}
+      /* v4.29d：记住密码=帮填密码框（站长语义），绝不自动登录 */
+      if(el("rememberPw").checked)localStorage.setItem("shareAdminPwSaved",el("loginPw").value);
+      else localStorage.removeItem("shareAdminPwSaved");
       el("loginMask").style.display="none";el("app").style.display="block";loadFiles();
     }
     else{err.textContent=d.msg||"密码不对";}
@@ -288,16 +290,31 @@ function sendReset(){
   }).catch(function(){msg.textContent="网络异常"});
 }
 el("loginPw").addEventListener("keydown",function(e){if(e.key==="Enter")doLogin()});
-/* v4.29b：记住勾选状态 */
-try{if(localStorage.getItem("shareAdminRemember")==="1")el("rememberPw").checked=true;}catch(e){}
+/* v4.29d：记住密码=自动填密码框+勾上勾（绝不自动登录——必须点"进入"） */
+try{
+  var savedPw=localStorage.getItem("shareAdminPwSaved");
+  if(savedPw){el("loginPw").value=savedPw;el("rememberPw").checked=true;}
+}catch(e){}
+/* v4.29d：退出=彻底走人——本地token全清（站长拍板：停在登录页，
+   必须点"进入"才进；记住密码只帮填密码框，绝不自动登录）；
+   sessionStorage记"本次会话已主动退出"，防止进门探测再放行 */
 el("btnOut").addEventListener("click",function(){
+  ADMIN_TOK="";
+  try{sessionStorage.removeItem("shareAdminTok")}catch(e){}
+  try{sessionStorage.setItem("shareLoggedOut","1")}catch(e){}
   fetch("/share/__admin/logout",{method:"POST"}).then(function(){location.reload()}).catch(function(){location.reload()});
 });
-/* 进门探测：带着旧 cookie 直接进 */
+function loggedOutThisSession(){
+  try{return sessionStorage.getItem("shareLoggedOut")==="1"}catch(e){return false}
+}
+/* 登录成功时清退出标记（重新进入后台） */
+/* 进门探测：带旧 cookie/token 直接进（本会话主动退出后不放行） */
+if(!loggedOutThisSession()){
 adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
   if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";DATA=d;renderTable();}
   else if(ADMIN_TOK){authFail(d);}
 }).catch(function(){});
+}
 </script>
 </body>
 </html>
