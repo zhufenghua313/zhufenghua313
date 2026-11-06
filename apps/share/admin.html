@@ -253,10 +253,11 @@ el("upForm").addEventListener("submit",function(e){
   var xhr=new XMLHttpRequest();
   xhr.open("POST","/share/__admin/upload");
   if(ADMIN_TOK)xhr.setRequestHeader("Authorization","Bearer "+ADMIN_TOK);
+  var saving=false;
   xhr.upload.onprogress=function(ev){
     if(!ev.lengthComputable)return;
+    if(saving)return;
     prog.style.display="block";
-    /* v4.36：封顶90%（剩10%=服务器写入网盘阶段，浏览器量不到） */
     var pct=Math.min(90,Math.round(ev.loaded/ev.total*90));
     bar.style.width=pct+"%";txt.textContent=pct+"%";
     if(Date.now()-lastT>400){
@@ -266,6 +267,7 @@ el("upForm").addEventListener("submit",function(e){
     }
   };
   xhr.upload.onload=function(){
+    saving=true;
     bar.style.width="95%";txt.textContent="95%";
     sub.textContent="已送达服务器，正在保存到网盘…";
   };
@@ -273,6 +275,7 @@ el("upForm").addEventListener("submit",function(e){
     prog.style.display="none";
     if(authFail(d))return;
     if(d.ok){
+      bar.style.width="100%";txt.textContent="100%";sub.textContent="";
       m.className="msg ok";m.textContent="✅ "+d.msg;
       el("upForm").reset();loadFiles();
       if(dlPw||delPw){
