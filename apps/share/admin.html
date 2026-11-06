@@ -47,12 +47,23 @@
 <body>
 <div class="login-mask" id="loginMask">
   <div class="login-box">
-    <h1>📁 文件共享站 · 后台</h1>
-    <p>输入后台密码（初始与工具站进入密码相同）</p>
-    <input type="password" id="loginPw" placeholder="后台密码" autocomplete="section-share-admin current-password">
-    <button type="button" onclick="doLogin()">进 入</button>
-    <div class="err" id="loginErr"></div>
-    <p style="margin-top:14px;font-size:12px"><a href="/share/__admin/forgot" style="color:rgba(232,188,79,.7)">忘记密码？用邮箱重置</a><br><a href="/share" style="color:rgba(255,255,255,.4)">← 返回共享站首页</a></p>
+    <div id="loginBox">
+      <h1>📁 文件共享站 · 后台</h1>
+      <p>输入后台密码（初始与工具站进入密码相同）</p>
+      <input type="password" id="loginPw" placeholder="后台密码" autocomplete="section-share-admin current-password">
+      <label style="display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.55);font-size:13px;margin-bottom:12px;cursor:pointer;justify-content:flex-start"><input type="checkbox" id="rememberPw" style="width:auto;margin:0;accent-color:#D9A521"> 记住密码（30天内免登录）</label>
+      <button type="button" onclick="doLogin()">进 入</button>
+      <div class="err" id="loginErr"></div>
+      <p style="margin-top:14px;font-size:12px"><a href="javascript:void(0)" onclick="showForgot()" style="color:rgba(232,188,79,.7)">忘记密码？邮箱一键重置</a><br><a href="/share" style="color:rgba(255,255,255,.4)">← 返回共享站首页</a></p>
+    </div>
+    <div id="forgotBox" style="display:none">
+      <h1>📧 重置后台密码</h1>
+      <p>输入注册邮箱，系统将发送重置链接（15分钟内有效）</p>
+      <input type="email" id="forgotEmail" placeholder="注册邮箱" autocomplete="email">
+      <button type="button" onclick="sendReset()">发送重置邮件</button>
+      <div class="err" id="forgotMsg" style="color:rgba(255,255,255,.6)"></div>
+      <p style="margin-top:14px;font-size:12px"><a href="javascript:void(0)" onclick="showLogin()" style="color:rgba(255,255,255,.4)">← 返回登录</a></p>
+    </div>
   </div>
 </div>
 
@@ -68,9 +79,23 @@
   </section>
 
   <div class="card">
+    <h2>⬆️ 上传文件到共享文件夹</h2>
+    <p class="desc">直接传到 123 盘「欢乐共享站」文件夹（网页限 25MB；大文件用 123 盘 App 传好移进来，效果一样）。</p>
+    <form id="upForm">
+      <label>选择文件</label>
+      <input type="file" id="upFile" required>
+      <label>共享名（留空 = 用原文件名）</label>
+      <input type="text" id="upName" placeholder="例如：培训课件.pdf" maxlength="80">
+      <button class="btn-gold" type="submit" style="margin-top:10px">⬆️ 上传</button>
+      <div class="msg" id="upMsg"></div>
+    </form>
+  </div>
+
+  <div class="card">
     <h2>📋 文件与提取码</h2>
-    <p class="desc">点提取码可直接复制；「未设」的文件在下方设置。</p>
+    <p class="desc">点提取码可直接复制；文件行的 ✎ 改名 / 🗑 删除直接操作 123 盘（改名后提取码自动跟着走，删除进 123 回收站可找回）。</p>
     <div id="fileTable"><p style="color:var(--sub);font-size:13.5px;padding:8px 0">加载中…</p></div>
+    <button class="btn-line" type="button" onclick="loadFiles()" style="margin-top:8px">🔄 刷新列表</button>
   </div>
 
   <div class="card">
@@ -78,7 +103,16 @@
     <p class="desc">选文件 → 设码 → 把「tv.efcc.cc/share + 提取码」发给同事。</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
       <select id="newFile" style="flex:1.2;min-width:160px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;"></select>
-      <input id="newPw" placeholder="提取码（4-30位）" style="flex:1;min-width:140px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;">
+      <input id="newPw" placeholder="提取码（4-30位）" style="flex:1;min-width:130px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;">
+      <select id="newHours" style="flex:0.8;min-width:110px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;">
+        <option value="0">永久有效</option>
+        <option value="2">2小时</option>
+        <option value="8">8小时</option>
+        <option value="24">1天</option>
+        <option value="72">3天</option>
+        <option value="168">7天</option>
+        <option value="720">30天</option>
+      </select>
       <button class="btn-gold" type="button" id="btnAdd">➕ 设码</button>
     </div>
     <div class="msg" id="addMsg"></div>
@@ -117,16 +151,17 @@ function toast(s){var t=document.getElementById("toast");if(!t){t=document.creat
 
 function renderTable(){
   var files=DATA.files||[],codes=DATA.codes||[];
-  if(!files.length){el("fileTable").innerHTML='<p style="color:var(--sub);font-size:13.5px;padding:8px 0">123 盘「欢乐共享站」文件夹里还没有文件——手机 123 盘 App 把要分享的文件移进去，点下方「🔄 刷新」即见。</p>';}
+  if(!files.length){el("fileTable").innerHTML='<p style="color:var(--sub);font-size:13.5px;padding:8px 0">共享文件夹里还没有文件——上方上传，或手机 123 盘 App 把文件移进「欢乐共享站」文件夹。</p>';}
   else{
-    var h='<table><tr><th>文件</th><th style="width:70px">大小</th><th style="width:110px">提取码</th><th style="width:50px"></th></tr>';
+    var h='<table><tr><th>文件</th><th style="width:64px">大小</th><th style="width:150px">提取码</th><th style="width:76px">操作</th></tr>';
     files.forEach(function(f){
       var c=codes.filter(function(x){return x.file===f.name})[0];
-      h+='<tr><td style="word-break:break-all">'+esc(f.name)+'</td><td style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td>'+(c?'<span class="pw-chip" onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>':'<span style="color:#bbb">未设</span>')+'</td><td>'+(c?'<button type="button" class="btn-line" onclick="delCode(\''+c.pw+'\')" style="padding:4px 9px;font-size:12px">删</button>':'')+'</td></tr>';
+      var expTag=c&&c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:11px">（'+c.expText+'）</span>':"";
+      h+='<tr><td style="word-break:break-all">'+esc(f.name)+'</td><td style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td>'+(c?'<span class="pw-chip" onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+expTag:'<span style="color:#bbb">未设</span>')+'</td><td style="white-space:nowrap"><button type="button" class="btn-line" onclick="renFile(\''+f.name.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+f.name.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
     });
     h+='</table>';
     var star=codes.filter(function(x){return x.file==="*"})[0];
-    h+='<div style="margin-top:10px;padding:10px 12px;background:var(--goldbg);border-radius:9px;font-size:13px">🔑 总码：'+(star?('<span class="pw-chip" onclick="toastCopy(\''+star.pw+'\')" title="点击复制">'+esc(star.pw)+'</span>（可见全部文件）'):("未设——新设码时文件选「* 全部」即成总码"))+'</div>';
+    h+='<div style="margin-top:10px;padding:10px 12px;background:var(--goldbg);border-radius:9px;font-size:13px">🔑 总码：'+(star?('<span class="pw-chip" onclick="toastCopy(\''+star.pw+'\')">'+esc(star.pw)+'</span>'+(star.expText&&star.expText!=="永久"?'（'+star.expText+'）':"")+'（可见全部文件）'):("未设——新设码时文件选「* 全部」即成总码"))+'</div>';
     el("fileTable").innerHTML=h;
   }
   var opts='<option value="">— 选文件 —</option>';
@@ -141,15 +176,47 @@ function loadFiles(){
   }).catch(function(){el("fileTable").innerHTML='<p style="color:var(--err)">网络异常</p>'});
 }
 el("btnAdd").addEventListener("click",function(){
-  var m=el("addMsg"),pw=el("newPw").value.trim(),file=el("newFile").value;
+  var m=el("addMsg"),pw=el("newPw").value.trim(),file=el("newFile").value,hours=el("newHours").value;
   if(!pw||pw.length<4){m.className="msg err";m.textContent="提取码至少4位";return;}
   if(!file){m.className="msg err";m.textContent="先选文件";return;}
-  var fd=new FormData();fd.append("pw",pw);fd.append("file",file);
+  var fd=new FormData();fd.append("pw",pw);fd.append("file",file);fd.append("hours",hours);
   fetch("/share/__admin/code-save",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
     m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok){el("newPw").value="";loadFiles();}
   }).catch(function(){m.className="msg err";m.textContent="网络异常"});
 });
+/* v4.29 上传 */
+el("upForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  var m=el("upMsg"),f=el("upFile").files[0];
+  if(!f){m.className="msg err";m.textContent="先选文件";return;}
+  if(f.size>25*1048576){m.className="msg err";m.textContent="网页上传限25MB——大文件请用123盘App上传后移入共享文件夹";return;}
+  m.className="msg";m.textContent="⏳ 正在上传（"+fmtSize(f.size)+"）…";
+  var fd=new FormData();fd.append("file",f);
+  var nm=el("upName").value.trim();if(nm)fd.append("name",nm);
+  fetch("/share/__admin/upload",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
+    if(d.ok){el("upForm").reset();loadFiles();}
+  }).catch(function(){m.className="msg err";m.textContent="网络异常（文件可能较大，超时）";});
+});
+/* v4.29 改名/删除（直控123盘） */
+function renFile(name){
+  var to=prompt("新文件名：",name);
+  if(!to||to===name)return;
+  var fd=new FormData();fd.append("from",name);fd.append("to",to);
+  fetch("/share/__admin/rename",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    var m=el("addMsg");m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
+    if(d.ok)loadFiles();
+  }).catch(function(){});
+}
+function delFile(name){
+  if(!confirm("删除「"+name+"」？\n（进 123 盘回收站，10天内可找回）"))return;
+  var fd=new FormData();fd.append("name",name);
+  fetch("/share/__admin/delete",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    var m=el("addMsg");m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
+    if(d.ok)loadFiles();
+  }).catch(function(){});
+}
 function delCode(pw){
   if(!confirm("删除提取码「"+pw+"」？已拿到的人再输就进不来了。"))return;
   var fd=new FormData();fd.append("pw",pw);
@@ -170,12 +237,29 @@ el("pwForm").addEventListener("submit",function(e){
 function doLogin(){
   var err=el("loginErr");
   var fd=new FormData();fd.append("pw",el("loginPw").value);
+  if(el("rememberPw").checked)fd.append("remember","1");
   fetch("/share/__admin/login",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
-    if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";loadFiles();}
+    if(d.ok){
+      if(el("rememberPw").checked)localStorage.setItem("shareAdminRemember","1");
+      else localStorage.removeItem("shareAdminRemember");
+      el("loginMask").style.display="none";el("app").style.display="block";loadFiles();
+    }
     else{err.textContent=d.msg||"密码不对";}
   }).catch(function(){err.textContent="网络异常"});
 }
+function showForgot(){el("loginBox").style.display="none";el("forgotBox").style.display="block";}
+function showLogin(){el("forgotBox").style.display="none";el("loginBox").style.display="block";}
+function sendReset(){
+  var msg=el("forgotMsg");
+  var fd=new FormData();fd.append("email",el("forgotEmail").value.trim());
+  msg.textContent="发送中…";
+  fetch("/share/__admin/forgot",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    msg.textContent=d.msg||(d.ok?"重置邮件已发送，请到邮箱查收":"发送失败");
+  }).catch(function(){msg.textContent="网络异常"});
+}
 el("loginPw").addEventListener("keydown",function(e){if(e.key==="Enter")doLogin()});
+/* v4.29b：记住勾选状态 */
+try{if(localStorage.getItem("shareAdminRemember")==="1")el("rememberPw").checked=true;}catch(e){}
 el("btnOut").addEventListener("click",function(){
   fetch("/share/__admin/logout",{method:"POST"}).then(function(){location.reload()}).catch(function(){location.reload()});
 });
