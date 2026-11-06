@@ -29,7 +29,8 @@
   .msg{font-size:13.5px;min-height:20px;margin-top:10px;}
   .msg.ok{color:var(--ok);} .msg.err{color:var(--err);}
   .hint{font-size:12.5px;color:var(--sub);margin-top:12px;line-height:1.8;background:var(--bg);border-radius:8px;padding:10px 12px;}
-  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;table-layout:fixed;}
+  td,th{overflow-wrap:anywhere;}
   th{background:var(--bg);padding:9px 8px;text-align:left;font-size:12.5px;color:var(--sub);}
   td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle;}
   .pw-chip{display:inline-block;background:var(--goldbg);border:1px solid rgba(217,165,33,.4);color:#A87D14;border-radius:7px;padding:2px 10px;font-weight:700;font-size:13px;cursor:pointer;}
@@ -179,14 +180,14 @@ function renderTable(){
   var files=DATA.files||[],codes=DATA.codes||[];
   if(!files.length){el("fileTable").innerHTML='<p style="color:var(--sub);font-size:13.5px;padding:8px 0">共享文件夹里还没有文件——上方上传，或手机 123 盘 App 把文件移进「欢乐共享站」文件夹。</p>';}
   else{
-    var h='<table><tr><th>文件</th><th style="width:56px">大小</th><th style="width:118px">提取码</th><th style="width:118px">删除码</th><th style="width:56px">操作</th></tr>';
+    var h='<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table style="min-width:520px"><tr><th>文件</th><th style="width:64px">大小</th><th style="width:104px">提取码</th><th style="width:104px">删除码</th><th style="width:68px">操作</th></tr>';
     files.forEach(function(f){
       var cDl=codes.filter(function(x){return x.file===f.name&&x.kind!=="del"})[0];
       var cDel=codes.filter(function(x){return x.file===f.name&&x.kind==="del"})[0];
       function chip(c,red){if(!c)return '<span style="color:#bbb">未设</span>';var t=c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:10.5px">（'+c.expText+'）</span>':"";return '<span class="pw-chip"'+(red?' style="border-color:rgba(176,58,46,.5);color:#B03A2E;background:#FDF0EE"':"")+' onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+t}
       h+='<tr><td style="word-break:break-all">'+esc(f.name)+'</td><td style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td>'+chip(cDl,false)+'</td><td>'+chip(cDel,true)+'</td><td style="white-space:nowrap"><button type="button" class="btn-line" onclick="renFile(\''+f.name.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+f.name.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
     });
-    h+='</table>';
+    h+='</table></div>';
     var star=codes.filter(function(x){return x.file==="*"})[0];
     h+='<div style="margin-top:10px;padding:10px 12px;background:var(--goldbg);border-radius:9px;font-size:13px">🔑 总码：'+(star?('<span class="pw-chip" onclick="toastCopy(\''+star.pw+'\')">'+esc(star.pw)+'</span>'+(star.expText&&star.expText!=="永久"?'（'+star.expText+'）':"")+'（可见全部文件）'):("未设——新设码时文件选「* 全部」即成总码"))+'</div>';
     el("fileTable").innerHTML=h;
