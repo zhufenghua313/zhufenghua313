@@ -51,6 +51,10 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const p = url.pathname;
+    /* v2：返回门户参数（站长 11-06 晚定稿——四工具统一"返回XX"） */
+    const HOME = ${JSON.stringify(cfg.homeHref || "/")};
+    const HOME_NAME = ${JSON.stringify(cfg.homeName || "欢乐工具站")};
+    const ADMIN_CONTACT = ${JSON.stringify(cfg.adminContact || "请联系管理员")};
     const q = url.searchParams;
 
     /* ===== 工具：SHA256 / HMAC / 随机 ===== */
@@ -179,14 +183,15 @@ button{width:100%;padding:15px;border:none;border-radius:10px;cursor:pointer;fon
 
     /* ===== 页面模板 ===== */
     const frontPage = (err) => \`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${esc(T)}</title><style>\${pageCSS}</style></head><body><div class="box">
-<h1>📁 ${esc(T)}</h1><p>输入提取码获取文件；输入删除码删除文件</p>
+<h1>📁 ${esc(T)}</h1><p>输入提取码可以下载文件，<br>输入删除码可以删除文件。</p>
 \${err ? '<div class="err">' + err + '</div>' : ''}
-<form method="POST" action="/"><input type="password" name="pw" placeholder="码" autofocus required><button type="submit">提 交</button></form>
+<form method="POST" action="/"><input type="password" name="pw" placeholder="请在这里输入" autofocus required><button type="submit">提 交</button></form>
 <p style="margin-top:14px;font-size:16px">码（提取/删除）请联系文件分享人获取</p>
 <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12)">
 <a href="/up" style="display:block;text-align:center;padding:12px;border-radius:11px;background:linear-gradient(135deg,#2E7D4F,#4E9E77);color:#fff;text-decoration:none;font-weight:700;font-size:18px">📤 我要分享文件</a>
 <p style="font-size:15px;margin-top:8px;margin-bottom:0">上传文件并自己设置提取码和删除码</p>
 </div>
+<p style="margin-top:16px"><a href="\${HOME}" style="color:rgba(255,255,255,.5);font-size:14.5px;text-decoration:none">← 返回\${HOME_NAME}</a></p>
 </div></body></html>\`;
 
     /* ===== 路由 ===== */
@@ -195,11 +200,13 @@ button{width:100%;padding:15px;border:none;border-radius:10px;cursor:pointer;fon
 <h1>📤 分享文件</h1><p>选文件 → 设两个码 → 上传后把码发给同事</p>
 \${err ? '<div class="err">' + err + '</div>' : ''}
 <form method="POST" action="/up" enctype="multipart/form-data" id="upForm">
-<input type="file" name="file" required style="text-align:left;padding:9px">
+<input type="file" name="file" id="fileInput" style="display:none">
+<div id="filePick" style="padding:18px 14px;border:2px dashed rgba(232,188,79,.45);border-radius:12px;text-align:center;font-size:17px;color:#E8BC4F;cursor:pointer;margin-bottom:14px;background:rgba(232,188,79,.06)">📄 点击选择文件</div>
 <input type="text" name="dlPw" placeholder="提取码（4-30位）· 下载用" maxlength="30" required>
-<input type="text" name="delPw" placeholder="删除码（4-30位）· 看完即毁用" maxlength="30" required>
+<input type="text" name="delPw" placeholder="删除码（4-30位）· 删除用" maxlength="30" required>
 <div class="err" id="upErr" style="display:none"></div>
 <button type="submit" id="upBtn">上 传</button>
+<a href="\${HOME}" id="backBtn" style="display:block;text-align:center;padding:11px;margin-top:8px;border-radius:10px;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.75);text-decoration:none;font-size:16px">← 返回\${HOME_NAME}</a>
 <div id="prog" style="display:none;margin-top:12px">
 <div style="background:rgba(255,255,255,.1);border-radius:99px;height:14px;overflow:hidden;position:relative">
 <div id="progBar" style="width:0%;height:100%;background:linear-gradient(90deg,#D9A521,#E8BC4F);transition:width .2s"></div>
@@ -208,44 +215,84 @@ button{width:100%;padding:15px;border:none;border-radius:10px;cursor:pointer;fon
 <div id="progSub" style="text-align:center;font-size:11px;color:rgba(255,255,255,.5);margin-top:5px"></div>
 </div>
 </form>
-<p style="margin-top:14px;font-size:14px">提取码=给要下载的人；删除码=谁都可以删（文件进网盘回收站）<br>单文件不限大小；共享站总容量 ${(CAP / 1024 / 1024 / 1024 / 1024).toFixed(0)}TB，超出后停止上传</p>
+<div style="margin-top:14px;padding:11px 13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:10px;text-align:left">
+<b style="color:rgba(232,188,79,.95);font-size:16px">📌 上传须知</b>
+<p style="text-align:left;font-size:15px;line-height:1.9;margin:6px 0 0;color:rgba(255,255,255,.65)">提取码用于下载文件，删除码用于取消分享并删除文件<br>① 提取码与删除码不能相同，也不能与现有码重复（重复会提示重设）<br>② 文件保存有效期目前为长期；平台保留调整有效期的权利，由此造成的损失本站不负责<br>③ 单文件不限大小；上传断线、中断等传输损失本站不负责——大文件请耐心等待<br>④ 共享站总容量 ${(CAP / 1024 / 1024 / 1024 / 1024).toFixed(0)}TB，超出后停止上传<br>⑤ 请勿上传违法违规、侵权或隐私敏感文件<br>⑥ 忘记提取码或删除码，\${ADMIN_CONTACT}</p>
+</div>
 <script>
 /* 坑⑤⑨：AJAX报错不换页（文件选择不丢）+XHR进度条 */
 (function(){
   var f=document.getElementById("upForm");
   if(!f||!f.addEventListener)return;
+  /* v2：大文件点击区（原生小条在手机上不显眼） */
+  var fp=document.getElementById("filePick"),fi=document.getElementById("fileInput");
+  if(fp&&fi){
+    fp.addEventListener("click",function(){fi.click();});
+    fi.addEventListener("change",function(){
+      var f2=fi.files[0];
+      if(f2){
+        var mb=f2.size>=1048576?(f2.size/1048576).toFixed(1)+" MB":Math.max(1,Math.round(f2.size/1024))+" KB";
+        fp.innerHTML="\ud83d\udcc4 "+String(f2.name).replace(/</g,"&lt;")+'<span style="display:block;color:rgba(255,255,255,.55);font-size:14px;margin-top:4px">'+mb+' · 点击可重选</span>';
+        fp.style.borderColor="#E8BC4F";
+      }
+    });
+  }
   f.addEventListener("submit",function(e){
     e.preventDefault();
     var err=document.getElementById("upErr"),btn=document.getElementById("upBtn");
-    err.style.display="none";btn.disabled=true;btn.textContent="上传中…";
+    err.style.display="none";
+    if(fi&&!fi.files.length){err.textContent="请先选择文件";err.style.display="block";window.scrollTo(0,0);return;}
+    btn.disabled=true;btn.textContent="上传中…";
     var fd=new FormData(f);fd.append("ajax","1");
     var prog=document.getElementById("prog"),bar=document.getElementById("progBar"),txt=document.getElementById("progTxt"),sub=document.getElementById("progSub");
-    var lastL=0,lastT=0;
+    var lastL=0,lastT=0,saving=false;
     var xhr=new XMLHttpRequest();
     xhr.open("POST","/up");
+    /* v2三段时序（站长11-06晚28轮实测定型）：
+       0-90%爬坡(MB+速度,速度太低不显示)→95%保存态(数字冻结)
+       →响应到达100%一闪→按钮翻牌"上传完成"码卡顶上 */
     xhr.upload.onprogress=function(ev){
       if(!ev.lengthComputable)return;
+      if(saving)return;
       prog.style.display="block";
-      var pct=Math.min(100,Math.round(ev.loaded/ev.total*100));
+      var pct=Math.min(90,Math.round(ev.loaded/ev.total*90));
       bar.style.width=pct+"%";txt.textContent=pct+"%";
       if(Date.now()-lastT>400){
         var spd=(ev.loaded-lastL)/((Date.now()-lastT)/1000);
-        sub.textContent=(ev.loaded/1048576).toFixed(1)+" / "+(ev.total/1048576).toFixed(1)+" MB · "+(spd>1048576?(spd/1048576).toFixed(1)+" MB/s":Math.round(spd/1024)+" KB/s");
+        var dmb=(ev.loaded/1048576).toFixed(1),tmb=(ev.total/1048576).toFixed(1);
+        sub.textContent=dmb+" / "+tmb+" MB · "+(spd>1048576?(spd/1048576).toFixed(1)+" MB/s":(spd>10240?Math.round(spd/1024)+" KB/s":""));
         lastL=ev.loaded;lastT=Date.now();
       }
     };
+    xhr.upload.onload=function(){
+      saving=true;
+      bar.style.width="95%";txt.textContent="95%";
+      sub.textContent="已送达服务器，正在保存到网盘…";
+    };
+    var escX=function(x){return String(x==null?"":x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")};
     xhr.onload=function(){
-      prog.style.display="none";
-      var d;try{d=JSON.parse(xhr.responseText);}catch(e){err.textContent="服务异常";err.style.display="block";btn.disabled=false;btn.textContent="上 传";return;}
+      var d;try{d=JSON.parse(xhr.responseText);}catch(e){prog.style.display="none";err.textContent="服务异常";err.style.display="block";btn.disabled=false;btn.textContent="上 传";return;}
       if(d.ok){
-        var escX=function(x){return String(x==null?"":x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")};
-        document.querySelector(".box").innerHTML="<h1>✅ 分享成功</h1>"+
-        "<div class='file' style='margin:14px 0'><div class='fi'>📄</div><div class='fn'><b>"+escX(d.name)+"</b><span>"+d.sizeKB+" KB · 归档于 "+escX(d.dir)+"</span></div></div>"+
-        "<div style='background:rgba(217,165,33,.12);border:1px solid rgba(217,165,33,.4);border-radius:10px;padding:12px 14px;margin-bottom:10px;text-align:center'><span style='color:rgba(255,255,255,.5);font-size:12px'>提取码（发给要下载的人）</span><br><b style='color:#E8BC4F;font-size:19px;letter-spacing:2px'>"+escX(d.dlPw)+"</b></div>"+
-        "<div style='background:rgba(176,58,46,.15);border:1px solid rgba(176,58,46,.5);border-radius:10px;padding:12px 14px;margin-bottom:16px;text-align:center'><span style='color:rgba(255,255,255,.5);font-size:12px'>删除码（看完即毁用）</span><br><b style='color:#E88;font-size:19px;letter-spacing:2px'>"+escX(d.delPw)+"</b></div>"+
-        "<a href='/up' style='display:block;text-align:center;padding:11px;border-radius:10px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);text-decoration:none;font-size:13.5px'>再传一个</a> "+
-        "<a href='/' style='display:block;text-align:center;padding:11px;border-radius:10px;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);text-decoration:none;font-size:13.5px;margin-top:8px'>返回首页</a>";
-      }else{err.textContent=d.msg||"上传失败，请重试";err.style.display="block";btn.disabled=false;btn.textContent="上 传";window.scrollTo(0,0);}
+        /* v2成功态：按钮翻牌不消失+码卡顶到文件区原位+输入框收起 */
+        bar.style.width="100%";txt.textContent="100%";
+        sub.textContent="";
+        btn.disabled=true;btn.textContent="上传完成";
+        prog.style.display="none";
+        var rc=document.createElement("div");
+        rc.style.cssText="text-align:center";
+        rc.innerHTML=
+          "<p style='font-size:17px;margin-bottom:10px'>\ud83d\udccc 请牢记提取码及删除码</p>"+
+          "<div class='file' style='margin:0 0 10px;text-align:left'><div class='fi'>\ud83d\udcc4</div><div class='fn'><b>"+escX(d.name)+"</b><span>"+d.sizeKB+" KB</span></div></div>"+
+          "<div style='background:rgba(217,165,33,.12);border:1px solid rgba(217,165,33,.4);border-radius:10px;padding:12px 14px;margin-bottom:10px'><span style='color:rgba(255,255,255,.6);font-size:15px'>提取码（请牢记）</span><br><b style='color:#E8BC4F;font-size:22px;letter-spacing:2px'>"+escX(d.dlPw)+"</b></div>"+
+          "<div style='background:rgba(176,58,46,.15);border:1px solid rgba(176,58,46,.5);border-radius:10px;padding:12px 14px;margin-bottom:8px'><span style='color:rgba(255,255,255,.6);font-size:15px'>删除码（请牢记）</span><br><b style='color:#E88;font-size:22px;letter-spacing:2px'>"+escX(d.delPw)+"</b></div>";
+        var fp2=document.getElementById("filePick");
+        if(fp2){f.replaceChild(rc,fp2);}else{f.appendChild(rc);}
+        var hideIns=f.querySelectorAll('input[type="text"]');
+        for(var hi=0;hi<hideIns.length;hi++){hideIns[hi].style.display="none";}
+      }else{
+        err.textContent=d.msg||"上传失败，请重试";
+        err.style.display="block";btn.disabled=false;btn.textContent="上 传";window.scrollTo(0,0);
+      }
     };
     xhr.onerror=function(){prog.style.display="none";err.textContent="网络异常——文件可能较大，请耐心重试";err.style.display="block";btn.disabled=false;btn.textContent="上 传";};
     xhr.send(fd);
@@ -368,10 +415,9 @@ button{width:100%;padding:15px;border:none;border-radius:10px;cursor:pointer;fon
           rows = show.map(f => { const fid = f.path ? f.path + "/" + f.name : f.name; return '<div class="file"><div class="fi">📄</div><div class="fn"><b>' + f.name.replace(/</g, "&lt;") + '</b><span>' + fmt(f.size) + (f.path ? " · " + f.path : "") + '</span></div><a href="/dl/' + encodeURIComponent(fid) + '?t=' + encodeURIComponent(t) + '">下载</a></div>'; }).join("");
         }
         return new Response(\`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${esc(T)}</title><style>\${pageCSS}</style></head><body><div class="box" style="width:min(94vw,560px)">
-<h1>📁 ${esc(T)}</h1><p>点击下载需要的文件</p>
+<h1>📁 ${esc(T)}</h1>
 \${rows}
-<div style="margin-top:14px"><a href="/" style="display:block;text-align:center;padding:11px;border-radius:11px;border:1px solid rgba(232,188,79,.5);color:#E8BC4F;text-decoration:none;font-size:14.5px">← 返回（输入其他码）</a></div>
-<div class="note">文件由网盘高速分发 · 本站只做门面</div>
+<div style="margin-top:14px"><a href="/" style="display:block;text-align:center;padding:11px;border-radius:11px;border:1px solid rgba(232,188,79,.5);color:#E8BC4F;text-decoration:none;font-size:14.5px">← 返回\${HOME_NAME}</a></div>
 </div></body></html>\`, { status: 200, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
       }
     }
@@ -522,6 +568,9 @@ var SHARE_RECIPE = {
 
   defaults: {
     siteTitle: "文件分享站",
+    homeHref: "/",
+    homeName: "欢乐工具站",
+    adminContact: "请联系管理员：手机/微信 13605449077",
     davFolder: "欢乐共享站",
     capacityTB: "10",
     ratePerHour: "15",
@@ -542,6 +591,9 @@ var SHARE_RECIPE = {
     {
       type: "plain", title: "② 站点参数", fields: [
         { key: "siteTitle", label: "站点标题（展示给下载者）", type: "text" },
+        { key: "homeName", label: "返回按钮文案（返回到哪里）", type: "text", attrs: 'placeholder="如：欢乐工具站"' },
+        { key: "homeHref", label: "返回按钮链接地址", type: "text", attrs: 'placeholder="如 / 或 https://xxx.com"' },
+        { key: "adminContact", label: "忘记码时联系谁（写进上传须知⑥）", type: "text", attrs: 'placeholder="如：请联系管理员 手机/微信 136xxxx"' },
         { key: "adminPw", label: "后台管理密码（至少6位，拼音词组+数字最稳）", type: "text", attrs: 'placeholder="如 huale-2026"' },
         {
           key: "capacityTB", label: "总容量上限", type: "radio", options: [
