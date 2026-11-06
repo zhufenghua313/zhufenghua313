@@ -27,7 +27,7 @@ body{font-family:-apple-system,"Microsoft YaHei",sans-serif;color:#1f2937}
 .item:last-child{border-bottom:none}
 .item:hover{background:#f8fafc}
 .item .ic{width:30px;font-size:19px;text-align:center;margin-right:10px}
-.item .nm{flex:1;font-size:14px;word-break:break-all}
+.item .nm{flex:1;min-width:0;font-size:14px;overflow-wrap:anywhere}
 .item .mt{color:#9ca3af;font-size:11.5px;margin-left:8px}
 .item .ops{display:flex;gap:6px}
 .mini{border:1px solid #d1d5db;background:#fff;border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer;font-family:inherit}
@@ -68,7 +68,15 @@ body:not(.logged) .top{display:none}
 .batchbar{display:none;background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:8px 12px;margin-bottom:10px;align-items:center;gap:8px;flex-wrap:wrap}
 .batchbar.show{display:flex}
 .batchbar b{color:#3730a3;font-size:13px}
-@media(max-width:600px){.item .mt{display:none}}
+@media(max-width:600px){
+.item .mt{display:none}
+/* v46：手机防竖排——按钮列瘦身，文件名列保命 */
+.item{padding:11px 10px}
+.item .ic{width:24px;font-size:17px;margin-right:6px}
+.item .nm{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .ops{flex-shrink:0;gap:4px}
+.mini{padding:4px 8px;font-size:11px;white-space:nowrap}
+}
 </style>
 </head>
 <body>
@@ -172,11 +180,11 @@ function loadDir(path){curPath=path;closeEditor();
   h+=selRow;
   if(path)h+='<div class="item" onclick="loadDir(\''+path.split('/').slice(0,-1).join('/')+'\')"><span class="ic">↩️</span><span class="nm" style="color:#6b7280">.. 返回上级</span></div>';
   items.forEach(it=>{const fp=(path?path+'/':'')+it.name;
-   if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><input type="checkbox" class="pick" data-pick="'+fp+'" onclick="event.stopPropagation();updateBatchBar()"><span class="ic">📁</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtTime(it.mtime)+'</span><span class="ops">'
+   if(it.type==='dir'){h+='<div class="item" onclick="loadDir(\''+fp+'\')"><input type="checkbox" class="pick" data-pick="'+fp+'" onclick="event.stopPropagation();updateBatchBar()"><span class="ic">📁</span><span class="nm" title="'+it.name+'">'+it.name+'</span><span class="mt">'+fmtTime(it.mtime)+'</span><span class="ops">'
     +'<button class="mini" onclick="event.stopPropagation();downloadDir(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();copyDirTo(\''+fp+'\')">复制</button>'+'<button class="mini" onclick="event.stopPropagation();moveDirTo(\''+fp+'\')">移动</button>'
     +'<button class="mini" onclick="event.stopPropagation();renameDirAsk(\''+fp+'\')">改名</button>'
     +'<button class="mini dz" onclick="event.stopPropagation();deleteDirAsk(\''+fp+'\')">删除</button></span></div>'}
-   else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><input type="checkbox" class="pick" data-pick="'+fp+'" data-b64="'+it.sha+'" data-type="file" onclick="event.stopPropagation();updateBatchBar()"><span class="ic">📄</span><span class="nm">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+' · '+fmtTime(it.mtime)+'</span><span class="ops">'
+   else{h+='<div class="item" onclick="openFile(\''+fp+'\')"><input type="checkbox" class="pick" data-pick="'+fp+'" data-b64="'+it.sha+'" data-type="file" onclick="event.stopPropagation();updateBatchBar()"><span class="ic">📄</span><span class="nm" title="'+it.name+'">'+it.name+'</span><span class="mt">'+fmtSize(it.size)+' · '+fmtTime(it.mtime)+'</span><span class="ops">'
     +'<button class="mini" onclick="event.stopPropagation();downloadFile(\''+fp+'\')">下载</button>'+'<button class="mini" onclick="event.stopPropagation();copyTo(\''+fp+'\')">复制</button>'+'<button class="mini" onclick="event.stopPropagation();moveTo(\''+fp+'\')">移动</button>'+'<button class="mini" onclick="event.stopPropagation();openFile(\''+fp+'\')">编辑</button>'
     +'<button class="mini" onclick="event.stopPropagation();renameAsk(\''+fp+'\',\''+it.sha+'\')">改名</button>'
     +'<button class="mini dz" onclick="event.stopPropagation();deleteAsk(\''+fp+'\',\''+it.sha+'\')">删除</button></span></div>'}});
