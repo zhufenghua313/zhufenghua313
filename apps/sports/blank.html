@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运动会管理系统 · M10 现场记录表</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314213D'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8BC4F'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--deep:#14213D;--gold:#D9A521;--goldL:#E8BC4F;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+  .wrap{max-width:900px;margin:0 auto;padding:22px 16px 70px;}
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);border-bottom:1px solid rgba(217,165,33,.25);}
+  .nav-in{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;}
+  .nav-title{color:var(--goldL);font-size:17px;font-weight:700;}
+  .btn-out{background:none;border:1px solid rgba(232,188,79,.4);color:var(--goldL);border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;font-family:inherit;}
+  .hero{background:linear-gradient(135deg,var(--deep),#2A4370);border-radius:14px;padding:22px 20px;color:#fff;margin-bottom:16px;box-shadow:0 6px 18px rgba(20,33,61,.25);}
+  .hero h1{font-size:22px;margin-bottom:6px;}
+  .hero p{color:#C9D4E8;font-size:13.5px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px;}
+  .card h2{font-size:15px;color:var(--deep);margin-bottom:10px;padding-left:10px;border-left:4px solid var(--gold);}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;}
+  .btn{background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--deep);border:none;border-radius:9px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}
+  .btn-ghost{background:#fff;color:var(--deep);border:1px solid var(--gold);border-radius:9px;padding:10px 18px;font-size:14px;cursor:pointer;font-family:inherit;}
+  .paper{background:#fff;width:794px;min-height:1123px;margin:0 auto 24px;padding:60px;box-shadow:0 3px 14px rgba(20,33,61,.14);border-radius:4px;position:relative;}
+  .pv-tag{position:absolute;top:12px;right:16px;font-size:12px;color:#98A2B3;}
+  .doc h2{font-family:"SimHei",sans-serif;font-size:20px;text-align:center;margin-bottom:14px;}
+  .blank-line{font-size:13px;color:var(--sub);margin-bottom:10px;}
+  table{width:100%;border-collapse:collapse;}
+  th,td{border:1px solid #333;padding:8px 6px;text-align:center;font-size:13px;}
+  th{background:#EFEBE0;font-family:"SimHei",sans-serif;font-weight:600;}
+  .wide-t td{height:38px;}
+  .foot-note{font-size:12px;color:var(--sub);margin-top:12px;line-height:1.8;border-top:1px dashed #CCC;padding-top:8px;}
+  .empty{text-align:center;color:var(--sub);padding:30px 0;font-size:14px;}
+  #count{font-size:13px;color:var(--sub);margin-top:8px;}
+  footer{text-align:center;color:var(--sub);font-size:12px;line-height:1.8;padding:10px 0;}
+  @media print{.pv-tag{display:none}nav,.hero,.card,footer{display:none}.paper{box-shadow:none;margin:0;page-break-after:always;width:100%;min-height:0;padding:0 8mm}.paper:last-child{page-break-after:auto}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <div class="nav-title">🏃 现场记录表</div>
+  <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
+</div></nav>
+
+<div class="wrap">
+  <section class="hero">
+    <h1>现场记录表</h1>
+    <p>裁判员纸质底稿 · 按赛程自动生成 · 打印后带到比赛现场（需求第9条）</p>
+  </section>
+
+  <div class="card">
+    <h2>🖨 打印全套</h2>
+    <div class="toolbar">
+      <button class="btn" type="button" id="btnPrint">🖨 打印 / 存 PDF</button>
+    </div>
+    <div id="count"></div>
+  </div>
+
+  <div id="papers"><div class="empty">加载中…</div></div>
+
+  <footer>运动会管理系统 · M10 现场记录表 ｜ 手搓 v1 ｜ 按赛程自动生成<br>径赛计时表 / 跳高试跳表（三次规则）/ 铅球远度表 / 接力记录表</footer>
+</div>
+
+<script>
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+var DATA={days:[],numbers:{}};
+var CN=["","一","二","三","四","五","六"];
+var GRADE_MAP={"一":1,"二":2,"三":3,"四":4,"五":5,"六":6};
+function gradeOf(cn){for(var ch of String(cn)){if(GRADE_MAP[ch])return GRADE_MAP[ch];}return 0;}
+
+/* 场次名解析（同 M7） */
+function parseEv(eventName){
+  var m=String(eventName).match(/([一二三四五六])年级(男子|女子)?(.+?)(预决赛|决赛)?$/);
+  return m?{grade:m[1],gender:m[2]==="男子"?"男":"女",ev:m[3]}:null;
+}
+/* 反查该场运动员 */
+function matchAthletes(eventName){
+  var p=parseEv(eventName);
+  var out=[];
+  if(!p)return out;
+  var isRelay=p.ev.indexOf("接力")>=0;
+  var classes=Object.values(DATA.numbers||{});
+  if(isRelay){
+    classes.forEach(function(c){
+      if(CN[gradeOf(c.className)]!==p.grade)return;
+      var has=(c.students||[]).some(function(s){return (s.events||[]).some(function(e){return String(e).indexOf("接力")>=0;});});
+      if(has)out.push({no:"",name:c.className+" 接力队",className:c.className});
+    });
+    return out;
+  }
+  classes.forEach(function(c){
+    var g=gradeOf(c.className);
+    (c.students||[]).forEach(function(s){
+      if(p.gender&&s.gender!==p.gender)return;
+      if(CN[g]!==p.grade)return;
+      if((s.events||[]).map(String).indexOf(p.ev)>=0)out.push({no:s.no,name:s.name,className:c.className});
+    });
+  });
+  return out;
+}
+
+/* 径赛/铅球计时表 */
+function trackPaper(ev,ath,resLabel){
+  var h='<div class="paper"><div class="pv-tag">A4 · 现场记录</div><div class="doc">'
+    +'<h2>'+esc(ev)+' · 成绩记录表</h2>'
+    +'<div class="blank-line">比赛日期：＿＿＿＿＿＿　发令：＿＿＿＿＿＿　计时：＿＿＿＿＿＿　记录：＿＿＿＿＿＿</div>'
+    +'<table class="wide-t"><tr><th>道次</th><th>号码</th><th>姓名</th><th>班级</th><th>'+resLabel+'</th><th>名次</th><th>备注</th></tr>';
+  ath.forEach(function(a,i){
+    h+='<tr><td>'+(i+1)+'</td><td>'+esc(a.no)+'</td><td>'+esc(a.name)+'</td><td>'+esc(a.className)+'</td><td></td><td></td><td></td></tr>';
+  });
+  h+='</table><div class="foot-note">计时长核签字：＿＿＿＿＿＿　裁判长签字：＿＿＿＿＿＿　（破纪录须注明并即时报主席台）</div></div></div>';
+  return h;
+}
+/* 跳高试跳表（三次规则） */
+function fieldPaper(ev,ath){
+  var h='<div class="paper"><div class="pv-tag">A4 · 田赛记录</div><div class="doc">'
+    +'<h2>'+esc(ev)+' · 试跳记录表</h2>'
+    +'<div class="blank-line">比赛日期：＿＿＿＿＿＿　裁判长：＿＿＿＿＿＿</div>'
+    +'<table class="wide-t"><tr><th>号码</th><th>姓名</th><th>班级</th><th>高度1</th><th>高度2</th><th>高度3</th><th>最终成绩</th><th>名次</th></tr>';
+  ath.forEach(function(a){
+    h+='<tr><td>'+esc(a.no)+'</td><td>'+esc(a.name)+'</td><td>'+esc(a.className)+'</td><td></td><td></td><td></td><td></td><td></td></tr>';
+  });
+  h+='</table><div class="foot-note">试跳规则：每一高度全员轮流试跳一次，每人每个高度最多试跳三次；三次不过，以最后通过高度为最终成绩。</div></div></div>';
+  return h;
+}
+
+function paperFor(ev){
+  var ath=matchAthletes(ev);
+  if(!ath.length)ath=[{no:"—",name:"（现场填号）",className:""}];
+  if(ev.indexOf("跳高")>=0)return fieldPaper(ev,ath);
+  if(ev.indexOf("接力")>=0)return trackPaper(ev,ath,"总成绩");
+  if(ev.indexOf("铅球")>=0)return trackPaper(ev,ath,"成绩（米）");
+  return trackPaper(ev,ath,"成绩（秒）");
+}
+
+function buildPapers(){
+  var box=el("papers");
+  var html="";
+  (DATA.days||[]).forEach(function(day){
+    (day.items||[]).forEach(function(it){
+      html+=paperFor(it.name);
+    });
+  });
+  box.innerHTML=html||'<div class="empty">没有赛程数据——先在 M6 生成</div>';
+  el("count").textContent=box.querySelectorAll(".paper").length+" 张 A4 记录表已就绪（径赛计时表 / 田赛试跳表 / 接力表）";
+}
+
+el("btnOut").addEventListener("click",function(){
+  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace(location.pathname)})
+  .catch(function(){location.replace(location.pathname)});
+});
+el("btnPrint").addEventListener("click",function(){window.print();});
+
+Promise.all([
+  fetch("/soft/api/schedule").then(function(r){return r.json()}),
+  fetch("/soft/api/numbers").then(function(r){return r.json()})
+]).then(function(rs){
+  DATA.days=(rs[0].schedule||{}).days||[];
+  DATA.numbers=rs[1].numbers||{};
+  buildPapers();
+}).catch(function(){el("papers").innerHTML='<div class="empty">网络异常，请刷新重试</div>';});
+</script>
+</body>
+</html>

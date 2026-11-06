@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运动会管理系统 · M4 号码总览</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314213D'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8BC4F'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--deep:#14213D;--deep2:#1B2A4A;--deep3:#2A4370;--gold:#D9A521;--goldL:#E8BC4F;--goldbg:#FBF6E9;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+  .wrap{max-width:860px;margin:0 auto;padding:22px 16px 70px;}
+  nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25);}
+  .nav-in{max-width:860px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:16px;font-weight:600;}
+  .lamp{width:10px;height:10px;border-radius:50%;background:var(--goldL);box-shadow:0 0 8px var(--goldL);animation:br 2s infinite;}
+  @keyframes br{50%{opacity:.35;}}
+  .btn-out{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;padding:6px 12px;cursor:pointer;font-family:inherit;}
+  .hero{background:linear-gradient(120deg,var(--deep),var(--deep2));color:#fff;border-radius:14px;padding:26px 24px;margin-bottom:16px;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(217,165,33,.14);}
+  .hero h1{font-size:22px;position:relative;z-index:1;}
+  .hero p{font-size:13.5px;opacity:.82;margin-top:6px;position:relative;z-index:1;}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;position:relative;z-index:1;}
+  .meta span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);padding:5px 14px;border-radius:999px;font-size:13px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 3px 14px rgba(20,33,61,.05);}
+  .card h2{font-size:16px;color:var(--deep);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+  .card h2::before{content:"";width:4px;height:16px;background:var(--gold);border-radius:2px;}
+  .card .desc{font-size:13px;color:var(--sub);margin-bottom:14px;line-height:1.7;}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#14213D;border:none;border-radius:10px;padding:11px 20px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;}
+  .btn-gold:disabled{opacity:.5;cursor:not-allowed;}
+  .msg{font-size:13.5px;margin-top:12px;min-height:20px;}
+  .msg.ok{color:var(--ok);} .msg.err{color:var(--err);}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:var(--goldbg);color:#6B5B1E;font-size:13px;padding:9px 10px;text-align:left;border-bottom:2px solid var(--gold);}
+  td{padding:9px 10px;border-bottom:1px solid var(--line);}
+  tr:hover td{background:#FAFBFD;}
+  .no{font-family:Consolas,"Courier New",monospace;font-weight:700;color:var(--deep);}
+  .gender-M{color:#2563EB;font-weight:600;} .gender-F{color:#D6336C;font-weight:600;}
+  .evtags{font-size:12px;color:var(--sub);}
+  .empty{text-align:center;color:var(--sub);padding:26px 0;font-size:14px;}
+  footer{text-align:center;font-size:12.5px;color:var(--sub);margin-top:8px;line-height:1.8;}
+  @media(max-width:600px){ .card{padding:14px;} th,td{padding:7px 6px;font-size:13px;} }
+</style>
+</head>
+<body>
+
+<nav><div class="nav-in">
+  <div class="brand"><span class="lamp"></span>号码总览</div>
+  <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
+    <a href="/soft/sports/home.html" class="btn-out" style="text-decoration:none;display:inline-block;">🏠 工作台</a>
+    <a href="/soft/sports/accounts.html" style="background:linear-gradient(135deg,#D9A521,#E8BC4F);color:#14213D;border:none;border-radius:9px;font-size:13px;padding:6px 12px;text-decoration:none;display:inline-block;font-weight:600;flex-shrink:0;">👥 账号</a>
+    <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>🏃 运动员号码</h1>
+    <p>报名完成后由管理员一键生成——001 起连排，按年级班序（需求第4条）</p>
+    <div class="meta" id="metaBox"><span>⏳ 加载中…</span></div>
+  </div>
+
+  <div class="card" id="genCard" style="display:none">
+    <h2>⚙️ 生成号码</h2>
+    <p class="desc">读取全部班级报名 → 按年级班序连排编号。重复生成会按最新报名重排（重排后旧号码作废，请以最新为准）。</p>
+    <button class="btn-gold" type="button" id="btnGen">🎲 一键生成号码</button>
+    <div class="msg" id="genMsg"></div>
+  </div>
+
+  <div class="card">
+    <h2>📋 号码总表</h2>
+    <p class="desc" id="listDesc">按班级查看运动员号码（班主任可见本班）</p>
+    <div id="tableBox"><div class="empty">尚未生成——管理员登录后点上方按钮</div></div>
+  </div>
+
+  <footer>运动会管理系统 · M4 号码生成 ｜ 规则：001 起连排·年级班序·三位数<br>手搓 v1（本模块展示性强，暂不走积木——待样式稳定后并入 A4 导出体系）</footer>
+</div>
+
+<script>
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+var META=null,IS_ADMIN=false;
+
+function renderMeta(m){
+  var box=el("metaBox");
+  if(m&&m.total){
+    box.innerHTML="<span>🏃 共 <b>"+m.total+"</b> 名</span><span>🏫 "+m.classes+" 个班</span><span>🔢 001–"+String(m.total).padStart(3,"0")+"</span><span>🕐 "+new Date(m.generatedAt).toLocaleString("zh-CN")+"</span>";
+  }else{box.innerHTML="<span>尚未生成</span>";}
+}
+function renderTables(numbers){
+  var box=el("tableBox");
+  var users=Object.keys(numbers||{}).sort();
+  if(!users.length){box.innerHTML='<div class="empty">尚未生成——管理员登录后点上方按钮</div>';return;}
+  var html="";
+  users.forEach(function(u){
+    var c=numbers[u];
+    html+="<table style='margin-bottom:18px'><tr><th colspan='4' style='font-size:14px'>🏫 "+esc(c.className)+"</th></tr>"+
+      "<tr><th>号码</th><th>姓名</th><th>性别</th><th>项目</th></tr>";
+    c.students.forEach(function(s){
+      html+="<tr><td class='no'>"+esc(s.no)+"</td><td><b>"+esc(s.name)+"</b></td>"+
+        "<td class='"+(s.gender==="男"?"gender-M":"gender-F")+"'>"+esc(s.gender)+"</td>"+
+        "<td class='evtags'>"+esc((s.events||[]).join(" · "))+"</td></tr>";
+    });
+    html+="</table>";
+  });
+  box.innerHTML=html;
+}
+
+/* 数据加载（meta+表+身份） */
+fetch("/soft/api/numbers").then(function(r){return r.json()}).then(function(d){
+  if(!d.ok){el("metaBox").innerHTML="<span>"+esc(d.msg||"加载失败")+"</span>";return;}
+  META=d.meta;IS_ADMIN=!d.me; /* 管理员响应没有 me 字段 */
+  renderMeta(d.meta);renderTables(d.numbers);
+  if(IS_ADMIN)el("genCard").style.display="block";
+}).catch(function(){el("metaBox").innerHTML="<span>网络异常，请刷新重试</span>";});
+
+/* 生成（管理员） */
+el("btnGen").addEventListener("click",function(){
+  var btn=this,msg=el("genMsg");
+  if(!confirm("确定生成号码？将按当前报名数据重排（已有号码会被覆盖）。"))return;
+  btn.disabled=true;btn.textContent="生成中…";msg.textContent="";
+  fetch("/soft/api/numbers-gen",{method:"POST"})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      msg.className="msg "+(d.ok?"ok":"err");msg.textContent=d.msg||"";
+      if(d.ok)fetch("/soft/api/numbers").then(function(r){return r.json()}).then(function(d2){
+        renderMeta(d2.meta);renderTables(d2.numbers);
+      });
+      btn.disabled=false;btn.textContent="🎲 一键生成号码";
+    })
+    .catch(function(){msg.className="msg err";msg.textContent="网络异常，稍后再试";btn.disabled=false;btn.textContent="🎲 一键生成号码";});
+});
+
+el("btnOut").addEventListener("click",function(){
+  fetch("/soft/__auth/logout",{method:"POST"}).then(function(){location.replace(location.pathname)})
+  .catch(function(){location.replace(location.pathname)});
+});
+</script>
+</body>
+</html>
