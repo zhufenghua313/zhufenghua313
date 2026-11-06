@@ -296,9 +296,9 @@ function editCodes(fid){
   var cDl,cDel;
   DATA.codes.forEach(function(x){var cf=x.file||"";if(cf!==fid)return;if(x.kind==="del")cDel=x;else cDl=x;});
   var cur=cDl?cDl.pw:"";
-  var newDl=prompt("新提取码（4-30位，留空=取消不设/清除）：",cur);
+  var newDl=prompt("新提取码（直接改就是换码；留空或点取消=保持现状）：",cur);
   if(newDl===null)return;
-  var newDel=prompt("新删除码（4-30位，留空=取消不设/清除）：",cDel?cDel.pw:"");
+  var newDel=prompt("新删除码（直接改就是换码；留空或点取消=保持现状）：",cDel?cDel.pw:"");
   if(newDel===null)return;
   var m=el("addMsg");
   var steps=[];
