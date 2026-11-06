@@ -100,8 +100,12 @@
 
   <div class="card">
     <h2>➕ 新设提取码</h2>
-    <p class="desc">选文件 → 设码 → 把「tv.efcc.cc/share + 提取码」发给同事。</p>
+    <p class="desc">提取码=下载用（发给要文件的人）；删除码=看完即毁（发给负责删的人，输码确认后文件+两码全清）。总码只能设提取码。</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <select id="newKind" style="flex:0.9;min-width:100px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;">
+        <option value="dl">📥 提取码</option>
+        <option value="del">🗑 删除码</option>
+      </select>
       <select id="newFile" style="flex:1.2;min-width:160px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;"></select>
       <input id="newPw" placeholder="提取码（4-30位）" style="flex:1;min-width:130px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;">
       <select id="newHours" style="flex:0.8;min-width:110px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;">
@@ -175,11 +179,12 @@ function renderTable(){
   var files=DATA.files||[],codes=DATA.codes||[];
   if(!files.length){el("fileTable").innerHTML='<p style="color:var(--sub);font-size:13.5px;padding:8px 0">共享文件夹里还没有文件——上方上传，或手机 123 盘 App 把文件移进「欢乐共享站」文件夹。</p>';}
   else{
-    var h='<table><tr><th>文件</th><th style="width:64px">大小</th><th style="width:150px">提取码</th><th style="width:76px">操作</th></tr>';
+    var h='<table><tr><th>文件</th><th style="width:56px">大小</th><th style="width:118px">提取码</th><th style="width:118px">删除码</th><th style="width:56px">操作</th></tr>';
     files.forEach(function(f){
-      var c=codes.filter(function(x){return x.file===f.name})[0];
-      var expTag=c&&c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:11px">（'+c.expText+'）</span>':"";
-      h+='<tr><td style="word-break:break-all">'+esc(f.name)+'</td><td style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td>'+(c?'<span class="pw-chip" onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+expTag:'<span style="color:#bbb">未设</span>')+'</td><td style="white-space:nowrap"><button type="button" class="btn-line" onclick="renFile(\''+f.name.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+f.name.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
+      var cDl=codes.filter(function(x){return x.file===f.name&&x.kind!=="del"})[0];
+      var cDel=codes.filter(function(x){return x.file===f.name&&x.kind==="del"})[0];
+      function chip(c,red){if(!c)return '<span style="color:#bbb">未设</span>';var t=c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:10.5px">（'+c.expText+'）</span>':"";return '<span class="pw-chip"'+(red?' style="border-color:rgba(176,58,46,.5);color:#B03A2E;background:#FDF0EE"':"")+' onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+t}
+      h+='<tr><td style="word-break:break-all">'+esc(f.name)+'</td><td style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td>'+chip(cDl,false)+'</td><td>'+chip(cDel,true)+'</td><td style="white-space:nowrap"><button type="button" class="btn-line" onclick="renFile(\''+f.name.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+f.name.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
     });
     h+='</table>';
     var star=codes.filter(function(x){return x.file==="*"})[0];
@@ -201,7 +206,7 @@ el("btnAdd").addEventListener("click",function(){
   var m=el("addMsg"),pw=el("newPw").value.trim(),file=el("newFile").value,hours=el("newHours").value;
   if(!pw||pw.length<4){m.className="msg err";m.textContent="提取码至少4位";return;}
   if(!file){m.className="msg err";m.textContent="先选文件";return;}
-  var fd=new FormData();fd.append("pw",pw);fd.append("file",file);fd.append("hours",hours);
+  var fd=new FormData();fd.append("pw",pw);fd.append("file",file);fd.append("hours",hours);fd.append("kind",el("newKind").value);
   adminFetch("/share/__admin/code-save",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
     if(authFail(d))return;
     m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
