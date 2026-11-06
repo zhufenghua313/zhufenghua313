@@ -256,13 +256,18 @@ el("upForm").addEventListener("submit",function(e){
   xhr.upload.onprogress=function(ev){
     if(!ev.lengthComputable)return;
     prog.style.display="block";
-    var pct=Math.min(100,Math.round(ev.loaded/ev.total*100));
+    /* v4.36：封顶90%（剩10%=服务器写入网盘阶段，浏览器量不到） */
+    var pct=Math.min(90,Math.round(ev.loaded/ev.total*90));
     bar.style.width=pct+"%";txt.textContent=pct+"%";
     if(Date.now()-lastT>400){
       var spd=(ev.loaded-lastL)/((Date.now()-lastT)/1000);
-      sub.textContent=(ev.loaded/1048576).toFixed(1)+" / "+(ev.total/1048576).toFixed(1)+" MB · "+(spd>1048576?(spd/1048576).toFixed(1)+" MB/s":Math.round(spd/1024)+" KB/s");
+      sub.textContent=(ev.loaded/1048576).toFixed(1)+" / "+(ev.total/1048576).toFixed(1)+" MB · "+(spd>1048576?(spd/1048576).toFixed(1)+" MB/s":(spd>10240?Math.round(spd/1024)+" KB/s":""));
       lastL=ev.loaded;lastT=Date.now();
     }
+  };
+  xhr.upload.onload=function(){
+    bar.style.width="95%";txt.textContent="95%";
+    sub.textContent="已送达服务器，正在保存到网盘…";
   };
   var finish=function(d){
     prog.style.display="none";
