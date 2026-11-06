@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>欢乐工具站 · 后台管理</title>
 <style>
-  :root{--deep:#14213D;--deep2:#1B2A4A;--gold:#D9A521;--goldL:#E8BC4F;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
+  :root{--deep:#14213D;--deep2:#1B2A4A;--gold:#D9A521;--goldL:#E8BC4F;--goldbg:#FBF6E9;--bg:#F4F6FA;--card:#fff;--line:#DFE4EC;--ink:#1A2233;--sub:#5B6577;--err:#B03A2E;--ok:#2E7D4F;}
+  .mini-btn{background:#fff;border:1px solid #E3B04B;color:#A87D14;border-radius:7px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:inherit;}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
   .wrap{max-width:760px;margin:0 auto;padding:22px 16px 60px;}
@@ -70,6 +71,19 @@
   </div>
 
   <div class="card">
+    <h2>📁 文件共享码（tv.efcc.cc/share）</h2>
+    <p class="desc">往 123 盘「欢乐共享站」文件夹里放文件（手机 App 或电脑端都行），这里就会出现。每个文件配一个提取码——把 <b>tv.efcc.cc/share + 提取码</b> 发给同事，对方输码即可下载（免登录、可多人同时、永不过期）。</p>
+    <div id="shareFiles"><p style="color:var(--sub);font-size:13.5px;padding:8px 0">加载中…</p></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center;">
+      <input id="newCodePw" placeholder="新提取码（4-30位）" style="flex:1;min-width:140px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;">
+      <select id="newCodeFile" style="flex:1.2;min-width:160px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;"></select>
+      <button class="btn-gold" type="button" onclick="addShareCode()">➕ 设码</button>
+    </div>
+    <div class="msg" id="shareMsg"></div>
+    <div class="hint">共享地址永远是 <b>tv.efcc.cc/share</b>（发这一个就够了）；某文件的码泄露/过期 → 在下面列表点「删码」重设即可；总码（文件选「* 全部」）= 能看到所有文件，慎发。</div>
+  </div>
+
+  <div class="card">
     <h2>📝 站点介绍（/about 页面内容）</h2>
     <p class="desc">本站的介绍文字：特色功能、速度优势、欢迎语等。段落之间空一行；保存后 /about 页面立即生效。</p>
     <textarea id="aboutText" rows="8" placeholder="一个域名，直达所有自建工具。&#10;&#10;（段落之间空一行）" style="width:100%;padding:11px 13px;font-size:14px;font-family:inherit;border:1px solid var(--line);border-radius:10px;resize:vertical;box-sizing:border-box;line-height:1.8;"></textarea>
@@ -123,6 +137,59 @@ fetch("/soft/__admin/get-config").then(function(r){return r.json()}).then(functi
   else { addRow("欢乐影视","https://efcc.cc"); addRow("欢乐直播","https://efcc.cc/live/"); addRow("欢乐搜索","https://afcc.cc"); }
   if(d.about) el("aboutText").value = d.about;
 }).catch(function(){ addRow("欢乐影视","https://efcc.cc"); addRow("欢乐直播","https://efcc.cc/live/"); addRow("欢乐搜索","https://afcc.cc"); });
+/* ===== v4.28e 文件共享码管理 ===== */
+var SHARE_DATA = { files: [], codes: [] };
+function fmtSize(n){ return n >= 1048576 ? (n/1048576).toFixed(1)+" MB" : Math.max(1,Math.round(n/1024))+" KB"; }
+function loadShare(){
+  fetch("/soft/__admin/share-files").then(function(r){return r.json()}).then(function(d){
+    if(!d.ok){ el("shareFiles").innerHTML='<p style="color:var(--err);font-size:13.5px">'+(d.msg||"加载失败")+'</p>'; return; }
+    SHARE_DATA = d;
+    renderShare();
+  }).catch(function(){ el("shareFiles").innerHTML='<p style="color:var(--err);font-size:13.5px">网络异常</p>'; });
+}
+function renderShare(){
+  var files = SHARE_DATA.files || [], codes = SHARE_DATA.codes || [];
+  var h = "";
+  if(!files.length){
+    h = '<p style="color:var(--sub);font-size:13.5px;padding:8px 0">123 盘「欢乐共享站」文件夹里还没有文件——手机 123 盘 App 里把要分享的文件移进去，刷新本页即见。</p>';
+  } else {
+    h = '<table style="width:100%;border-collapse:collapse;font-size:13.5px"><tr style="background:var(--bg)"><th style="padding:8px;text-align:left">文件</th><th style="padding:8px">大小</th><th style="padding:8px;text-align:left">提取码</th><th style="padding:8px">操作</th></tr>';
+    files.forEach(function(f){
+      var c = codes.filter(function(x){return x.file===f.name})[0];
+      h += '<tr style="border-bottom:1px solid var(--line)"><td style="padding:8px;word-break:break-all">'+f.name.replace(/</g,"&lt;")+'</td><td style="padding:8px;color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td style="padding:8px"><b style="color:#A87D14">'+(c?c.pw:"<span style='color:#bbb'>未设</span>")+'</b></td><td style="padding:8px">'+(c?'<button type="button" class="mini-btn" onclick="delShareCode(\''+c.pw+'\')">删码</button>':'')+'</td></tr>';
+    });
+    h += '</table>';
+  }
+  /* 总码行 */
+  var star = codes.filter(function(x){return x.file==="*"})[0];
+  h += '<div style="margin-top:10px;padding:10px 12px;background:var(--goldbg);border-radius:9px;font-size:13px">🔑 总码：'+(star?("<b>"+star.pw+"</b>（可见全部文件）"):("未设——文件选「* 全部」并设码即成总码"))+'</div>';
+  el("shareFiles").innerHTML = h;
+  /* 下拉框 */
+  var opts = '<option value="">— 选文件 —</option>';
+  files.forEach(function(f){ opts += '<option value="'+f.name.replace(/"/g,"&quot;")+'">'+f.name+'（'+fmtSize(f.size)+'）</option>'; });
+  opts += '<option value="*">* 全部文件（总码）</option>';
+  el("newCodeFile").innerHTML = opts;
+}
+function addShareCode(){
+  var m=el("shareMsg"), pw=el("newCodePw").value.trim(), file=el("newCodeFile").value;
+  if(!pw||pw.length<4){ m.className="msg err"; m.textContent="提取码至少4位"; return; }
+  if(!file){ m.className="msg err"; m.textContent="先选要对应的文件"; return; }
+  var fd=new FormData(); fd.append("pw",pw); fd.append("file",file);
+  fetch("/soft/__admin/share-code-save",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    m.className="msg "+(d.ok?"ok":"err"); m.textContent=d.msg||"";
+    if(d.ok){ el("newCodePw").value=""; loadShare(); }
+  }).catch(function(){ m.className="msg err"; m.textContent="网络异常"; });
+}
+function delShareCode(pw){
+  if(!confirm("确定删除提取码「"+pw+"」？已拿到链接的人再输这个码就进不来了。"))return;
+  var fd=new FormData(); fd.append("pw",pw);
+  fetch("/soft/__admin/share-code-del",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    var m=el("shareMsg"); m.className="msg "+(d.ok?"ok":"err"); m.textContent=d.msg||"";
+    if(d.ok) loadShare();
+  }).catch(function(){ var m=el("shareMsg"); m.className="msg err"; m.textContent="网络异常"; });
+}
+loadShare();
+
 function saveAbout(){
   var m=el("aboutMsg");
   var txt=el("aboutText").value;
