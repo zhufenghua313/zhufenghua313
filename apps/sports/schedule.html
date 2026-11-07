@@ -46,15 +46,27 @@
   .empty{text-align:center;color:var(--sub);padding:30px 0;font-size:14px;}
   @media print{nav,.toolbar,.btn-out{display:none!important}.day{box-shadow:none;page-break-inside:avoid}}
 </style>
+<style>
+  header.top{background:linear-gradient(120deg,#14213D,#1B2A4A);color:#fff;border-radius:16px;padding:24px 26px;margin:16px 0;position:relative;overflow:hidden;}
+  header.top h1{font-size:21px;margin:0 0 6px;}
+  header.top p{color:#C9D4E8;font-size:13.5px;margin:0;line-height:1.7;}
+  header.top::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(217,165,33,.08);}
+  </style>
 </head>
 <body>
 <nav><div class="nav-in">
-  <div class="brand"><span class="lamp"></span><div><b style="display:block;font-size:17px;line-height:1.2">运动会</b><span style="display:block;font-size:12px;opacity:.75;line-height:1.2">赛程管理</span></div></div>
+  <div class="brand"><span class="lamp"></span><div><b style="display:block;font-size:17px;line-height:1.2">运动会</b><span style="display:block;font-size:12px;opacity:.75;line-height:1.2">管理系统</span></div></div>
   <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
     <a href="/apps/sports/home.html" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.92);border:1.5px solid rgba(255,255,255,.5);border-radius:9px;font-size:14px;padding:7px 14px;text-decoration:none;display:inline-block;font-weight:600;">🏠 工作台</a>
     <button type="button" id="btnOut" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.92);border:1.5px solid rgba(255,255,255,.5);border-radius:9px;font-size:14px;padding:7px 14px;cursor:pointer;font-family:inherit;font-weight:600;">🚪 退出登录</button>
   </div>
 </div></nav>
+
+<header class="top" style="max-width:860px;margin:16px auto;">
+    <h1>赛程管理</h1>
+    <p>按传统自动生成竞赛日程，支持上下移微调与加比赛日</p>
+  </header>
+
 
 <div class="hero">
   <h1>竞赛<em>日程</em></h1>
