@@ -92,58 +92,10 @@
   </section>
 
   <div class="card">
-    <h2>⬆️ 上传文件到共享文件夹</h2>
-    <p class="desc">直接传到 123 盘「欢乐共享站」文件夹（网页限 25MB；大文件用 123 盘 App 传好移进来，效果一样）。文件默认保存 <b id="defDaysTxt">60</b> 天，到期自动删除（两个码一并清掉）——需长期保留的，在下方文件列表里点 📅 改有效期。</p>
-    <form id="upForm">
-      <label>选择文件</label>
-      <input type="file" id="upFile" required>
-      <label>共享名（留空 = 用原文件名）</label>
-      <input type="text" id="upName" placeholder="例如：培训课件.pdf" maxlength="80">
-      <label>提取码（4-30位 · 留空 = 暂不设）</label>
-      <input type="text" id="upDlPw" placeholder="下载用，例如：jiaoshi-2026" maxlength="30">
-      <label>删除码（4-30位 · 留空 = 暂不设）</label>
-      <input type="text" id="upDelPw" placeholder="看完即毁用，需与提取码不同" maxlength="30">
-      <button class="btn-gold" type="submit" style="margin-top:10px">⬆️ 上传</button>
-      <div id="upProg" style="display:none;margin-top:12px">
-        <div style="background:var(--bg);border-radius:99px;height:16px;overflow:hidden;position:relative;border:1px solid var(--line)">
-          <div id="upProgBar" style="width:0%;height:100%;background:linear-gradient(90deg,#D9A521,#E8BC4F);transition:width .2s"></div>
-          <span id="upProgTxt" style="position:absolute;inset:0;text-align:center;font-size:11px;line-height:16px;color:#14213D;font-weight:700">0%</span>
-        </div>
-        <div id="upProgSub" style="text-align:center;font-size:12px;color:var(--sub);margin-top:5px"></div>
-      </div>
-      <div class="msg" id="upMsg"></div>
-    </form>
-  </div>
-
-  <div class="card">
     <h2>📋 文件与提取码</h2>
     <p class="desc">点提取码可直接复制；文件行的 ✎ 改名 / 🗑 删除直接操作 123 盘（改名后提取码自动跟着走，删除进 123 回收站可找回）。<br>⏳ 新上传文件默认保存 <b id="defDays" style="color:var(--goldL)">60</b> 天 <button type="button" class="btn-line" onclick="setDefExp()" style="padding:3px 10px;font-size:12px">📅 改默认</button> <span style="font-size:12px;color:var(--sub)">（只影响以后上传的文件；已有文件按各自有效期走）</span></p>
     <div id="fileTable"><p style="color:var(--sub);font-size:13.5px;padding:8px 0">加载中…</p></div>
-    <button class="btn-line" type="button" onclick="loadFiles()" style="margin-top:8px">🔄 刷新列表</button>
-  </div>
-
-  <div class="card">
-    <h2>➕ 新设提取码</h2>
-    <p class="desc" style="font-size:15px">提取码=下载用（发给要文件的人）；删除码=看完即毁（发给负责删的人，输码确认后文件+两码全清）。总码只能设提取码。</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-      <select id="newKind" style="flex:0.9;min-width:100px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;">
-        <option value="dl">📥 提取码</option>
-        <option value="del">🗑 删除码</option>
-      </select>
-      <select id="newFile" style="flex:1.2;min-width:160px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;"></select>
-      <input id="newPw" placeholder="提取码（4-30位）" style="flex:1;min-width:130px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;">
-      <select id="newHours" style="flex:0.8;min-width:110px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;">
-        <option value="0">永久有效</option>
-        <option value="2">2小时</option>
-        <option value="8">8小时</option>
-        <option value="24">1天</option>
-        <option value="72">3天</option>
-        <option value="168">7天</option>
-        <option value="720">30天</option>
-      </select>
-      <button class="btn-gold" type="button" id="btnAdd">➕ 设码</button>
-    </div>
-    <div class="msg" id="addMsg"></div>
+    <button type="button" class="btn-line" onclick="location.reload()" style="margin-top:8px">🔄 刷新</button>
   </div>
 
   <footer>文件共享站 · 文件列表页 v1 ｜ 文件住 123 网盘 · Worker 只做门面<br>提取码泄露 → 删码重设即可，链接永远不变</footer>
@@ -327,79 +279,7 @@ function loadFiles(){
     if(d.swept>0){toast("🧹 已自动清理 "+d.swept+" 个过期文件（文件+两码）");}
   }).catch(function(){el("fileTable").innerHTML='<p style="color:var(--err)">网络异常</p>'});
 }
-el("btnAdd").addEventListener("click",function(){
-  var m=el("addMsg"),pw=el("newPw").value.trim(),file=el("newFile").value,hours=el("newHours").value;
-  if(!pw||pw.length<4){m.className="msg err";m.textContent="提取码至少4位";return;}
-  if(!file){m.className="msg err";m.textContent="先选文件";return;}
-  var fd=new FormData();fd.append("pw",pw);fd.append("file",file);fd.append("hours",hours);fd.append("kind",el("newKind").value);
-  adminFetch("/share/__admin/code-save",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
-    if(authFail(d))return;
-    m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
-    if(d.ok){el("newPw").value="";loadFiles();}
-  }).catch(function(){m.className="msg err";m.textContent="网络异常"});
-});
-/* v4.29 上传 */
-el("upForm").addEventListener("submit",function(e){
-  e.preventDefault();
-  var m=el("upMsg"),f=el("upFile").files[0];
-  if(!f){m.className="msg err";m.textContent="先选文件";return;}
-  var dlPw=el("upDlPw").value.trim(),delPw=el("upDelPw").value.trim();
-  if(dlPw&&(dlPw.length<4||dlPw.length>30)){m.className="msg err";m.textContent="提取码须为4-30位";return;}
-  if(delPw&&(delPw.length<4||delPw.length>30)){m.className="msg err";m.textContent="删除码须为4-30位";return;}
-  if(dlPw&&delPw&&dlPw===delPw){m.className="msg err";m.textContent="提取码和删除码不能相同";return;}
-  m.className="msg";m.textContent="";
-  var fd=new FormData();fd.append("file",f);
-  var nm=el("upName").value.trim();if(nm)fd.append("name",nm);
-  var prog=el("upProg"),bar=el("upProgBar"),txt=el("upProgTxt"),sub=el("upProgSub");
-  var lastL=0,lastT=0;
-  var xhr=new XMLHttpRequest();
-  xhr.open("POST","/share/__admin/upload");
-  if(ADMIN_TOK)xhr.setRequestHeader("Authorization","Bearer "+ADMIN_TOK);
-  var saving=false;
-  xhr.upload.onprogress=function(ev){
-    if(!ev.lengthComputable)return;
-    if(saving)return;
-    prog.style.display="block";
-    var pct=Math.min(90,Math.round(ev.loaded/ev.total*90));
-    bar.style.width=pct+"%";txt.textContent=pct+"%";
-    if(Date.now()-lastT>400){
-      var spd=(ev.loaded-lastL)/((Date.now()-lastT)/1000);
-      sub.textContent=(ev.loaded/1048576).toFixed(1)+" / "+(ev.total/1048576).toFixed(1)+" MB · "+(spd>1048576?(spd/1048576).toFixed(1)+" MB/s":(spd>10240?Math.round(spd/1024)+" KB/s":""));
-      lastL=ev.loaded;lastT=Date.now();
-    }
-  };
-  xhr.upload.onload=function(){
-    saving=true;
-    bar.style.width="95%";txt.textContent="95%";
-    sub.textContent="已送达服务器，正在保存到网盘…";
-  };
-  var finish=function(d){
-    prog.style.display="none";
-    if(authFail(d))return;
-    if(d.ok){
-      bar.style.width="100%";txt.textContent="100%";sub.textContent="";
-      m.className="msg ok";m.textContent="✅ "+d.msg;
-      el("upForm").reset();loadFiles();
-      if(dlPw||delPw){
-        adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d2){
-          if(!d2.ok)return;
-          var target=d2.files.filter(function(x){return x.name===f.name||(nm&&x.name===nm)})[0];
-          if(!target)return;
-          var fid=target.path?target.path+"/"+target.name:target.name;
-          var done=0,total=(dlPw?1:0)+(delPw?1:0);
-          function after(){done++;if(done>=total){m.textContent="✅ 已上传并设好"+(total===2?"双码":(dlPw?"提取码":"删除码"));loadFiles();}}
-          if(dlPw){var f1=new FormData();f1.append("pw",dlPw);f1.append("file",fid);f1.append("kind","dl");adminFetch("/share/__admin/code-save",{method:"POST",body:f1}).then(function(r){return r.json()}).then(after).catch(after);}
-          if(delPw){var f2=new FormData();f2.append("pw",delPw);f2.append("file",fid);f2.append("kind","del");adminFetch("/share/__admin/code-save",{method:"POST",body:f2}).then(function(r){return r.json()}).then(after).catch(after);}
-        }).catch(function(){});
-      }
-    }else{m.className="msg err";m.textContent=d.msg||"上传失败";}
-  };
-  xhr.onload=function(){
-    try{finish(JSON.parse(xhr.responseText));}catch(e){prog.style.display="none";m.className="msg err";m.textContent="服务异常";}
-  };
-  xhr.onerror=function(){prog.style.display="none";m.className="msg err";m.textContent="网络异常（文件可能较大，超时）";};
-  xhr.send(fd);
-});
+/* v4.29 上传（已搬后台主页） */
 
 /* v4.29 改名/删除（直控123盘） */
 function editCodes(fid){
