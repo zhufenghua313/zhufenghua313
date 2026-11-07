@@ -82,7 +82,7 @@
 <div id="app" style="display:none">
 <nav><div class="nav-in">
   <div class="nav-title">📁 文件列表</div>
-  <div style="display:flex;gap:8px;align-items:center"><a href="/apps/share/admin.html" style="color:rgba(255,255,255,.75);text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:7px 14px;border-radius:99px;font-size:14px">← 返回后台</a></div>
+  <div style="display:flex;gap:8px;align-items:center"><a href="/apps/share/admin.html" id="backTop" style="color:rgba(255,255,255,.75);text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:7px 14px;border-radius:99px;font-size:14px">← 返回后台</a></div>
   <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
 </div></nav>
 <div class="wrap">
@@ -148,7 +148,7 @@
 
   <footer>文件共享站 · 文件列表页 v1 ｜ 文件住 123 网盘 · Worker 只做门面<br>提取码泄露 → 删码重设即可，链接永远不变</footer>
 <div style="text-align:center;padding:18px 0 30px">
-  <a href="/apps/share/admin.html" style="display:inline-block;padding:10px 30px;background:var(--card);border:1.5px solid var(--goldL);color:var(--deep);font-weight:700;border-radius:10px;text-decoration:none;font-size:15.5px">← 返回后台主页面</a>
+  <a href="/apps/share/admin.html" id="backBot" style="display:inline-block;padding:10px 30px;background:var(--card);border:1.5px solid var(--goldL);color:var(--deep);font-weight:700;border-radius:10px;text-decoration:none;font-size:15.5px">← 返回后台主页面</a>
 </div>
 </div>
 </div>
@@ -159,6 +159,26 @@ function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"
 var DATA={files:[],codes:[]};
 /* ===== v4.29c 通行证本地化（手机浏览器cookie不稳，改Authorization头） ===== */
 var ADMIN_TOK="";
+try{
+  /* v4.49：两个返回按钮自动带token */
+  document.addEventListener("DOMContentLoaded",function(){
+    ["backTop","backBot"].forEach(function(id){
+      var b=document.getElementById(id);
+      if(b&&ADMIN_TOK)b.href="/apps/share/admin.html?st="+encodeURIComponent(ADMIN_TOK);
+    });
+  });
+}catch(e){}
+/* =====【v4.49】URL传token自愈：跨页跳转带上tok（?st=），落地即写localStorage——缓存旧版也能自救 ===== */
+try{
+  var qs=new URLSearchParams(location.search);
+  var st=qs.get("st");
+  if(st&&/^[0-9a-f]{64}$/.test(st)){
+    sessionStorage.setItem("shareAdminTok",st);
+    localStorage.setItem("shareAdminTok",st);
+    /* 洗掉URL里的token（防泄露到历史记录/截图） */
+    history.replaceState(null,"",location.pathname);
+  }
+}catch(e){}
 try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("shareAdminTok")||""}catch(e){}
   /* v4.48：tok双存（session+local）——手机浏览器sessionStorage跨页丢失案（站长21:31"登录已失效"） */
 function adminFetch(u,o){

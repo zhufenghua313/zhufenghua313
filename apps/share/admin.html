@@ -255,6 +255,24 @@ function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"
 var DATA={files:[],codes:[]};
 /* ===== v4.29c 通行证本地化（手机浏览器cookie不稳，改Authorization头） ===== */
 var ADMIN_TOK="";
+try{
+  /* v4.49：跳转链接自动带token（st）——落地页免登录直达 */
+  document.addEventListener("DOMContentLoaded",function(){
+    var lk=document.getElementById("linkFiles");
+    if(lk&&ADMIN_TOK)lk.href="/apps/share/files.html?st="+encodeURIComponent(ADMIN_TOK);
+  });
+}catch(e){}
+/* =====【v4.49】URL传token自愈：跨页跳转带上tok（?st=），落地即写localStorage——缓存旧版也能自救 ===== */
+try{
+  var qs=new URLSearchParams(location.search);
+  var st=qs.get("st");
+  if(st&&/^[0-9a-f]{64}$/.test(st)){
+    sessionStorage.setItem("shareAdminTok",st);
+    localStorage.setItem("shareAdminTok",st);
+    /* 洗掉URL里的token（防泄露到历史记录/截图） */
+    history.replaceState(null,"",location.pathname);
+  }
+}catch(e){}
 try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("shareAdminTok")||""}catch(e){}
   /* v4.48：tok双存（session+local）——手机浏览器sessionStorage跨页丢失案（站长21:31"登录已失效"） */
 function adminFetch(u,o){
