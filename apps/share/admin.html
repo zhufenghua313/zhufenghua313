@@ -43,6 +43,17 @@
   .login-box button{width:100%;padding:14px;border:none;border-radius:10px;cursor:pointer;font-size:17px;font-weight:bold;background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--deep);}
   .login-box .err{color:#E88;margin-top:10px;font-size:15px;}
   footer{text-align:center;color:var(--sub);font-size:14px;line-height:1.8;padding:10px 0;}
+
+  /* =====【手机友好 v1.1】小屏表格→卡片：提取码/删除码不再藏在屏幕外 ===== */
+  @media(max-width:720px){
+    .tbl-wrap{overflow-x:visible!important;-webkit-overflow-scrolling:auto;}
+    .tbl-wrap table{min-width:0!important;}
+    .tbl-wrap thead{display:none;}
+    .tbl-wrap tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:10px;}
+    .tbl-wrap td{display:flex;justify-content:space-between;align-items:center;border:none;padding:5px 2px;white-space:normal;}
+    .tbl-wrap td::before{content:attr(data-l);color:var(--sub);font-size:12px;flex-shrink:0;margin-right:12px;}
+    .tbl-wrap td:first-child{border-bottom:1px dashed var(--line);padding-bottom:8px;margin-bottom:4px;}
+  }
 </style>
 </head>
 <body>
@@ -191,7 +202,7 @@ function renderTable(){
   var files=DATA.files||[],codes=DATA.codes||[];
   if(!files.length){el("fileTable").innerHTML='<p style="color:var(--sub);font-size:13.5px;padding:8px 0">共享文件夹里还没有文件——上方上传，或手机 123 盘 App 把文件移进「欢乐共享站」文件夹。</p>';}
   else{
-    var h='<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table style="min-width:640px"><tr><th>文件</th><th style="width:72px">大小</th><th style="width:92px">目录</th><th style="width:100px">提取码</th><th style="width:100px">删除码</th><th style="width:60px">操作</th></tr>';
+    var h='<div class="tbl-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table style="min-width:640px"><tr><th>文件</th><th style="width:72px">大小</th><th style="width:92px">目录</th><th style="width:100px">提取码</th><th style="width:100px">删除码</th><th style="width:60px">操作</th></tr>';
     files.forEach(function(f){
       var fid=f.path?f.path+"/"+f.name:f.name;
       /* v4.33d：码匹配认 fid（主）+裸名（旧码兼容），保单类旧码无kind默认dl */
@@ -206,7 +217,7 @@ function renderTable(){
       }
       var cDl=findCode("dl"),cDel=findCode("del");
       function chip(c,red){if(!c)return '<span style="color:#bbb">未设</span>';var t=c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:10.5px">（'+c.expText+'）</span>':"";return '<span class="pw-chip"'+(red?' style="border-color:rgba(176,58,46,.5);color:#B03A2E;background:#FDF0EE"':"")+' onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+t}
-      h+='<tr><td style="word-break:break-all">'+esc(f.name)+'</td><td style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td style="color:var(--sub);white-space:nowrap">'+(f.path?esc(f.path):'<span style="color:#bbb">根目录</span>')+'</td><td>'+chip(cDl,false)+'</td><td>'+chip(cDel,true)+'</td><td style="white-space:nowrap"><button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
+      h+='<tr><td data-l="📄 文件" style="word-break:break-all;font-weight:600">'+esc(f.name)+'</td><td data-l="📦 大小" style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td data-l="📁 目录" style="color:var(--sub);white-space:nowrap">'+(f.path?esc(f.path):'<span style="color:#bbb">根目录</span>')+'</td><td data-l="🔑 提取码">'+chip(cDl,false)+'</td><td data-l="🗑️ 删除码">'+chip(cDel,true)+'</td><td data-l="⚙️ 操作" style="white-space:nowrap"><button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
     });
     h+='</table></div>';
     var star=codes.filter(function(x){return x.file==="*"})[0];
