@@ -392,6 +392,8 @@ function loggedOutThisSession(){
 }
 /* 登录成功时清退出标记（重新进入后台） */
 /* 进门探测：带旧 cookie/token 直接进（本会话主动退出后不放行） */
+/* v4.52：探测超时保险——3秒无结果强制亮登录页（白屏终修） */
+setTimeout(function(){ if(el("app").style.display!=="block" && el("loginMask").style.display!=="flex"){ el("loginMask").style.display="flex"; } },3000);
 if(!loggedOutThisSession()){
 adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
   if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";DATA=d;renderTable();}
