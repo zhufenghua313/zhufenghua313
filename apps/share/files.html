@@ -82,7 +82,7 @@
 <div id="app" style="display:none">
 <nav><div class="nav-in">
   <div class="nav-title">📁 文件列表</div>
-  <div style="display:flex;gap:8px;align-items:center"><a href="/apps/share/admin.html" id="backTop" style="color:rgba(255,255,255,.75);text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:7px 14px;border-radius:99px;font-size:14px">← 返回后台</a></div>
+  <div style="display:flex;gap:8px;align-items:center"><a href="/apps/share/admin.html?v=50" id="backTop" style="color:rgba(255,255,255,.75);text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:7px 14px;border-radius:99px;font-size:14px">← 返回后台</a></div>
   <button class="btn-out" type="button" id="btnOut">🚪 退出登录</button>
 </div></nav>
 <div class="wrap">
@@ -100,7 +100,7 @@
 
   <footer>文件共享站 · 文件列表页 v1 ｜ 文件住 123 网盘 · Worker 只做门面<br>提取码泄露 → 删码重设即可，链接永远不变</footer>
 <div style="text-align:center;padding:18px 0 30px">
-  <a href="/apps/share/admin.html" id="backBot" style="display:inline-block;padding:10px 30px;background:var(--card);border:1.5px solid var(--goldL);color:var(--deep);font-weight:700;border-radius:10px;text-decoration:none;font-size:15.5px">← 返回后台主页面</a>
+  <a href="/apps/share/admin.html?v=50" id="backBot" style="display:inline-block;padding:10px 30px;background:var(--card);border:1.5px solid var(--goldL);color:var(--deep);font-weight:700;border-radius:10px;text-decoration:none;font-size:15.5px">← 返回后台主页面</a>
 </div>
 </div>
 </div>
@@ -116,7 +116,7 @@ try{
   document.addEventListener("DOMContentLoaded",function(){
     ["backTop","backBot"].forEach(function(id){
       var b=document.getElementById(id);
-      if(b&&ADMIN_TOK)b.href="/apps/share/admin.html?st="+encodeURIComponent(ADMIN_TOK);
+      if(b&&ADMIN_TOK)b.href="/apps/share/admin.html?v=50&st="+encodeURIComponent(ADMIN_TOK);
     });
   });
 }catch(e){}
