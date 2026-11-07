@@ -237,6 +237,7 @@ el("btnAdd").addEventListener("click",function(){
     m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok){el("newPw").value="";loadFiles();}
   }).catch(function(){m.className="msg err";m.textContent="网络异常"});
+}); /* ← v4.47修：btnAdd监听外层闭合（截断致全JS瘫痪——登录无反应真凶） */
 
 function loadFiles(){
   if(!el("fileTable"))return; /* 主页无列表容器时空转（防null崩） */
