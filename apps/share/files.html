@@ -159,7 +159,8 @@ function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"
 var DATA={files:[],codes:[]};
 /* ===== v4.29c 通行证本地化（手机浏览器cookie不稳，改Authorization头） ===== */
 var ADMIN_TOK="";
-try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||""}catch(e){}
+try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("shareAdminTok")||""}catch(e){}
+  /* v4.48：tok双存（session+local）——手机浏览器sessionStorage跨页丢失案（站长21:31"登录已失效"） */
 function adminFetch(u,o){
   o=o||{};
   if(ADMIN_TOK){
@@ -171,7 +172,7 @@ function adminFetch(u,o){
 function authFail(d){
   if(d&&d.msg&&d.msg.indexOf("管理员")>=0){
     ADMIN_TOK="";
-    try{sessionStorage.removeItem("shareAdminTok")}catch(e){}
+    try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok")}catch(e){}
     el("app").style.display="none";
     el("loginMask").style.display="flex";
     el("loginErr").textContent="登录已失效，请重新输入密码";
@@ -237,11 +238,11 @@ function enterDir(d){ CUR_DIR = d; renderTable(); window.scrollTo({top:0}); }
 function crumbs(){
   if(!CUR_DIR) return "";
   var segs = CUR_DIR.split("/"), h = "", acc = "";
-  h += '<a href="javascript:void(0)" onclick="enterDir('')" style="color:var(--goldL);text-decoration:none;font-weight:700">📁 根目录</a>';
+  h += '<a href="javascript:void(0)" data-crumb="" style="color:var(--goldL);text-decoration:none;font-weight:700">📁 根目录</a>';
   segs.forEach(function(s){
     acc = acc ? acc + "/" + s : s;
-    var a = acc.replace(/'/g,"\\'");
-    h += ' <span style="color:var(--sub)">›</span> <a href="javascript:void(0)" onclick="enterDir(\''+a+'\')" style="color:var(--goldL);text-decoration:none;font-weight:700">📁 '+esc(s)+'</a>';
+    var safe = acc.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+    h += ' <span style="color:var(--sub)">›</span> <a href="javascript:void(0)" data-crumb="'+safe+'" style="color:var(--goldL);text-decoration:none;font-weight:700">📁 '+esc(s)+'</a>';
   });
   return h;
 }
@@ -263,8 +264,8 @@ function renderTable(){
   /* 文件夹行（先列） */
   Object.keys(folders).sort().forEach(function(seg){
     var sub = prefix + seg;
-    var a = sub.replace(/'/g,"\\'");
-    h+='<tr style="cursor:pointer" onclick="enterDir(\''+a+'\')"><td data-l="📁 文件夹" style="font-weight:700;color:var(--deep)"><span style="font-size:18px">📁</span> '+esc(seg)+'</td><td data-l="📦 内容" style="color:var(--sub)">'+folders[seg]+' 个文件</td><td data-l="位置" style="color:var(--sub)">—</td><td data-l="🔑 提取码" style="color:var(--sub)">按文件各设</td><td data-l="🗑️ 删除码" style="color:var(--sub)">按文件各设</td><td data-l="⏳ 有效期" style="color:var(--sub)">按文件各算</td><td data-l="⚙️ 操作"><span style="color:var(--goldL);font-size:15px">点进入 →</span></td></tr>';
+    var safeSub = sub.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+    h+='<tr style="cursor:pointer" data-dir="'+safeSub+'"><td data-l="📁 文件夹" style="font-weight:700;color:var(--deep)"><span style="font-size:18px">📁</span> '+esc(seg)+'</td><td data-l="📦 内容" style="color:var(--sub)">'+folders[seg]+' 个文件</td><td data-l="位置" style="color:var(--sub)">—</td><td data-l="🔑 提取码" style="color:var(--sub)">按文件各设</td><td data-l="🗑️ 删除码" style="color:var(--sub)">按文件各设</td><td data-l="⏳ 有效期" style="color:var(--sub)">按文件各算</td><td data-l="⚙️ 操作"><span style="color:var(--goldL);font-size:15px">点进入 →</span></td></tr>';
   });
   rows.forEach(function(f){
     var fid=fidOf(f);
@@ -288,6 +289,13 @@ function renderTable(){
   var star=codes.filter(function(x){return x.file==="*"})[0];
   h+='<div style="margin-top:10px;padding:10px 12px;background:var(--goldbg);border-radius:9px;font-size:15px">🔑 总码：'+(star?('<span class="pw-chip" onclick="toastCopy(\''+star.pw+'\')">'+esc(star.pw)+'</span>'):'<span style="color:#bbb">未设</span>')+' <span style="font-size:12px;color:var(--sub)">（输总码可下载全部）</span></div>';
   el("fileTable").innerHTML=h;
+  /* v1.2a：data-dir/data-crumb事件委托（告别三层引号地狱） */
+  el("fileTable").querySelectorAll("[data-dir]").forEach(function(tr){
+    tr.addEventListener("click", function(){ enterDir(tr.getAttribute("data-dir")); });
+  });
+  el("fileTable").querySelectorAll("[data-crumb]").forEach(function(a){
+    a.addEventListener("click", function(e){ e.stopPropagation(); enterDir(a.getAttribute("data-crumb") || ""); });
+  });
 }
 function loadFiles(){
   adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
@@ -443,7 +451,7 @@ function doLogin(){
   adminFetch("/share/__admin/login",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
     if(d.ok){
       ADMIN_TOK=d.tok||"";
-      try{if(ADMIN_TOK)sessionStorage.setItem("shareAdminTok",ADMIN_TOK)}catch(e){}
+      try{if(ADMIN_TOK){sessionStorage.setItem("shareAdminTok",ADMIN_TOK);localStorage.setItem("shareAdminTok",ADMIN_TOK);}}catch(e){}
       try{sessionStorage.removeItem("shareLoggedOut")}catch(e){}
       /* v4.29d：记住密码=帮填密码框（站长语义），绝不自动登录 */
       if(el("rememberPw").checked)localStorage.setItem("shareAdminPwSaved",el("loginPw").value);
@@ -474,7 +482,7 @@ try{
    sessionStorage记"本次会话已主动退出"，防止进门探测再放行 */
 el("btnOut").addEventListener("click",function(){
   ADMIN_TOK="";
-  try{sessionStorage.removeItem("shareAdminTok")}catch(e){}
+  try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok")}catch(e){}
   try{sessionStorage.setItem("shareLoggedOut","1")}catch(e){}
   fetch("/share/__admin/logout",{method:"POST"}).then(function(){location.reload()}).catch(function(){location.reload()});
 });
