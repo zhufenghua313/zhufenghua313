@@ -57,7 +57,7 @@
 </style>
 </head>
 <body>
-<div class="login-mask" id="loginMask" style="display:none">
+<div class="login-mask" id="loginMask">
   <div class="login-box">
     <div id="loginBox">
       <h1>📁 文件共享站 · 后台</h1>
@@ -106,6 +106,9 @@
 </div>
 
 <script>
+/* v4.53 反白屏双保险：①JS活着→秒藏登录框（不闪）②标题信标[OK]（一眼判JS生死）③JS死→登录框默认显示（可重新登录，永不白屏） */
+document.title="[OK] "+document.title;
+var __mask=document.getElementById("loginMask");if(__mask)__mask.style.display="none";
 function el(x){return document.getElementById(x)}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 var DATA={files:[],codes:[]};
