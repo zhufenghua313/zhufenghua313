@@ -92,7 +92,7 @@
 
   <div class="card">
     <h2>⬆️ 上传文件到共享文件夹</h2>
-    <p class="desc">直接传到 123 盘「欢乐共享站」文件夹（网页限 25MB；大文件用 123 盘 App 传好移进来，效果一样）。</p>
+    <p class="desc">直接传到 123 盘「欢乐共享站」文件夹（网页限 25MB；大文件用 123 盘 App 传好移进来，效果一样）。文件默认保存 60 天，到期自动删除（两个码一并清掉）——需长期保留的，在下方文件列表里点 📅 改有效期。</p>
     <form id="upForm">
       <label>选择文件</label>
       <input type="file" id="upFile" required>
@@ -198,11 +198,37 @@ function toastCopy(txt){
 }
 function toast(s){var t=document.getElementById("toast");if(!t){t=document.createElement("div");t.id="toast";t.style.cssText="position:fixed;top:18px;left:50%;transform:translateX(-50%);background:#14213D;color:#E8BC4F;padding:9px 18px;border-radius:99px;font-size:13px;z-index:999;opacity:0;transition:.3s;";document.body.appendChild(t)}t.textContent=s;t.style.opacity=1;clearTimeout(t._h);t._h=setTimeout(function(){t.style.opacity=0},1800)}
 
+/* =====【60天寿命引擎】有效期渲染+修改（v4.45配套） ===== */
+function expChip(fid){
+  var m=(DATA.meta||{})[fid];
+  if(!m)return '<span style="color:#bbb">60天</span>';
+  if(!m.exp)return '<span style="color:#2E7D32;font-weight:700">永久</span>';
+  var days=Math.ceil((m.exp-Date.now())/86400000);
+  if(days<=0)return '<span style="color:#B03A2E;font-weight:700">已到期·待清扫</span>';
+  if(days<=7)return '<span style="color:#B03A2E;font-weight:700">剩'+days+'天</span>';
+  if(days<=15)return '<span style="color:#A87D14;font-weight:700">剩'+days+'天</span>';
+  return '<span style="color:var(--sub)">剩'+days+'天</span>';
+}
+function setExp(fid){
+  var cur="60";
+  var m=(DATA.meta||{})[fid];
+  if(m&&m.exp===0)cur="0";
+  else if(m&&m.exp)cur=String(Math.ceil((m.exp-Date.now())/86400000));
+  var d=prompt("设置有效天数（到期自动删文件+两码）\n0 = 永久保存\n例如：60",cur);
+  if(d===null)return;
+  var days=parseInt(d,10);
+  if(isNaN(days)||days<0||days>3650){alert("请输入 0-3650 之间的整数");return;}
+  var fd=new FormData();fd.append("fid",fid);fd.append("days",days);
+  adminFetch("/share/__admin/set-expiry",{method:"POST",body:fd}).then(function(r){return r.json()})
+  .then(function(x){
+    if(x.ok){toast(x.msg);loadFiles();}else{alert(x.msg||"设置失败");}
+  }).catch(function(){alert("网络错误，请重试");});
+}
 function renderTable(){
   var files=DATA.files||[],codes=DATA.codes||[];
   if(!files.length){el("fileTable").innerHTML='<p style="color:var(--sub);font-size:13.5px;padding:8px 0">共享文件夹里还没有文件——上方上传，或手机 123 盘 App 把文件移进「欢乐共享站」文件夹。</p>';}
   else{
-    var h='<div class="tbl-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table style="min-width:640px"><tr><th>文件</th><th style="width:72px">大小</th><th style="width:92px">目录</th><th style="width:100px">提取码</th><th style="width:100px">删除码</th><th style="width:60px">操作</th></tr>';
+    var h='<div class="tbl-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table style="min-width:640px"><tr><th>文件</th><th style="width:72px">大小</th><th style="width:92px">目录</th><th style="width:100px">提取码</th><th style="width:100px">删除码</th><th style="width:86px">有效期</th><th style="width:60px">操作</th></tr>';
     files.forEach(function(f){
       var fid=f.path?f.path+"/"+f.name:f.name;
       /* v4.33d：码匹配认 fid（主）+裸名（旧码兼容），保单类旧码无kind默认dl */
@@ -217,7 +243,7 @@ function renderTable(){
       }
       var cDl=findCode("dl"),cDel=findCode("del");
       function chip(c,red){if(!c)return '<span style="color:#bbb">未设</span>';var t=c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:10.5px">（'+c.expText+'）</span>':"";return '<span class="pw-chip"'+(red?' style="border-color:rgba(176,58,46,.5);color:#B03A2E;background:#FDF0EE"':"")+' onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+t}
-      h+='<tr><td data-l="📄 文件" style="word-break:break-all;font-weight:600">'+esc(f.name)+'</td><td data-l="📦 大小" style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td data-l="📁 目录" style="color:var(--sub);white-space:nowrap">'+(f.path?esc(f.path):'<span style="color:#bbb">根目录</span>')+'</td><td data-l="🔑 提取码">'+chip(cDl,false)+'</td><td data-l="🗑️ 删除码">'+chip(cDel,true)+'</td><td data-l="⚙️ 操作" style="white-space:nowrap"><button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
+      h+='<tr><td data-l="📄 文件" style="word-break:break-all;font-weight:600">'+esc(f.name)+'</td><td data-l="📦 大小" style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td data-l="📁 目录" style="color:var(--sub);white-space:nowrap">'+(f.path?esc(f.path):'<span style="color:#bbb">根目录</span>')+'</td><td data-l="🔑 提取码">'+chip(cDl,false)+'</td><td data-l="🗑️ 删除码">'+chip(cDel,true)+'</td><td data-l="⏳ 有效期">'+expChip(fid)+'</td><td data-l="⚙️ 操作" style="white-space:nowrap"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
     });
     h+='</table></div>';
     var star=codes.filter(function(x){return x.file==="*"})[0];
@@ -234,6 +260,7 @@ function loadFiles(){
   adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
     if(!d.ok){el("fileTable").innerHTML='<p style="color:var(--err)">'+esc(d.msg||"加载失败")+'</p>';return;}
     DATA=d;renderTable();
+    if(d.swept>0){toast("🧹 已自动清理 "+d.swept+" 个过期文件（文件+两码）");}
   }).catch(function(){el("fileTable").innerHTML='<p style="color:var(--err)">网络异常</p>'});
 }
 el("btnAdd").addEventListener("click",function(){
