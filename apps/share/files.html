@@ -147,6 +147,9 @@
   </div>
 
   <footer>文件共享站 · 文件列表页 v1 ｜ 文件住 123 网盘 · Worker 只做门面<br>提取码泄露 → 删码重设即可，链接永远不变</footer>
+<div style="text-align:center;padding:18px 0 30px">
+  <a href="/apps/share/admin.html" style="display:inline-block;padding:10px 30px;background:var(--card);border:1.5px solid var(--goldL);color:var(--deep);font-weight:700;border-radius:10px;text-decoration:none;font-size:15.5px">← 返回后台主页面</a>
+</div>
 </div>
 </div>
 
@@ -227,37 +230,64 @@ function setDefExp(){
     if(x.ok){toast(x.msg);loadFiles();}else{alert(x.msg||"设置失败");}
   }).catch(function(){alert("网络错误，请重试");});
 }
+/* =====【目录导航版】v1.2：根目录先看文件夹，点进去再看文件 ===== */
+var CUR_DIR = "";
+function fidOf(f){ return f.path ? f.path + "/" + f.name : f.name; }
+function enterDir(d){ CUR_DIR = d; renderTable(); window.scrollTo({top:0}); }
+function crumbs(){
+  if(!CUR_DIR) return "";
+  var segs = CUR_DIR.split("/"), h = "", acc = "";
+  h += '<a href="javascript:void(0)" onclick="enterDir('')" style="color:var(--goldL);text-decoration:none;font-weight:700">📁 根目录</a>';
+  segs.forEach(function(s){
+    acc = acc ? acc + "/" + s : s;
+    var a = acc.replace(/'/g,"\\'");
+    h += ' <span style="color:var(--sub)">›</span> <a href="javascript:void(0)" onclick="enterDir(\''+a+'\')" style="color:var(--goldL);text-decoration:none;font-weight:700">📁 '+esc(s)+'</a>';
+  });
+  return h;
+}
 function renderTable(){
   var files=DATA.files||[],codes=DATA.codes||[];
-  if(!files.length){el("fileTable").innerHTML='<p style="color:var(--sub);font-size:13.5px;padding:8px 0">共享文件夹里还没有文件——上方上传，或手机 123 盘 App 把文件移进「欢乐共享站」文件夹。</p>';}
-  else{
-    var h='<div class="tbl-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table style="min-width:640px"><tr><th>文件</th><th style="width:72px">大小</th><th style="width:92px">目录</th><th style="width:100px">提取码</th><th style="width:100px">删除码</th><th style="width:86px">有效期</th><th style="width:60px">操作</th></tr>';
-    files.forEach(function(f){
-      var fid=f.path?f.path+"/"+f.name:f.name;
-      /* v4.33d：码匹配认 fid（主）+裸名（旧码兼容），保单类旧码无kind默认dl */
-      function findCode(kind){
-        return codes.filter(function(x){
-          var cf=x.file||"";
-          var sameFile=(cf===fid)||(cf===f.name);
-          if(!sameFile)return false;
-          if(kind==="del")return x.kind==="del";
-          return x.kind!=="del";
-        })[0];
-      }
-      var cDl=findCode("dl"),cDel=findCode("del");
-      function chip(c,red){if(!c)return '<span style="color:#bbb">未设</span>';var t=c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:10.5px">（'+c.expText+'）</span>':"";return '<span class="pw-chip"'+(red?' style="border-color:rgba(176,58,46,.5);color:#B03A2E;background:#FDF0EE"':"")+' onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+t}
-      h+='<tr><td data-l="📄 文件" style="word-break:break-all;font-weight:600">'+esc(f.name)+'</td><td data-l="📦 大小" style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td data-l="📁 目录" style="color:var(--sub);white-space:nowrap">'+(f.path?esc(f.path):'<span style="color:#bbb">根目录</span>')+'</td><td data-l="🔑 提取码">'+chip(cDl,false)+'</td><td data-l="🗑️ 删除码">'+chip(cDel,true)+'</td><td data-l="⏳ 有效期">'+expChip(fid)+'</td><td data-l="⚙️ 操作" style="white-space:nowrap"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
-    });
-    h+='</table></div>';
-    var star=codes.filter(function(x){return x.file==="*"})[0];
-    h+='<div style="margin-top:10px;padding:10px 12px;background:var(--goldbg);border-radius:9px;font-size:15px">🔑 总码：'+(star?('<span class="pw-chip" onclick="toastCopy(\''+star.pw+'\')">'+esc(star.pw)+'</span>'+(star.expText&&star.expText!=="永久"?'（'+star.expText+'）':"")+'（可见全部文件）'):("未设——新设码时文件选「* 全部」即成总码"))+'</div>';
-    el("fileTable").innerHTML=h;
+  if(!files.length){el("fileTable").innerHTML='<p style="color:var(--sub);font-size:13.5px;padding:8px 0">共享文件夹里还没有文件——上方上传，或手机 123 盘 App 把文件移进「欢乐共享站」文件夹。</p>';return;}
+  /* 目录归类：当前层直接子项（文件夹计数 + 文件行） */
+  var prefix = CUR_DIR ? CUR_DIR + "/" : "";
+  var folders = {}, rows = [];
+  files.forEach(function(f){
+    var p = f.path || "";
+    if(prefix && p.indexOf(prefix) !== 0) return;
+    var rest = p.slice(prefix.length);
+    if(!rest){ rows.push(f); }
+    else { var seg = rest.split("/")[0]; folders[seg] = (folders[seg]||0) + 1; }
+  });
+  var h = '<div style="margin:2px 0 10px;font-size:15px">'+(crumbs()||'<span style="color:var(--sub)">📁 根目录</span>')+'</div>';
+  h+='<div class="tbl-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table style="min-width:640px"><tr><th>名称</th><th style="width:72px">大小</th><th style="width:92px">目录</th><th style="width:100px">提取码</th><th style="width:100px">删除码</th><th style="width:86px">有效期</th><th style="width:60px">操作</th></tr>';
+  /* 文件夹行（先列） */
+  Object.keys(folders).sort().forEach(function(seg){
+    var sub = prefix + seg;
+    var a = sub.replace(/'/g,"\\'");
+    h+='<tr style="cursor:pointer" onclick="enterDir(\''+a+'\')"><td data-l="📁 文件夹" style="font-weight:700;color:var(--deep)"><span style="font-size:18px">📁</span> '+esc(seg)+'</td><td data-l="📦 内容" style="color:var(--sub)">'+folders[seg]+' 个文件</td><td data-l="位置" style="color:var(--sub)">—</td><td data-l="🔑 提取码" style="color:var(--sub)">按文件各设</td><td data-l="🗑️ 删除码" style="color:var(--sub)">按文件各设</td><td data-l="⏳ 有效期" style="color:var(--sub)">按文件各算</td><td data-l="⚙️ 操作"><span style="color:var(--goldL);font-size:15px">点进入 →</span></td></tr>';
+  });
+  rows.forEach(function(f){
+    var fid=fidOf(f);
+    function findCode(kind){
+      return codes.filter(function(x){
+        var cf=x.file||"";
+        var sameFile=(cf===fid)||(cf===f.name);
+        if(!sameFile)return false;
+        if(kind==="del")return x.kind==="del";
+        return x.kind!=="del";
+      })[0];
+    }
+    var cDl=findCode("dl"),cDel=findCode("del");
+    function chip(c,red){if(!c)return '<span style="color:#bbb">未设</span>';var t=c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:10.5px">（'+c.expText+'）</span>':"";return '<span class="pw-chip"'+(red?' style="border-color:rgba(176,58,46,.5);color:#B03A2E;background:#FDF0EE"':"")+' onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+t}
+    h+='<tr><td data-l="📄 文件" style="word-break:break-all;font-weight:600">'+esc(f.name)+'</td><td data-l="📦 大小" style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td data-l="📁 目录" style="color:var(--sub);white-space:nowrap">'+(f.path?esc(f.path):'<span style="color:#bbb">根目录</span>')+'</td><td data-l="🔑 提取码">'+chip(cDl,false)+'</td><td data-l="🗑️ 删除码">'+chip(cDel,true)+'</td><td data-l="⏳ 有效期">'+expChip(fid)+'</td><td data-l="⚙️ 操作" style="white-space:nowrap"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
+  });
+  h+='</table></div>';
+  if(!Object.keys(folders).length && !rows.length && CUR_DIR){
+    h+='<p style="color:var(--sub);padding:8px 0">这个文件夹是空的。</p>';
   }
-  /* 下拉框带目录前缀显示 */
-  var opts='<option value="">— 选文件 —</option>';
-  files.forEach(function(f){var fid=f.path?f.path+"/"+f.name:f.name;opts+='<option value="'+esc(fid)+'">'+esc(f.name)+'（'+fmtSize(f.size)+(f.path?" · "+esc(f.path):"")+'）</option>'});
-  opts+='<option value="*">* 全部文件（总码）</option>';
-  el("newFile").innerHTML=opts;
+  var star=codes.filter(function(x){return x.file==="*"})[0];
+  h+='<div style="margin-top:10px;padding:10px 12px;background:var(--goldbg);border-radius:9px;font-size:15px">🔑 总码：'+(star?('<span class="pw-chip" onclick="toastCopy(\''+star.pw+'\')">'+esc(star.pw)+'</span>'):'<span style="color:#bbb">未设</span>')+' <span style="font-size:12px;color:var(--sub)">（输总码可下载全部）</span></div>';
+  el("fileTable").innerHTML=h;
 }
 function loadFiles(){
   adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
