@@ -57,7 +57,7 @@
 </style>
 </head>
 <body>
-<div class="login-mask" id="loginMask">
+<div class="login-mask" id="loginMask" style="display:none">
   <div class="login-box">
     <div id="loginBox">
       <h1>📁 文件共享站 · 后台</h1>
@@ -395,7 +395,7 @@ function loggedOutThisSession(){
 if(!loggedOutThisSession()){
 adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
   if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";DATA=d;renderTable();}
-  else if(ADMIN_TOK){authFail(d);}
+  else{if(ADMIN_TOK)authFail(d);if(el("loginMask").style.display!=="flex"){el("loginMask").style.display="flex";}}
 }).catch(function(){});
 }
 </script>
