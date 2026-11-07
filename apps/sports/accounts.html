@@ -13,7 +13,7 @@
   nav{position:sticky;top:0;z-index:50;background:rgba(20,33,61,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,165,33,.25);}
   .nav-in{max-width:860px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
   .brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:16px;}
-  .lamp{width:10px;height:10px;border-radius:50%;background:var(--goldL);box-shadow:0 0 8px var(--goldL);animation:br 2s infinite;}
+  .lamp{width:auto;height:auto;border-radius:0;background:none;box-shadow:none;animation:br 2s infinite;font-size:22px;line-height:1;}
   @keyframes br{50%{opacity:.35;}}
   .nav-right{display:flex;align-items:center;gap:10px;}
   .btn-out{background:rgba(255,255,255,.08);color:rgba(255,255,255,.92);border:1.5px solid rgba(255,255,255,.5);border-radius:9px;font-size:14px;padding:7px 14px;cursor:pointer;font-family:inherit;font-weight:600;}
@@ -56,7 +56,7 @@
 <body>
 <nav>
   <div class="nav-in">
-    <div class="brand"><span class="lamp"></span><div><b style="display:block;font-size:17px;line-height:1.2">运动会</b><span style="display:block;font-size:12px;opacity:.75;line-height:1.2">管理系统</span></div></div>
+    <div class="brand"><span class="lamp" style="display:inline-block;flex-shrink:0;font-size:22px;line-height:1;align-self:center;animation:br 2s infinite">🏃</span><div><b style="display:block;font-size:17px;line-height:1.2;color:#E8BC4F">运动会</b><span style="display:block;font-size:12px;line-height:1.2;color:#E8BC4F;opacity:.8">管理系统</span></div></div>
     <div class="nav-right">
       <div style="display:flex;gap:8px;align-items:center;flex-shrink:0;">
         <a href="/apps/sports/home.html" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.92);border:1.5px solid rgba(255,255,255,.5);border-radius:9px;font-size:14px;padding:7px 14px;text-decoration:none;display:inline-block;font-weight:600;">🏠 工作台</a>
