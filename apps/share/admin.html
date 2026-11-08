@@ -378,6 +378,14 @@ adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(funct
   if(d&&d.ok&&d.defaultDays&&el("defDaysTxt"))el("defDaysTxt").textContent=d.defaultDays;
 }).catch(function(){});
 
+/* v5.9：点击时实时补token（慢网DOMContentLoaded太晚——用户在JS就绪前就点了） */
+document.addEventListener("click",function(ev){
+  var a=ev.target.closest("a");
+  if(a&&a.id==="linkFiles"&&ADMIN_TOK&&a.href.indexOf("st=")<0){
+    ev.preventDefault();
+    location.href="/apps/share/files.html?v=54&st="+encodeURIComponent(ADMIN_TOK);
+  }
+},true);
 function adminFetch(u,o){
   o=o||{};
   if(ADMIN_TOK){
@@ -490,10 +498,16 @@ setTimeout(function(){ if(el("app").style.display!=="block"){ el("loginMask").st
 /* v5.4 刷新语义（站长16:15定稿）：刷新带登录状态直达；登出/超时/掉线=回登录页 */
 /* loginMask的显示交给探测结果（ok=藏/else=flex）——不再无条件亮（闪框根源） */
 try{var saved=localStorage.getItem("shareAdminPwSaved");if(saved&&!ADMIN_TOK){el("loginPw").value=saved;}}catch(e){}
-/* v5.4（站长16:15）：刷新=绑定登录状态——证件活直接进；登出/超时/掉线才回登录页 */
-    if(!loggedOutThisSession()){ /* 登出标记=本会话主动退出过，不再自动放行 */
+/* v5.8慢网直达：25分钟内探测过→免探测直接进（慢网下每次跳转等探测几十秒=站长以为要重登） */
+    var __vAt=0; try{__vAt=parseInt(localStorage.getItem("shareTokVerifiedAt")||"0",10)}catch(e){}
+    if(__vAt && (Date.now()-__vAt)<25*60*1000 && !loggedOutThisSession() && (ADMIN_TOK)){
+      el("loginMask").style.display="none";el("app").style.display="block";
+    }else
+    if(!loggedOutThisSession()){ /* 探测（无缓存或已过期25分钟） */
 adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
-  if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";/* 刷新直达 */}
+  if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";
+      /* v5.8慢网直达：探测成功记25分钟验证缓存——期间刷新/跳转免探测直接进 */
+      try{localStorage.setItem("shareTokVerifiedAt",String(Date.now()))}catch(e){}}
   else{if(ADMIN_TOK)authFail(d);if(el("loginMask").style.display!=="flex"){el("loginMask").style.display="flex";}
       /* v4.59：掉线停登录页——记住的密码自动填框（仍需点"进入"确认，绝不自动登录） */
       try{var saved=localStorage.getItem("shareAdminPwSaved");if(saved){el("loginPw").value=saved;}}catch(e){}}
