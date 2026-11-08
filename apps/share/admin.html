@@ -96,7 +96,7 @@
 
   <div class="card">
     <h2>⬆️ 上传文件到共享文件夹</h2>
-    <p class="desc">直接传到 123 盘「欢乐共享站」文件夹（网页限 25MB；大文件用 123 盘 App 传好移进来，效果一样）。文件默认保存 <b id="defDaysTxt">60</b> 天，到期自动删除（两个码一并清掉）——需长期保留的，在下方文件列表里点 📅 改有效期。</p>
+    <p class="desc">直接传到 123 盘「欢乐共享站」文件夹（网页限 25MB；大文件用 123 盘 App 传好移进来，效果一样）。文件默认保存 <b id="defDaysTxt">60</b> 天 <button type="button" class="btn-line" onclick="setDefExp()" style="padding:3px 10px;font-size:12px">📅 改默认</button>，到期自动删除（文件连同两码一并清干净）——需长期保留的，在下方文件列表里点 📅 改有效期。</p>
     <form id="upForm">
       <label>选择文件</label>
       <input type="file" id="upFile" required>
@@ -351,6 +351,25 @@ try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("sha
   /* 登录成功时记账（防止自己刚登录就被旧踢出标记误伤） */
   document.addEventListener("submit",function(){ window.__lastLoginAt=Date.now(); },{once:false});
 })();
+/* =====【v5.1】改默认有效期（admin主页版——站长12:45：后台要有修改文件及两码默认有效期的地方） ===== */
+function setDefExp(){
+  var cur=el("defDaysTxt")?String(el("defDaysTxt").textContent||"60"):"60";
+  var d=prompt("设置文件及两码的默认有效天数（1-3650）\n常用：30 = 季节性文件 ｜ 60 = 常规 ｜ 90 = 长期留存\n到期自动删除：文件+提取码+删除码 一并清干净\n已有文件按各自有效期走，不受影响",cur);
+  if(d===null)return;
+  var days=parseInt(d,10);
+  if(isNaN(days)||days<1||days>3650){alert("请输入 1-3650 之间的整数");return;}
+  var fd=new FormData();fd.append("days",days);
+  adminFetch("/share/__admin/set-default-expiry",{method:"POST",body:fd}).then(function(r){return r.json()})
+  .then(function(x){
+    if(x.ok){toast(x.msg);if(el("defDaysTxt"))el("defDaysTxt").textContent=days;}
+    else{alert(x.msg||"设置失败");}
+  }).catch(function(){alert("网络错误，请重试");});
+}
+/* 启动回填真实默认天数 */
+adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
+  if(d&&d.ok&&d.defaultDays&&el("defDaysTxt"))el("defDaysTxt").textContent=d.defaultDays;
+}).catch(function(){});
+
 function adminFetch(u,o){
   o=o||{};
   if(ADMIN_TOK){
