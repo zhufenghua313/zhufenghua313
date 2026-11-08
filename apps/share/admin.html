@@ -57,6 +57,9 @@
 </style>
 </head>
 <body>
+<!-- v4.54 JS生死屏显：无JS时显示（JS活着秒删）——手机无标题栏也能判断 -->
+<div id="jsProbe" style="padding:14px;background:#14213D;color:#E8BC4F;font-size:15px;text-align:center">正在启动…（若长时间停留在此，说明页面脚本未运行）</div>
+<script>var __p=document.getElementById("jsProbe");if(__p)__p.remove();</script>
 <div class="login-mask" id="loginMask">
   <div class="login-box">
     <div id="loginBox">
