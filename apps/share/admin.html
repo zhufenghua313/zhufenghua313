@@ -96,7 +96,9 @@
 
   <div class="card">
     <h2>⬆️ 上传文件到共享文件夹</h2>
-    <p class="desc">直接传到 123 盘「欢乐共享站」文件夹（网页限 25MB；大文件用 123 盘 App 传好移进来，效果一样）。文件默认保存 <b id="defDaysTxt">60</b> 天 <button type="button" class="btn-line" onclick="setDefExp()" style="padding:3px 10px;font-size:12px">📅 改默认</button>，到期自动删除（文件连同两码一并清干净）——需长期保留的，在下方文件列表里点 📅 改有效期。</p>
+    <p class="desc">直接传到 123 盘「欢乐共享站」文件夹（网页限 25MB；大文件用 123 盘 App 传好移进来，效果一样）。文件默认保存 <b id="defDaysTxt" style="color:var(--goldL);font-size:18px">60</b> 天，到期自动删除（文件连同两码一并清干净）。</p>
+    <p style="margin:10px 0"><button type="button" onclick="setDefExp()" style="padding:10px 26px;background:var(--goldL);color:#fff;font-weight:700;border:none;border-radius:10px;font-size:15.5px;cursor:pointer;font-family:inherit">📅 修改默认有效期</button> <span style="font-size:12.5px;color:var(--sub)">（30 / 60 / 90 天可随时改——只影响以后上传的文件）</span></p>
+    <p class="desc">需给某个文件单独改期限的，在文件列表里点那一行的 📅。</p>
     <form id="upForm">
       <label>选择文件</label>
       <input type="file" id="upFile" required>
