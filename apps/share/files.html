@@ -160,7 +160,9 @@ try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("sha
       /* 摘除登录状态：清三存+登出端点+回登录页 */
       try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");
           localStorage.removeItem("shareAdminPwSaved");
-          document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax";}catch(e){}
+          document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax";
+          /* v4.63：踢出广播——全站所有页同时失守 */
+          localStorage.setItem("shareKickAt", String(Date.now()));}catch(e){}
       fetch("/share/__admin/logout",{method:"POST"}).catch(function(){});
       el("app").style.display="none";
       el("loginMask").style.display="flex";
@@ -169,6 +171,31 @@ try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("sha
   }, 60000); /* 每分钟查一次 */
 })();
 
+
+/* =====【v4.63】踢出哨兵：退出登录=全站所有页面同时失守 ===== */
+(function(){
+  function kicked(){
+    /* 本页被踢：清session态+锁内容+回登录页 */
+    ADMIN_TOK="";
+    try{sessionStorage.removeItem("shareAdminTok")}catch(e){}
+    el("app").style.display="none";
+    el("loginMask").style.display="flex";
+    var er=el("loginErr"); if(er) er.textContent="🚪 已在其他页面退出登录——请重新登录";
+  }
+  /* 实时通道：storage事件（其他标签页退出时本页秒收到） */
+  window.addEventListener("storage",function(ev){
+    if(ev.key==="shareKickAt"&&ev.newValue){ kicked(); }
+  });
+  /* 兜底轮询：每3秒查一次（storage事件失效时保命） */
+  setInterval(function(){
+    var k=0; try{k=parseInt(localStorage.getItem("shareKickAt")||"0",10)}catch(e){}
+    var my=parseInt((window.__lastLoginAt||"0"),10);
+    if(k&&k>(window.__pageLoadedAt||0)&&!my){ if(ADMIN_TOK)kicked(); }
+  },3000);
+  window.__pageLoadedAt=Date.now();
+  /* 登录成功时记账（防止自己刚登录就被旧踢出标记误伤） */
+  document.addEventListener("submit",function(){ window.__lastLoginAt=Date.now(); },{once:false});
+})();
 function adminFetch(u,o){
   o=o||{};
   if(ADMIN_TOK){
@@ -388,7 +415,7 @@ function doLogin(){
     if(d.ok){
       ADMIN_TOK=d.tok||"";
       try{if(ADMIN_TOK){sessionStorage.setItem("shareAdminTok",ADMIN_TOK);localStorage.setItem("shareAdminTok",ADMIN_TOK);document.cookie="shareTokJS="+ADMIN_TOK+"; path=/; max-age=2592000; SameSite=Lax";}}catch(e){}
-      try{sessionStorage.removeItem("shareLoggedOut")}catch(e){}
+      try{sessionStorage.removeItem("shareLoggedOut");localStorage.removeItem("shareKickAt");window.__lastLoginAt=Date.now()}catch(e){}
       /* v4.29d：记住密码=帮填密码框（站长语义），绝不自动登录 */
       if(el("rememberPw").checked)localStorage.setItem("shareAdminPwSaved",el("loginPw").value);
       else localStorage.removeItem("shareAdminPwSaved");
@@ -419,7 +446,7 @@ try{
 el("btnOut").addEventListener("click",function(){
   ADMIN_TOK="";
   try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
-  try{sessionStorage.setItem("shareLoggedOut","1")}catch(e){}
+  try{sessionStorage.setItem("shareLoggedOut","1");localStorage.setItem("shareKickAt",String(Date.now()))}catch(e){}
   fetch("/share/__admin/logout",{method:"POST"}).then(function(){location.reload()}).catch(function(){location.reload()});
 });
 function loggedOutThisSession(){
