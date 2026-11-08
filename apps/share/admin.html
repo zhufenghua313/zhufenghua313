@@ -483,12 +483,13 @@ function loggedOutThisSession(){
 /* v4.52：探测超时保险——3秒无结果强制亮登录页（白屏终修） */
 setTimeout(function(){ if(el("app").style.display!=="block"){ el("loginMask").style.display="flex"; } },3000);
 setTimeout(function(){ if(el("app").style.display!=="block"){ el("loginMask").style.display="flex"; document.title="[WAIT] "+document.title.replace(/^\[OK\] /,""); } },6000);
-/* v4.60 全手动登录（站长 12:11 拍板）：每次都停在登录页——证件只在点"进入"后验证使用，绝不自动放行 */
+/* v5.4 刷新语义（站长16:15定稿）：刷新带登录状态直达；登出/超时/掉线=回登录页 */
 el("loginMask").style.display="flex";
 try{var saved=localStorage.getItem("shareAdminPwSaved");if(saved){el("loginPw").value=saved;}}catch(e){}
-if(false){ /* 全手动：探测自动放行已停用（保留代码供回退） */
+/* v5.4（站长16:15）：刷新=绑定登录状态——证件活直接进；登出/超时/掉线才回登录页 */
+    if(!loggedOutThisSession()){ /* 登出标记=本会话主动退出过，不再自动放行 */
 adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
-  if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";}
+  if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";/* 刷新直达 */}
   else{if(ADMIN_TOK)authFail(d);if(el("loginMask").style.display!=="flex"){el("loginMask").style.display="flex";}
       /* v4.59：掉线停登录页——记住的密码自动填框（仍需点"进入"确认，绝不自动登录） */
       try{var saved=localStorage.getItem("shareAdminPwSaved");if(saved){el("loginPw").value=saved;}}catch(e){}}
