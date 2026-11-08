@@ -289,7 +289,9 @@ function renderTable(){
   var folders = {}, rows = [];
   files.forEach(function(f){
     var p = f.path || "";
-    if(prefix && p.indexOf(prefix) !== 0) return;
+    /* v5.6修：p===CUR_DIR=文件直接在本目录（path"2026/11"不含尾斜杠——原indexOf漏判致空文件夹假象） */
+    if(prefix && p !== CUR_DIR && p.indexOf(prefix) !== 0) return;
+    if(p === CUR_DIR || p + "/" === prefix){ rows.push(f); return; }
     var rest = p.slice(prefix.length);
     if(!rest){ rows.push(f); }
     else { var seg = rest.split("/")[0]; folders[seg] = (folders[seg]||0) + 1; }
