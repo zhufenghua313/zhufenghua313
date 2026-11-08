@@ -392,7 +392,9 @@ setTimeout(function(){ if(el("app").style.display!=="block"){ el("loginMask").st
 if(!loggedOutThisSession()){
 adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
   if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";}
-  else{if(ADMIN_TOK)authFail(d);if(el("loginMask").style.display!=="flex"){el("loginMask").style.display="flex";}}
+  else{if(ADMIN_TOK)authFail(d);if(el("loginMask").style.display!=="flex"){el("loginMask").style.display="flex";}
+      /* v4.59：掉线停登录页——记住的密码自动填框（仍需点"进入"确认，绝不自动登录） */
+      try{var saved=localStorage.getItem("shareAdminPwSaved");if(saved){el("loginPw").value=saved;}}catch(e){}}
 }).catch(function(){});
 }
 </script>
