@@ -111,6 +111,8 @@
 <script>
 /* v4.53 反白屏双保险：①JS活着→秒藏登录框（不闪）②标题信标[OK]（一眼判JS生死）③JS死→登录框默认显示（可重新登录，永不白屏） */
 document.title="[OK] "+document.title;
+/* v4.56 BFCache爆破：从后退/前进缓存复活时强制整页重载（白屏来自v4.53时代快照） */
+window.addEventListener("pageshow",function(ev){ if(ev.persisted){ location.reload(); } });
 var __mask=document.getElementById("loginMask");if(__mask)__mask.style.display="none";
 function el(x){return document.getElementById(x)}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
