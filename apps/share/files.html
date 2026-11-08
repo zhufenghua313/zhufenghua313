@@ -34,7 +34,7 @@
   th{background:var(--bg);padding:9px 8px;text-align:left;font-size:13.5px;color:var(--sub);}
   td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle;}
   .pw-chip{display:inline-block;background:var(--goldbg);border:1px solid rgba(217,165,33,.4);color:#A87D14;border-radius:7px;padding:3px 11px;font-weight:700;font-size:14.5px;cursor:pointer;}
-  .login-mask{position:fixed;inset:0;background:linear-gradient(160deg,#14213D 0%,#1B2A4A 55%,#2A4370 100%);display:flex;align-items:center;justify-content:center;z-index:99;}
+  .login-mask{position:fixed;inset:0;background:linear-gradient(160deg,#14213D 0%,#1B2A4A 55%,#2A4370 100%);display:flex;align-items:center;justify-content:center;z-index:99;animation:fadeIn .25s .6s both;
   .login-box{background:rgba(255,255,255,.06);border:1px solid rgba(217,165,33,.35);border-radius:16px;padding:36px 30px;width:min(92vw,400px);text-align:center;box-shadow:0 18px 50px rgba(0,0,0,.4);}
   .login-box h1{color:#fff;font-size:24px;margin-bottom:6px;}
   .login-box p{color:rgba(255,255,255,.6);font-size:15px;margin-bottom:18px;line-height:1.7;}
@@ -54,7 +54,8 @@
     .tbl-wrap td::before{content:attr(data-l);color:var(--sub);font-size:12px;flex-shrink:0;margin-right:12px;}
     .tbl-wrap td:first-child{border-bottom:1px dashed var(--line);padding-bottom:8px;margin-bottom:4px;}
   }
-</style>
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  </style>
 </head>
 <body>
 <!-- v4.54 JS生死屏显：无JS时显示（JS活着秒删）——手机无标题栏也能判断 -->
