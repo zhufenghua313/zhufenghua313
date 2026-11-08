@@ -144,7 +144,7 @@
   </div>
 
   <div class="card" style="text-align:center;padding:24px 18px">
-    <a href="/apps/share/files.html?v=50" id="linkFiles" style="display:block;text-decoration:none">
+    <a href="/apps/share/files.html?v=54" id="linkFiles" style="display:block;text-decoration:none">
       <div style="font-size:44px;line-height:1;margin-bottom:10px">📄</div>
       <div style="font-size:20px;font-weight:800;color:var(--deep)">文件列表</div>
       <div style="font-size:13.5px;color:var(--sub);margin-top:5px">查看全部文件、改各文件参数（提取码 / 删除码 / 有效期 / 改名 / 删除）</div>
@@ -265,7 +265,7 @@ try{
   /* v4.49：跳转链接自动带token（st）——落地页免登录直达 */
   document.addEventListener("DOMContentLoaded",function(){
     var lk=document.getElementById("linkFiles");
-    if(lk&&ADMIN_TOK)lk.href="/apps/share/files.html?v=50&st="+encodeURIComponent(ADMIN_TOK);
+    if(lk&&ADMIN_TOK)lk.href="/apps/share/files.html?v=54&st="+encodeURIComponent(ADMIN_TOK);
   });
 }catch(e){}
 /* =====【v4.49】URL传token自愈：跨页跳转带上tok（?st=），落地即写localStorage——缓存旧版也能自救 ===== */
