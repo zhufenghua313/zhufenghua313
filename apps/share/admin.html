@@ -96,9 +96,7 @@
 
   <div class="card">
     <h2>⬆️ 上传文件到共享文件夹</h2>
-    <p class="desc">直接传到 123 盘「欢乐共享站」文件夹（网页限 25MB；大文件用 123 盘 App 传好移进来，效果一样）。文件默认保存 <b id="defDaysTxt" style="color:var(--goldL);font-size:18px">60</b> 天，到期自动删除（文件连同两码一并清干净）。</p>
-    <p style="margin:10px 0"><button type="button" onclick="setDefExp()" style="padding:10px 26px;background:var(--goldL);color:#fff;font-weight:700;border:none;border-radius:10px;font-size:15.5px;cursor:pointer;font-family:inherit">📅 修改默认有效期</button> <span style="font-size:12.5px;color:var(--sub)">（30 / 60 / 90 天可随时改——只影响以后上传的文件）</span></p>
-    <p class="desc">需给某个文件单独改期限的，在文件列表里点那一行的 📅。</p>
+    <p class="desc">传到 123 盘「欢乐共享站」（网页限 25MB；大文件用 123 盘 App 传好移进来）。</p></p>
     <form id="upForm">
       <label>选择文件</label>
       <input type="file" id="upFile" required>
@@ -122,7 +120,14 @@
 
   
 
+  
   <div class="card">
+    <h2>⏳ 默认有效期修改</h2>
+    <p class="desc">当前：<b id="defDaysTxt" style="color:var(--goldL);font-size:17px">60</b> 天——到期文件连同两码自动清干净。</p>
+    <button type="button" onclick="setDefExp()" style="padding:10px 30px;background:var(--goldL);color:#fff;font-weight:700;border:none;border-radius:10px;font-size:15.5px;cursor:pointer;font-family:inherit">📅 点此修改</button>
+    <p class="desc" style="font-size:12.5px;margin-top:8px">常用 30 / 60 / 90 天 · 只影响以后上传的文件 · 单个文件改期在文件列表里点 📅</p>
+  </div>
+<div class="card">
     <h2>➕ 新设提取码</h2>
     <p class="desc" style="font-size:15px">提取码=下载用（发给要文件的人）；删除码=看完即毁（发给负责删的人，输码确认后文件+两码全清）。总码只能设提取码。</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
