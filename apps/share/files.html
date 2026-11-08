@@ -142,6 +142,33 @@ try{
 }catch(e){}
 try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("shareAdminTok")||(document.cookie.match(/shareTokJS=([0-9a-f]{64})/)||["",""])[1]||""}catch(e){}
   /* v4.48：tok双存（session+local）——手机浏览器sessionStorage跨页丢失案（站长21:31"登录已失效"） */
+
+/* =====【v4.61】30分钟无操作自动登出（站长 12:16 需求）=====
+   键鼠/触摸任意操作重置计时；连续30分钟无操作→自动登出（清三存+回登录页） */
+(function(){
+  var IDLE_MS = 30*60*1000;
+  var last = Date.now();
+  function reset(){ last = Date.now(); }
+  ["click","keydown","mousemove","touchstart","scroll","input"].forEach(function(ev){
+    document.addEventListener(ev, reset, {passive:true});
+  });
+  /* fetch也算操作（后台API轮询即活动） */
+  var of = window.fetch;
+  window.fetch = function(){ reset(); return of.apply(this, arguments); };
+  setInterval(function(){
+    if(Date.now()-last > IDLE_MS && ADMIN_TOK){
+      /* 摘除登录状态：清三存+登出端点+回登录页 */
+      try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");
+          localStorage.removeItem("shareAdminPwSaved");
+          document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax";}catch(e){}
+      fetch("/share/__admin/logout",{method:"POST"}).catch(function(){});
+      el("app").style.display="none";
+      el("loginMask").style.display="flex";
+      var er=el("loginErr"); if(er) er.textContent="⏰ 30分钟无操作，已自动退出——请重新登录";
+    }
+  }, 60000); /* 每分钟查一次 */
+})();
+
 function adminFetch(u,o){
   o=o||{};
   if(ADMIN_TOK){
