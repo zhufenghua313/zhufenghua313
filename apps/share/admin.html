@@ -446,6 +446,10 @@ function doLogin(){
       if(el("rememberPw").checked)localStorage.setItem("shareAdminPwSaved",el("loginPw").value);
       else localStorage.removeItem("shareAdminPwSaved");
       el("loginMask").style.display="none";el("app").style.display="block";
+      /* v5.7：登录成功立即回填真实默认天数（改密后重登看到60假象——KV其实一直是90） */
+      adminFetch("/share/__admin/files").then(function(r2){return r2.json()}).then(function(d2){
+        if(d2&&d2.ok&&d2.defaultDays&&el("defDaysTxt"))el("defDaysTxt").textContent=d2.defaultDays;
+      }).catch(function(){});
     }
     else{err.textContent=d.msg||"密码不对";}
   }).catch(function(){err.textContent="网络异常"});
