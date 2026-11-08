@@ -380,10 +380,16 @@ adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(funct
 
 /* v5.9：点击时实时补token（慢网DOMContentLoaded太晚——用户在JS就绪前就点了） */
 document.addEventListener("click",function(ev){
-  var a=ev.target.closest("a");
-  if(a&&a.id==="linkFiles"&&ADMIN_TOK&&a.href.indexOf("st=")<0){
-    ev.preventDefault();
-    location.href="/apps/share/files.html?v=54&st="+encodeURIComponent(ADMIN_TOK);
+  /* v5.10：closest兼容包裹（Text节点无closest→TypeError→拦截器失效→裸链跳转=真凶） */
+  var t=ev.target,a=null;
+  try{a=t&&t.closest?t.closest("a"):null}catch(e){a=null}
+  if(a&&a.id==="linkFiles"){
+    ev.preventDefault(); /* 先拦住再说（无论有无tok都走本站逻辑） */
+    if(ADMIN_TOK){
+      location.href="/apps/share/files.html?v=54&st="+encodeURIComponent(ADMIN_TOK);
+    }else{
+      location.href="/apps/share/files.html?v=54";
+    }
   }
 },true);
 function adminFetch(u,o){

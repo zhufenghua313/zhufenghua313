@@ -198,10 +198,15 @@ try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("sha
 })();
 /* v5.9：返回按钮点击时实时补token */
 document.addEventListener("click",function(ev){
-  var a=ev.target.closest("a");
-  if(a&&(a.id==="backTop"||a.id==="backBot")&&ADMIN_TOK&&a.href.indexOf("st=")<0){
+  var t=ev.target,a=null;
+  try{a=t&&t.closest?t.closest("a"):null}catch(e){a=null}
+  if(a&&(a.id==="backTop"||a.id==="backBot")){
     ev.preventDefault();
-    location.href="/apps/share/admin.html?v=54&st="+encodeURIComponent(ADMIN_TOK);
+    if(ADMIN_TOK){
+      location.href="/apps/share/admin.html?v=54&st="+encodeURIComponent(ADMIN_TOK);
+    }else{
+      location.href="/apps/share/admin.html?v=54";
+    }
   }
 },true);
 function adminFetch(u,o){
