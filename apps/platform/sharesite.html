@@ -298,6 +298,57 @@ button{width:100%;padding:15px;border:none;border-radius:10px;cursor:pointer;fon
     xhr.send(fd);
   });
 })();
+
+/* v5.0守护 *//* =====【v5.0】会话守护（站长 11-08 全站登录规则统一）=====
+   本页属于 sports_auth 登录态（工具站/平台后台）
+   30分钟无操作自动登出 + 退出全站踢出 + 掉线立即回登录页 */
+(function(){
+  var IDLE_MS = 30*60*1000;
+  var last = Date.now();
+  function reset(){ last = Date.now(); }
+  ["click","keydown","mousemove","touchstart","scroll","input"].forEach(function(ev){
+    document.addEventListener(ev, reset, {passive:true});
+  });
+  var of = window.fetch;
+  window.fetch = function(){ reset(); return of.apply(this, arguments); };
+  try{
+    var os = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.send = function(){ reset(); return os.apply(this, arguments); };
+    var oo = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(){
+      try{ this.upload && this.upload.addEventListener("progress", function(){ reset(); }, {passive:true}); }catch(e){}
+      return oo.apply(this, arguments);
+    };
+  }catch(e){}
+  /* 登出动作（超时/被踢共用）：回登录页 */
+  function doLogout(msg){
+    fetch("/soft/__logout", {method:"POST"}).catch(function(){});
+    /* 清本系统标记 + 全站踢出广播 */
+    try{ localStorage.setItem("sportsKickAt", String(Date.now())); }catch(e){}
+    alert(msg || "⏰ 30分钟无操作，已自动退出——请重新登录");
+    location.href = location.pathname; /* 回本页=Worker会吐登录页(401) */
+  }
+  setInterval(function(){
+    if(Date.now()-last > IDLE_MS){ doLogout(); }
+  }, 60000);
+  /* 全站踢出哨兵：其他页面退出→本页同步失守 */
+  window.addEventListener("storage",function(ev){
+    if(ev.key==="sportsKickAt"&&ev.newValue){ doLogout("已在其他页面退出登录"); }
+  });
+  setInterval(function(){
+    var k=0; try{k=parseInt(localStorage.getItem("sportsKickAt")||"0",10)}catch(e){}
+    if(k && k > (window.__pageLoadedAt||0)){ doLogout("已在其他页面退出登录"); }
+  },3000);
+  window.__pageLoadedAt=Date.now();
+  /* API 401哨兵：任何请求被拒=掉线，立即回登录页 */
+  var of2 = window.fetch;
+  window.fetch = function(u,o){
+    return of2.apply(this,arguments).then(function(r){
+      if(r.status===401 && !String(u).includes("__logout")){ doLogout("登录状态已失效"); }
+      return r;
+    });
+  };
+})();
 </script>
 </div></body></html>\`;
       if (request.method === "GET") return new Response(upPage(null), { status: 200, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
@@ -632,6 +683,9 @@ var SHARE_RECIPE = {
 
 
 ShareSite.create({ mount: "#app", recipe: SHARE_RECIPE });
+
+
+
 </script>
 </body>
 </html>
