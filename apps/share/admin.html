@@ -504,6 +504,17 @@ setTimeout(function(){ if(el("app").style.display!=="block"){ el("loginMask").st
 /* v5.4 刷新语义（站长16:15定稿）：刷新带登录状态直达；登出/超时/掉线=回登录页 */
 /* loginMask的显示交给探测结果（ok=藏/else=flex）——不再无条件亮（闪框根源） */
 try{var saved=localStorage.getItem("shareAdminPwSaved");if(saved&&!ADMIN_TOK){el("loginPw").value=saved;}}catch(e){}
+
+/* v5.11：探测结果自动重试（站长07:58——加载瞬间探测偶发not-ok后无人重试=永远卡死） */
+setTimeout(function(){
+  if(el("app").style.display!=="block" && ADMIN_TOK && !window.__retried){
+    window.__retried=1;
+    adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
+      if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";
+        try{localStorage.setItem("shareTokVerifiedAt",String(Date.now()))}catch(e){}}
+    }).catch(function(){});
+  }
+},1200);
 /* v5.8慢网直达：25分钟内探测过→免探测直接进（慢网下每次跳转等探测几十秒=站长以为要重登） */
     var __vAt=0; try{__vAt=parseInt(localStorage.getItem("shareTokVerifiedAt")||"0",10)}catch(e){}
     if(__vAt && (Date.now()-__vAt)<25*60*1000 && !loggedOutThisSession() && (ADMIN_TOK)){
