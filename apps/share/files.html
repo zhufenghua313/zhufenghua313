@@ -164,8 +164,7 @@ try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("sha
           /* v4.63：踢出广播——全站所有页同时失守 */
           localStorage.setItem("shareKickAt", String(Date.now()));}catch(e){}
       fetch("/share/__admin/logout",{method:"POST"}).catch(function(){});
-      el("app").style.display="none";
-      el("loginMask").style.display="flex";
+      setLoginState("guest");
       var er=el("loginErr"); if(er) er.textContent="⏰ 30分钟无操作，已自动退出——请重新登录";
     }
   }, 60000); /* 每分钟查一次 */
@@ -178,8 +177,7 @@ try{ADMIN_TOK=sessionStorage.getItem("shareAdminTok")||localStorage.getItem("sha
     /* 本页被踢：清session态+锁内容+回登录页 */
     ADMIN_TOK="";
     try{sessionStorage.removeItem("shareAdminTok")}catch(e){}
-    el("app").style.display="none";
-    el("loginMask").style.display="flex";
+    setLoginState("guest");
     var er=el("loginErr"); if(er) er.textContent="🚪 已在其他页面退出登录——请重新登录";
   }
   /* 实时通道：storage事件（其他标签页退出时本页秒收到） */
@@ -209,6 +207,34 @@ document.addEventListener("click",function(ev){
     }
   }
 },true);
+/* ═══【v6.0 单一状态机：登录管家】站长08:06拍板重构——7写者归一 ═══
+   规则：全页只有 showState() 能碰 loginMask/app 的显示。
+   任何代码想改变登录显示 → 调 setLoginState("logged"/"guest") */
+var __loginState = "loading";
+function showState(s){
+  var m = document.getElementById("loginMask"), a = document.getElementById("app");
+  if (!m || !a) return;
+  m.style.display = (s === "guest") ? "flex" : "none";
+  a.style.display = (s === "logged") ? "block" : "none";
+}
+function setLoginState(s){
+  if (s === __loginState) return; /* 幂等：同状态不折腾 */
+  __loginState = s;
+  showState(s);
+  /* guest时帮填记住的密码 */
+  if (s === "guest") { try { var pw = localStorage.getItem("shareAdminPwSaved"); if (pw && document.getElementById("loginPw")) document.getElementById("loginPw").value = pw; } catch (e) { } }
+}
+/* 启动即 loading：两不亮——由后续事件收场（缓存/探测/重试） */
+
+/* 事件注册点（旧的所有显示代码改为调 setLoginState）：
+   - v5.8缓存命中        → setLoginState("logged")
+   - v5.4探测 ok         → setLoginState("logged") + verifiedAt
+   - v5.4探测 not-ok     → setLoginState("guest")
+   - v5.11重试 ok        → setLoginState("logged") + verifiedAt
+   - 3s/6s保险           → setLoginState("guest")（仅当仍loading）
+   - doLogin 成功         → setLoginState("logged")
+   - 超时登出/踢出/authFail → setLoginState("guest") */
+
 function adminFetch(u,o){
   o=o||{};
   if(ADMIN_TOK){
@@ -221,8 +247,7 @@ function authFail(d){
   if(d&&d.msg&&d.msg.indexOf("管理员")>=0){
     ADMIN_TOK="";
     try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
-    el("app").style.display="none";
-    el("loginMask").style.display="flex";
+    setLoginState("guest");
     el("loginErr").textContent="登录已失效，请重新输入密码";
     return true;
   }
@@ -434,7 +459,7 @@ function doLogin(){
       /* v4.29d：记住密码=帮填密码框（站长语义），绝不自动登录 */
       if(el("rememberPw").checked)localStorage.setItem("shareAdminPwSaved",el("loginPw").value);
       else localStorage.removeItem("shareAdminPwSaved");
-      el("loginMask").style.display="none";el("app").style.display="block";loadFiles();
+      setLoginState("logged");loadFiles();
     }
     else{err.textContent=d.msg||"密码不对";}
   }).catch(function(){err.textContent="网络异常"});
@@ -470,8 +495,8 @@ function loggedOutThisSession(){
 /* 登录成功时清退出标记（重新进入后台） */
 /* 进门探测：带旧 cookie/token 直接进（本会话主动退出后不放行） */
 /* v4.52：探测超时保险——3秒无结果强制亮登录页（白屏终修） */
-setTimeout(function(){ if(el("app").style.display!=="block"){ el("loginMask").style.display="flex"; } },3000);
-setTimeout(function(){ if(el("app").style.display!=="block"){ el("loginMask").style.display="flex"; document.title="[WAIT] "+document.title.replace(/^\[OK\] /,""); } },6000);
+setTimeout(function(){ if(__loginState==="loading") setLoginState("guest"); },3000);
+setTimeout(function(){ if(__loginState==="loading"){ setLoginState("guest"); document.title="[WAIT] "+document.title.replace(/^\[OK\] /,""); } },6000);
 /* v5.4/v5.5 刷新直达：登录框显示交给探测结果 */
 try{var saved=localStorage.getItem("shareAdminPwSaved");if(saved&&!ADMIN_TOK){el("loginPw").value=saved;}}catch(e){}
 
@@ -480,24 +505,21 @@ setTimeout(function(){
   if(el("app").style.display!=="block" && ADMIN_TOK && !window.__retried){
     window.__retried=1;
     adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
-      if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";
-        try{localStorage.setItem("shareTokVerifiedAt",String(Date.now()))}catch(e){}}
+      if(d.ok){setLoginState("logged");try{localStorage.setItem("shareTokVerifiedAt",String(Date.now()))}catch(e){}}
     }).catch(function(){});
   }
 },1200);
 /* v5.8慢网直达：25分钟内探测过→免探测直接进 */
 var __vAt=0; try{__vAt=parseInt(localStorage.getItem("shareTokVerifiedAt")||"0",10)}catch(e){}
 if(__vAt && (Date.now()-__vAt)<25*60*1000 && !loggedOutThisSession() && ADMIN_TOK){
-  el("loginMask").style.display="none";el("app").style.display="block";
+  setLoginState("logged");
   /* 数据仍异步拉（不阻塞显示） */
   adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){ if(d.ok){DATA=d;renderTable();} }).catch(function(){});
 }else
 if(!loggedOutThisSession()){ /* 探测（无缓存或过期） */
 adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
-  if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";DATA=d;renderTable();}
-  else{if(ADMIN_TOK)authFail(d);if(el("loginMask").style.display!=="flex"){el("loginMask").style.display="flex";}
-      /* v4.59：掉线停登录页——记住的密码自动填框（仍需点"进入"确认，绝不自动登录） */
-      try{var saved=localStorage.getItem("shareAdminPwSaved");if(saved){el("loginPw").value=saved;}}catch(e){}}
+  if(d.ok){setLoginState("logged");DATA=d;renderTable();}
+  else{if(ADMIN_TOK)authFail(d);setLoginState("guest");}
 }).catch(function(){});
 }
 </script>
