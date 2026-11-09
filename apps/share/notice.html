@@ -97,7 +97,7 @@
 
   <div class="card">
     <h2>✏️ 须知内容</h2>
-    <p class="desc">换行请用 &lt;br&gt; 标签（直接回车无效）；彩色强调示例：<b style="color:var(--goldL)">60 天</b>。留空保存 = 恢复系统默认。</p>
+    <p class="desc">换行请用 &lt;br&gt; 标签（直接回车无效）；彩色强调示例：<b style="color:var(--goldL)">60 天</b>。留空保存 = 恢复系统默认。框里预填了当前生效的全文。</p>
     <textarea id="noticeTxt" rows="12" style="width:100%;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;font-family:inherit;box-sizing:border-box" placeholder="加载中…"></textarea>
     <div style="display:flex;gap:10px;margin-top:12px">
       <button class="btn-gold" type="button" id="noticeSave" style="padding:10px 30px">💾 保存</button>
@@ -313,7 +313,12 @@ function setDefExp(){
 function loadNotice(){
   adminFetch("/share/__admin/notice").then(function(r){return r.json()}).then(function(d){
     var t=el("noticeTxt");
-    if(d.ok){ t.value = d.notice || ""; t.placeholder = "（当前为系统默认须知——粘贴修改或留空恢复默认）"; }
+    /* v6.3：预填当前生效文本——KV有存文填存文，没有填系统默认（看得见才好改） */
+    if(d.ok){
+      var def = "提取码用于下载文件，删除码用于取消分享并删除文件<br>① 提取码与删除码不能相同，也不能与现有码重复（重复会提示重设）<br>② 请在保存期限内使用文件——到期后文件与两个码会自动删除，保持共享站干净；需长期保留，联系站长可免费延长<br>③ 文件用完后，建议自觉输入删除码删掉文件——干净你我他，方便大家<br>④ 单文件不限大小；上传断线、中断等传输损失本站不负责——大文件请耐心等待<br>⑤ 共享站总容量 10TB，超出后停止上传<br>⑥ 请勿上传违法违规、侵权或隐私敏感文件<br>⑦ 忘记提取码或删除码、或需延长有效期，请联系管理员：手机/微信 13605449077";
+      t.value = d.notice || def;
+      if(!d.notice){ el("noticeMsg").className="msg ok"; el("noticeMsg").textContent="当前显示的是系统默认须知（未自定义过）——直接在上面改，保存后生效"; }
+    }
   }).catch(function(){ el("noticeMsg").className="msg err"; el("noticeMsg").textContent="加载失败"; });
 }
 el("noticeSave").addEventListener("click",function(){
