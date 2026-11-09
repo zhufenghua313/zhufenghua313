@@ -551,9 +551,7 @@ setTimeout(function(){
     }else
     if(!loggedOutThisSession()){ /* 探测（无缓存或已过期25分钟） */
 adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
-  if(d.ok){el("loginMask").style.display="none";el("app").style.display="block";
-      /* v5.8慢网直达：探测成功记25分钟验证缓存——期间刷新/跳转免探测直接进 */
-      try{localStorage.setItem("shareTokVerifiedAt",String(Date.now()))}catch(e){}}
+  if(d.ok){setLoginState("logged");try{localStorage.setItem("shareTokVerifiedAt",String(Date.now()))}catch(e){}}
   else{if(ADMIN_TOK)authFail(d);setLoginState("guest");}
 }).catch(function(){});
 }
