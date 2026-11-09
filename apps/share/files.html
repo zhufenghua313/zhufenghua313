@@ -246,7 +246,7 @@ function adminFetch(u,o){
 function authFail(d){
   if(d&&d.msg&&d.msg.indexOf("管理员")>=0){
     ADMIN_TOK="";
-    try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
+    try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");localStorage.removeItem("shareTokVerifiedAt");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
     setLoginState("guest");
     el("loginErr").textContent="登录已失效，请重新输入密码";
     return true;
@@ -485,7 +485,7 @@ try{
    sessionStorage记"本次会话已主动退出"，防止进门探测再放行 */
 el("btnOut").addEventListener("click",function(){
   ADMIN_TOK="";
-  try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
+  try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");localStorage.removeItem("shareTokVerifiedAt");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
   try{sessionStorage.setItem("shareLoggedOut","1");localStorage.setItem("shareKickAt",String(Date.now()))}catch(e){}
   fetch("/share/__admin/logout",{method:"POST"}).then(function(){location.reload()}).catch(function(){location.reload()});
 });
@@ -517,8 +517,7 @@ setTimeout(function(){
 var __vAt=0; try{__vAt=parseInt(localStorage.getItem("shareTokVerifiedAt")||"0",10)}catch(e){}
 if(__vAt && (Date.now()-__vAt)<25*60*1000 && !loggedOutThisSession() && ADMIN_TOK){
   setLoginState("logged");
-  /* 数据仍异步拉（不阻塞显示） */
-  adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){ if(d.ok){DATA=d;renderTable();} }).catch(function(){});
+  loadFiles(); /* P2合并：缓存命中也走loadFiles（统一数据通道） */
 }else
 if(!loggedOutThisSession()){ /* 探测（无缓存或过期） */
 adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){

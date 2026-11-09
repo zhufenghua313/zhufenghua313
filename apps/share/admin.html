@@ -429,7 +429,7 @@ function adminFetch(u,o){
 function authFail(d){
   if(d&&d.msg&&d.msg.indexOf("管理员")>=0){
     ADMIN_TOK="";
-    try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
+    try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");localStorage.removeItem("shareTokVerifiedAt");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
     setLoginState("guest");
     el("loginErr").textContent="登录已失效，请重新输入密码";
     return true;
@@ -514,7 +514,7 @@ try{
    sessionStorage记"本次会话已主动退出"，防止进门探测再放行 */
 el("btnOut").addEventListener("click",function(){
   ADMIN_TOK="";
-  try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
+  try{sessionStorage.removeItem("shareAdminTok");localStorage.removeItem("shareAdminTok");localStorage.removeItem("shareTokVerifiedAt");document.cookie="shareTokJS=; path=/; max-age=0; SameSite=Lax"}catch(e){}
   try{sessionStorage.setItem("shareLoggedOut","1");localStorage.setItem("shareKickAt",String(Date.now()))}catch(e){}
   fetch("/share/__admin/logout",{method:"POST"}).then(function(){location.reload()}).catch(function(){location.reload()});
 });
