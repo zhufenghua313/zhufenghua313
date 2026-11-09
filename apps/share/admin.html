@@ -525,8 +525,12 @@ function loggedOutThisSession(){
 /* 进门探测：带旧 cookie/token 直接进（本会话主动退出后不放行） */
 /* v4.52：探测超时保险——3秒无结果强制亮登录页（白屏终修） */
 /* v6.0：保险经状态机（loading时才亮guest） */
-setTimeout(function(){ if(__loginState==="loading") setLoginState("guest"); },3000);
-setTimeout(function(){ if(__loginState==="loading"){ setLoginState("guest"); document.title="[WAIT] "+document.title.replace(/^\[OK\] /,""); } },6000);
+/* v6.01：循环保险——每2秒巡检直到离开loading（单次setTimeout会被节流环境吞） */
+var __guard = setInterval(function(){
+  if(__loginState !== "loading"){ clearInterval(__guard); return; }
+  if(Date.now() - (window.__loadT0||0) > 3000){ setLoginState("guest"); clearInterval(__guard); }
+}, 2000);
+window.__loadT0 = Date.now();
 /* v5.4 刷新语义（站长16:15定稿）：刷新带登录状态直达；登出/超时/掉线=回登录页 */
 /* loginMask的显示交给探测结果（ok=藏/else=flex）——不再无条件亮（闪框根源） */
 try{var saved=localStorage.getItem("shareAdminPwSaved");if(saved&&!ADMIN_TOK){el("loginPw").value=saved;}}catch(e){}
