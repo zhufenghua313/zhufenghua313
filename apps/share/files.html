@@ -436,17 +436,7 @@ function delCode(pw){
     var m=el("addMsg");m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok)loadFiles();
   }).catch(function(){});
-}
-el("pwForm").addEventListener("submit",function(e){
-  e.preventDefault();
-  var m=el("pwMsg");
-  var fd=new FormData();fd.append("new",el("newAdminPw").value);
-  adminFetch("/share/__admin/set-pw",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
-    if(authFail(d))return;
-    m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
-    if(d.ok){el("pwForm").reset();setTimeout(function(){location.reload()},1200);}
-  }).catch(function(){m.className="msg err";m.textContent="网络异常"});
-});
+} /* delCode闭合（修复时补） */
 function doLogin(){
   var err=el("loginErr");
   var fd=new FormData();fd.append("pw",el("loginPw").value);
