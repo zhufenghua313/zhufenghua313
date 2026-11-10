@@ -241,10 +241,18 @@ el("upForm").addEventListener("submit",function(e){
           var dirGuess=now.getFullYear()+"/"+("0"+(now.getMonth()+1)).slice(-2);
           var fid=target?(target.path?target.path+"/"+target.name:target.name):(dirGuess+"/"+finalName);
           if(!target){try{console.warn("[设码兜底] 列表未见新文件，按 "+dirGuess+" 归档位设码")}catch(e){}}
-          var done=0,total=(dlPw?1:0)+(delPw?1:0);
-          function after(){done++;if(done>=total){m.textContent="✅ 已上传并设好"+(total===2?"双码":(dlPw?"提取码":"删除码"));loadFiles();}}
-          if(dlPw){var f1=new FormData();f1.append("pw",dlPw);f1.append("file",fid);f1.append("kind","dl");adminFetch("/share/__admin/code-save",{method:"POST",body:f1}).then(function(r){return r.json()}).then(after).catch(after);}
-          if(delPw){var f2=new FormData();f2.append("pw",delPw);f2.append("file",fid);f2.append("kind","del");adminFetch("/share/__admin/code-save",{method:"POST",body:f2}).then(function(r){return r.json()}).then(after).catch(after);}
+          /* v4.51修：上传设码并发竞态（站长10:45实测——上传设双码只进删除码，
+             与补码竞态同病根：两个code-save同时读改写KV互覆盖）
+             改串行：提取码写完账本，删除码才动笔 */
+          var queue=[];
+          if(dlPw)queue.push({pw:dlPw,kind:"dl"});
+          if(delPw)queue.push({pw:delPw,kind:"del"});
+          function nextSave(i){
+            if(i>=queue.length){m.textContent="✅ 已上传并设好"+(queue.length===2?"双码":(dlPw?"提取码":"删除码"));loadFiles();return;}
+            var f1=new FormData();f1.append("pw",queue[i].pw);f1.append("file",fid);f1.append("kind",queue[i].kind);
+            adminFetch("/share/__admin/code-save",{method:"POST",body:f1}).then(function(r){return r.json()}).then(function(){nextSave(i+1)}).catch(function(){nextSave(i+1)});
+          }
+          nextSave(0);
         }).catch(function(){});
       }
     }else{m.className="msg err";m.textContent=d.msg||"上传失败";}
