@@ -422,18 +422,16 @@ function editCodes(fid){
   if(newDl===null)return;
   var newDel=prompt("新删除码（直接改就是换码；留空或点取消=保持现状）：",cDel?cDel.pw:"");
   if(newDel===null)return;
-  var m=msgBox();
   var steps=[];
   if(newDl.trim()){steps.push({pw:newDl.trim(),kind:"dl"});}
   if(newDel.trim()){steps.push({pw:newDel.trim(),kind:"del"});}
-  if(!steps.length){m.className="msg err";m.textContent="两个码都留空了——未做任何修改";return;}
+  if(!steps.length){msgFlash("两个码都留空了——未做任何修改",false);return;}
   /* v1.6修：改串行执行——原版两码并发写KV竞态互覆盖
      （站长10:29实测：补双码有的成功有的丢码真凶） */
   var done=0,failN=0;
   function next(i){
     if(i>=steps.length){
-      m.className="msg "+(failN?"err":"ok");
-      m.textContent=failN?("⚠ 部分码未保存成功，请刷新后核对（失败"+failN+"个）"):("✅ 两码已更新（"+fid+"）");
+      msgFlash(failN?("⚠ 部分码未保存成功，请刷新后核对（失败"+failN+"个）"):("✅ 两码已更新（"+fid+"）"),!failN);
       loadFiles();
       return;
     }
@@ -452,7 +450,7 @@ function renFile(name){
   var fd=new FormData();fd.append("from",name);fd.append("to",to);
   adminFetch("/share/__admin/rename",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
     if(authFail(d))return;
-    var m=msgBox();m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
+    msgFlash(d.msg||"",d.ok);
     if(d.ok)loadFiles();
   }).catch(function(){});
 }
@@ -507,7 +505,7 @@ function delCode(pw){
   var fd=new FormData();fd.append("pw",pw);
   adminFetch("/share/__admin/code-del",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
     if(authFail(d))return;
-    var m=msgBox();m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
+    msgFlash(d.msg||"",d.ok);
     if(d.ok)loadFiles();
   }).catch(function(){});
 } /* delCode闭合（修复时补） */
