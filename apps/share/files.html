@@ -349,7 +349,7 @@ function renderTable(){
     if(!rest){ rows.push(f); }
     else { var seg = rest.split("/")[0]; folders[seg] = (folders[seg]||0) + 1; }
   });
-  var h = '<div style="margin:2px 0 10px;font-size:15px">'+(crumbs()||'<span style="color:var(--sub)">📁 根目录</span>')+'</div>';
+  var h = '<div style="margin:2px 0 10px;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span>'+(crumbs()||'<span style="color:var(--sub)">📁 根目录</span>')+'</span><button type="button" class="btn-line" onclick="toggleSort()" style="padding:4px 12px;font-size:12.5px" title="切换排序">'+(SORT_MODE==="time"?"🕒 按时间（新→旧）":"🔤 按名称")+' ⇄</button></div>';
   h+='<div id="batchBar" style="display:none;margin:0 0 10px;padding:9px 14px;background:#FDF3F1;border:1px solid rgba(176,58,46,.3);border-radius:10px;font-size:14.5px;align-items:center;gap:10px;flex-wrap:wrap"><span style="color:#B03A2E;font-weight:700">已选 <span id="selN">0</span> 个文件</span><button type="button" onclick="batchDel()" style="background:linear-gradient(135deg,#A93226,#C74B3B);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:13.5px;cursor:pointer;font-family:inherit;font-weight:700">🗑 批量删除所选</button><button type="button" onclick="clearSel()" style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:13.5px;cursor:pointer;color:var(--sub);font-family:inherit">取消选择</button></div>';
   h+='<div style="display:flex;align-items:center;gap:8px;margin:0 0 4px;padding:0 2px;font-size:13.5px;color:var(--sub)"><input type="checkbox" class="chk" id="chkAll" onchange="toggleAll(this.checked)" title="全选本目录的文件" style="flex-shrink:0"><label for="chkAll" style="cursor:pointer">全选本目录的文件</label></div>';
   /* v1.5标题行：与文件行同grid模板对齐（站长10:05） */
@@ -358,7 +358,18 @@ function renderTable(){
   Object.keys(folders).sort().forEach(function(seg){
     var sub = prefix + seg;
     var safeSub = sub.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
-    h+='<div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:10px;cursor:pointer" data-dir="'+safeSub+'"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font-weight:700;color:var(--deep);font-size:15.5px;min-width:0;word-break:break-all"><span style="font-size:18px">📁</span> '+esc(seg)+'</span><span style="color:var(--goldL);font-size:15px;flex-shrink:0">点进入 →</span></div><div style="color:var(--sub);font-size:12.5px;margin-top:3px">'+folders[seg]+' 个文件</div></div>';
+    /* v4.59：文件夹属性聚合——文件数+总大小+最新上传时间（站长14:38） */
+    var inner=files.filter(function(f){var p=f.path||"";return p===sub||p.indexOf(sub+"/")===0;});
+    var tot=0,mt=0;
+    inner.forEach(function(f){tot+=f.size||0;if((f.mt||0)>mt)mt=f.mt;});
+    var szTxt=tot>=1073741824?(tot/1073741824).toFixed(2)+" GB":tot>=1048576?(tot/1048576).toFixed(1)+" MB":Math.max(1,Math.round(tot/1024))+" KB";
+    var mtTxt=mt?new Date(mt).toLocaleString("zh-CN",{hour12:false}):"—";
+    h+='<div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:10px;cursor:pointer" data-dir="'+safeSub+'"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font-weight:700;color:var(--deep);font-size:15.5px;min-width:0;word-break:break-all"><span style="font-size:18px">📁</span> '+esc(seg)+'</span><span style="flex-shrink:0;display:flex;gap:6px"><button type="button" onclick="event.stopPropagation();mvObj(\''+safeSub+'\',\'dir\')" style="background:none;border:1px solid var(--goldL);color:var(--goldL);border-radius:7px;padding:3px 9px;font-size:12.5px;cursor:pointer">📦 复制/移</button><button type="button" onclick="event.stopPropagation();rmDir(\''+safeSub+'\')" style="background:none;border:1px solid rgba(176,58,46,.5);color:#B03A2E;border-radius:7px;padding:3px 9px;font-size:12.5px;cursor:pointer">🗑 删夹</button><span style="color:var(--goldL);font-size:15px">点进入 →</span></span></div><div style="color:var(--sub);font-size:12.5px;margin-top:3px">'+folders[seg]+' 个文件 · '+szTxt+' · 最新 '+mtTxt+' · 目录：'+esc(sub)+'</div></div>';
+  });
+  /* v4.59：排序（默认时间倒序最新在前，可切名称） */
+  rows.sort(function(a,b){
+    if(SORT_MODE==="name")return a.name.localeCompare(b.name,"zh-CN");
+    return (b.mt||0)-(a.mt||0);
   });
   rows.forEach(function(f){
     var fid=fidOf(f);
@@ -380,10 +391,11 @@ function renderTable(){
         +'<div style="min-width:0"><span style="word-break:break-all;font-weight:700;font-size:14.5px">📄 '+esc(f.name)+'</span></div>'
         +'<div class="c-dir" style="color:var(--sub);font-size:12.5px">'+fmtSize(f.size)+'</div>'
         +'<div class="c-dir" style="color:var(--sub);font-size:12.5px">'+(f.path?esc(f.path):'根目录')+'</div>'
+        +'<div class="c-dir" style="color:var(--sub);font-size:12.5px">'+((f.mt)?new Date(f.mt).toLocaleString("zh-CN",{hour12:false}):'—')+'</div>'
         +'<div style="min-width:0">'+chip(cDl,false)+'</div>'
         +'<div class="c-del" style="min-width:0">'+chip(cDel,true)+'</div>'
       +'</div>'
-      +'<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:7px"><span style="font-size:12.5px">'+expChip(fid)+'</span><span style="display:flex;gap:6px"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="删除">🗑</button></span></div>'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:7px"><span style="font-size:12.5px">'+expChip(fid)+'</span><span style="display:flex;gap:6px"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="改名">✎</button> <button type="button" class="btn-line" onclick="mvObj(\''+fid.replace(/'/g,"\\'")+'\',\'file\')" style="padding:5px 11px;font-size:13px" title="复制/移动">📦</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="删除">🗑</button></span></div>'
     +'</div>';
   });
   
@@ -457,6 +469,58 @@ function renFile(name){
 /* =====【v1.3】删除=居中正式警告弹窗（站长 08:41/08:44：警告味浓+居中+批量） ===== */
 var DEL_QUEUE=[];
 function delFile(name){ askDel([name]); }
+/* ===== v4.59：文件夹删除+复制/移动+排序（站长14:38） ===== */
+function rmDir(dir){
+  if(!confirm("删除整个文件夹及其内部全部文件？\n目录："+dir+"\n（挂在里面的提取码/删除码一并清除，不可恢复）"))return;
+  adminFetch("/share/__admin/rmdir",{method:"POST",body:(function(){var f=new FormData();f.append("dir",dir);return f;})()})
+    .then(function(r){return r.json()}).then(function(d){
+      toast(d.msg||"完成");if(d.ok)loadFiles();
+    }).catch(function(){toast("网络异常")});
+}
+function mvObj(fid,kind){
+  var dirs=[];
+  (DATA.files||[]).forEach(function(f){
+    var p=f.path||"";
+    if(!p)return;
+    var segs=p.split("/");var acc="";
+    for(var i=0;i<segs.length;i++){acc=acc?acc+"/"+segs[i]:segs[i];if(dirs.indexOf(acc)<0)dirs.push(acc);}
+  });
+  var year="2026",month="11";
+  var now=new Date();
+  year=now.getFullYear();month=(now.getMonth()+1<10?"0":"")+(now.getMonth()+1);
+  var opts=dirs.filter(function(d){return d!==fid&&d.indexOf(fid+"/")!==0;});
+  var def=(kind==="dir")?fid.replace(/\/[^\/]+$/,""):(fid.indexOf("/")>=0?fid.replace(/\/[^\/]+$/,""):year+"/"+month);
+  var to=prompt("目标目录（留空=根目录）\n现有目录：\n"+(opts.length?opts.slice(0,25).join("\n"):"（暂无）")+"\n\n也可填新目录名（如 "+year+"/"+month+"/批-0625）",def);
+  if(to===null)return;
+  to=to.trim();
+  var mode=confirm("点【确定】=复制（码自动加-01序列）\n点【取消】=移动（码跟着走）")?"copy":"move";
+  /* v4.59b：预检目标重名——站长14:55"重名要提醒确认+告知改名规则" */
+  adminFetch("/share/__admin/copymove-check",{method:"POST",body:(function(){var f=new FormData();f.append("from",fid);f.append("toDir",to);return f;})()})
+    .then(function(r){return r.json()}).then(function(ck){
+      if(!ck.ok){toast(ck.msg||"预检失败");return;}
+      var doIt=function(newName){
+        adminFetch("/share/__admin/copymove",{method:"POST",body:(function(){var f=new FormData();f.append("from",fid);f.append("toDir",to);f.append("mode",mode);if(newName)f.append("newName",newName);return f;})()})
+          .then(function(r){return r.json()}).then(function(d){
+            toast(d.msg||"完成");if(d.ok)loadFiles();
+          }).catch(function(){toast("网络异常")});
+      };
+      if(ck.dup){
+        var base=fid.split("/").pop();
+        if(confirm("⚠️ 目标目录里已有重名："+"\n"+ck.dest+"\n\n"+
+          "改名规则：自动加序号，如\n  "+base+" → "+ck.sug+"\n（已有(1)就加(2)，依次类推）\n\n"+
+          "【确定】=改名继续"+(mode==="copy"?"复制":"移动")+"\n【取消】=不动了")){
+          doIt(ck.sug);
+        }else{toast("已取消——未做任何改动");}
+      }else{
+        doIt(null);
+      }
+    }).catch(function(){toast("网络异常")});
+}
+var SORT_MODE="time"; /* time=最新在前（默认） name=按名称 */
+function toggleSort(){
+  SORT_MODE=SORT_MODE==="time"?"name":"time";
+  renderTable();
+}
 function batchDel(){
   var list=[];document.querySelectorAll(".fchk:checked").forEach(function(c){list.push(c.getAttribute("data-fid"))});
   if(!list.length){toast("先勾选要删除的文件");return;}
