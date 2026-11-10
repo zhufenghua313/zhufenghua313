@@ -427,16 +427,24 @@ function editCodes(fid){
   if(newDl.trim()){steps.push({pw:newDl.trim(),kind:"dl"});}
   if(newDel.trim()){steps.push({pw:newDel.trim(),kind:"del"});}
   if(!steps.length){m.className="msg err";m.textContent="两个码都留空了——未做任何修改";return;}
-  var done=0;
-  steps.forEach(function(st){
+  /* v1.6修：改串行执行——原版两码并发写KV竞态互覆盖
+     （站长10:29实测：补双码有的成功有的丢码真凶） */
+  var done=0,failN=0;
+  function next(i){
+    if(i>=steps.length){
+      m.className="msg "+(failN?"err":"ok");
+      m.textContent=failN?("⚠ 部分码未保存成功，请刷新后核对（失败"+failN+"个）"):("✅ 两码已更新（"+fid+"）");
+      loadFiles();
+      return;
+    }
+    var st=steps[i];
     var fd=new FormData();fd.append("pw",st.pw);fd.append("file",fid);fd.append("kind",st.kind);
     adminFetch("/share/__admin/code-save",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
-      done++;
-      if(done===steps.length){
-        m.className="msg ok";m.textContent="✅ 两码已更新（"+fid+"）";loadFiles();
-      }
-    }).catch(function(){done++;});
-  });
+      if(!d.ok)failN++;
+      next(i+1);
+    }).catch(function(){failN++;next(i+1);});
+  }
+  next(0);
 }
 function renFile(name){
   var to=prompt("新文件名：",name);
