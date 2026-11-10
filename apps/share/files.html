@@ -44,18 +44,13 @@
   .login-box .err{color:#E88;margin-top:10px;font-size:15px;}
   footer{text-align:center;color:var(--sub);font-size:14px;line-height:1.8;padding:10px 0;}
 
-  /* =====【手机友好 v1.1】小屏表格→卡片：提取码/删除码不再藏在屏幕外 ===== */
-  @media(max-width:720px){
-    .tbl-wrap{overflow-x:visible!important;-webkit-overflow-scrolling:auto;}
-    .tbl-wrap table{min-width:0!important;}
-    .tbl-wrap thead{display:none;}
-    .tbl-wrap tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin-bottom:10px;}
-    .tbl-wrap td{display:flex;justify-content:space-between;align-items:center;border:none;padding:5px 2px;white-space:normal;}
-    .tbl-wrap td::before{content:attr(data-l);color:var(--sub);font-size:12px;flex-shrink:0;margin-right:12px;}
-    .tbl-wrap td:first-child{border-bottom:1px dashed var(--line);padding-bottom:8px;margin-bottom:4px;}
-  }
+  /* =====【v1.4】文件列表改div卡片（站长 09:39）：table方案退役 =====
+     行1：文件名(粗)+大小·目录(灰) 靠左 | 选择框靠右
+     行2：提取码/删除码chips + 有效期
+     行3：操作按钮组 右对齐
+     同一文件的信息与操作同在一个卡片框内 */
 /* =====【v1.3】多选批量删除 + 居中警告弹窗（站长 08:44） ===== */
-  .chk{width:18px;height:18px;accent-color:#B03A2E;cursor:pointer;margin:0;vertical-align:middle;}
+  .chk{width:18px!important;height:18px!important;flex-shrink:0;accent-color:#B03A2E;cursor:pointer;margin:0;vertical-align:middle;}
   #delMask{position:fixed;inset:0;background:rgba(15,20,35,.74);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;}
   #delMask .dlg{width:min(92vw,440px);background:#fff;border:2px solid rgba(176,58,46,.55);border-radius:16px;padding:24px 22px;box-shadow:0 18px 60px rgba(0,0,0,.45);}
   #delMask .flist{max-height:150px;overflow-y:auto;background:#FDF3F1;border:1px solid rgba(176,58,46,.3);border-left:4px solid #B03A2E;border-radius:10px;padding:10px 14px;margin:12px 0;font-size:14px;word-break:break-all;line-height:1.9;}
@@ -124,7 +119,9 @@ function el(x){return document.getElementById(x)}
    m.className一赋值就抛错，正好炸断后面的loadFiles()
    =删除/改名成功但列表永不自动刷新的真凶。
    现造一个居顶浮动消息条兜底 */
-function msgBox(){var m=el("addMsg");if(!m){m=document.createElement("div");m.id="addMsg";m.className="msg";m.style.cssText="position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:9998;max-width:92vw;white-space:normal;box-shadow:0 6px 24px rgba(0,0,0,.18);border-radius:10px;padding:12px 18px;background:#fff;border:1px solid var(--line)";document.body.appendChild(m);}return m;}
+function msgBox(){var m=el("addMsg");if(!m){m=document.createElement("div");m.id="addMsg";m.className="msg";m.style.cssText="position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:9998;max-width:92vw;white-space:normal;box-shadow:0 6px 24px rgba(0,0,0,.18);border-radius:10px;padding:12px 18px;background:#fff;border:1px solid var(--line);transition:opacity .4s";document.body.appendChild(m);}return m;}
+/* v1.4b（站长 09:47）：提示条4秒后自动淡出 */
+function msgFlash(txt,ok){var m=msgBox();m.className="msg "+(ok?"ok":"err");m.textContent=txt;m.style.opacity="1";try{clearTimeout(window.__msgT)}catch(e){}window.__msgT=setTimeout(function(){m.style.opacity="0";setTimeout(function(){if(m.style.opacity==="0")m.remove()},450)},4000);}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 var DATA={files:[],codes:[]};
 /* ===== v4.29c 通行证本地化（手机浏览器cookie不稳，改Authorization头） ===== */
@@ -347,12 +344,12 @@ function renderTable(){
   });
   var h = '<div style="margin:2px 0 10px;font-size:15px">'+(crumbs()||'<span style="color:var(--sub)">📁 根目录</span>')+'</div>';
   h+='<div id="batchBar" style="display:none;margin:0 0 10px;padding:9px 14px;background:#FDF3F1;border:1px solid rgba(176,58,46,.3);border-radius:10px;font-size:14.5px;align-items:center;gap:10px;flex-wrap:wrap"><span style="color:#B03A2E;font-weight:700">已选 <span id="selN">0</span> 个文件</span><button type="button" onclick="batchDel()" style="background:linear-gradient(135deg,#A93226,#C74B3B);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:13.5px;cursor:pointer;font-family:inherit;font-weight:700">🗑 批量删除所选</button><button type="button" onclick="clearSel()" style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:13.5px;cursor:pointer;color:var(--sub);font-family:inherit">取消选择</button></div>';
-  h+='<div class="tbl-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table style="min-width:640px"><tr><th style="width:34px"><input type="checkbox" class="chk" id="chkAll" onchange="toggleAll(this.checked)" title="全选本目录的文件"></th><th>名称</th><th style="width:72px">大小</th><th style="width:92px">目录</th><th style="width:100px">提取码</th><th style="width:100px">删除码</th><th style="width:86px">有效期</th><th style="width:60px">操作</th></tr>';
+  h+='<div style="display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:13.5px;color:var(--sub)"><input type="checkbox" class="chk" id="chkAll" onchange="toggleAll(this.checked)" title="全选本目录的文件" style="flex-shrink:0"><label for="chkAll" style="cursor:pointer">全选本目录的文件</label></div>';
   /* 文件夹行（先列） */
   Object.keys(folders).sort().forEach(function(seg){
     var sub = prefix + seg;
     var safeSub = sub.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
-    h+='<tr style="cursor:pointer" data-dir="'+safeSub+'"><td data-l="选择" style="width:34px"></td><td data-l="📁 文件夹" style="font-weight:700;color:var(--deep)"><span style="font-size:18px">📁</span> '+esc(seg)+'</td><td data-l="📦 内容" style="color:var(--sub)">'+folders[seg]+' 个文件</td><td data-l="位置" style="color:var(--sub)">—</td><td data-l="🔑 提取码" style="color:var(--sub)">按文件各设</td><td data-l="🗑️ 删除码" style="color:var(--sub)">按文件各设</td><td data-l="⏳ 有效期" style="color:var(--sub)">按文件各算</td><td data-l="⚙️ 操作"><span style="color:var(--goldL);font-size:15px">点进入 →</span></td></tr>';
+    h+='<div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:10px;cursor:pointer" data-dir="'+safeSub+'"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font-weight:700;color:var(--deep);font-size:15.5px;min-width:0;word-break:break-all"><span style="font-size:18px">📁</span> '+esc(seg)+'</span><span style="color:var(--goldL);font-size:15px;flex-shrink:0">点进入 →</span></div><div style="color:var(--sub);font-size:12.5px;margin-top:3px">'+folders[seg]+' 个文件</div></div>';
   });
   rows.forEach(function(f){
     var fid=fidOf(f);
@@ -367,9 +364,16 @@ function renderTable(){
     }
     var cDl=findCode("dl"),cDel=findCode("del");
     function chip(c,red){if(!c)return '<span style="color:#bbb">未设</span>';var t=c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:10.5px">（'+c.expText+'）</span>':"";return '<span class="pw-chip"'+(red?' style="border-color:rgba(176,58,46,.5);color:#B03A2E;background:#FDF0EE"':"")+' onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+t}
-    h+='<tr><td data-l="选择" style="width:34px"><input type="checkbox" class="chk fchk" data-fid="'+esc(fid)+'" onchange="updSel()"></td><td data-l="📄 文件" style="word-break:break-all;font-weight:600">'+esc(f.name)+'</td><td data-l="📦 大小" style="color:var(--sub);white-space:nowrap">'+fmtSize(f.size)+'</td><td data-l="📁 目录" style="color:var(--sub);white-space:nowrap">'+(f.path?esc(f.path):'<span style="color:#bbb">根目录</span>')+'</td><td data-l="🔑 提取码">'+chip(cDl,false)+'</td><td data-l="🗑️ 删除码">'+chip(cDel,true)+'</td><td data-l="⏳ 有效期">'+expChip(fid)+'</td><td data-l="⚙️ 操作" style="white-space:nowrap"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:4px 8px;font-size:12px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:4px 8px;font-size:12px" title="删除">🗑</button></td></tr>';
+    h+='<div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:10px" data-fcard="'+esc(fid)+'">'
+      +'<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:7px">'
+        +'<span style="min-width:0"><span style="word-break:break-all;font-weight:700;font-size:15.5px">📄 '+esc(f.name)+'</span><br><span style="color:var(--sub);font-size:12.5px">'+fmtSize(f.size)+' · '+(f.path?esc(f.path):'根目录')+'</span></span>'
+        +'<input type="checkbox" class="chk fchk" data-fid="'+esc(fid)+'" onchange="updSel()" style="flex-shrink:0;margin-top:4px">'
+      +'</div>'
+      +'<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:7px 0">'+chip(cDl,false)+' '+chip(cDel,true)+' <span style="font-size:12.5px">'+expChip(fid)+'</span></div>'
+      +'<div style="display:flex;justify-content:flex-end;align-items:center;gap:6px;border-top:1px dashed var(--line);padding-top:7px"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="删除">🗑</button></div>'
+    +'</div>';
   });
-  h+='</table></div>';
+  
   if(!Object.keys(folders).length && !rows.length && CUR_DIR){
     h+='<p style="color:var(--sub);padding:8px 0">这个文件夹是空的。</p>';
   }
@@ -461,8 +465,7 @@ function doDel(){
       btn.textContent="删除中…（"+done+"/"+total+"）";
       if(done===total){
         el("delMask").style.display="none";DEL_QUEUE=[];btn.disabled=false;btn.textContent="🗑 我已确认，永久删除";
-        var m=msgBox();m.className="msg "+(fail?"err":"ok");
-        m.textContent=fail?("⚠ 已删 "+(total-fail)+" 个，失败 "+fail+" 个（可稍后重试）"):("✅ 已删除 "+total+" 个文件");
+        msgFlash(fail?("⚠ 已删 "+(total-fail)+" 个，失败 "+fail+" 个（可稍后重试）"):("✅ 已删除 "+total+" 个文件"),!fail);
         loadFiles(); /* v1.3：删完自动刷新列表，当前目录原地看结果 */
       }
     });
