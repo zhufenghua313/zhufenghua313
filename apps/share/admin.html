@@ -96,7 +96,7 @@
 
   <div class="card">
     <h2>⬆️ 上传文件到共享文件夹</h2>
-    <p class="desc">传到 123 盘「欢乐共享站」（网页限 25MB；大文件用 123 盘 App 传好移进来）。</p></p>
+    <p class="desc">传到 123 盘「欢乐共享站」（网页限 25MB；大文件用 123 盘 App 传好移进来）。</p>
     <form id="upForm">
       <label>选择文件</label>
       <input type="file" id="upFile" required>
@@ -137,6 +137,8 @@
       </select>
       <select id="newFile" style="flex:1.2;min-width:160px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;"></select>
       <input id="newPw" placeholder="提取码（1-30位）" style="flex:1;min-width:130px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;">
+      <button type="button" onclick="var b=document.getElementById('advBox');var t=this;b.style.display=b.style.display==='none'?'inline-flex':'none';t.textContent=b.style.display==='none'?'⚙️ 高级 ▸':'⚙️ 高级 ▾';t.style.background=b.style.display==='none'?'var(--goldL)':'#8a6d1f'" style="flex:0 0 auto;min-width:86px;padding:10px 14px;font-size:14px;font-weight:600;border:none;border-radius:9px;background:var(--goldL);color:#fff;cursor:pointer;font-family:inherit">⚙️ 高级 ▸</button>
+      <span id="advBox" style="display:none;gap:8px;align-items:center;flex-wrap:wrap">
       <select id="newHours" onchange="document.getElementById('newDays').style.display=this.value==='custom'?'block':'none'" style="flex:0.8;min-width:110px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;">
         <option value="-1" selected>跟随文件有效期（推荐）</option>
         <option value="0">永久有效</option>
@@ -148,7 +150,7 @@
         <option value="720">30天</option>
         <option value="custom">✏️ 自定义天数…</option>
       </select>
-      <input id="newDays" type="number" min="1" max="3650" placeholder="天数" style="display:none;flex:0.5;min-width:70px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;" oninput="if(this.value&&+this.value<=0)this.value=''">
+      <input id="newDays" type="number" min="1" max="3650" placeholder="天数" style="display:none;flex:0.5;min-width:70px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;" oninput="if(this.value&&+this.value<=0)this.value=''"></span>
       <button class="btn-gold" type="button" id="btnAdd">➕ 设码</button>
     </div>
     <div class="msg" id="addMsg"></div>
