@@ -137,7 +137,7 @@
       </select>
       <select id="newFile" style="flex:1.2;min-width:160px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;"></select>
       <input id="newPw" placeholder="提取码（1-30位）" style="flex:1;min-width:130px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;">
-      <select id="newHours" style="flex:0.8;min-width:110px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;">
+      <select id="newHours" onchange="document.getElementById('newDays').style.display=this.value==='custom'?'block':'none'" style="flex:0.8;min-width:110px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;background:#fff;">
         <option value="-1" selected>跟随文件有效期（推荐）</option>
         <option value="0">永久有效</option>
         <option value="2">2小时</option>
@@ -146,7 +146,9 @@
         <option value="72">3天</option>
         <option value="168">7天</option>
         <option value="720">30天</option>
+        <option value="custom">✏️ 自定义天数…</option>
       </select>
+      <input id="newDays" type="number" min="1" max="3650" placeholder="天数" style="display:none;flex:0.5;min-width:70px;padding:10px 12px;font-size:14px;border:1px solid var(--line);border-radius:9px;" oninput="if(this.value&&+this.value<=0)this.value=''">
       <button class="btn-gold" type="button" id="btnAdd">➕ 设码</button>
     </div>
     <div class="msg" id="addMsg"></div>
@@ -266,6 +268,12 @@ el("upForm").addEventListener("submit",function(e){
 
 el("btnAdd").addEventListener("click",function(){
   var m=el("addMsg"),pw=el("newPw").value.trim(),file=el("newFile").value,hours=el("newHours").value;
+  /* v4.53：自定义天数——站长11:13"最好能输入天数" */
+  if(hours==="custom"){
+    var dv=parseFloat(el("newDays").value);
+    if(!(dv>0)){m.className="msg err";m.textContent="请填写自定义天数（1-3650）";return;}
+    hours=Math.round(dv*24);
+  }
   if(!pw||pw.length<1){m.className="msg err";m.textContent="提取码至少1位";return;}
   if(!file){m.className="msg err";m.textContent="先选文件";return;}
   var fd=new FormData();fd.append("pw",pw);fd.append("file",file);fd.append("hours",hours);fd.append("kind",el("newKind").value);
@@ -441,6 +449,10 @@ function setLoginState(s){
   if (s === __loginState) return; /* 幂等：同状态不折腾 */
   __loginState = s;
   showState(s);
+  /* v4.53修：登录态一到就拉文件清单——填"新设提取码"的文件下拉框
+     （v4.52只修了填充代码却没人触发：loadFiles原本只在
+     上传/设码成功后才被调用=页面刚打开时下拉框永远是空的） */
+  if (s === "logged") { try { loadFiles(); } catch (e) { } }
   /* guest时帮填记住的密码 */
   if (s === "guest") { try { var pw = localStorage.getItem("shareAdminPwSaved"); if (pw && document.getElementById("loginPw")) document.getElementById("loginPw").value = pw; } catch (e) { } }
 }
@@ -487,6 +499,12 @@ function toast(s){var t=document.getElementById("toast");if(!t){t=document.creat
 
 el("btnAdd").addEventListener("click",function(){
   var m=el("addMsg"),pw=el("newPw").value.trim(),file=el("newFile").value,hours=el("newHours").value;
+  /* v4.53：自定义天数——站长11:13"最好能输入天数" */
+  if(hours==="custom"){
+    var dv=parseFloat(el("newDays").value);
+    if(!(dv>0)){m.className="msg err";m.textContent="请填写自定义天数（1-3650）";return;}
+    hours=Math.round(dv*24);
+  }
   if(!pw||pw.length<1){m.className="msg err";m.textContent="提取码至少1位";return;}
   if(!file){m.className="msg err";m.textContent="先选文件";return;}
   var fd=new FormData();fd.append("pw",pw);fd.append("file",file);fd.append("hours",hours);fd.append("kind",el("newKind").value);
