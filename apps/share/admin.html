@@ -277,10 +277,26 @@ el("btnAdd").addEventListener("click",function(){
 }); /* ← v4.47修：btnAdd监听外层闭合（截断致全JS瘫痪——登录无反应真凶） */
 
 function loadFiles(){
-  if(!el("fileTable"))return; /* 主页无列表容器时空转（防null崩） */
+  /* v4.52b修：fileTable守卫提前return吞掉了newFile填充
+     （admin主页无列表容器但设码表单需要文件清单）——
+     守卫改为fetch照常发、只是无容器时跳过表格渲染 */
+  var noTable=!el("fileTable");
   adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d){
-    if(!d.ok){el("fileTable").innerHTML='<p style="color:var(--err)">'+esc(d.msg||"加载失败")+'</p>';return;}
-    DATA=d;renderTable();
+    if(!d.ok){if(!noTable)el("fileTable").innerHTML='<p style="color:var(--err)">'+esc(d.msg||"加载失败")+'</p>';return;}
+    DATA=d;if(!noTable)renderTable();
+    /* v4.52修：新设提取码的文件下拉框从未被填充（空下拉=表单残废
+       站长11:03"还不会用"——不是不会用，是没文件可选！） */
+    var nf=el("newFile");
+    if(nf){
+      var keep=nf.value;
+      nf.innerHTML='<option value="">— 选择文件 —</option>'+
+        (d.files||[]).map(function(x){
+          var fid2=x.path?x.path+"/"+x.name:x.name;
+          return '<option value="'+esc(fid2)+'">'+esc((x.path?x.path+"/":"")+x.name)+'</option>';
+        }).join("")+
+        '<option value="*">总码（全部文件）</option>';
+      if(keep)nf.value=keep;
+    }
     var dd=d.defaultDays||60;
     if(el("defDays"))el("defDays").textContent=dd;
     if(el("defDaysTxt"))el("defDaysTxt").textContent=dd;
