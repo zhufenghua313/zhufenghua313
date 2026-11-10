@@ -120,6 +120,11 @@ document.title="[OK] "+document.title;
 /* v4.56 BFCache爆破：从后退/前进缓存复活时强制整页重载（白屏来自v4.53时代快照） */
 window.addEventListener("pageshow",function(ev){ if(ev.persisted){ location.reload(); } });
 function el(x){return document.getElementById(x)}
+/* v1.3b：addMsg元素本页不存在（原厂暗病）——el()返null后
+   m.className一赋值就抛错，正好炸断后面的loadFiles()
+   =删除/改名成功但列表永不自动刷新的真凶。
+   现造一个居顶浮动消息条兜底 */
+function msgBox(){var m=el("addMsg");if(!m){m=document.createElement("div");m.id="addMsg";m.className="msg";m.style.cssText="position:fixed;top:70px;left:50%;transform:translateX(-50%);z-index:9998;max-width:92vw;white-space:normal;box-shadow:0 6px 24px rgba(0,0,0,.18);border-radius:10px;padding:12px 18px;background:#fff;border:1px solid var(--line)";document.body.appendChild(m);}return m;}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 var DATA={files:[],codes:[]};
 /* ===== v4.29c 通行证本地化（手机浏览器cookie不稳，改Authorization头） ===== */
@@ -400,7 +405,7 @@ function editCodes(fid){
   if(newDl===null)return;
   var newDel=prompt("新删除码（直接改就是换码；留空或点取消=保持现状）：",cDel?cDel.pw:"");
   if(newDel===null)return;
-  var m=el("addMsg");
+  var m=msgBox();
   var steps=[];
   if(newDl.trim()){steps.push({pw:newDl.trim(),kind:"dl"});}
   if(newDel.trim()){steps.push({pw:newDel.trim(),kind:"del"});}
@@ -422,7 +427,7 @@ function renFile(name){
   var fd=new FormData();fd.append("from",name);fd.append("to",to);
   adminFetch("/share/__admin/rename",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
     if(authFail(d))return;
-    var m=el("addMsg");m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
+    var m=msgBox();m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok)loadFiles();
   }).catch(function(){});
 }
@@ -456,7 +461,7 @@ function doDel(){
       btn.textContent="删除中…（"+done+"/"+total+"）";
       if(done===total){
         el("delMask").style.display="none";DEL_QUEUE=[];btn.disabled=false;btn.textContent="🗑 我已确认，永久删除";
-        var m=el("addMsg");m.className="msg "+(fail?"err":"ok");
+        var m=msgBox();m.className="msg "+(fail?"err":"ok");
         m.textContent=fail?("⚠ 已删 "+(total-fail)+" 个，失败 "+fail+" 个（可稍后重试）"):("✅ 已删除 "+total+" 个文件");
         loadFiles(); /* v1.3：删完自动刷新列表，当前目录原地看结果 */
       }
@@ -478,7 +483,7 @@ function delCode(pw){
   var fd=new FormData();fd.append("pw",pw);
   adminFetch("/share/__admin/code-del",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
     if(authFail(d))return;
-    var m=el("addMsg");m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
+    var m=msgBox();m.className="msg "+(d.ok?"ok":"err");m.textContent=d.msg||"";
     if(d.ok)loadFiles();
   }).catch(function(){});
 } /* delCode闭合（修复时补） */
