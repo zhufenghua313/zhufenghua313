@@ -56,7 +56,12 @@
     .fgrid .c-dir,.ghead-row .ghead-dir{display:none;}
     .fgrid .c-del,.ghead-row .ghead-del{display:none;}
   }
-/* =====【v1.3】多选批量删除 + 居中警告弹窗（站长 08:44） ===== */
+/* v4.60：行内编辑框样式 */
+  .iedit{width:100%;min-width:0;box-sizing:border-box;border:1px solid var(--line);border-radius:7px;padding:4px 8px;font-family:inherit;font-size:13px;background:#FFFDF8;color:var(--deep);}
+  .iedit:focus{outline:none;border-color:var(--goldL);box-shadow:0 0 0 2px rgba(232,188,79,.18);}
+  .iedit.ied-del{color:#B03A2E;background:#FFF;}
+  .iedit.ied-exp{width:64px;text-align:center;}
+  /* =====【v1.3】多选批量删除 + 居中警告弹窗（站长 08:44） ===== */
   .chk{width:18px!important;height:18px!important;flex-shrink:0;accent-color:#B03A2E;cursor:pointer;margin:0;vertical-align:middle;}
   #delMask{position:fixed;inset:0;background:rgba(15,20,35,.74);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;}
   #delMask .dlg{width:min(92vw,440px);background:#fff;border:2px solid rgba(176,58,46,.55);border-radius:16px;padding:24px 22px;box-shadow:0 18px 60px rgba(0,0,0,.45);}
@@ -388,13 +393,13 @@ function renderTable(){
     h+='<div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:10px" data-fcard="'+esc(fid)+'">'
       +'<div class="fgrid" style="border-bottom:1px dashed var(--line);padding-bottom:8px">'
         +'<div><input type="checkbox" class="chk fchk" data-fid="'+esc(fid)+'" onchange="updSel()"></div>'
-        +'<div style="min-width:0"><span style="word-break:break-all;font-weight:700;font-size:14.5px">📄 '+esc(f.name)+'</span></div>'
+        +'<div style="min-width:0"><input class="iedit" value="'+esc(f.name)+'" title="改名（回车或点别处生效）" oninput="markDirty(this)" onkeydown="if(event.key===\'Enter\')this.blur()" onchange="inlineRen(this,\''+esc(fid)+'\')"></div>'
         +'<div class="c-dir" style="color:var(--sub);font-size:12.5px">'+fmtSize(f.size)+'</div>'
         +'<div class="c-dir" style="color:var(--sub);font-size:12.5px">'+(f.path?esc(f.path):'根目录')+'</div>'
-        +'<div style="min-width:0">'+chip(cDl,false)+'</div>'
-        +'<div class="c-del" style="min-width:0">'+chip(cDel,true)+'</div>'
+        +'<div style="min-width:0"><input class="iedit ied-dl" value="'+(cDl?esc(cDl.pw):'')+'" placeholder="未设·填入即设" title="提取码（回车或点别处生效）" oninput="markDirty(this)" onkeydown="if(event.key===\'Enter\')this.blur()" onchange="inlineCode(this,\''+esc(fid)+'\',\'dl\')"></div>'
+        +'<div class="c-del" style="min-width:0"><input class="iedit ied-del" value="'+(cDel?esc(cDel.pw):'')+'" placeholder="未设·填入即设" title="删除码（回车或点别处生效）" oninput="markDirty(this)" onkeydown="if(event.key===\'Enter\')this.blur()" onchange="inlineCode(this,\''+esc(fid)+'\',\'del\')"></div>'
       +'</div>'
-      +'<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:7px"><span style="font-size:12.5px">'+expChip(fid)+'</span><span style="display:flex;gap:14px;align-items:center"><span style="font-size:12.5px;color:var(--sub);border-left:1px solid var(--line);padding-left:14px" title="上传时间">'+((f.mt)?new Date(f.mt).toLocaleString("zh-CN",{hour12:false}):'—')+'</span><span style="display:flex;gap:6px"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="改名">✎</button> <button type="button" class="btn-line" onclick="mvObj(\''+fid.replace(/'/g,"\\'")+'\',\'file\')" style="padding:5px 11px;font-size:13px" title="复制/移动">📦</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="删除">🗑</button></span></div>'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:7px"><span style="display:flex;gap:14px;align-items:center"><input class="iedit ied-exp" style="width:64px" value="'+expVal(fid)+'" title="剩余天数（0=永久，回车或点别处生效）" oninput="markDirty(this)" onkeydown="if(event.key===\'Enter\')this.blur()" onchange="inlineExp(this,\''+esc(fid)+'\')"><span style="font-size:12.5px;color:var(--sub);border-left:1px solid var(--line);padding-left:14px" title="上传时间">'+((f.mt)?new Date(f.mt).toLocaleString("zh-CN",{hour12:false}):'—')+'</span></span><span style="display:flex;gap:6px"><button type="button" class="btn-line" onclick="mvObj(\''+fid.replace(/'/g,"\\'")+'\',\'file\')" style="padding:5px 11px;font-size:13px" title="复制/移动">📦</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="删除">🗑</button></span></div>'
     +'</div>';
   });
   
@@ -468,6 +473,77 @@ function renFile(name){
 /* =====【v1.3】删除=居中正式警告弹窗（站长 08:41/08:44：警告味浓+居中+批量） ===== */
 var DEL_QUEUE=[];
 function delFile(name){ askDel([name]); }
+/* v4.60：右下角保存按钮（站长15:12）——有未保存改动才现身 */
+function updSaveBtn(){
+  var dirty=document.querySelector(".iedit.dirt");
+  el("saveAllBtn").style.display=dirty?"block":"none";
+}
+function markDirty(inp){
+  inp.classList.add("dirt");
+  inp.style.borderColor="#E88";
+  updSaveBtn();
+}
+function saveAll(){
+  var dirtys=Array.prototype.slice.call(document.querySelectorAll(".iedit.dirt"));
+  if(!dirtys.length){el("saveAllBtn").style.display="none";return;}
+  dirtys.forEach(function(inp){
+    inp.classList.remove("dirt");
+    inp.style.borderColor="";
+    inp.dispatchEvent(new Event("change"));
+  });
+  setTimeout(function(){updSaveBtn();},800);
+}
+/* ===== v4.60：行内编辑（站长15:06/15:12：文件名/两码/剩期直接改+右下角保存） ===== */
+function f_name(fid){
+  var f=(DATA.files||[]).filter(function(x){return (x.path?x.path+"/":"")+x.name===fid;})[0];
+  return f?f.name:fid.split("/").pop();
+}
+function expVal(fid){
+  var m=(DATA.meta||{})[fid];
+  if(!m)return "60";
+  if(!m.exp)return "0";
+  return String(Math.ceil((m.exp-Date.now())/86400000));
+}
+var INLINE_OK=0,INLINE_N=0;
+function inlineDone(what,fid,ok,msg){
+  msgFlash((ok?"✅ ":"⚠ ")+what+(ok?"已保存":"未保存："+(msg||"失败")),ok);
+}
+function inlineRen(inp,fid){
+  var to=inp.value.trim();
+  if(!to||to===f_name(fid)){inp.value=f_name(fid);return;}
+  var fd=new FormData();fd.append("from",fid);fd.append("to",to);
+  adminFetch("/share/__admin/rename",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    if(authFail(d))return;
+    if(d.ok){inlineDone("改名",fid,true);loadFiles();}else{inlineDone("改名",fid,false,d.msg);inp.value=f_name(fid);}
+  }).catch(function(){inlineDone("改名",fid,false,"网络异常")});
+}
+function inlineCode(inp,fid,kind){
+  var pw=inp.value.trim();
+  var cur=(DATA.codes||[]).filter(function(x){return x.file===fid&&x.kind===kind;})[0];
+  if(!pw){ /*清空=删码*/
+    if(!cur)return;
+    if(!confirm("清空这个"+(kind==="dl"?"提取码":"删除码")+"？(文件保留，仅去掉码)")){inp.value=cur.pw;return;}
+    var fd2=new FormData();fd2.append("pw",cur.pw);fd2.append("file",fid);fd2.append("kind",kind);
+    adminFetch("/share/__admin/code-del",{method:"POST",body:fd2}).then(function(r){return r.json()}).then(function(d){
+      if(d.ok){inlineDone("清码",fid,true);loadFiles();}else inlineDone("清码",fid,false,d.msg);
+    });
+    return;
+  }
+  if(pw.length>30){inlineDone("改码",fid,false,"须1-30位");inp.value=cur?cur.pw:"";return;}
+  if(cur&&cur.pw===pw)return;
+  var fd=new FormData();fd.append("pw",pw);fd.append("file",fid);fd.append("kind",kind);
+  adminFetch("/share/__admin/code-save",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    if(d.ok){inlineDone("改码",fid,true);loadFiles();}else inlineDone("改码",fid,false,d.msg);
+  }).catch(function(){inlineDone("改码",fid,false,"网络异常")});
+}
+function inlineExp(inp,fid){
+  var days=parseInt(inp.value.trim(),10);
+  if(isNaN(days)||days<0||days>3650){inlineDone("有效期",fid,false,"须0-3650整数");inp.value=expVal(fid);return;}
+  var fd=new FormData();fd.append("fid",fid);fd.append("days",days);
+  adminFetch("/share/__admin/set-expiry",{method:"POST",body:fd}).then(function(r){return r.json()}).then(function(d){
+    if(d.ok){inlineDone("有效期",fid,true);loadFiles();}else inlineDone("有效期",fid,false,d.msg);
+  }).catch(function(){inlineDone("有效期",fid,false,"网络异常")});
+}
 /* ===== v4.59：文件夹删除+复制/移动+排序（站长14:38） ===== */
 function rmDir(dir){
   if(!confirm("删除整个文件夹及其内部全部文件？\n目录："+dir+"\n（挂在里面的提取码/删除码一并清除，不可恢复）"))return;
@@ -663,5 +739,6 @@ adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(funct
 </div></div>
 <script>/* v1.3：askDel时同步数量显示 */
 (function(){var oAsk=askDel;askDel=function(list){oAsk(list);el("delCount").textContent=list.length;};})();</script>
+<button type="button" id="saveAllBtn" onclick="saveAll()" style="position:fixed;right:22px;bottom:22px;background:linear-gradient(135deg,#B8860B,#E8BC4F);color:#14213D;font-weight:700;border:none;border-radius:12px;padding:12px 22px;font-size:15px;cursor:pointer;box-shadow:0 6px 20px rgba(184,134,11,.35);display:none;z-index:99">💾 保存修改</button>
 </body>
 </html>
