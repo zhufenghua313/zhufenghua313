@@ -44,11 +44,18 @@
   .login-box .err{color:#E88;margin-top:10px;font-size:15px;}
   footer{text-align:center;color:var(--sub);font-size:14px;line-height:1.8;padding:10px 0;}
 
-  /* =====【v1.4】文件列表改div卡片（站长 09:39）：table方案退役 =====
-     行1：文件名(粗)+大小·目录(灰) 靠左 | 选择框靠右
-     行2：提取码/删除码chips + 有效期
-     行3：操作按钮组 右对齐
-     同一文件的信息与操作同在一个卡片框内 */
+  /* =====【v1.5】两段式卡片+标题行（站长 10:02/10:05） =====
+     标题行：文件名|大小|目录|提取码|删除码（grid对齐）
+     段1：同grid列位对齐显示信息
+     段2：左有效期+右操作按钮 */
+  .fgrid{display:grid;grid-template-columns:26px minmax(120px,1fr) 64px 76px 108px 108px;gap:8px;align-items:center;}
+  .fgrid .ghead{color:var(--sub);font-size:12px;padding:0 0 6px;}
+  .ghead-row{display:grid;grid-template-columns:26px minmax(120px,1fr) 64px 76px 108px 108px;gap:8px;align-items:center;padding:0 15px 6px;} /* 15px=14内边距+1边框补偿，与卡片内grid像素对齐 */
+  @media(max-width:640px){
+    .fgrid,.ghead-row{grid-template-columns:26px minmax(100px,1fr) 56px 96px;}
+    .fgrid .c-dir,.ghead-row .ghead-dir{display:none;}
+    .fgrid .c-del,.ghead-row .ghead-del{display:none;}
+  }
 /* =====【v1.3】多选批量删除 + 居中警告弹窗（站长 08:44） ===== */
   .chk{width:18px!important;height:18px!important;flex-shrink:0;accent-color:#B03A2E;cursor:pointer;margin:0;vertical-align:middle;}
   #delMask{position:fixed;inset:0;background:rgba(15,20,35,.74);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;}
@@ -344,7 +351,9 @@ function renderTable(){
   });
   var h = '<div style="margin:2px 0 10px;font-size:15px">'+(crumbs()||'<span style="color:var(--sub)">📁 根目录</span>')+'</div>';
   h+='<div id="batchBar" style="display:none;margin:0 0 10px;padding:9px 14px;background:#FDF3F1;border:1px solid rgba(176,58,46,.3);border-radius:10px;font-size:14.5px;align-items:center;gap:10px;flex-wrap:wrap"><span style="color:#B03A2E;font-weight:700">已选 <span id="selN">0</span> 个文件</span><button type="button" onclick="batchDel()" style="background:linear-gradient(135deg,#A93226,#C74B3B);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:13.5px;cursor:pointer;font-family:inherit;font-weight:700">🗑 批量删除所选</button><button type="button" onclick="clearSel()" style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:13.5px;cursor:pointer;color:var(--sub);font-family:inherit">取消选择</button></div>';
-  h+='<div style="display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:13.5px;color:var(--sub)"><input type="checkbox" class="chk" id="chkAll" onchange="toggleAll(this.checked)" title="全选本目录的文件" style="flex-shrink:0"><label for="chkAll" style="cursor:pointer">全选本目录的文件</label></div>';
+  h+='<div style="display:flex;align-items:center;gap:8px;margin:0 0 4px;padding:0 2px;font-size:13.5px;color:var(--sub)"><input type="checkbox" class="chk" id="chkAll" onchange="toggleAll(this.checked)" title="全选本目录的文件" style="flex-shrink:0"><label for="chkAll" style="cursor:pointer">全选本目录的文件</label></div>';
+  /* v1.5标题行：与文件行同grid模板对齐（站长10:05） */
+  h+='<div class="ghead-row"><div></div><div class="ghead">文件名</div><div class="ghead">大小</div><div class="ghead ghead-dir">目录</div><div class="ghead">提取码</div><div class="ghead ghead-del">删除码</div></div>';
   /* 文件夹行（先列） */
   Object.keys(folders).sort().forEach(function(seg){
     var sub = prefix + seg;
@@ -364,13 +373,17 @@ function renderTable(){
     }
     var cDl=findCode("dl"),cDel=findCode("del");
     function chip(c,red){if(!c)return '<span style="color:#bbb">未设</span>';var t=c.expText&&c.expText!=="永久"?'<span style="color:#A87D14;font-size:10.5px">（'+c.expText+'）</span>':"";return '<span class="pw-chip"'+(red?' style="border-color:rgba(176,58,46,.5);color:#B03A2E;background:#FDF0EE"':"")+' onclick="toastCopy(\''+c.pw+'\')" title="点击复制">'+esc(c.pw)+'</span>'+t}
+    /* v1.5两段式（站长10:02/10:05）：段1标题同构grid（选择框|文件名|大小|目录|提取码|删除码）段2左有效期右按钮 */
     h+='<div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:10px" data-fcard="'+esc(fid)+'">'
-      +'<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:7px">'
-        +'<span style="min-width:0"><span style="word-break:break-all;font-weight:700;font-size:15.5px">📄 '+esc(f.name)+'</span><br><span style="color:var(--sub);font-size:12.5px">'+fmtSize(f.size)+' · '+(f.path?esc(f.path):'根目录')+'</span></span>'
-        +'<input type="checkbox" class="chk fchk" data-fid="'+esc(fid)+'" onchange="updSel()" style="flex-shrink:0;margin-top:4px">'
+      +'<div class="fgrid" style="border-bottom:1px dashed var(--line);padding-bottom:8px">'
+        +'<div><input type="checkbox" class="chk fchk" data-fid="'+esc(fid)+'" onchange="updSel()"></div>'
+        +'<div style="min-width:0"><span style="word-break:break-all;font-weight:700;font-size:14.5px">📄 '+esc(f.name)+'</span></div>'
+        +'<div class="c-dir" style="color:var(--sub);font-size:12.5px">'+fmtSize(f.size)+'</div>'
+        +'<div class="c-dir" style="color:var(--sub);font-size:12.5px">'+(f.path?esc(f.path):'根目录')+'</div>'
+        +'<div style="min-width:0">'+chip(cDl,false)+'</div>'
+        +'<div class="c-del" style="min-width:0">'+chip(cDel,true)+'</div>'
       +'</div>'
-      +'<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:7px 0">'+chip(cDl,false)+' '+chip(cDel,true)+' <span style="font-size:12.5px">'+expChip(fid)+'</span></div>'
-      +'<div style="display:flex;justify-content:flex-end;align-items:center;gap:6px;border-top:1px dashed var(--line);padding-top:7px"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="删除">🗑</button></div>'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:7px"><span style="font-size:12.5px">'+expChip(fid)+'</span><span style="display:flex;gap:6px"><button type="button" class="btn-line" onclick="setExp(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改有效期（0=永久）">📅</button> <button type="button" class="btn-line" onclick="editCodes(this.getAttribute(&quot;data-fid&quot;))" data-fid="'+esc(fid)+'" style="padding:5px 11px;font-size:13px" title="修改两码">🔑</button> <button type="button" class="btn-line" onclick="renFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="改名">✎</button> <button type="button" class="btn-line" onclick="delFile(\''+fid.replace(/'/g,"\\'")+'\')" style="padding:5px 11px;font-size:13px" title="删除">🗑</button></span></div>'
     +'</div>';
   });
   
