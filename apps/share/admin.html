@@ -231,10 +231,16 @@ el("upForm").addEventListener("submit",function(e){
       el("upForm").reset();loadFiles();
       if(dlPw||delPw){
         adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(function(d2){
-          if(!d2.ok)return;
-          var target=d2.files.filter(function(x){return x.name===f.name||(nm&&x.name===nm)})[0];
-          if(!target)return;
-          var fid=target.path?target.path+"/"+target.name:target.name;
+          /* v4.50修：上传后设码"静默丢失"（站长 09:50实测——文件传上去了
+             提取码没进KV）。原版target找不到就return——无提示无重试。
+             兜底：列表里找不到新文件时，用"当月目录+文件名"直接拼fid */
+          var target=null;
+          if(d2.ok){target=d2.files.filter(function(x){return x.name===f.name||(nm&&x.name===nm)})[0];}
+          var finalName=nm||f.name;
+          var now=new Date();
+          var dirGuess=now.getFullYear()+"/"+("0"+(now.getMonth()+1)).slice(-2);
+          var fid=target?(target.path?target.path+"/"+target.name:target.name):(dirGuess+"/"+finalName);
+          if(!target){try{console.warn("[设码兜底] 列表未见新文件，按 "+dirGuess+" 归档位设码")}catch(e){}}
           var done=0,total=(dlPw?1:0)+(delPw?1:0);
           function after(){done++;if(done>=total){m.textContent="✅ 已上传并设好"+(total===2?"双码":(dlPw?"提取码":"删除码"));loadFiles();}}
           if(dlPw){var f1=new FormData();f1.append("pw",dlPw);f1.append("file",fid);f1.append("kind","dl");adminFetch("/share/__admin/code-save",{method:"POST",body:f1}).then(function(r){return r.json()}).then(after).catch(after);}
