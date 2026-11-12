@@ -622,7 +622,21 @@ function mvObj(fid,kind){
   opts.sort();
   opts.forEach(function(d){
     var segs=d.split("/");var depth=segs.length-1;
-    mkRow(segs[segs.length-1]+(depth?"<span style='color:var(--sub);font-size:12px'>（在 "+segs.slice(0,-1).join("/")+" 里）</span>":""),d,depth);
+    /* v1.4b：mkRow改收纯文本——"（在XX里）"后缀在行内拼接，HTML标签不再当文字显示（站长13:11） */
+    var extra=depth?segs.slice(0,-1).join("/"):"";
+    var row=document.createElement("button");
+    row.type="button";row.className="mvrow"+(d===def?" sel":"");
+    row.style.paddingLeft=(14+depth*16)+"px";
+    var span=document.createElement("span");span.style.marginRight="7px";span.textContent="📁";
+    var label=document.createElement("span");label.textContent=segs[segs.length-1];
+    row.appendChild(span);row.appendChild(label);
+    if(extra){
+      var note=document.createElement("span");note.style.color="var(--sub)";note.style.fontSize="12px";
+      note.textContent="（在 "+extra+" 里）";
+      row.appendChild(note);
+    }
+    row.onclick=function(){Array.prototype.forEach.call(box.children,function(c){c.classList.remove("sel")});row.classList.add("sel");el("mvTo").value=d;};
+    box.appendChild(row);
   });
   el("mvTitle").innerHTML=(kind==="dir"?"文件夹：📁 ":"文件：📄 ")+esc(fid.split("/").pop());
   el("mvTo").value=def;
