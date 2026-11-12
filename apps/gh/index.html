@@ -47,9 +47,10 @@ body:not(.logged){display:flex;min-height:100vh}
 .guest-box{background:rgba(217,165,33,.1);border:1px solid rgba(217,165,33,.3);border-radius:12px;padding:16px;margin-bottom:16px}
 .guest-row{display:flex;gap:8px}
 .guest-row input{flex:1;min-width:0}
-.guest-row .btn{margin-top:0;width:auto;white-space:nowrap}
+/* 修复：#setup .btn 的 width:100% 带 ID 优先级会压垮本行按钮，必须同权重对抗 */
+#setup .guest-row .btn{margin-top:0;width:auto;white-space:nowrap;flex-shrink:0}
 /* 手机：输入框整行 + 按钮整行（大拇指好点、字看得清） */
-@media(max-width:520px){.guest-row{flex-direction:column}.guest-row input{padding:14px 13px}.guest-row .btn{width:100%;font-size:15.5px}}
+@media(max-width:520px){.guest-row{flex-direction:column}.guest-row input{padding:14px 13px}#setup .guest-row .btn{width:100%;font-size:15.5px}}
 .guest-hint{font-size:12px;color:rgba(255,255,255,.5);text-align:center;margin-top:10px}
 .owner-toggle{cursor:pointer;text-align:center;font-size:13.5px;color:#E8BC4F;padding:10px;border-radius:10px;border:1px dashed rgba(232,188,79,.35);user-select:none}
 .owner-toggle:hover{background:rgba(232,188,79,.08)}
