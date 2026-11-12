@@ -184,15 +184,36 @@ function gh(path,opt){const u=GHROOT+REPO+path+(path.includes('?')?'&':'?')+'_t=
 function b64(s){return btoa(unescape(encodeURIComponent(s)))}
 function unb64(s){return decodeURIComponent(escape(atob(s.replace(/\n/g,''))))}
 
-/* 登录（车主模式）：输自己的令牌 → 自动打开自己的仓库 */
+/* 登录（车主模式）：令牌像房卡——刷一下，GitHub前台自动报出账户名，不用手输
+   v1.1 修复：/api/user 的回执信封要先拆（.json()）再读名字（昨晚"Not Found"的病根）
+   同名仓库不存在时 → 自动列出令牌名下所有仓库，弹出挑选 */
 function doLogin(){PAT=$('pat-input').value.trim();if(!PAT.startsWith('github_pat_'))return toast('令牌要以 github_pat_ 开头','e');
- fetch('https://gh.efcc.cc/api/user',{headers:{'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'}})
- .then(u=>{const login=(u&&u.login)||'';REPO=login+'/'+login;
-  return gh('/contents/')})
- .then(()=>{var rp=(document.getElementById('rpChk')||{}).checked;
-  if(rp)LSset('gh-pub-pat',PAT);else LSdel('gh-pub-pat');
-  isGuest=false;boot();const sv=decodeURIComponent(location.hash.slice(1));loadDir(sv||'');startIdleGuard()})
- .catch(e=>toast('登录失败：'+e.message+'（也可以先用访客模式浏览公开仓库）','e'))}
+ const H={'Authorization':'Bearer '+PAT,'Accept':'application/vnd.github+json'};
+ fetch('https://gh.efcc.cc/api/user',{headers:H})
+ .then(async u=>{if(!u.ok)throw new Error(u.status===401?'令牌不对或已过期':'HTTP '+u.status);
+  const me=await u.json();const login=me.login||'';
+  if(!login)throw new Error('GitHub没认出这个令牌的主人');
+  REPO=login+'/'+login; /* 先试"用户名/用户名"同名仓库 */
+  return gh('/contents/').then(()=>login+'/'+login).catch(()=>null)})
+ .then(re=>{
+  if(re)return enterRepo(re);
+  /* 同名仓库打不开 → 拉仓库列表让用户挑 */
+  return fetch('https://gh.efcc.cc/api/user/repos?per_page=100&sort=updated',{headers:H})
+   .then(async r=>{if(!r.ok)throw new Error('拉仓库列表失败（HTTP '+r.status+'）');return r.json()})
+   .then(list=>{const names=(list||[]).map(x=>x.full_name);
+    if(!names.length)throw new Error('这个令牌名下没有可用仓库（去 GitHub 检查令牌的仓库授权范围）');
+    pickRepoDlg(names)})})
+ .catch(e=>toast('登录失败：'+e.message,'e'))}
+function enterRepo(repo){REPO=repo;isGuest=false;
+ var rp=(document.getElementById('rpChk')||{}).checked;
+ if(rp)LSset('gh-pub-pat',PAT);else LSdel('gh-pub-pat');
+ boot();const sv=decodeURIComponent(location.hash.slice(1));loadDir(sv||'');startIdleGuard()}
+function pickRepoDlg(names){const m=$('dlg-mask');$('dlg-title').textContent='📁 你的仓库，挑一个：';
+ const old=$('dlg-input');let sel=old;
+ if(old.tagName!=='SELECT'){sel=document.createElement('select');sel.id='dlg-input';sel.style.cssText='width:100%;padding:9px 11px;border:1px solid #d1d5db;border-radius:8px;font-size:13.5px';old.replaceWith(sel)}
+ sel.innerHTML=names.map(n=>'<option value="'+n+'">'+n+'</option>').join('');
+ m.style.display='flex';
+ $('dlg-ok').onclick=()=>{const v=sel.value;dlgClose();if(v)enterRepo(v)}}
 
 /* 访客模式：输入 用户名/仓库 直接浏览 */
 function doGuest(){const v=$('repo-input').value.trim().replace(/^https?:\/\/github\.com\//i,'').replace(/\/+$/,'');
