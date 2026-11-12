@@ -48,13 +48,15 @@ body:not(.logged){display:flex;min-height:100vh}
 .guest-row{display:flex;gap:8px}
 .guest-row input{flex:1;min-width:0}
 .guest-row .btn{margin-top:0;width:auto;white-space:nowrap}
+/* 手机：输入框整行 + 按钮整行（大拇指好点、字看得清） */
+@media(max-width:520px){.guest-row{flex-direction:column}.guest-row input{padding:14px 13px}.guest-row .btn{width:100%;font-size:15.5px}}
 .guest-hint{font-size:12px;color:rgba(255,255,255,.5);text-align:center;margin-top:10px}
 .owner-toggle{cursor:pointer;text-align:center;font-size:13.5px;color:#E8BC4F;padding:10px;border-radius:10px;border:1px dashed rgba(232,188,79,.35);user-select:none}
 .owner-toggle:hover{background:rgba(232,188,79,.08)}
 #owner-panel{margin-top:14px}
 .trust-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.55);margin-top:22px}
 #setup p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:14px}
-#setup input{width:100%;padding:11px 13px;border:1px solid rgba(255,255,255,.2);border-radius:10px;font-size:13px;font-family:Consolas,monospace;background:rgba(255,255,255,.08);color:#fff;outline:none}
+#setup input{width:100%;padding:12px 13px;border:1px solid rgba(255,255,255,.2);border-radius:10px;font-size:16px;font-family:Consolas,monospace;background:rgba(255,255,255,.08);color:#fff;outline:none}
 #setup input:focus{border-color:#D9A521}
 #setup .btn{margin-top:14px;width:100%}
 #setup .btn-p{background:linear-gradient(135deg,#D9A521,#E8BC4F);color:#14213D;font-weight:700;font-size:14.5px;border:none}
@@ -141,7 +143,7 @@ body:not(.logged) .top{display:none}
 
   <div class="guest-box">
     <div class="guest-row">
-      <input id="repo-input" placeholder="用户名 或 用户名/仓库　例：zhufenghua313" spellcheck="false">
+      <input id="repo-input" placeholder="用户名 或 用户名/仓库　例：zhufenghua313" spellcheck="false" autocapitalize="off" autocomplete="off">
       <button class="btn btn-p" onclick="doGuest()">⚡ 秒开</button>
     </div>
     <div class="guest-hint">不用登录 · 只能浏览 · 想要编辑往下走</div>
