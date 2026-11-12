@@ -80,6 +80,14 @@
   #delMask{position:fixed;inset:0;background:rgba(15,20,35,.74);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;}
   #delMask .dlg{width:min(92vw,440px);background:#fff;border:2px solid rgba(176,58,46,.55);border-radius:16px;padding:24px 22px;box-shadow:0 18px 60px rgba(0,0,0,.45);}
   #delMask .flist{max-height:150px;overflow-y:auto;background:#FDF3F1;border:1px solid rgba(176,58,46,.3);border-left:4px solid #B03A2E;border-radius:10px;padding:10px 14px;margin:12px 0;font-size:14px;word-break:break-all;line-height:1.9;}
+  /* v1.4：复制/移动目的地选择弹窗（站长11:33） */
+  #mvMask{position:fixed;inset:0;background:rgba(15,20,35,.74);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px;}
+  #mvMask .dlg{width:min(92vw,460px);max-height:88vh;overflow-y:auto;background:#fff;border:2px solid rgba(217,165,33,.55);border-radius:16px;padding:22px 20px;box-shadow:0 18px 60px rgba(0,0,0,.45);}
+  #mvDirs{max-height:42vh;overflow-y:auto;border:1px solid var(--line);border-radius:12px;margin:10px 0;background:var(--bg);}
+  .mvrow{display:block;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid var(--line);padding:11px 14px;font-size:15px;color:var(--ink);cursor:pointer;font-family:inherit;word-break:break-all;line-height:1.55}
+  .mvrow:last-child{border-bottom:none}
+  .mvrow:hover{background:var(--goldbg)}
+  .mvrow.sel{background:var(--goldbg);color:var(--deep);font-weight:700;box-shadow:inset 4px 0 0 var(--gold)}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   </style>
 </head>
@@ -599,10 +607,33 @@ function mvObj(fid,kind){
   year=now.getFullYear();month=(now.getMonth()+1<10?"0":"")+(now.getMonth()+1);
   var opts=dirs.filter(function(d){return d!==fid&&d.indexOf(fid+"/")!==0;});
   var def=(kind==="dir")?fid.replace(/\/[^\/]+$/,""):(fid.indexOf("/")>=0?fid.replace(/\/[^\/]+$/,""):year+"/"+month);
-  var to=prompt("目标目录（留空=根目录）\n现有目录：\n"+(opts.length?opts.slice(0,25).join("\n"):"（暂无）")+"\n\n也可填新目录名（如 "+year+"/"+month+"/批-0625）",def);
-  if(to===null)return;
-  to=to.trim();
-  var mode=confirm("点【确定】=复制（码自动加-01序列）\n点【取消】=移动（码跟着走）")?"copy":"move";
+  /* v1.4：点选目的地弹窗（站长11:33"能点击选择才好"）——原prompt要手打名字，不方便 */
+  MV.fid=fid;MV.kind=kind;
+  var box=el("mvDirs");box.innerHTML="";
+  var mkRow=function(label,val,depth){
+    var b=document.createElement("button");
+    b.type="button";b.className="mvrow"+(val===def?" sel":"");
+    b.style.paddingLeft=(14+depth*16)+"px";
+    b.innerHTML=(val?"<span style='margin-right:7px'>📁</span>":"<span style='margin-right:7px'>🏠</span>")+esc(label);
+    b.onclick=function(){Array.prototype.forEach.call(box.children,function(c){c.classList.remove("sel")});b.classList.add("sel");el("mvTo").value=val;};
+    box.appendChild(b);
+  };
+  mkRow("根目录（不进任何文件夹）","",0);
+  opts.sort();
+  opts.forEach(function(d){
+    var segs=d.split("/");var depth=segs.length-1;
+    mkRow(segs[segs.length-1]+(depth?"<span style='color:var(--sub);font-size:12px'>（在 "+segs.slice(0,-1).join("/")+" 里）</span>":""),d,depth);
+  });
+  el("mvTitle").innerHTML=(kind==="dir"?"文件夹：📁 ":"文件：📄 ")+esc(fid.split("/").pop());
+  el("mvTo").value=def;
+  el("mvMask").style.display="flex";
+}
+var MV={fid:"",kind:""};
+function mvCancel(){el("mvMask").style.display="none";MV.fid="";}
+function mvGo(mode){
+  var to=(el("mvTo").value||"").trim();
+  el("mvMask").style.display="none";
+  var fid=MV.fid;if(!fid)return;MV.fid="";
   /* v4.59b：预检目标重名——站长14:55"重名要提醒确认+告知改名规则" */
   adminFetch("/share/__admin/copymove-check",{method:"POST",body:(function(){var f=new FormData();f.append("from",fid);f.append("toDir",to);return f;})()})
     .then(function(r){return r.json()}).then(function(ck){
@@ -770,6 +801,19 @@ adminFetch("/share/__admin/files").then(function(r){return r.json()}).then(funct
   <p style="color:var(--sub);font-size:13px;line-height:1.8;margin:0 0 16px">① 文件立即删除，此操作<b style="color:#B03A2E">不可撤销</b><br>② 各文件的提取码和删除码全部立即失效</p>
   <button type="button" id="delGo" onclick="doDel()" style="width:100%;background:linear-gradient(135deg,#A93226,#C74B3B);color:#fff;border:none;border-radius:11px;padding:13px;font-size:15.5px;font-weight:700;letter-spacing:2px;cursor:pointer;font-family:inherit">🗑 我已确认，永久删除</button>
   <button type="button" onclick="cancelDel()" style="width:100%;margin-top:10px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:11px;font-size:14px;cursor:pointer;font-family:inherit">取消</button>
+</div></div>
+<div id="mvMask"><div class="dlg">
+  <h2 style="text-align:center;font-size:19px;letter-spacing:1px;color:var(--deep);margin:0 0 4px">🚚 复制 / 移动</h2>
+  <p id="mvTitle" style="text-align:center;color:var(--sub);font-size:13.5px;margin:0;word-break:break-all"></p>
+  <div style="font-size:13px;color:var(--sub);margin-top:14px;font-weight:700">① 点击选择目的地：</div>
+  <div id="mvDirs"></div>
+  <div style="font-size:13px;color:var(--sub);margin-top:4px">② 或直接改这里（也可填新目录名，留空=根目录）：</div>
+  <input id="mvTo" type="text" placeholder="如 2026/11/批-0625（留空=根目录）" style="width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:15px;margin-top:6px;font-family:inherit;color:var(--ink)">
+  <div style="display:flex;gap:10px;margin-top:16px">
+    <button type="button" onclick="mvGo('copy')" style="flex:1;background:linear-gradient(135deg,var(--gold),var(--goldL));color:var(--deep);border:none;border-radius:11px;padding:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">📋 复制一份</button>
+    <button type="button" onclick="mvGo('move')" style="flex:1;background:linear-gradient(135deg,var(--deep),#2A4370);color:#fff;border:none;border-radius:11px;padding:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">✂️ 移动过去</button>
+  </div>
+  <button type="button" onclick="mvCancel()" style="width:100%;margin-top:10px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:11px;font-size:14px;cursor:pointer;font-family:inherit">取消（不动了）</button>
 </div></div>
 <script>/* v1.3：askDel时同步数量显示 */
 (function(){var oAsk=askDel;askDel=function(list){oAsk(list);el("delCount").textContent=list.length;};})();</script>
